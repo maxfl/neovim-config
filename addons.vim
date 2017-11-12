@@ -42,11 +42,11 @@ call dein#add('tmhedberg/indent-motion')
 call dein#add('Lokaltog/vim-easymotion', {
             \ 'hook_add' : "nnoremap <Leader><Leader>. <Plug>(easymotion-repeat)"
             \ })
-call dein#add('rhysd/clever-f.vim',                                                                " clefer f/F/t/T mappings
-            \ { 'hook_add' : "
-            \ nnoremap <Leader>fr <Plug>(clever-f-reset)
-            \ nnoremap ; <Plug>(clever-f-repeat-forward)
-            \ \"nnoremap , <Plug>(clever-f-repeat-back)
+                                                                                                   " clefer f/F/t/T mappings
+call dein#add('rhysd/clever-f.vim', { 'hook_add' : "
+            \ nnoremap <Leader>fr <Plug>(clever-f-reset)\n
+            \ nnoremap ; <Plug>(clever-f-repeat-forward)\n
+            \ \"nnoremap , <Plug>(clever-f-repeat-back)\n
             \ "})
 call dein#add('bkad/camelcasemotion', { 'hook_add' : "
             \ call camelcasemotion#CreateMotionMappings(',')
@@ -56,7 +56,21 @@ call dein#add('bkad/camelcasemotion', { 'hook_add' : "
 " Utilites
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('ciaranm/detectindent')
-call dein#add('t9md/vim-quickhl')
+call dein#add('t9md/vim-quickhl', { 'hook_add' : "
+            \ nmap <leader>m <Plug>(quickhl-manual-this)\n
+            \ xmap <leader>m <Plug>(quickhl-manual-this)\n
+            \ nmap <leader>n <Plug>(quickhl-manual-reset)\n
+            \ xmap <leader>n <Plug>(quickhl-manual-reset)\n
+            \ \n
+            \ nmap <leader>M :exe 'QuickhlManualAdd! \\<'.expand('<cword>').'\\>'<CR>\n
+            \ xmap <leader>M :exe 'QuickhlManualAdd! \\<'.expand('<cword>').'\\>'<CR>\n
+            \ nmap <leader>N :exe 'QuickhlManualDelete! \\<'.expand('<cword>').'\\>'<CR>\n
+            \ xmap <leader>N :exe 'QuickhlManualDelete! \\<'.expand('<cword>').'\\>'<CR>\n
+            \ \n
+            \ \"nmap <Space>j <Plug>(quickhl-cword-toggle)\n
+            \ \"nmap <Space>] <Plug>(quickhl-tag-toggle)\n
+            \ map <leader>H <Plug>(operator-quickhl-manual-this-motion)\n
+            \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ingo Karkat
@@ -151,7 +165,50 @@ call dein#add('tpope/vim-fugitive')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text manipulation
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('AndrewRadev/switch.vim')
+call dein#add('AndrewRadev/switch.vim', { 'hook_add' : "
+            \ let g:switch_mapping='-'\n
+            \ let g:switch_reverse_mapping='+'\n
+            \ let g:switch_find_smallest_match=0\n
+            \ let g:switch_custom_definitions = [
+            \       [ '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉' ],
+            \       [ '⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹' ],
+            \       [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ],
+            \       [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ],
+            \       [ 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье' ],
+            \       [ 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье' ],
+            \       [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
+            \       [ 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december' ],
+            \       [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+            \       [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ],
+            \       [ 'black', 'white', 'grey', 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow' ],
+            \       [ 'TODO', 'DONE', 'XXX', 'FIXME' ],
+            \       [ 'TRUE', 'FALSE' ],
+            \       { '\C\<yes\>': 'no', '\C\<no\>':  'yes',  }, { '\C\<Yes\>': 'No', '\C\<No\>':  'Yes',  }, { '\C\<YES\>': 'NO', '\C\<NO\>':  'YES',  },
+            \       { '\C\<on\>': 'off', '\C\<off\>':  'on',  }, { '\C\<On\>': 'Off', '\C\<Off\>':  'On',  }, { '\C\<ON\>': 'OFF', '\C\<OFF\>':  'ON',  },
+            \       { '\C\<AND\>': 'OR', '\C\<OR\>':  'AND',  }, { '\C\<and\>': 'or', '\C\<or\>':  'and',  },
+            \       [ '[ ]', '[✔]', '[✘]', '[✔✘]', '[?]' ],
+            \     ]\n
+            \ autocmd FileType gitrebase let b:switch_custom_definitions = [
+            \       [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec' ]
+            \     ]\n
+            \ autocmd FileType tex,plaintex let b:switch_custom_definitions = [
+            \         [ '\\tiny', '\\scriptsize', '\\footnotesize', '\\small', '\\normalsize', '\\large', '\\Large', '\\LARGE', '\\huge', '\\Huge' ],
+            \         [ '\\displaystyle', '\\scriptstyle', '\\scriptscriptstyle', '\\textstyle' ],
+            \         [ '\\part', '\\chapter', '\\section', '\\subsection', '\\subsubsection', '\\paragraph', '\\subparagraph' ],
+            \         [ 'part:', 'chap:', 'sec:', 'subsec:', 'subsubsec:' ],
+            \         [ 'article', 'report', 'book', 'letter', 'slides' ],
+            \         [ 'a4paper', 'a5paper', 'b5paper', 'executivepaper', 'legalpaper', 'letterpaper', 'beamer', 'subfiles', 'standalone' ],
+            \         [ 'onecolumn', 'twocolumn' ],
+            \         [ 'oneside', 'twoside' ],
+            \         [ 'draft', 'final' ],
+            \         [ 'AnnArbor', 'Antibes', 'Bergen', 'Berkeley',
+            \           'Berlin', 'Boadilla', 'CambridgeUS', 'Copenhagen', 'Darmstadt',
+            \           'Dresden', 'Frankfurt', 'Goettingen', 'Hannover', 'Ilmenau',
+            \           'JuanLesPins', 'Luebeck', 'Madrid', 'Malmoe', 'Marburg',
+            \           'Montpellier', 'PaloAlto', 'Pittsburgh', 'Rochester', 'Singapore',
+            \           'Szeged', 'Warsaw' ]
+            \      ]\n
+            \ " })
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('sjl/gundo.vim')
 call dein#add('junegunn/vim-easy-align')
@@ -249,76 +306,6 @@ call dein#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap( 'vim-quickhl' )
-    nmap <leader>m <Plug>(quickhl-manual-this)
-    xmap <leader>m <Plug>(quickhl-manual-this)
-    nmap <leader>n <Plug>(quickhl-manual-reset)
-    xmap <leader>n <Plug>(quickhl-manual-reset)
-
-    nmap <leader>M :exe "QuickhlManualAdd! \\<".expand('<cword>')."\\>"<CR>
-    xmap <leader>M :exe "QuickhlManualAdd! \\<".expand('<cword>')."\\>"<CR>
-    nmap <leader>N :exe "QuickhlManualDelete! \\<".expand('<cword>')."\\>"<CR>
-    xmap <leader>N :exe "QuickhlManualDelete! \\<".expand('<cword>')."\\>"<CR>
-
-    "nmap <Space>j <Plug>(quickhl-cword-toggle)
-    "nmap <Space>] <Plug>(quickhl-tag-toggle)
-    map <leader>H <Plug>(operator-quickhl-manual-this-motion)
-end
-
-if dein#tap( 'swapit' )
-    au BufRead,BufNewFile * SwapList YES/NO YES NO
-    au BufRead,BufNewFile * SwapList TODO/DONE TODO DONE
-    au BufRead,BufNewFile * SwapList Days
-endif
-
-if dein#tap( 'switch.vim' )
-    let g:switch_mapping = "-"
-    let g:switch_reverse_mapping = "+"
-    let g:switch_find_smallest_match=0
-    let g:switch_custom_definitions =
-        \ [
-        \   [ '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉' ],
-        \   [ '⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹' ],
-        \   [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ],
-        \   [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ],
-        \   [ 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье' ],
-        \   [ 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье' ],
-        \   [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
-        \   [ 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december' ],
-        \   [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
-        \   [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ],
-        \   [ 'black', 'white', 'grey', 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow' ],
-        \   [ 'TODO', 'DONE', 'XXX', 'FIXME' ],
-        \   [ 'TRUE', 'FALSE' ],
-        \   { '\C\<yes\>': 'no', '\C\<no\>':  'yes',  }, { '\C\<Yes\>': 'No', '\C\<No\>':  'Yes',  }, { '\C\<YES\>': 'NO', '\C\<NO\>':  'YES',  },
-        \   { '\C\<on\>': 'off', '\C\<off\>':  'on',  }, { '\C\<On\>': 'Off', '\C\<Off\>':  'On',  }, { '\C\<ON\>': 'OFF', '\C\<OFF\>':  'ON',  },
-        \   { '\C\<AND\>': 'OR', '\C\<OR\>':  'AND',  }, { '\C\<and\>': 'or', '\C\<or\>':  'and',  },
-        \   [ '[ ]', '[✔]', '[✘]', '[✔✘]', '[?]' ],
-        \ ]
-    autocmd FileType gitrebase let b:switch_custom_definitions =
-        \ [
-        \   [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec' ]
-        \ ]
-    autocmd FileType tex,plaintex let b:switch_custom_definitions =
-        \ [
-        \    [ '\\tiny', '\\scriptsize', '\\footnotesize', '\\small', '\\normalsize', '\\large', '\\Large', '\\LARGE', '\\huge', '\\Huge' ],
-        \    [ '\\displaystyle', '\\scriptstyle', '\\scriptscriptstyle', '\\textstyle' ],
-        \    [ '\\part', '\\chapter', '\\section', '\\subsection', '\\subsubsection', '\\paragraph', '\\subparagraph' ],
-        \    [ 'part:', 'chap:', 'sec:', 'subsec:', 'subsubsec:' ],
-        \    [ 'article', 'report', 'book', 'letter', 'slides' ],
-        \    [ 'a4paper', 'a5paper', 'b5paper', 'executivepaper', 'legalpaper', 'letterpaper', 'beamer', 'subfiles', 'standalone' ],
-        \    [ 'onecolumn', 'twocolumn' ],
-        \    [ 'oneside', 'twoside' ],
-        \    [ 'draft', 'final' ],
-        \    [ 'AnnArbor', 'Antibes', 'Bergen', 'Berkeley',
-        \      'Berlin', 'Boadilla', 'CambridgeUS', 'Copenhagen', 'Darmstadt',
-        \      'Dresden', 'Frankfurt', 'Goettingen', 'Hannover', 'Ilmenau',
-        \      'JuanLesPins', 'Luebeck', 'Madrid', 'Malmoe', 'Marburg',
-        \      'Montpellier', 'PaloAlto', 'Pittsburgh', 'Rochester', 'Singapore',
-        \      'Szeged', 'Warsaw' ]
-        \ ]
-endif
-
 
 let g:ConflictMotions_TakeMappingPrefix = '<Leader>='
 
@@ -329,24 +316,6 @@ nmap <Leader><Leader><C-I> <Plug>EnhancedJumpsLocalNewer
 nmap <M-o>      <Plug>EnhancedJumpsRemoteOlder
 nmap <M-i>      <Plug>EnhancedJumpsRemoteNewer
 let g:EnhancedJumps_CaptureJumpMessages = 0
-
-if dein#tap( 'vim-surround' )
-    " q - latex double english quotes
-    let g:surround_113 = "“\r”"
-    " Q - latex double russian quotes
-    let g:surround_81  = "„\r“"
-    " f - latex double french quotes
-    let g:surround_102 = "«\r»"
-endif
-"if dein#tap( 'vim-mucomplete' )
-"set shortmess+=c
-"set completeopt+=menuone
-""let g:mucomplete#enable_auto_at_startup = 1
-"let g:mucomplete#chains = {
-"\ 'default' : ['omni', 'user', 'ulti', 'tags', 'file', 'keyp', 'keyn', 'dict']
-"\ }
-"inoremap    <silent> <plug>(MUcompleteTab) <C-j>
-"endif
 
 if dein#tap( 'vim-multiple-cursors' )
     let g:multi_cursor_start_key='<C-n>'
@@ -396,10 +365,6 @@ if dein#tap( 'vim-multiple-cursors' )
     endfunction
 
 endif
-
-"if dein#tap( 'vim-notes' )
-    "let g:notes_directories=['/home/gonchar/yadisk/work/notes']
-"endif
 
 if dein#tap( 'vim-xkbswitch' )
     let g:XkbSwitchEnabled = 1
