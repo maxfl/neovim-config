@@ -9,7 +9,7 @@ let g:dein#types#git#clone_depth = 1
 call dein#add('Shougo/dein.vim')
 call dein#local("~/.vim/bundle_local")
 
-call dein#add('chrisbra/SudoEdit.vim')
+call dein#add('chrisbra/SudoEdit.vim', { 'hook_add' : "inoremap <S-F2> :SudoWrite<CR>" })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tim Pope
@@ -20,22 +20,26 @@ call dein#add('tpope/vim-repeat')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('vim-scripts/moria')
-call dein#add('NLKNguyen/papercolor-theme')
 call dein#add('altercation/vim-colors-solarized', { 'hook_add' : "colorscheme solarized"})
-call dein#add('jszakmeister/vim-togglecursor')
+call dein#add('jszakmeister/vim-togglecursor')                                                     " change cursor for insert/normal modes
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
-call dein#add('jiangmiao/auto-pairs')
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('jiangmiao/auto-pairs', { 'hook_add' : "
+            \ let g:AutoPairsFlyMode = 1\n
+            \ let g:AutoPairsShortcutToggle=''\n
+            \ noremap <Leader>( :call AutoPairsToggle()<CR>\n
+            \ let g:AutoPairs = {'(':')', '[':']', '{':'}',\"'\":\"'\",'\"':'\"', '`':'`'}\n
+            \ call extend( g:AutoPairs, {'“':'”', '‘' : '’', '„':'“', '«':'»'} )\n
+            \ " } )
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"call dein#add('bogado/file-line')
-call dein#add('kopischke/vim-fetch')
+call dein#add('kopischke/vim-fetch')                                                               " jump to file:line:col
 call dein#add('tmhedberg/indent-motion')
-call dein#add('Lokaltog/vim-easymotion')
+call dein#add('Lokaltog/vim-easymotion', { 'hook_add' : "nnoremap <Leader><Leader>. <Plug>(easymotion-repeat)" })
 call dein#add('rhysd/clever-f.vim')
 call dein#add('bkad/camelcasemotion')
 
@@ -236,9 +240,6 @@ call dein#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap( 'SudoEdit.vim' )
-    inoremap <S-F2> :SudoWrite<CR>
-endif
 
 if dein#tap( 'camelcasemotion' )
     call camelcasemotion#CreateMotionMappings(',')
@@ -260,24 +261,10 @@ if dein#tap( 'vim-quickhl' )
     map <leader>H <Plug>(operator-quickhl-manual-this-motion)
 end
 
-if dein#tap( 'auto-pairs' )
-    let g:AutoPairsFlyMode = 1
-    let g:AutoPairsShortcutToggle=''
-    noremap <Leader>( :call AutoPairsToggle()<CR>
-    " Default pairs
-    let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
-    " Add unicode quotation marks
-    call extend( g:AutoPairs, {'“':'”', '‘' : '’', '„':'“', '«':'»'} )
-endif
-
 if dein#tap( 'clever-f.vim' )
     nnoremap <Leader>fr <Plug>(clever-f-reset)
     nnoremap ; <Plug>(clever-f-repeat-forward)
     "nnoremap , <Plug>(clever-f-repeat-back)
-endif
-
-if dein#tap( 'vim-easymotion' )
-    nnoremap <Leader><Leader>. <Plug>(easymotion-repeat)
 endif
 
 if dein#tap( 'swapit' )
