@@ -39,9 +39,18 @@ call dein#add('jiangmiao/auto-pairs', { 'hook_add' : "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('kopischke/vim-fetch')                                                               " jump to file:line:col
 call dein#add('tmhedberg/indent-motion')
-call dein#add('Lokaltog/vim-easymotion', { 'hook_add' : "nnoremap <Leader><Leader>. <Plug>(easymotion-repeat)" })
-call dein#add('rhysd/clever-f.vim')
-call dein#add('bkad/camelcasemotion')
+call dein#add('Lokaltog/vim-easymotion', {
+            \ 'hook_add' : "nnoremap <Leader><Leader>. <Plug>(easymotion-repeat)"
+            \ })
+call dein#add('rhysd/clever-f.vim',                                                                " clefer f/F/t/T mappings
+            \ { 'hook_add' : "
+            \ nnoremap <Leader>fr <Plug>(clever-f-reset)
+            \ nnoremap ; <Plug>(clever-f-repeat-forward)
+            \ \"nnoremap , <Plug>(clever-f-repeat-back)
+            \ "})
+call dein#add('bkad/camelcasemotion', { 'hook_add' : "
+            \ call camelcasemotion#CreateMotionMappings(',')
+            \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
@@ -240,11 +249,6 @@ call dein#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-if dein#tap( 'camelcasemotion' )
-    call camelcasemotion#CreateMotionMappings(',')
-endif
-
 if dein#tap( 'vim-quickhl' )
     nmap <leader>m <Plug>(quickhl-manual-this)
     xmap <leader>m <Plug>(quickhl-manual-this)
@@ -260,12 +264,6 @@ if dein#tap( 'vim-quickhl' )
     "nmap <Space>] <Plug>(quickhl-tag-toggle)
     map <leader>H <Plug>(operator-quickhl-manual-this-motion)
 end
-
-if dein#tap( 'clever-f.vim' )
-    nnoremap <Leader>fr <Plug>(clever-f-reset)
-    nnoremap ; <Plug>(clever-f-repeat-forward)
-    "nnoremap , <Plug>(clever-f-repeat-back)
-endif
 
 if dein#tap( 'swapit' )
     au BufRead,BufNewFile * SwapList YES/NO YES NO
