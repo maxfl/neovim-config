@@ -13,14 +13,13 @@ call dein#add('chrisbra/SudoEdit.vim')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tim Pope
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('tpope/vim-sensible')
 call dein#add('tpope/vim-repeat')
-call dein#add('tpope/vim-abolish')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('vim-scripts/moria')
 call dein#add('NLKNguyen/papercolor-theme')
 call dein#add('altercation/vim-colors-solarized', { 'hook_add' : "colorscheme solarized"})
@@ -32,43 +31,33 @@ call dein#add('jiangmiao/auto-pairs')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Motion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "call dein#add('bogado/file-line')
 call dein#add('kopischke/vim-fetch')
 call dein#add('tmhedberg/indent-motion')
 call dein#add('Lokaltog/vim-easymotion')
 call dein#add('rhysd/clever-f.vim')
-"call dein#add('vim-scripts/camelcasemotion')
 call dein#add('bkad/camelcasemotion')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Text manipulation
-"call dein#add('mjbrownie/swapit')
-call dein#add('AndrewRadev/switch.vim')
-call dein#add('scrooloose/nerdcommenter')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('ciaranm/detectindent')
-
 call dein#add('t9md/vim-quickhl')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ingo Karkat
-"
-"local call dein#add('vim-scripts/ingo-library') "needed by ConflictMotions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add("vim-scripts/CountJump")    "needed by Conflict*
-"local call dein#add("vim-scripts/ConflictDetection")
-"local call dein#add("vim-scripts/ConflictMotions")
 call dein#add("vim-scripts/visualrepeat")
 call dein#add('vim-scripts/RelativeNumberCurrentWindow')
 call dein#add('vim-scripts/ChangeGlobally')
 call dein#add('vim-scripts/RangeMacro')
-"local call dein#add('vim-scripts/ExtractMatches')
 call dein#add('vim-scripts/RepeatableYank')
-"local call dein#add('vim-scripts/SwapText')
-"local call dein#add('vim-scripts/UnconditionalPaste')
-"local call dein#add("vim-scripts/EnhancedJumps")
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Textobjects
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('machakann/vim-sandwich')
 
 call dein#add('kana/vim-textobj-user')
@@ -88,13 +77,10 @@ call dein#add('kana/vim-textobj-datetime')
 "call dein#add('rbonvall/vim-textobj-latex')
 call dein#add('thinca/vim-textobj-between')
 "call dein#add('reedes/vim-textobj-quote')
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Shougo
-"
-if !has('nvim')
-    call dein#add('Shougo/vimproc', { 'build' : 'make' } )
-endif
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/denite.nvim', { 'hook_add' : "
             \ nnoremap <Leader>lb :<C-u>Denite buffer file_mru<CR>\n
@@ -105,40 +91,20 @@ call dein#add('Shougo/denite.nvim', { 'hook_add' : "
             \ nnoremap <Leader>ld :<C-u>Denite file_rec<CR>
             \ "})
 call dein#add('Shougo/unite.vim')
-if has("nvim") || !has("gui")
-    call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "let g:ranger_replace_netrw = 0\n
-                                                             \ let g:NERDTreeHijackNetrw = 0"} )
-    call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
-                \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
-                \ "})
-else
-    call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
-                \ let g:vimfiler_as_default_explorer = 1\n
-                \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
-                \ "})
-endif
+call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "let g:ranger_replace_netrw = 0\n
+                                                         \ let g:NERDTreeHijackNetrw = 0"} )
+call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
+            \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
+            \ "})
 call dein#add('Shougo/neossh.vim')
 
-if has( 'nvim' )
-    call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
-                    \ let g:deoplete#enable_at_startup = 1 \n
-                    \ let g:deoplete#disable_auto_complete = 0 \n
-                    \ let g:deoplete#enable_smart_case = 1 \n
-                    \ let g:deoplete#auto_complete_start_length = 2 \n
-                    \ inoremap <expr><C-X><C-X> neocomplete#manual_complete() \n
-                    \ "})
-else
-    if has( 'lua' ) && ( v:version>703 || ( v:version==703 && has( 'patch885' ) ) )
-        call dein#add('Shougo/neocomplete.vim', { 'hook_add' : "
-                    \ let g:neocomplete#enable_insert_char_pre = 0 \n
-                    \ let g:neocomplete#enable_at_startup = 1 \n
-                    \ let g:neocomplete#disable_auto_complete = 1 \n
-                    \ let g:neocomplete#enable_smart_case = 1 \n
-                    \ let g:neocomplete#auto_completion_start_length = 4 \n
-                    \ inoremap <expr><C-X><C-X> neocomplete#start_manual_complete() \n
-                    \ "})
-    endif
-endif
+call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
+                \ let g:deoplete#enable_at_startup = 1 \n
+                \ let g:deoplete#disable_auto_complete = 0 \n
+                \ let g:deoplete#enable_smart_case = 1 \n
+                \ let g:deoplete#auto_complete_start_length = 2 \n
+                \ inoremap <expr><C-X><C-X> neocomplete#manual_complete() \n
+                \ "})
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface
@@ -161,25 +127,19 @@ else
     call dein#disable('ultisnips')
 end
 call dein#add('derekwyatt/vim-fswitch')
-"call dein#add('jpetrie/vim-counterpoint')
-
-"
-" tmux
-"
-"call dein#add('benmills/vimux')
-"call dein#add('christoomey/vim-tmux-navigator')
-"call dein#add('tmux-plugins/vim-tmux')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tim Pope
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('tpope/vim-endwise')
 call dein#add('tpope/vim-dispatch')
 call dein#add('tpope/vim-fugitive')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text manipulation
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('AndrewRadev/switch.vim')
+call dein#add('scrooloose/nerdcommenter')
 call dein#add('sjl/gundo.vim')
 call dein#add('junegunn/vim-easy-align')
 call dein#add('salsifis/vim-transpose')
@@ -188,14 +148,18 @@ call dein#add('vim-scripts/ExplainPattern')
 call dein#add('vim-scripts/Rename')
 call dein#add('vim-scripts/VOoM')
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff tools
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('will133/vim-dirdiff')
 call dein#add('AndrewRadev/linediff.vim')
 call dein#add('vim-scripts/diffchar.vim')
 let g:DiffModeSync=0
+call dein#add('chrisbra/vim-diff-enhanced')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "call dein#add('klen/python-mode')
 call dein#add('lervag/vimtex')
 call dein#add('davidoc/taskpaper.vim')
@@ -205,8 +169,6 @@ call dein#add('aliva/vim-fish')
 call dein#add('terryma/vim-multiple-cursors')
 call dein#add('nhooyr/neoman.vim')
 call dein#add('vim-ctrlspace/vim-ctrlspace')
-
-call dein#add('brooth/far.vim')
 
 call dein#add('thinca/vim-prettyprint')
 call dein#add('romgrk/pp.vim')
@@ -221,30 +183,33 @@ call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,
 call dein#add('chrisbra/unicode.vim')
 call dein#add('joom/latex-unicoder.vim')
 
-call dein#add('mileszs/ack.vim')
 call dein#add('wgurecky/vimSum')
 
 call dein#add('bronson/vim-trailing-whitespace')
 
-"call dein#add('Shougo/unite-help')
-call dein#add('Shougo/vimshell.vim')
-
 call dein#add('moll/vim-bbye')
-
-call dein#add('chrisbra/vim-diff-enhanced')
-"call dein#add('machakann/vim-sandwich')
 
 call dein#add('plasticboy/vim-markdown')
 call dein#add('JuliaEditorSupport/julia-vim')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Search and replace
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('brooth/far.vim')        " :Far
+call dein#add('eugen0329/vim-esearch') " \ff
+call dein#add('tpope/vim-abolish')     " :%S////
+call dein#add('mileszs/ack.vim')       " FIXME: deprecate
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tags and outline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('xolox/vim-easytags')
 call dein#add('kien/rainbow_parentheses.vim')
 call dein#add('nathanaelkane/vim-indent-guides')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and Folders
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('ervandew/archive')
 call dein#add('xolox/vim-shell')
 
@@ -264,11 +229,13 @@ call dein#add('scrooloose/syntastic', { 'hook_add' : "
             \ " })
 call dein#add('xuhdev/SingleCompile')
 call dein#add('ivanov/vim-ipython')
-
-call dein#add('neomake/neomake')
+call dein#add('wbthomason/buildit.nvim')
 
 call dein#end()
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if dein#tap( 'SudoEdit.vim' )
     inoremap <S-F2> :SudoWrite<CR>
 endif
