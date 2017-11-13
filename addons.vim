@@ -23,6 +23,12 @@ call dein#add('tpope/vim-repeat')
 call dein#add('altercation/vim-colors-solarized', { 'hook_add' : "colorscheme solarized"})
 call dein#add('jszakmeister/vim-togglecursor')                                                     " change cursor for insert/normal modes
 
+" FIXME: almost not used
+call dein#add('kien/rainbow_parentheses.vim', { 'hook_add' : "nnoremap <Leader>R :RainbowParenthesesToggle<CR>" })
+"
+" FIXME: almost not used
+call dein#add('nathanaelkane/vim-indent-guides', { 'hook_add' : "let g:indent_guides_color_change_percent=2" })
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -137,7 +143,33 @@ call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
 " Interface
 "
 command! -nargs=0 TagbarToggle        call tagbar#ToggleWindow()
-call dein#add('majutsushi/tagbar')
+call dein#add('majutsushi/tagbar', { 'hook_add' : "
+            \ nnoremap <silent> <Leader>wt :TagbarToggle<CR>\n
+            \ let g:tagbar_autoclose = 1\n
+            \ let g:tagbar_compact = 1\n
+            \ let g:tagbar_autofocus = 1\n
+            \ let g:tagbar_autoshowtag = 1\n
+            \ let g:tagbar_type_tex = {
+            \               'ctagstype' : 'latex',
+            \               'kinds'     : [
+            \               's:sections',
+            \               'g:graphics',
+            \               'l:labels',
+            \               'r:refs:1',
+            \               'p:pagerefs:1',
+            \               'f:includes'
+            \               ],
+            \               'sort'    : 0,
+            \               }\n
+            \ let g:tagbar_type_make = {
+            \               'ctagstype' : 'make',
+            \               'kinds'     : [
+            \               'm:macros',
+            \               't:task',
+            \               ],
+            \               'sort'    : 0,
+            \               }\n
+            \ " })
 call dein#add('vim-airline/vim-airline', { 'depends': 'tagbar' })
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('paranoida/vim-airlineish')
@@ -216,22 +248,58 @@ call dein#add('salsifis/vim-transpose')
 call dein#add('t9md/vim-textmanip')
 call dein#add('vim-scripts/ExplainPattern')
 call dein#add('vim-scripts/Rename')
-call dein#add('vim-scripts/VOoM')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff tools
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('will133/vim-dirdiff')
-call dein#add('AndrewRadev/linediff.vim')
-call dein#add('vim-scripts/diffchar.vim')
-let g:DiffModeSync=0
+call dein#add('will133/vim-dirdiff', { 'hook_add' : "
+            \ map <unique> <Leader>Dg <Plug>DirDiffGet\n
+            \ map <unique> <Leader>Dp <Plug>DirDiffPut\n
+            \ map <unique> <Leader>Dj <Plug>DirDiffNext\n
+            \ map <unique> <Leader>Dk <Plug>DirDiffPrev\n
+            \ " })
+call dein#add('AndrewRadev/linediff.vim', { 'hook_add' : "
+            \ vmap <Leader>dl :Linediff<CR>\n
+            \ nmap <Leader>dl :Linediff<CR>\n
+            \ nmap <Leader>dr :LinediffReset<CR>\n
+            \ " })
+call dein#add('vim-scripts/diffchar.vim', { 'hook_add' : "let g:DiffModeSync=0" })
 call dein#add('chrisbra/vim-diff-enhanced')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"call dein#add('klen/python-mode')
-call dein#add('lervag/vimtex')
+"call dein#add('klen/python-mode', { 'hook_add' : "
+            "\ let g:pymode = 1\n
+            "\ let g:pymode_lint = 0\n
+            "\ let g:pymode_rope = 0\n
+            "\ let g:pymode_rope_guess_project = 0\n
+            "\ let g:pymode_virtualenv = 0\n
+            "\ let g:pymode_options = 0\n
+            "\ let g:pymode_trim_whitespaces = 0\n
+            "\ " })
+call dein#add('lervag/vimtex', { 'hook_add' : "
+            \ let g:vimtex_view_method='zathura'\n
+            \ \" let g:vimtex_view_method='mupdf'\n
+            \ let g:vimtex_imaps_enabled=0\n
+            \ let g:vimtex_index_split_width=60\n
+            \ let g:vimtex_index_split_pos='vert botright'\n
+            \ noremap <localleader>lL <plug>(vimtex-compile-ss)\n
+            \ noremap <localleader>l0 :let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>\n
+            \ \" let g:neocomplete#sources#omni#input_patterns.tex =
+            \             \" '\v\\%('
+            \             \" . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \             \" . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+            \             \" . '|hyperref\s*\[[^]]*'
+            \             \" . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \             \" . '|%(include%(only)?|input)\s*\{[^}]*'
+            \             \" . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \             \" . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \             \" . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \             \" . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \             \" . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \             \" . ')'
+            \ " })
 call dein#add('davidoc/taskpaper.vim')
 call dein#add('aliva/vim-fish')
 "call dein#add('lifepillar/vim-mucomplete')
@@ -300,13 +368,20 @@ call dein#add('xolox/vim-misc')
 call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,<S-Tab>'" })
 
 call dein#add('chrisbra/unicode.vim')
-call dein#add('joom/latex-unicoder.vim')
+call dein#add('joom/latex-unicoder.vim', { 'hook_add' : "let g:unicoder_no_map=1" })
 
 call dein#add('wgurecky/vimSum')
 
-call dein#add('bronson/vim-trailing-whitespace')
+call dein#add('bronson/vim-trailing-whitespace', { 'hook_add' : "
+            \ nnoremap <Leader>rts :FixWhitespace<CR>\n
+            \ autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace\n
+            \ " })
 
-call dein#add('moll/vim-bbye')
+" FIXME: Almost not used
+call dein#add('moll/vim-bbye', { 'hook_add' : "
+            \ nnoremap ZW :Bdelete<CR>\n
+            \ nnoremap ZX :write<CR>:Bdelete<CR>\n
+            \ " })
 
 call dein#add('plasticboy/vim-markdown')
 call dein#add('JuliaEditorSupport/julia-vim')
@@ -322,15 +397,30 @@ call dein#add('mileszs/ack.vim')       " FIXME: deprecate
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tags and outline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('xolox/vim-easytags')
-call dein#add('kien/rainbow_parentheses.vim')
-call dein#add('nathanaelkane/vim-indent-guides')
+call dein#add('xolox/vim-easytags', { 'hook_add' : "
+            \ let g:easytags_file='./tags'\n
+            \ let g:easytags_ignored_filetypes=''\n
+            \ let g:easytags_on_cursorhold = 0\n
+            \ let g:easytags_auto_update = 0\n
+            \ let g:easytags_updatetime_min = 600000\n
+            \ " })
+call dein#add('vim-scripts/VOoM', { 'hook_add' : "
+            \ let g:voom_ft_modes = { 'python':'python', 'tex':'latex' }\n
+            \ let g:voom_tree_width = 60\n
+            \ let g:voom_tree_placement='right'\n
+            \ nmap <silent> <Leader>wo :VoomToggle<CR>\n
+            \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and Folders
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('ervandew/archive')
-call dein#add('xolox/vim-shell')
+call dein#add('xolox/vim-shell', { 'hook_add' : "
+            \ let g:shell_mappings_enabled = 0\n
+            \ let g:shell_fullscreen_items = 'mTe'\n
+            \ nnoremap <Leader>op :Open<CR>\n
+            \ nnoremap <Leader>if :Fullscreen<CR>\n
+            \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compilation and running
@@ -347,67 +437,15 @@ call dein#add('scrooloose/syntastic', { 'hook_add' : "
             \ nmap <silent> <Leader>we :Errors<CR> \n
             \ " })
 call dein#add('xuhdev/SingleCompile')
-call dein#add('ivanov/vim-ipython')
 call dein#add('wbthomason/buildit.nvim')
+
+"call dein#add('ivanov/vim-ipython', { 'hook_add' : "let g:ipy_perform_mappings=0" })
 
 call dein#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap( 'latex-unicoder.vim' )
-    let g:unicoder_no_map=1
-    "nnoremap <C-l> :call unicoder#start(0)<CR>
-    "inoremap <C-l> <Esc>:call unicoder#start(1)<CR>
-    "vnoremap <C-l> :<C-u>call unicoder#selection()<CR>
-endif
-
-if dein#tap( 'vim-trailing-whitespace' )
-    nnoremap <Leader>rts :FixWhitespace<CR>
-    autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace
-endif
-
-if dein#tap( 'vim-bbye' )
-    nnoremap ZW :Bdelete<CR>
-    nnoremap ZX :write<CR>:Bdelete<CR>
-endif
-
-if dein#tap( 'vim-shell' )
-    au BufRead,BufNew * let g:shell_fullscreen_items="mT"
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tags and outline
-let g:easytags_file='./tags'
-let g:easytags_ignored_filetypes=''
-let g:easytags_on_cursorhold = 0
-let g:easytags_auto_update = 0
-let g:easytags_updatetime_min = 600000
-
-if dein#tap( 'rainbow_parentheses.vim' )
-    nnoremap <Leader>R :RainbowParenthesesToggle<CR>
-endif
-
-if has( 'gui_running' )
-    let g:indent_guides_color_change_percent=2
-else
-    let g:indent_guides_guide_size=1
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Files and Folders
-if dein#tap( 'vim-shell' )
-    let g:shell_mappings_enabled = 0
-    let g:shell_fullscreen_items = 'mTe'
-    nnoremap <Leader>op :Open<CR>
-    nnoremap <Leader>if :Fullscreen<CR>
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Compilation and running
-if dein#tap('vim-ipython')
-    let g:ipy_perform_mappings=0
-endif
 
 if 0 "dein#tap( 'SingleCompile' )
     let g:SingleCompile_showquickfixiferror = 1
@@ -425,134 +463,10 @@ if 0 "dein#tap( 'SingleCompile' )
 
     nnoremap <Leader>qc :SCCompile<CR>
 endif
-if dein#tap( 'vim-dirdiff' )
-    map <unique> <Leader>Dg <Plug>DirDiffGet
-    map <unique> <Leader>Dp <Plug>DirDiffPut
-    map <unique> <Leader>Dj <Plug>DirDiffNext
-    map <unique> <Leader>Dk <Plug>DirDiffPrev
-endif
-
-if dein#tap( 'linediff.vim' )
-    vmap <Leader>dl :Linediff<CR>
-    nmap <Leader>dl :Linediff<CR>
-    nmap <Leader>dr :LinediffReset<CR>
-endif
-
-if dein#tap( 'VOoM' )
-    let g:voom_ft_modes = { 'python':'python', 'tex':'latex' }
-    let g:voom_tree_width = 60
-    let g:voom_tree_placement='right'
-    nmap <silent> <Leader>wo :VoomToggle<CR>
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Filetype
-if dein#tap( 'python-mode' )
-    let g:pymode = 1
-    let g:pymode_lint = 0
-    let g:pymode_rope = 0
-    let g:pymode_rope_guess_project = 0
-    let g:pymode_virtualenv = 0
-    let g:pymode_options = 0
-    let g:pymode_trim_whitespaces = 0
-endif
-
-if dein#tap( 'vimtex' )
-    let g:vimtex_view_method='zathura'
-    "let g:vimtex_view_method='mupdf'
-    let g:vimtex_imaps_enabled=0
-    let g:vimtex_index_split_width=60
-    let g:vimtex_index_split_pos='vert botright'
-
-    noremap <localleader>lL <plug>(vimtex-compile-ss)
-    noremap <localleader>l0 :let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>
-
-    let g:vimtex_compiler_latexmk = {
-    \ 'background' : 1,
-    \ 'build_dir' : '',
-    \ 'callback' : 1,
-    \ 'continuous' : 0,
-    \ 'options' : [
-    \   '-pdf',
-    \   '-verbose',
-    \   '-file-line-error',
-    \   '-synctex=1',
-    \   '-interaction=nonstopmode',
-    \ ],
-    \}
-
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-    let g:neocomplete#sources#omni#input_patterns.tex =
-                \ '\v\\%('
-                \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-                \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-                \ . '|hyperref\s*\[[^]]*'
-                \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-                \ . '|%(include%(only)?|input)\s*\{[^}]*'
-                \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-                \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-                \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-                \ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
-                \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
-                \ . ')'
-endif
-
-if dein#tap( 'LaTeX-Box' )
-    let g:LatexBox_ignore_warnings =
-                \['Underfull',
-                \ 'Overfull',
-                \ 'specifier changed to',
-                \ "Option `pdfauthor' has already been used",
-                \ 'Font shape',
-                \ 'Size substitutions with difference',
-                \ 'multiple pdfs with page group included' ]
-    " let g:LatexBox_show_warnings=0
-    " let g:LatexBox_latexmk_async=1
-    let g:LatexBox_quickfix=2
-    "let g:LatexBox_no_mappings=1
-    let g:LatexBox_Folding=1
-    let g:LatexBox_fold_automatic=0
-    let g:LatexBox_eq_env_patterns =
-            \   'equation\|gather\|multiline\|align'
-            \   . '\|flalign\|alignat\|eqnarray\|empheq'
-    let g:LatexBox_ref_pattern
-            \ = '\m\C\\v\?\(eq\|page\|[cC]\|[lL]abelc\|sub\)\?ref\*\?\_\s*{'
-
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface
 "
-if dein#tap( 'tagbar' )
-    nnoremap <silent> <Leader>wt :TagbarToggle<CR>
-    let g:tagbar_autoclose = 1
-    let g:tagbar_compact = 1
-    let g:tagbar_autofocus = 1
-    let g:tagbar_autoshowtag = 1
-    let g:tagbar_type_tex = {
-                \ 'ctagstype' : 'latex',
-                \ 'kinds'     : [
-                \ 's:sections',
-                \ 'g:graphics',
-                \ 'l:labels',
-                \ 'r:refs:1',
-                \ 'p:pagerefs:1',
-                \ 'f:includes'
-                \ ],
-                \ 'sort'    : 0,
-                \ }
-    let g:tagbar_type_make = {
-                \ 'ctagstype' : 'make',
-                \ 'kinds'     : [
-                \ 'm:macros',
-                \ 't:task',
-                \ ],
-                \ 'sort'    : 0,
-                \ }
-endif
-
 if dein#tap( 'vim-airline' )
     let g:airline_detect_iminsert=1
     let g:airline_powerline_fonts=1
@@ -600,13 +514,6 @@ if dein#tap( 'vim-fswitch' )
     nmap <silent> <Leader>al :tab FSLeft<CR>
     nmap <silent> <Leader>aR :tab FSSplitRight<CR>
     nmap <silent> <Leader>aL :tab FSSplitLeft<CR>
-"elseif dein#tap( 'vim-counterpoint' )
-    "let g:counterpoint_search_paths = [ '../include', '../inc', '../src' ]
-    "nmap <silent> <Leader>aa :CounterpointNext!<CR>
-    "nmap <silent> <Leader>ar :tab FSRight<CR>
-    "nmap <silent> <Leader>al :tab FSLeft<CR>
-    "nmap <silent> <Leader>aR :tab FSSplitRight<CR>
-    "nmap <silent> <Leader>aL :tab FSSplitLeft<CR>
 endif
 
 let g:EasyClipEnableBlackHoleRedirectForChangeOperator=0
