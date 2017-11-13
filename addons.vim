@@ -179,9 +179,14 @@ call dein#add('paranoida/vim-airlineish')
 " Utilites
 "
 call dein#add('svermeulen/vim-easyclip')
+call dein#add('machakann/vim-highlightedyank')
 if has('python')
     call dein#add('honza/vim-snippets')
-    call dein#add('SirVer/ultisnips')
+    call dein#add('SirVer/ultisnips', { 'hook_add' : "
+                \ let g:UltiSnipsExpandTrigger='<Tab>'\n
+                \ let g:UltiSnipsJumpForwardTrigger='<Tab>'\n
+                \ let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'\n
+                \ " })
 else
     call dein#disable('ultisnips')
 end
@@ -191,8 +196,23 @@ call dein#add('derekwyatt/vim-fswitch')
 " Tim Pope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('tpope/vim-endwise')
-call dein#add('tpope/vim-dispatch')
-call dein#add('tpope/vim-fugitive')
+call dein#add('tpope/vim-dispatch', { 'hook_add' : "
+            \ nnoremap <Leader>qm :Make<CR>\n
+            \ nnoremap <Leader>qM :Make!<CR>\n
+            \ nnoremap <Leader>qc :Copen<CR>\n
+            \ nnoremap <Leader>qC :Copen!<CR>\n
+            \ " })
+call dein#add('tpope/vim-fugitive', { 'hook_add' : "
+            \ nmap <silent> <Leader>ga :Git add %<CR>\n
+            \ nmap <silent> <Leader>gR :Gremove!<CR>\n
+            \ nmap <silent> <Leader>gc :Gcommit -a<CR>\n
+            \ nmap <silent> <Leader>gC :Gcommit<CR>\n
+            \ nmap <silent> <Leader>gd :Gdiff<CR>\n
+            \ nmap <silent> <Leader>gs :Gstatus<CR>\n
+            \ nmap <silent> <Leader>gl :Glog<CR>\n
+            \ nmap <silent> <Leader>gb :Gblame<CR>\n
+            \ nmap <silent> <Leader>gi :Gsplit! svn info<CR>\n
+            \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text manipulation
@@ -242,7 +262,12 @@ call dein#add('AndrewRadev/switch.vim', { 'hook_add' : "
             \      ]\n
             \ " })
 call dein#add('scrooloose/nerdcommenter')
-call dein#add('sjl/gundo.vim')
+call dein#add('sjl/gundo.vim', { 'hook_add' : "
+            \ nnoremap <Leader>wu :GundoToggle<CR>\n
+            \ let g:gundo_preview_bottom=1\n
+            \ let g:gundo_width=30\n
+            \ let g:gundo_right=1\n
+            \ " })
 call dein#add('junegunn/vim-easy-align')
 call dein#add('salsifis/vim-transpose')
 call dein#add('t9md/vim-textmanip')
@@ -533,51 +558,13 @@ if dein#tap( 'vim-easyclip' )
     " \   ['ggR',  '<plug>G_SubstituteToEndOfLine',  'n',  1],
 
     for binding in bindings
-        call call("EasyClip#AddWeakMapping", binding)
+        call call('EasyClip#AddWeakMapping', binding)
     endfor
-endif
-
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tim Pope
-"
-if dein#tap( 'vim-dispatch' )
-    nnoremap <Leader>qm :Make<CR>
-    nnoremap <Leader>qM :Make!<CR>
-    nnoremap <Leader>qc :Copen<CR>
-    nnoremap <Leader>qC :Copen!<CR>
-else
-    nnoremap <Leader>qm :make<CR>
-endif
-if dein#tap( 'vim-fugitive' )
-    nmap <silent> <Leader>ga :Git add %<CR>
-    " nmap <silent> <Leader>gr :Gremove<CR>
-    nmap <silent> <Leader>gR :Gremove!<CR>
-    nmap <silent> <Leader>gc :Gcommit -a<CR>
-    nmap <silent> <Leader>gC :Gcommit<CR>
-    nmap <silent> <Leader>gd :Gdiff<CR>
-    nmap <silent> <Leader>gs :Gstatus<CR>
-    " nmap <silent> <Leader>gi :Git svn info<CR>
-    nmap <silent> <Leader>gl :Glog<CR>
-    nmap <silent> <Leader>gb :Gblame<CR>
-    nmap <silent> <Leader>gi :Gsplit! svn info<CR>
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text manipulation
 "
-if dein#tap( 'gundo.vim' )
-    nnoremap <Leader>wu :GundoToggle<CR>
-    let g:gundo_preview_bottom=1
-    let g:gundo_width=30
-    let g:gundo_right=1
-endif
 
 if dein#tap( 'vim-easy-align' )
     vmap <silent> <leader>ea <Plug>(LiveEasyAlign)
