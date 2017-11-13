@@ -235,8 +235,52 @@ call dein#add('lervag/vimtex')
 call dein#add('davidoc/taskpaper.vim')
 call dein#add('aliva/vim-fish')
 "call dein#add('lifepillar/vim-mucomplete')
-"call dein#add('joeytwiddle/vim-multiple-cursors')
-call dein#add('terryma/vim-multiple-cursors')
+call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
+            \ let g:multi_cursor_start_key='<C-n>'\n
+            \ let g:multi_cursor_quit_key='<C-z>'\n
+            \ \"let g:multi_cursor_exit_from_insert_mode=1\n
+            \ \"let g:multi_cursor_exit_from_visual_mode=1\n
+            \ 
+            \ function! Multiple_cursors_before()\n
+            \     if exists('*deoplete#disable')\n
+            \         call deoplete#disable()\n
+            \     endif\n
+            \     if dein#tap('clever-f.vim')\n
+            \         nunmap f\n
+            \         xunmap f\n
+            \         ounmap f\n
+            \         nunmap F\n
+            \         xunmap F\n
+            \         ounmap F\n
+            \         nunmap t\n
+            \         xunmap t\n
+            \         ounmap t\n
+            \         nunmap T\n
+            \         xunmap T\n
+            \         ounmap T\n
+            \     endif\n
+            \ endfunction\n
+            \ 
+            \ function! Multiple_cursors_after()\n
+            \     if exists('*deoplete#enable')\n
+            \         call deoplete#enable()\n
+            \     endif\n
+            \     if dein#tap('clever-f.vim')\n
+            \         nmap f <Plug>(clever-f-f)\n
+            \         xmap f <Plug>(clever-f-f)\n
+            \         omap f <Plug>(clever-f-f)\n
+            \         nmap F <Plug>(clever-f-F)\n
+            \         xmap F <Plug>(clever-f-F)\n
+            \         omap F <Plug>(clever-f-F)\n
+            \         nmap t <Plug>(clever-f-t)\n
+            \         xmap t <Plug>(clever-f-t)\n
+            \         omap t <Plug>(clever-f-t)\n
+            \         nmap T <Plug>(clever-f-T)\n
+            \         xmap T <Plug>(clever-f-T)\n
+            \         omap T <Plug>(clever-f-T)\n
+            \     endif\n
+            \ endfunction\n
+            \ " })
 call dein#add('nhooyr/neoman.vim')
 call dein#add('vim-ctrlspace/vim-ctrlspace')
 
@@ -245,7 +289,12 @@ call dein#add('romgrk/pp.vim')
 
 call dein#add('powerman/vim-plugin-AnsiEsc')
 call dein#add('s3rvac/vim-syntax-redminewiki')
-"call dein#add('lyokha/vim-xkbswitch')
+"call dein#add('lyokha/vim-xkbswitch', { 'hook_add' : "
+            "\ let g:XkbSwitchEnabled = 1\n
+            "\ let g:XkbSwitchLib = '/usr/local/lib/libxkbswitch.so'\n
+            "\ let g:XkbSwitchILayout = 'us'\n
+            "\ let g:XkbSwitchNLayout = 'us'\n
+            "\  })
 call dein#add('xolox/vim-misc')
 
 call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,<S-Tab>'" })
@@ -306,73 +355,6 @@ call dein#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:ConflictMotions_TakeMappingPrefix = '<Leader>='
-
-nmap <Leader><C-O>      <Plug>EnhancedJumpsOlder
-nmap <Leader><C-I>      <Plug>EnhancedJumpsNewer
-nmap <Leader><Leader><C-O> <Plug>EnhancedJumpsLocalOlder
-nmap <Leader><Leader><C-I> <Plug>EnhancedJumpsLocalNewer
-nmap <M-o>      <Plug>EnhancedJumpsRemoteOlder
-nmap <M-i>      <Plug>EnhancedJumpsRemoteNewer
-let g:EnhancedJumps_CaptureJumpMessages = 0
-
-if dein#tap( 'vim-multiple-cursors' )
-    let g:multi_cursor_start_key='<C-n>'
-    let g:multi_cursor_quit_key='<C-z>'
-    "let g:multi_cursor_exit_from_insert_mode=1
-    "let g:multi_cursor_exit_from_visual_mode=1
-
-    function! Multiple_cursors_before()
-        if exists(':NeoCompleteLock')==2
-            exe 'NeoCompleteLock'
-        endif
-        if dein#tap('clever-f.vim')
-            nunmap f
-            xunmap f
-            ounmap f
-            nunmap F
-            xunmap F
-            ounmap F
-            nunmap t
-            xunmap t
-            ounmap t
-            nunmap T
-            xunmap T
-            ounmap T
-        endif
-    endfunction
-
-    " Called once only when the multiple selection is canceled (default <Esc>)
-    function! Multiple_cursors_after()
-        if exists(':NeoCompleteUnlock')==2
-            exe 'NeoCompleteUnlock'
-        endif
-        if dein#tap('clever-f.vim')
-            nmap f <Plug>(clever-f-f)
-            xmap f <Plug>(clever-f-f)
-            omap f <Plug>(clever-f-f)
-            nmap F <Plug>(clever-f-F)
-            xmap F <Plug>(clever-f-F)
-            omap F <Plug>(clever-f-F)
-            nmap t <Plug>(clever-f-t)
-            xmap t <Plug>(clever-f-t)
-            omap t <Plug>(clever-f-t)
-            nmap T <Plug>(clever-f-T)
-            xmap T <Plug>(clever-f-T)
-            omap T <Plug>(clever-f-T)
-        endif
-    endfunction
-
-endif
-
-if dein#tap( 'vim-xkbswitch' )
-    let g:XkbSwitchEnabled = 1
-    let g:XkbSwitchLib = '/usr/local/lib/libxkbswitch.so'
-    let g:XkbSwitchILayout = 'us'
-    let g:XkbSwitchNLayout = 'us'
-endif
-
 if dein#tap( 'latex-unicoder.vim' )
     let g:unicoder_no_map=1
     "nnoremap <C-l> :call unicoder#start(0)<CR>
@@ -1161,3 +1143,13 @@ endif
 "\     'select-a': 'aUf',
 "\     'select-i': 'iUf'
 "\   },
+
+let g:ConflictMotions_TakeMappingPrefix = '<Leader>='
+
+nmap <Leader><C-O>      <Plug>EnhancedJumpsOlder
+nmap <Leader><C-I>      <Plug>EnhancedJumpsNewer
+nmap <Leader><Leader><C-O> <Plug>EnhancedJumpsLocalOlder
+nmap <Leader><Leader><C-I> <Plug>EnhancedJumpsLocalNewer
+nmap <M-o>      <Plug>EnhancedJumpsRemoteOlder
+nmap <M-i>      <Plug>EnhancedJumpsRemoteNewer
+let g:EnhancedJumps_CaptureJumpMessages = 0
