@@ -190,7 +190,16 @@ if has('python')
 else
     call dein#disable('ultisnips')
 end
-call dein#add('derekwyatt/vim-fswitch')
+call dein#add('derekwyatt/vim-fswitch', { 'hook_add' : "
+            \ au! BufEnter *.cpp,*.c,*.C,*.cxx,*.cc,*.CC let b:fswitchdst = 'hpp,h,H,hh,HH,hxx' | let b:fswitchlocs = '../inc,../include'\n
+            \ au! BufEnter *.hpp,*.h,*.H,*.hh,*.HH,*.hxx let b:fswitchdst = 'cpp,c,C,cc,CC,cxx' | let b:fswitchlocs = '../src'\n
+            \ let g:fsnonewfiles=1\n
+            \ nmap <silent> <Leader>aa :FSHere<CR>\n
+            \ nmap <silent> <Leader>ar :tab FSRight<CR>\n
+            \ nmap <silent> <Leader>al :tab FSLeft<CR>\n
+            \ nmap <silent> <Leader>aR :tab FSSplitRight<CR>\n
+            \ nmap <silent> <Leader>aL :tab FSSplitLeft<CR>\n
+            \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tim Pope
@@ -280,13 +289,20 @@ call dein#add('junegunn/vim-easy-align', { 'hook_add' : "
             \ vmap <silent> <leader>e-- :'<,'>EasyAlign */ -- /<CR>\n
             \ " })
 call dein#add('salsifis/vim-transpose', { 'hook_add' : "vmap <silent> <leader>et :TransposeInteractive<CR>" })
+
 call dein#add('t9md/vim-textmanip', { 'hook_add' : "
+            \ function! TMoff()\n
+            \     set ei+=TextYankPost\n
+            \ endfunction\n
+            \ function! TMon()\n
+            \     set ei-=TextYankPost\n
+            \ endfunction\n
             \ let g:textmanip_enable_mappings=0\n
             \ let g:textmanip_move_ignore_shiftwidth=1\n
-            \ xmap <C-j> :<C-u>set ei+=TextYankPost<CR><Plug>(textmanip-move-down):<C-u>set ei-=TextYankPost<CR>gv\n
-            \ xmap <C-k> :<C-u>set ei+=TextYankPost<CR><Plug>(textmanip-move-up):<C-u>set ei-=TextYankPost<CR>gv\n
-            \ xmap <C-h> :<C-u>set ei+=TextYankPost<CR><Plug>(textmanip-move-left):<C-u>set ei-=TextYankPost<CR>gv\n
-            \ xmap <C-l> :<C-u>set ei+=TextYankPost<CR><Plug>(textmanip-move-right):<C-u>set ei-=TextYankPost<CR>gv\n
+            \ xmap <C-j> <Plug>(textmanip-move-down)\n
+            \ xmap <C-k> <Plug>(textmanip-move-up)\n
+            \ xmap <C-h> <Plug>(textmanip-move-left)\n
+            \ xmap <C-l> <Plug>(textmanip-move-right)\n
             \ " })
 call dein#add('vim-scripts/ExplainPattern')
 call dein#add('vim-scripts/Rename')
@@ -526,16 +542,6 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
 "
-if dein#tap( 'vim-fswitch' )
-    au! BufEnter *.cpp,*.c,*.C,*.cxx,*.cc,*.CC let b:fswitchdst = 'hpp,h,H,hh,HH,hxx' | let b:fswitchlocs = '../inc,../include'
-    au! BufEnter *.hpp,*.h,*.H,*.hh,*.HH,*.hxx let b:fswitchdst = 'cpp,c,C,cc,CC,cxx' | let b:fswitchlocs = '../src'
-    let g:fsnonewfiles=1
-    nmap <silent> <Leader>aa :FSHere<CR>
-    nmap <silent> <Leader>ar :tab FSRight<CR>
-    nmap <silent> <Leader>al :tab FSLeft<CR>
-    nmap <silent> <Leader>aR :tab FSSplitRight<CR>
-    nmap <silent> <Leader>aL :tab FSSplitLeft<CR>
-endif
 
 let g:EasyClipEnableBlackHoleRedirectForChangeOperator=0
 if dein#tap( 'vim-easyclip' )
