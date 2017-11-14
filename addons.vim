@@ -268,9 +268,26 @@ call dein#add('sjl/gundo.vim', { 'hook_add' : "
             \ let g:gundo_width=30\n
             \ let g:gundo_right=1\n
             \ " })
-call dein#add('junegunn/vim-easy-align')
-call dein#add('salsifis/vim-transpose')
-call dein#add('t9md/vim-textmanip')
+call dein#add('junegunn/vim-easy-align', { 'hook_add' : "
+            \ vmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
+            \ vmap <silent> <leader>eA <Plug>(EasyAlign)\n
+            \ nmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
+            \ nmap <silent> <leader>et  :let p=getpos('.')<CR>vie:EasyAlign * &<CR>:call setpos('.', p)<CR>\n
+            \ nmap <silent> <leader>es  :let p=getpos('.')<CR>vaE:EasyAlign *\ <CR>:call setpos('.', p)<CR>\n
+            \ nmap <silent> <leader>e-- :let p=getpos('.')<CR>vaE:EasyAlign */ -- /<CR>:call setpos('.', p)<CR>\n
+            \ vmap <silent> <leader>et  :'<,'>EasyAlign * &<CR>\n
+            \ vmap <silent> <leader>es  :'<,'>EasyAlign *\ <CR>\n
+            \ vmap <silent> <leader>e-- :'<,'>EasyAlign */ -- /<CR>\n
+            \ " })
+call dein#add('salsifis/vim-transpose', { 'hook_add' : "vmap <silent> <leader>et :TransposeInteractive<CR>" })
+call dein#add('t9md/vim-textmanip', { 'hook_add' : "
+            \ let g:textmanip_enable_mappings=0\n
+            \ let g:textmanip_move_ignore_shiftwidth=1\n
+            \ xmap <C-j> <Plug>(textmanip-move-down)\n
+            \ xmap <C-k> <Plug>(textmanip-move-up)\n
+            \ xmap <C-h> <Plug>(textmanip-move-left)\n
+            \ xmap <C-l> <Plug>(textmanip-move-right)\n
+            \ " })
 call dein#add('vim-scripts/ExplainPattern')
 call dein#add('vim-scripts/Rename')
 
@@ -471,27 +488,6 @@ call dein#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-if 0 "dein#tap( 'SingleCompile' )
-    let g:SingleCompile_showquickfixiferror = 1
-    if executable('/usr/bin/python2')
-        call SingleCompile#SetCompilerTemplate('python', 'python2', 'CPython 2', 'python2', '', '')
-        call SingleCompile#ChooseCompiler('python', 'python2')
-    endif
-    call SingleCompile#SetCompilerTemplate('fish', 'fish', 'Friendly Interactive SHell', 'fish', '', '')
-    call SingleCompile#SetCompilerTemplate('tex', 'lualatex', 'luaLaTeX', 'lualatex',
-                \ '--file-line-error --interaction=nonstopmode --synctex=1', '')
-    call SingleCompile#SetCompilerTemplate('tex', 'xelatex', 'xeLaTeX', 'xelatex',
-                \ '-file-line-error -interaction=nonstopmode -synctex=1', '')
-    call SingleCompile#SetPriority('tex', 'pdflatex', 80)
-    call SingleCompile#SetPriority('tex', 'latex', 50)
-
-    nnoremap <Leader>qc :SCCompile<CR>
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Interface
-"
 if dein#tap( 'vim-airline' )
     let g:airline_detect_iminsert=1
     let g:airline_powerline_fonts=1
@@ -560,52 +556,6 @@ if dein#tap( 'vim-easyclip' )
     for binding in bindings
         call call('EasyClip#AddWeakMapping', binding)
     endfor
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Text manipulation
-"
-
-if dein#tap( 'vim-easy-align' )
-    vmap <silent> <leader>ea <Plug>(LiveEasyAlign)
-    vmap <silent> <leader>eA <Plug>(EasyAlign)
-    nmap <silent> <leader>ea <Plug>(LiveEasyAlign)
-    nmap <silent> <leader>et  :let p=getpos('.')<CR>vie:EasyAlign * &<CR>:call setpos('.', p)<CR>
-    nmap <silent> <leader>es  :let p=getpos('.')<CR>vaE:EasyAlign *\ <CR>:call setpos('.', p)<CR>
-    nmap <silent> <leader>e-- :let p=getpos('.')<CR>vaE:EasyAlign */ -- /<CR>:call setpos('.', p)<CR>
-    vmap <silent> <leader>et  :'<,'>EasyAlign * &<CR>
-    vmap <silent> <leader>es  :'<,'>EasyAlign *\ <CR>
-    vmap <silent> <leader>e-- :'<,'>EasyAlign */ -- /<CR>
-endif
-
-if dein#tap( 'vim-transpose' )
-    vmap <silent> <leader>et :TransposeInteractive<CR>
-endif
-
-if dein#tap( 'vim-textmanip' )
-    let g:textmanip_enable_mappings=0
-    let g:textmanip_move_ignore_shiftwidth=1
-    if has("gui_running")
-        xmap <M-d> <Plug>(textmanip-duplicate-down)
-        nmap <M-d> <Plug>(textmanip-duplicate-down)
-        xmap <M-D> <Plug>(textmanip-duplicate-up)
-        nmap <M-D> <Plug>(textmanip-duplicate-up)
-
-        xmap <C-j> <Plug>(textmanip-move-down)
-        xmap <C-k> <Plug>(textmanip-move-up)
-        xmap <C-h> <Plug>(textmanip-move-left)
-        xmap <C-l> <Plug>(textmanip-move-right)
-    else
-        xmap <Space>d <Plug>(textmanip-duplicate-down)
-        nmap <Space>d <Plug>(textmanip-duplicate-down)
-        xmap <Space>D <Plug>(textmanip-duplicate-up)
-        nmap <Space>D <Plug>(textmanip-duplicate-up)
-
-        xmap <C-j> <Plug>(textmanip-move-down)
-        xmap <C-k> <Plug>(textmanip-move-up)
-        xmap <C-h> <Plug>(textmanip-move-left)
-        xmap <C-l> <Plug>(textmanip-move-right)
-    endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
