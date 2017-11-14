@@ -283,10 +283,10 @@ call dein#add('salsifis/vim-transpose', { 'hook_add' : "vmap <silent> <leader>et
 call dein#add('t9md/vim-textmanip', { 'hook_add' : "
             \ let g:textmanip_enable_mappings=0\n
             \ let g:textmanip_move_ignore_shiftwidth=1\n
-            \ xmap <C-j> <Plug>(textmanip-move-down)\n
-            \ xmap <C-k> <Plug>(textmanip-move-up)\n
-            \ xmap <C-h> <Plug>(textmanip-move-left)\n
-            \ xmap <C-l> <Plug>(textmanip-move-right)\n
+            \ xmap <C-j> :<C-u>set ei+=TextYankPost<CR><Plug>(textmanip-move-down):<C-u>set ei-=TextYankPost<CR>gv\n
+            \ xmap <C-k> :<C-u>set ei+=TextYankPost<CR><Plug>(textmanip-move-up):<C-u>set ei-=TextYankPost<CR>gv\n
+            \ xmap <C-h> :<C-u>set ei+=TextYankPost<CR><Plug>(textmanip-move-left):<C-u>set ei-=TextYankPost<CR>gv\n
+            \ xmap <C-l> :<C-u>set ei+=TextYankPost<CR><Plug>(textmanip-move-right):<C-u>set ei-=TextYankPost<CR>gv\n
             \ " })
 call dein#add('vim-scripts/ExplainPattern')
 call dein#add('vim-scripts/Rename')
