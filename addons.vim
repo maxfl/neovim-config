@@ -9,19 +9,58 @@ let g:dein#types#git#clone_depth = 1
 call dein#add('Shougo/dein.vim')
 call dein#local("~/.vim/bundle_local")
 
-call dein#add('chrisbra/SudoEdit.vim', { 'hook_add' : "inoremap <S-F2> :SudoWrite<CR>" })
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tim Pope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('tpope/vim-sensible')
-call dein#add('tpope/vim-repeat')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('altercation/vim-colors-solarized', { 'hook_add' : "colorscheme solarized"})
 call dein#add('jszakmeister/vim-togglecursor')                                                     " change cursor for insert/normal modes
+call dein#add('powerman/vim-plugin-AnsiEsc')
+call dein#add('bronson/vim-trailing-whitespace', { 'hook_add' : "
+            \ nnoremap <Leader>rts :FixWhitespace<CR>\n
+            \ autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace\n
+            \ " })
+
+call dein#add('vim-airline/vim-airline', { 'depends': 'tagbar', 'hook_add' : "
+            \ let g:airline_detect_iminsert=1\n
+            \ let g:airline_powerline_fonts=1\n
+            \ let g:airline_theme='solarized'\n
+            \ let g:airline_section_y = '%{printf(\"%s%s%s\",(&fenc==\"utf-8\")?\"\":&fenc,(&ff==\"unix\")?\"\":\" [\".&ff.\"]\",&et?\"\":\" [t]\")}'\n
+            \ let g:airline_section_z0 = '%-4b %-5(0x%B%)'\n
+            \ let g:airline_section_z = '%3P %{g:airline_symbols.linenr} %3l:%3c'\n
+            \ let g:airline_mode_map = {
+            \               '__' : '-',
+            \               'n'  : 'N',
+            \               'i'  : 'I',
+            \               'R'  : 'R',
+            \               'c'  : 'C',
+            \               'v'  : 'V',
+            \               'V'  : 'V',
+            \               '' : 'V',
+            \               's'  : 'S',
+            \               'S'  : 'S',
+            \               '' : 'S',
+            \               }\n
+            \ let g:airline#extensions#default#section_truncate_width = {
+            \               'b':  88,
+            \               'x':  70,
+            \               'z0': 60,
+            \               'z':  45,
+            \               }\n
+            \ let g:airline#extensions#default#layout = [
+            \               [ 'a', 'b', 'c' ],
+            \               [ 'x', 'y', 'z', 'warning' ]
+            \               ]\n
+            \ autocmd User VimtexEventInitPost :AirlineRefresh\n
+            \ let g:airline#extensions#xkblayout#enabled=0\n
+            \ let g:airline#extensions#keymap#enabled=0\n
+            \ " })
+call dein#add('vim-airline/vim-airline-themes')
+call dein#add('paranoida/vim-airlineish')
 
 " FIXME: almost not used
 call dein#add('kien/rainbow_parentheses.vim', { 'hook_add' : "nnoremap <Leader>R :RainbowParenthesesToggle<CR>" })
@@ -39,6 +78,13 @@ call dein#add('jiangmiao/auto-pairs', { 'hook_add' : "
             \ let g:AutoPairs = {'(':')', '[':']', '{':'}',\"'\":\"'\",'\"':'\"', '`':'`'}\n
             \ call extend( g:AutoPairs, {'“':'”', '‘' : '’', '„':'“', '«':'»'} )\n
             \ " } )
+call dein#add('honza/vim-snippets')
+call dein#add('SirVer/ultisnips', { 'hook_add' : "
+            \ let g:UltiSnipsExpandTrigger='<Tab>'\n
+            \ let g:UltiSnipsJumpForwardTrigger='<Tab>'\n
+            \ let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'\n
+            \ " })
+call dein#add('tpope/vim-endwise')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Motion
@@ -59,78 +105,41 @@ call dein#add('bkad/camelcasemotion', { 'hook_add' : "
             \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Utilites
+" Clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('ciaranm/detectindent')
-call dein#add('t9md/vim-quickhl', { 'hook_add' : "
-            \ nmap <leader>m <Plug>(quickhl-manual-this)\n
-            \ xmap <leader>m <Plug>(quickhl-manual-this)\n
-            \ nmap <leader>n <Plug>(quickhl-manual-reset)\n
-            \ xmap <leader>n <Plug>(quickhl-manual-reset)\n
-            \ \n
-            \ nmap <leader>M :exe 'QuickhlManualAdd! \\<'.expand('<cword>').'\\>'<CR>\n
-            \ xmap <leader>M :exe 'QuickhlManualAdd! \\<'.expand('<cword>').'\\>'<CR>\n
-            \ nmap <leader>N :exe 'QuickhlManualDelete! \\<'.expand('<cword>').'\\>'<CR>\n
-            \ xmap <leader>N :exe 'QuickhlManualDelete! \\<'.expand('<cword>').'\\>'<CR>\n
-            \ \n
-            \ \"nmap <Space>j <Plug>(quickhl-cword-toggle)\n
-            \ \"nmap <Space>] <Plug>(quickhl-tag-toggle)\n
-            \ map <leader>H <Plug>(operator-quickhl-manual-this-motion)\n
+call dein#add('vim-scripts/RepeatableYank')
+call dein#add('machakann/vim-highlightedyank')
+call dein#add('vim-scripts/ExplainPattern')
+call dein#add('svermeulen/vim-easyclip', { 'hook_add' : "
+            \ let g:EasyClipEnableBlackHoleRedirectForChangeOperator=0\n
+            \ noremap gx x\n
+            \ noremap gX X\n
+            \ noremap gm m\n
+            \ 
+            \ let bindings =
+            \   [
+            \     ['gr',  '<plug>SubstituteOverMotionMap',  'n',  1],
+            \     ['grr',  '<plug>SubstituteLine',  'n',  1],
+            \     ['gr',  '<plug>XEasyClipPaste',  'x',  1],
+            \     ['gR',  '<plug>SubstituteToEndOfLine',  'n',  1],
+            \   ]\n
+            \ for binding in bindings\n
+            \     call call('EasyClip#AddWeakMapping', binding)\n
+            \ endfor\n
             \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ingo Karkat
+" Editing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add("vim-scripts/CountJump")    "needed by Conflict*
+call dein#add('sjl/gundo.vim', { 'hook_add' : "
+            \ nnoremap <Leader>wu :GundoToggle<CR>\n
+            \ let g:gundo_preview_bottom=1\n
+            \ let g:gundo_width=30\n
+            \ let g:gundo_right=1\n
+            \ " })
+call dein#add('tpope/vim-repeat')
 call dein#add("vim-scripts/visualrepeat")
-call dein#add('vim-scripts/RelativeNumberCurrentWindow')
-call dein#add('vim-scripts/ChangeGlobally')
-call dein#add('vim-scripts/RangeMacro')
-call dein#add('vim-scripts/RepeatableYank')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Textobjects
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('machakann/vim-sandwich')
-
-call dein#add('kana/vim-textobj-user')
-"call dein#add('haya14busa/vim-operator-flashy')
-call dein#add('kana/vim-textobj-line')
-call dein#add('rhysd/vim-textobj-continuous-line')
-call dein#add('glts/vim-textobj-comment')
-call dein#add('kana/vim-textobj-entire')
-call dein#add('kana/vim-textobj-indent')
-call dein#add('sgur/vim-textobj-parameter')
-call dein#add('machakann/vim-textobj-functioncall')
-call dein#add('kana/vim-textobj-function')
-call dein#add('bps/vim-textobj-python')
-call dein#add('jceb/vim-textobj-uri')
-call dein#add('glts/vim-textobj-indblock')
-call dein#add('kana/vim-textobj-datetime')
-"call dein#add('rbonvall/vim-textobj-latex')
-call dein#add('thinca/vim-textobj-between')
-"call dein#add('reedes/vim-textobj-quote')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Shougo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('Shougo/neomru.vim')
-call dein#add('Shougo/denite.nvim', { 'hook_add' : "
-            \ nnoremap <Leader>lb :<C-u>Denite buffer file_mru<CR>\n
-            \ nnoremap <Leader>lf :<C-u>DeniteBufferDir file<CR>\n
-            \ nnoremap <Leader>ln :<C-u>exe \"DeniteBufferDir -input=\".expand(\"<cfile>\").\" file:new file\"<CR>\n
-            \ nnoremap <Leader>lO :<C-u>Denite -ignorecase outline<CR>\n
-            \ nnoremap <Leader>lF :<C-u>DeniteBufferDir file_rec<CR>
-            \ nnoremap <Leader>ld :<C-u>Denite file_rec<CR>
-            \ "})
-call dein#add('Shougo/unite.vim')
-call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "let g:ranger_replace_netrw = 0\n
-                                                         \ let g:NERDTreeHijackNetrw = 0"} )
-call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
-            \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
-            \ "})
-call dein#add('Shougo/neossh.vim')
-
+call dein#add('vim-scripts/ChangeGlobally') "karkat FIXME: not used
 call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
                 \ let g:deoplete#enable_at_startup = 1 \n
                 \ let g:deoplete#disable_auto_complete = 0 \n
@@ -138,229 +147,6 @@ call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
                 \ let g:deoplete#auto_complete_start_length = 2 \n
                 \ inoremap <expr><C-X><C-X> neocomplete#manual_complete() \n
                 \ "})
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Interface
-"
-command! -nargs=0 TagbarToggle        call tagbar#ToggleWindow()
-call dein#add('majutsushi/tagbar', { 'hook_add' : "
-            \ nnoremap <silent> <Leader>wt :TagbarToggle<CR>\n
-            \ let g:tagbar_autoclose = 1\n
-            \ let g:tagbar_compact = 1\n
-            \ let g:tagbar_autofocus = 1\n
-            \ let g:tagbar_autoshowtag = 1\n
-            \ let g:tagbar_type_tex = {
-            \               'ctagstype' : 'latex',
-            \               'kinds'     : [
-            \               's:sections',
-            \               'g:graphics',
-            \               'l:labels',
-            \               'r:refs:1',
-            \               'p:pagerefs:1',
-            \               'f:includes'
-            \               ],
-            \               'sort'    : 0,
-            \               }\n
-            \ let g:tagbar_type_make = {
-            \               'ctagstype' : 'make',
-            \               'kinds'     : [
-            \               'm:macros',
-            \               't:task',
-            \               ],
-            \               'sort'    : 0,
-            \               }\n
-            \ " })
-call dein#add('vim-airline/vim-airline', { 'depends': 'tagbar' })
-call dein#add('vim-airline/vim-airline-themes')
-call dein#add('paranoida/vim-airlineish')
-"call dein#add('ntpeters/vim-airline-colornum')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Utilites
-"
-call dein#add('svermeulen/vim-easyclip')
-call dein#add('machakann/vim-highlightedyank')
-if has('python')
-    call dein#add('honza/vim-snippets')
-    call dein#add('SirVer/ultisnips', { 'hook_add' : "
-                \ let g:UltiSnipsExpandTrigger='<Tab>'\n
-                \ let g:UltiSnipsJumpForwardTrigger='<Tab>'\n
-                \ let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'\n
-                \ " })
-else
-    call dein#disable('ultisnips')
-end
-call dein#add('derekwyatt/vim-fswitch', { 'hook_add' : "
-            \ au! BufEnter *.cpp,*.c,*.C,*.cxx,*.cc,*.CC let b:fswitchdst = 'hpp,h,H,hh,HH,hxx' | let b:fswitchlocs = '../inc,../include'\n
-            \ au! BufEnter *.hpp,*.h,*.H,*.hh,*.HH,*.hxx let b:fswitchdst = 'cpp,c,C,cc,CC,cxx' | let b:fswitchlocs = '../src'\n
-            \ let g:fsnonewfiles=1\n
-            \ nmap <silent> <Leader>aa :FSHere<CR>\n
-            \ nmap <silent> <Leader>ar :tab FSRight<CR>\n
-            \ nmap <silent> <Leader>al :tab FSLeft<CR>\n
-            \ nmap <silent> <Leader>aR :tab FSSplitRight<CR>\n
-            \ nmap <silent> <Leader>aL :tab FSSplitLeft<CR>\n
-            \ " })
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tim Pope
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('tpope/vim-endwise')
-call dein#add('tpope/vim-dispatch', { 'hook_add' : "
-            \ nnoremap <Leader>qm :Make<CR>\n
-            \ nnoremap <Leader>qM :Make!<CR>\n
-            \ nnoremap <Leader>qc :Copen<CR>\n
-            \ nnoremap <Leader>qC :Copen!<CR>\n
-            \ " })
-call dein#add('tpope/vim-fugitive', { 'hook_add' : "
-            \ nmap <silent> <Leader>ga :Git add %<CR>\n
-            \ nmap <silent> <Leader>gR :Gremove!<CR>\n
-            \ nmap <silent> <Leader>gc :Gcommit -a<CR>\n
-            \ nmap <silent> <Leader>gC :Gcommit<CR>\n
-            \ nmap <silent> <Leader>gd :Gdiff<CR>\n
-            \ nmap <silent> <Leader>gs :Gstatus<CR>\n
-            \ nmap <silent> <Leader>gl :Glog<CR>\n
-            \ nmap <silent> <Leader>gb :Gblame<CR>\n
-            \ nmap <silent> <Leader>gi :Gsplit! svn info<CR>\n
-            \ " })
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Text manipulation
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('AndrewRadev/switch.vim', { 'hook_add' : "
-            \ let g:switch_mapping='-'\n
-            \ let g:switch_reverse_mapping='+'\n
-            \ let g:switch_find_smallest_match=0\n
-            \ let g:switch_custom_definitions = [
-            \       [ '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉' ],
-            \       [ '⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹' ],
-            \       [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ],
-            \       [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ],
-            \       [ 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье' ],
-            \       [ 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье' ],
-            \       [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
-            \       [ 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december' ],
-            \       [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
-            \       [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ],
-            \       [ 'black', 'white', 'grey', 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow' ],
-            \       [ 'TODO', 'DONE', 'XXX', 'FIXME' ],
-            \       [ 'TRUE', 'FALSE' ],
-            \       { '\C\<yes\>': 'no', '\C\<no\>':  'yes',  }, { '\C\<Yes\>': 'No', '\C\<No\>':  'Yes',  }, { '\C\<YES\>': 'NO', '\C\<NO\>':  'YES',  },
-            \       { '\C\<on\>': 'off', '\C\<off\>':  'on',  }, { '\C\<On\>': 'Off', '\C\<Off\>':  'On',  }, { '\C\<ON\>': 'OFF', '\C\<OFF\>':  'ON',  },
-            \       { '\C\<AND\>': 'OR', '\C\<OR\>':  'AND',  }, { '\C\<and\>': 'or', '\C\<or\>':  'and',  },
-            \       [ '[ ]', '[✔]', '[✘]', '[✔✘]', '[?]' ],
-            \     ]\n
-            \ autocmd FileType gitrebase let b:switch_custom_definitions = [
-            \       [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec' ]
-            \     ]\n
-            \ autocmd FileType tex,plaintex let b:switch_custom_definitions = [
-            \         [ '\\tiny', '\\scriptsize', '\\footnotesize', '\\small', '\\normalsize', '\\large', '\\Large', '\\LARGE', '\\huge', '\\Huge' ],
-            \         [ '\\displaystyle', '\\scriptstyle', '\\scriptscriptstyle', '\\textstyle' ],
-            \         [ '\\part', '\\chapter', '\\section', '\\subsection', '\\subsubsection', '\\paragraph', '\\subparagraph' ],
-            \         [ 'part:', 'chap:', 'sec:', 'subsec:', 'subsubsec:' ],
-            \         [ 'article', 'report', 'book', 'letter', 'slides' ],
-            \         [ 'a4paper', 'a5paper', 'b5paper', 'executivepaper', 'legalpaper', 'letterpaper', 'beamer', 'subfiles', 'standalone' ],
-            \         [ 'onecolumn', 'twocolumn' ],
-            \         [ 'oneside', 'twoside' ],
-            \         [ 'draft', 'final' ],
-            \         [ 'AnnArbor', 'Antibes', 'Bergen', 'Berkeley',
-            \           'Berlin', 'Boadilla', 'CambridgeUS', 'Copenhagen', 'Darmstadt',
-            \           'Dresden', 'Frankfurt', 'Goettingen', 'Hannover', 'Ilmenau',
-            \           'JuanLesPins', 'Luebeck', 'Madrid', 'Malmoe', 'Marburg',
-            \           'Montpellier', 'PaloAlto', 'Pittsburgh', 'Rochester', 'Singapore',
-            \           'Szeged', 'Warsaw' ]
-            \      ]\n
-            \ " })
-call dein#add('scrooloose/nerdcommenter')
-call dein#add('sjl/gundo.vim', { 'hook_add' : "
-            \ nnoremap <Leader>wu :GundoToggle<CR>\n
-            \ let g:gundo_preview_bottom=1\n
-            \ let g:gundo_width=30\n
-            \ let g:gundo_right=1\n
-            \ " })
-call dein#add('junegunn/vim-easy-align', { 'hook_add' : "
-            \ vmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
-            \ vmap <silent> <leader>eA <Plug>(EasyAlign)\n
-            \ nmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
-            \ nmap <silent> <leader>et  :let p=getpos('.')<CR>vie:EasyAlign * &<CR>:call setpos('.', p)<CR>\n
-            \ nmap <silent> <leader>es  :let p=getpos('.')<CR>vaE:EasyAlign *\ <CR>:call setpos('.', p)<CR>\n
-            \ nmap <silent> <leader>e-- :let p=getpos('.')<CR>vaE:EasyAlign */ -- /<CR>:call setpos('.', p)<CR>\n
-            \ vmap <silent> <leader>et  :'<,'>EasyAlign * &<CR>\n
-            \ vmap <silent> <leader>es  :'<,'>EasyAlign *\ <CR>\n
-            \ vmap <silent> <leader>e-- :'<,'>EasyAlign */ -- /<CR>\n
-            \ " })
-call dein#add('salsifis/vim-transpose', { 'hook_add' : "vmap <silent> <leader>et :TransposeInteractive<CR>" })
-
-call dein#add('t9md/vim-textmanip', { 'hook_add' : "
-            \ function! TMoff()\n
-            \     set ei+=TextYankPost\n
-            \ endfunction\n
-            \ function! TMon()\n
-            \     set ei-=TextYankPost\n
-            \ endfunction\n
-            \ let g:textmanip_enable_mappings=0\n
-            \ let g:textmanip_move_ignore_shiftwidth=1\n
-            \ xmap <C-j> <Plug>(textmanip-move-down)\n
-            \ xmap <C-k> <Plug>(textmanip-move-up)\n
-            \ xmap <C-h> <Plug>(textmanip-move-left)\n
-            \ xmap <C-l> <Plug>(textmanip-move-right)\n
-            \ " })
-call dein#add('vim-scripts/ExplainPattern')
-call dein#add('vim-scripts/Rename')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Diff tools
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('will133/vim-dirdiff', { 'hook_add' : "
-            \ map <unique> <Leader>Dg <Plug>DirDiffGet\n
-            \ map <unique> <Leader>Dp <Plug>DirDiffPut\n
-            \ map <unique> <Leader>Dj <Plug>DirDiffNext\n
-            \ map <unique> <Leader>Dk <Plug>DirDiffPrev\n
-            \ " })
-call dein#add('AndrewRadev/linediff.vim', { 'hook_add' : "
-            \ vmap <Leader>dl :Linediff<CR>\n
-            \ nmap <Leader>dl :Linediff<CR>\n
-            \ nmap <Leader>dr :LinediffReset<CR>\n
-            \ " })
-call dein#add('vim-scripts/diffchar.vim', { 'hook_add' : "let g:DiffModeSync=0" })
-call dein#add('chrisbra/vim-diff-enhanced')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Filetype
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"call dein#add('klen/python-mode', { 'hook_add' : "
-            "\ let g:pymode = 1\n
-            "\ let g:pymode_lint = 0\n
-            "\ let g:pymode_rope = 0\n
-            "\ let g:pymode_rope_guess_project = 0\n
-            "\ let g:pymode_virtualenv = 0\n
-            "\ let g:pymode_options = 0\n
-            "\ let g:pymode_trim_whitespaces = 0\n
-            "\ " })
-call dein#add('lervag/vimtex', { 'hook_add' : "
-            \ let g:vimtex_view_method='zathura'\n
-            \ \" let g:vimtex_view_method='mupdf'\n
-            \ let g:vimtex_imaps_enabled=0\n
-            \ let g:vimtex_index_split_width=60\n
-            \ let g:vimtex_index_split_pos='vert botright'\n
-            \ noremap <localleader>lL <plug>(vimtex-compile-ss)\n
-            \ noremap <localleader>l0 :let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>\n
-            \ \" let g:neocomplete#sources#omni#input_patterns.tex =
-            \             \" '\v\\%('
-            \             \" . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \             \" . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-            \             \" . '|hyperref\s*\[[^]]*'
-            \             \" . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \             \" . '|%(include%(only)?|input)\s*\{[^}]*'
-            \             \" . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \             \" . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \             \" . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \             \" . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \             \" . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \             \" . ')'
-            \ " })
-call dein#add('davidoc/taskpaper.vim')
-call dein#add('aliva/vim-fish')
-"call dein#add('lifepillar/vim-mucomplete')
 call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             \ let g:multi_cursor_start_key='<C-n>'\n
             \ let g:multi_cursor_quit_key='<C-z>'\n
@@ -407,170 +193,47 @@ call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             \     endif\n
             \ endfunction\n
             \ " })
-call dein#add('nhooyr/neoman.vim')
-call dein#add('vim-ctrlspace/vim-ctrlspace')
 
-call dein#add('thinca/vim-prettyprint')
-call dein#add('romgrk/pp.vim')
 
-call dein#add('powerman/vim-plugin-AnsiEsc')
-call dein#add('s3rvac/vim-syntax-redminewiki')
-"call dein#add('lyokha/vim-xkbswitch', { 'hook_add' : "
-            "\ let g:XkbSwitchEnabled = 1\n
-            "\ let g:XkbSwitchLib = '/usr/local/lib/libxkbswitch.so'\n
-            "\ let g:XkbSwitchILayout = 'us'\n
-            "\ let g:XkbSwitchNLayout = 'us'\n
-            "\  })
-call dein#add('xolox/vim-misc')
-
-call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,<S-Tab>'" })
-
-call dein#add('chrisbra/unicode.vim')
-call dein#add('joom/latex-unicoder.vim', { 'hook_add' : "let g:unicoder_no_map=1" })
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Utilites
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('vim-scripts/RelativeNumberCurrentWindow')
+call dein#add('vim-scripts/RangeMacro')
 call dein#add('wgurecky/vimSum')
-
-call dein#add('bronson/vim-trailing-whitespace', { 'hook_add' : "
-            \ nnoremap <Leader>rts :FixWhitespace<CR>\n
-            \ autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace\n
-            \ " })
 
 " FIXME: Almost not used
 call dein#add('moll/vim-bbye', { 'hook_add' : "
             \ nnoremap ZW :Bdelete<CR>\n
             \ nnoremap ZX :write<CR>:Bdelete<CR>\n
             \ " })
-
-call dein#add('plasticboy/vim-markdown')
-call dein#add('JuliaEditorSupport/julia-vim')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Search and replace
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('brooth/far.vim')        " :Far
-call dein#add('eugen0329/vim-esearch') " \ff
-call dein#add('tpope/vim-abolish')     " :%S////
-call dein#add('mileszs/ack.vim')       " FIXME: deprecate
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tags and outline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('xolox/vim-easytags', { 'hook_add' : "
-            \ let g:easytags_file='./tags'\n
-            \ let g:easytags_ignored_filetypes=''\n
-            \ let g:easytags_on_cursorhold = 0\n
-            \ let g:easytags_auto_update = 0\n
-            \ let g:easytags_updatetime_min = 600000\n
+call dein#add('nhooyr/neoman.vim')
+call dein#add('chrisbra/unicode.vim')
+call dein#add('thinca/vim-prettyprint')
+call dein#add('romgrk/pp.vim')
+call dein#add('ciaranm/detectindent')
+call dein#add('tpope/vim-fugitive', { 'hook_add' : "
+            \ nmap <silent> <Leader>ga :Git add %<CR>\n
+            \ nmap <silent> <Leader>gR :Gremove!<CR>\n
+            \ nmap <silent> <Leader>gc :Gcommit -a<CR>\n
+            \ nmap <silent> <Leader>gC :Gcommit<CR>\n
+            \ nmap <silent> <Leader>gd :Gdiff<CR>\n
+            \ nmap <silent> <Leader>gs :Gstatus<CR>\n
+            \ nmap <silent> <Leader>gl :Glog<CR>\n
+            \ nmap <silent> <Leader>gb :Gblame<CR>\n
+            \ nmap <silent> <Leader>gi :Gsplit! svn info<CR>\n
             \ " })
-call dein#add('vim-scripts/VOoM', { 'hook_add' : "
-            \ let g:voom_ft_modes = { 'python':'python', 'tex':'latex' }\n
-            \ let g:voom_tree_width = 60\n
-            \ let g:voom_tree_placement='right'\n
-            \ nmap <silent> <Leader>wo :VoomToggle<CR>\n
-            \ " })
+"call dein#add('lyokha/vim-xkbswitch', { 'hook_add' : "
+            "\ let g:XkbSwitchEnabled = 1\n
+            "\ let g:XkbSwitchLib = '/usr/local/lib/libxkbswitch.so'\n
+            "\ let g:XkbSwitchILayout = 'us'\n
+            "\ let g:XkbSwitchNLayout = 'us'\n
+            "\  })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Files and Folders
+" Textobjects
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('ervandew/archive')
-call dein#add('xolox/vim-shell', { 'hook_add' : "
-            \ let g:shell_mappings_enabled = 0\n
-            \ let g:shell_fullscreen_items = 'mTe'\n
-            \ nnoremap <Leader>op :Open<CR>\n
-            \ nnoremap <Leader>if :Fullscreen<CR>\n
-            \ " })
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Compilation and running
-call dein#add('scrooloose/syntastic', { 'hook_add' : "
-            \ let g:syntastic_mode_map = { 'mode': 'passive',
-            \                              'active_filetypes': [],
-            \                              'passive_filetypes': [] } \n
-            \ let g:syntastic_ignore_files = ['^/usr/include/', '\.C$'] \n
-            \ if executable( 'clang++' ) \n
-            \     let g:syntastic_cpp_compiler = 'clang++' \n
-            \ endif \n
-            \ let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++' \n
-            \ let g:syntastic_python_checkers = [ 'python' ] \n
-            \ nmap <silent> <Leader>we :Errors<CR> \n
-            \ " })
-call dein#add('xuhdev/SingleCompile')
-call dein#add('wbthomason/buildit.nvim')
-
-"call dein#add('ivanov/vim-ipython', { 'hook_add' : "let g:ipy_perform_mappings=0" })
-
-call dein#end()
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Configuration
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap( 'vim-airline' )
-    let g:airline_detect_iminsert=1
-    let g:airline_powerline_fonts=1
-    let g:airline_theme='solarized'
-    let g:airline_section_y = '%{printf("%s%s%s",(&fenc=="utf-8")?"":&fenc,(&ff=="unix")?"":" [".&ff."]",&et?"":" [t]")}'
-    let g:airline_section_z0 = '%-4b %-5(0x%B%)'
-    let g:airline_section_z = '%3P %{g:airline_symbols.linenr} %3l:%3c'
-    let g:airline_mode_map = {
-                \ '__' : '-',
-                \ 'n'  : 'N',
-                \ 'i'  : 'I',
-                \ 'R'  : 'R',
-                \ 'c'  : 'C',
-                \ 'v'  : 'V',
-                \ 'V'  : 'V',
-                \ '' : 'V',
-                \ 's'  : 'S',
-                \ 'S'  : 'S',
-                \ '' : 'S',
-                \ }
-    let g:airline#extensions#default#section_truncate_width = {
-                \ 'b':  88,
-                \ 'x':  70,
-                \ 'z0': 60,
-                \ 'z':  45,
-                \ }
-    let g:airline#extensions#default#layout = [
-                \ [ 'a', 'b', 'c' ],
-                \ [ 'x', 'y', 'z', 'warning' ]
-                \ ]
-    autocmd User VimtexEventInitPost :AirlineRefresh
-    let airline#extensions#xkblayout#enabled=0
-    let airline#extensions#keymap#enabled=0
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Utilites
-"
-
-let g:EasyClipEnableBlackHoleRedirectForChangeOperator=0
-if dein#tap( 'vim-easyclip' )
-    noremap gx x
-    noremap gX X
-    noremap gm m
-
-    let bindings =
-    \ [
-    \   ['gr',  '<plug>SubstituteOverMotionMap',  'n',  1],
-    \   ['grr',  '<plug>SubstituteLine',  'n',  1],
-    \   ['gr',  '<plug>XEasyClipPaste',  'x',  1],
-    \   ['gR',  '<plug>SubstituteToEndOfLine',  'n',  1],
-    \ ]
-    " \   ['ggr',  '<plug>G_SubstituteOverMotionMap',  'n',  1],
-    " \   ['ggR',  '<plug>G_SubstituteToEndOfLine',  'n',  1],
-
-    for binding in bindings
-        call call('EasyClip#AddWeakMapping', binding)
-    endfor
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Motion
-"
-" Matchit (included in default scripts)
-au FileType text,txt let b:match_words="“:”,‘:’,«:»,„:“"
-
-if dein#tap( 'vim-sandwich' )
+function! ConfigureSandwich()
     let g:TexEnvironments = [
                 \   'array', 'center', 'description', 'enumerate', 'eqnarray', 'equation',
                 \   'equation*', 'figure', 'flushleft', 'flushright', 'itemize', 'list',
@@ -837,162 +500,344 @@ if dein#tap( 'vim-sandwich' )
                 \       'input'   : ['fi'],
                 \   },
                 \ ]
-endif
+endfunction
+call dein#add('machakann/vim-sandwich', { 'hook_add' : "call ConfigureSandwich()" })
 
-if dein#tap( 'vim-textobj-user' )
-    " Text Objects
-    "
-    " Default text objects:
-    "     w - word
-    "     W - word (all characters)
-    "     s - sentence
-    "     p - paragraph
-    "     (), {}, [], '', "", <>, ``
-    "     b - () block
-    "     B - {} block
-    "     t - tag block
-    "
-    " Other motions:
-    "     ,w ,b ,e - camel case motions (camelcasemotion)
-    "     (i)y - pasted text (vimrc)
-    "     a=, ax, i= - conflicts
-    "
-    " Textobj-user motions
-    "     l - line
-    "     v - continuous line
-    "     c - comment
-    "     C - comment
-    "     E - entire
-    "     i - indent, I - indent
-    "     , - parameter (disabled)
-    "     . - parameter
-    "     f - function, ]pf, [pf
-    "     c - class, ]pc, [pc
-    "     F - python function
-    "     P - python class
-    "     @ - function call
-    "     u - url
-    "     o - indblock, O - indblock
-    "     da, dd, df, dt, dz - datetime: auto, date, full, time, tz
-    "     _<char> - between characters
-    "
-    " Latex:
-    "     $ - inline math
-    "     & - cell content
-    "     e - environment
-    "     d - delimiters
-    xmap aF <Plug>(textobj-python-function-a)
-    omap aF <Plug>(textobj-python-function-a)
-    xmap iF <Plug>(textobj-python-function-i)
-    omap iF <Plug>(textobj-python-function-i)
-    xmap aP <Plug>(textobj-python-class-a)
-    omap aP <Plug>(textobj-python-class-a)
-    xmap iP <Plug>(textobj-python-class-i)
-    omap iP <Plug>(textobj-python-class-i)
-    let g:textobj_functioncall_no_default_key_mappings = 1
-    xmap i@ <Plug>(textobj-functioncall-i)
-    omap i@ <Plug>(textobj-functioncall-i)
-    xmap a@ <Plug>(textobj-functioncall-a)
-    omap a@ <Plug>(textobj-functioncall-a)
-    let g:textobj_entire_no_default_key_mappings=1
-    xmap iE <Plug>(textobj-entire-i)
-    omap iE <Plug>(textobj-entire-i)
-    xmap aE <Plug>(textobj-entire-a)
-    omap aE <Plug>(textobj-entire-a)
-    let g:textobj_parameter_no_default_key_mappings=1
-    xmap a. <Plug>(textobj-parameter-a)
-    omap a. <Plug>(textobj-parameter-a)
-    xmap i. <Plug>(textobj-parameter-i)
-    omap i. <Plug>(textobj-parameter-i)
-    let g:textobj_between_no_default_key_mappings=1
-    xmap a_ <Plug>(textobj-between-a)
-    omap a_ <Plug>(textobj-between-a)
-    xmap i_ <Plug>(textobj-between-i)
-    omap i_ <Plug>(textobj-between-i)
+call dein#add('kana/vim-textobj-user', { 'hook_add' : "
+            \ call textobj#user#plugin('mylatex', {
+            \                 'latex-amp': {
+            \                   'pattern': [ '\(&\|^\)\s*', '\s*\(&\|\\\\\)' ],
+            \                   'select-a': 'a&',
+            \                   'select-i': 'i&'
+            \                 },
+            \               })
+            \ " })
+"call dein#add('haya14busa/vim-operator-flashy')
+call dein#add('kana/vim-textobj-line')
+call dein#add('rhysd/vim-textobj-continuous-line')
+call dein#add('glts/vim-textobj-comment')
+call dein#add('kana/vim-textobj-entire', { 'hook_add' : "
+            \ let g:textobj_entire_no_default_key_mappings=1\n
+            \ xmap iE <Plug>(textobj-entire-i)\n
+            \ omap iE <Plug>(textobj-entire-i)\n
+            \ xmap aE <Plug>(textobj-entire-a)\n
+            \ omap aE <Plug>(textobj-entire-a)\n
+            \ " })
+call dein#add('kana/vim-textobj-indent')
+call dein#add('sgur/vim-textobj-parameter', { 'hook_add' : "
+            \ let g:textobj_parameter_no_default_key_mappings=1\n
+            \ xmap a. <Plug>(textobj-parameter-a)\n
+            \ omap a. <Plug>(textobj-parameter-a)\n
+            \ xmap i. <Plug>(textobj-parameter-i)\n
+            \ omap i. <Plug>(textobj-parameter-i)\n
+            \ " })
+call dein#add('machakann/vim-textobj-functioncall', { 'hook_add' : "
+            \ let g:textobj_functioncall_no_default_key_mappings = 1\n
+            \ xmap i@ <Plug>(textobj-functioncall-i)\n
+            \ omap i@ <Plug>(textobj-functioncall-i)\n
+            \ xmap a@ <Plug>(textobj-functioncall-a)\n
+            \ omap a@ <Plug>(textobj-functioncall-a)\n
+            \ " })
+call dein#add('kana/vim-textobj-function')
+call dein#add('bps/vim-textobj-python', { 'hook_add' : "
+            \ xmap aF <Plug>(textobj-python-function-a)\n
+            \ omap aF <Plug>(textobj-python-function-a)\n
+            \ xmap iF <Plug>(textobj-python-function-i)\n
+            \ omap iF <Plug>(textobj-python-function-i)\n
+            \ xmap aP <Plug>(textobj-python-class-a)\n
+            \ omap aP <Plug>(textobj-python-class-a)\n
+            \ xmap iP <Plug>(textobj-python-class-i)\n
+            \ omap iP <Plug>(textobj-python-class-i)\n
+            \ " })
+call dein#add('jceb/vim-textobj-uri')
+call dein#add('glts/vim-textobj-indblock')
+call dein#add('kana/vim-textobj-datetime')
+"call dein#add('rbonvall/vim-textobj-latex')
+call dein#add('thinca/vim-textobj-between', { 'hook_add' : "
+            \ let g:textobj_between_no_default_key_mappings=1\n
+            \ xmap a_ <Plug>(textobj-between-a)\n
+            \ omap a_ <Plug>(textobj-between-a)\n
+            \ xmap i_ <Plug>(textobj-between-i)\n
+            \ omap i_ <Plug>(textobj-between-i)\n
+            \ " })
 
-    if dein#tap( 'vim-textobj-user' )
-        call textobj#user#plugin('mylatex', {
-                    \   'latex-amp': {
-                    \     'pattern': [ '\(&\|^\)\s*', '\s*\(&\|\\\\\)' ],
-                    \     'select-a': 'a&',
-                    \     'select-i': 'i&'
-                    \   },
-                    \ })
-    end
-endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text manipulation
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('AndrewRadev/switch.vim', { 'hook_add' : "
+            \ let g:switch_mapping='-'\n
+            \ let g:switch_reverse_mapping='+'\n
+            \ let g:switch_find_smallest_match=0\n
+            \ let g:switch_custom_definitions = [
+            \       [ '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉' ],
+            \       [ '⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹' ],
+            \       [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ],
+            \       [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ],
+            \       [ 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье' ],
+            \       [ 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье' ],
+            \       [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
+            \       [ 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december' ],
+            \       [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+            \       [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ],
+            \       [ 'black', 'white', 'grey', 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow' ],
+            \       [ 'TODO', 'DONE', 'XXX', 'FIXME' ],
+            \       [ 'TRUE', 'FALSE' ],
+            \       { '\C\<yes\>': 'no', '\C\<no\>':  'yes',  }, { '\C\<Yes\>': 'No', '\C\<No\>':  'Yes',  }, { '\C\<YES\>': 'NO', '\C\<NO\>':  'YES',  },
+            \       { '\C\<on\>': 'off', '\C\<off\>':  'on',  }, { '\C\<On\>': 'Off', '\C\<Off\>':  'On',  }, { '\C\<ON\>': 'OFF', '\C\<OFF\>':  'ON',  },
+            \       { '\C\<AND\>': 'OR', '\C\<OR\>':  'AND',  }, { '\C\<and\>': 'or', '\C\<or\>':  'and',  },
+            \       [ '[ ]', '[✔]', '[✘]', '[✔✘]', '[?]' ],
+            \     ]\n
+            \ autocmd FileType gitrebase let b:switch_custom_definitions = [
+            \       [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec' ]
+            \     ]\n
+            \ autocmd FileType tex,plaintex let b:switch_custom_definitions = [
+            \         [ '\\tiny', '\\scriptsize', '\\footnotesize', '\\small', '\\normalsize', '\\large', '\\Large', '\\LARGE', '\\huge', '\\Huge' ],
+            \         [ '\\displaystyle', '\\scriptstyle', '\\scriptscriptstyle', '\\textstyle' ],
+            \         [ '\\part', '\\chapter', '\\section', '\\subsection', '\\subsubsection', '\\paragraph', '\\subparagraph' ],
+            \         [ 'part:', 'chap:', 'sec:', 'subsec:', 'subsubsec:' ],
+            \         [ 'article', 'report', 'book', 'letter', 'slides' ],
+            \         [ 'a4paper', 'a5paper', 'b5paper', 'executivepaper', 'legalpaper', 'letterpaper', 'beamer', 'subfiles', 'standalone' ],
+            \         [ 'onecolumn', 'twocolumn' ],
+            \         [ 'oneside', 'twoside' ],
+            \         [ 'draft', 'final' ],
+            \         [ 'AnnArbor', 'Antibes', 'Bergen', 'Berkeley',
+            \           'Berlin', 'Boadilla', 'CambridgeUS', 'Copenhagen', 'Darmstadt',
+            \           'Dresden', 'Frankfurt', 'Goettingen', 'Hannover', 'Ilmenau',
+            \           'JuanLesPins', 'Luebeck', 'Madrid', 'Malmoe', 'Marburg',
+            \           'Montpellier', 'PaloAlto', 'Pittsburgh', 'Rochester', 'Singapore',
+            \           'Szeged', 'Warsaw' ]
+            \      ]\n
+            \ " })
+call dein#add('scrooloose/nerdcommenter')
+call dein#add('junegunn/vim-easy-align', { 'hook_add' : "
+            \ vmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
+            \ vmap <silent> <leader>eA <Plug>(EasyAlign)\n
+            \ nmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
+            \ nmap <silent> <leader>et  :let p=getpos('.')<CR>vie:EasyAlign * &<CR>:call setpos('.', p)<CR>\n
+            \ nmap <silent> <leader>es  :let p=getpos('.')<CR>vaE:EasyAlign *\ <CR>:call setpos('.', p)<CR>\n
+            \ nmap <silent> <leader>e-- :let p=getpos('.')<CR>vaE:EasyAlign */ -- /<CR>:call setpos('.', p)<CR>\n
+            \ vmap <silent> <leader>et  :'<,'>EasyAlign * &<CR>\n
+            \ vmap <silent> <leader>es  :'<,'>EasyAlign *\ <CR>\n
+            \ vmap <silent> <leader>e-- :'<,'>EasyAlign */ -- /<CR>\n
+            \ " })
+call dein#add('salsifis/vim-transpose', { 'hook_add' : "vmap <silent> <leader>et :TransposeInteractive<CR>" })
 
-"let s:quotes = [ "``\\zs.\\{-}\\ze''",
-"\ "\"`\\zs.\\{-}\\ze\"'",
-"\ "<<\\zs.\\{-}\\ze>>",
-"\ "`\\zs.\\{-}\\ze'",
-"\ "“\\zs.\\{-}\\ze”",
-"\ "„\\zs.\\{-}\\ze“",
-"\ "«\\zs.\\{-}\\ze»",
-"\ "‘\\zs.\\{-}\\ze’",
-"\ ]
-"let s:aquotes = [ "``.\\{-}''",
-"\ "\"`.\\{-}\"'",
-"\ "<<.\\{-}>>",
-"\ "`.\\{-}'",
-"\ "“.\\{-}”",
-"\ "„.\\{-}“",
-"\ "«.\\{-}»",
-"\ "‘.\\{-}’",
-"\ ]
-"\   'latex-left-right': {
-"\     'pattern': [ '\\\(big\|Big\)\?left\((\|\[\|\\{\||\|\\langle\|\.\)', '\\\(big\|Big\)\?right\()\|]\|\\}\||\|\\rangle\|\.\)' ],
-"\     'select-a': 'az',
-"\     'select-i': 'iz'
-"\   }
-"\ })
-"\   'iquotes': {
-"\     'pattern': join( s:quotes, '\|' ),
-"\     'select': [ 'iq' ]
-"\   },
-"\   'aquotes': {
-"\     'pattern': join( s:aquotes, '\|' ),
-"\     'select': [ 'aq' ]
-"\   },
-"\   'latex-quotes-rus': {
-"\     'pattern': [ "\"`", "\"'" ],
-"\     'select-a': 'aQr',
-"\     'select-i': 'iQr'
-"\   },
-"\   'latex-quotes-eng': {
-"\     'pattern': [ "``", "''" ],
-"\     'select-a': 'aQe',
-"\     'select-i': 'iQe'
-"\   },
-"\   'latex-quotes-french': {
-"\     'pattern': [ "<<", ">>" ],
-"\     'select-a': 'aQf',
-"\     'select-i': 'iQf'
-"\   },
-"\   'latex-quotes-eng-single': {
-"\     'pattern': [ "`", "'" ],
-"\     'select-a': 'aQ1',
-"\     'select-i': 'iQ1'
-"\   },
-"\   'quotes-rus': {
-"\     'pattern': [ "„", "“" ],
-"\     'select-a': 'aUr',
-"\     'select-i': 'iUr'
-"\   },
-"\   'quotes-eng': {
-"\     'pattern': [ "“", "”" ],
-"\     'select-a': 'aUe',
-"\     'select-i': 'iUe'
-"\   },
-"\   'quotes-eng-single': {
-"\     'pattern': [ "‘", "’" ],
-"\     'select-a': 'aU1',
-"\     'select-i': 'iU1'
-"\   },
-"\   'quotes-french': {
-"\     'pattern': [ "«", "»" ],
-"\     'select-a': 'aUf',
-"\     'select-i': 'iUf'
-"\   },
+call dein#add('t9md/vim-textmanip', { 'hook_add' : "
+            \ function! TMoff()\n
+            \     set ei+=TextYankPost\n
+            \ endfunction\n
+            \ function! TMon()\n
+            \     set ei-=TextYankPost\n
+            \ endfunction\n
+            \ let g:textmanip_enable_mappings=0\n
+            \ let g:textmanip_move_ignore_shiftwidth=1\n
+            \ xmap <C-j> <Plug>(textmanip-move-down)\n
+            \ xmap <C-k> <Plug>(textmanip-move-up)\n
+            \ xmap <C-h> <Plug>(textmanip-move-left)\n
+            \ xmap <C-l> <Plug>(textmanip-move-right)\n
+            \ " })
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Diff tools
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('will133/vim-dirdiff', { 'hook_add' : "
+            \ map <unique> <Leader>Dg <Plug>DirDiffGet\n
+            \ map <unique> <Leader>Dp <Plug>DirDiffPut\n
+            \ map <unique> <Leader>Dj <Plug>DirDiffNext\n
+            \ map <unique> <Leader>Dk <Plug>DirDiffPrev\n
+            \ " })
+call dein#add('AndrewRadev/linediff.vim', { 'hook_add' : "
+            \ vmap <Leader>dl :Linediff<CR>\n
+            \ nmap <Leader>dl :Linediff<CR>\n
+            \ nmap <Leader>dr :LinediffReset<CR>\n
+            \ " })
+call dein#add('vim-scripts/diffchar.vim', { 'hook_add' : "let g:DiffModeSync=0" })
+call dein#add('chrisbra/vim-diff-enhanced')
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Filetype
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"call dein#add('klen/python-mode', { 'hook_add' : "
+            "\ let g:pymode = 1\n
+            "\ let g:pymode_lint = 0\n
+            "\ let g:pymode_rope = 0\n
+            "\ let g:pymode_rope_guess_project = 0\n
+            "\ let g:pymode_virtualenv = 0\n
+            "\ let g:pymode_options = 0\n
+            "\ let g:pymode_trim_whitespaces = 0\n
+            "\ " })
+call dein#add('lervag/vimtex', { 'hook_add' : "
+            \ let g:vimtex_view_method='zathura'\n
+            \ \" let g:vimtex_view_method='mupdf'\n
+            \ let g:vimtex_imaps_enabled=0\n
+            \ let g:vimtex_index_split_width=60\n
+            \ let g:vimtex_index_split_pos='vert botright'\n
+            \ noremap <localleader>lL <plug>(vimtex-compile-ss)\n
+            \ noremap <localleader>l0 :let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>\n
+            \ \" let g:neocomplete#sources#omni#input_patterns.tex =
+            \             \" '\v\\%('
+            \             \" . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \             \" . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+            \             \" . '|hyperref\s*\[[^]]*'
+            \             \" . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \             \" . '|%(include%(only)?|input)\s*\{[^}]*'
+            \             \" . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \             \" . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \             \" . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \             \" . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \             \" . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
+            \             \" . ')'
+            \ " })
+call dein#add('joom/latex-unicoder.vim', { 'hook_add' : "let g:unicoder_no_map=1" })
+call dein#add('aliva/vim-fish')
+call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,<S-Tab>'" })
+call dein#add('plasticboy/vim-markdown')
+call dein#add('JuliaEditorSupport/julia-vim')
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Search and replace
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('brooth/far.vim')        " :Far
+call dein#add('eugen0329/vim-esearch') " \ff
+call dein#add('tpope/vim-abolish')     " :%S////
+call dein#add('t9md/vim-quickhl', { 'hook_add' : "
+            \ nmap <leader>m <Plug>(quickhl-manual-this)\n
+            \ xmap <leader>m <Plug>(quickhl-manual-this)\n
+            \ nmap <leader>n <Plug>(quickhl-manual-reset)\n
+            \ xmap <leader>n <Plug>(quickhl-manual-reset)\n
+            \ \n
+            \ nmap <leader>M :exe 'QuickhlManualAdd! \\<'.expand('<cword>').'\\>'<CR>\n
+            \ xmap <leader>M :exe 'QuickhlManualAdd! \\<'.expand('<cword>').'\\>'<CR>\n
+            \ nmap <leader>N :exe 'QuickhlManualDelete! \\<'.expand('<cword>').'\\>'<CR>\n
+            \ xmap <leader>N :exe 'QuickhlManualDelete! \\<'.expand('<cword>').'\\>'<CR>\n
+            \ \n
+            \ \"nmap <Space>j <Plug>(quickhl-cword-toggle)\n
+            \ \"nmap <Space>] <Plug>(quickhl-tag-toggle)\n
+            \ map <leader>H <Plug>(operator-quickhl-manual-this-motion)\n
+            \ " })
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Menus
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('vim-ctrlspace/vim-ctrlspace')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/denite.nvim', { 'depends': 'neomru.vim', 'hook_add' : "
+            \ nnoremap <Leader>lb :<C-u>Denite buffer file_mru<CR>\n
+            \ nnoremap <Leader>lf :<C-u>DeniteBufferDir file<CR>\n
+            \ nnoremap <Leader>ln :<C-u>exe \"DeniteBufferDir -input=\".expand(\"<cfile>\").\" file:new file\"<CR>\n
+            \ nnoremap <Leader>lO :<C-u>Denite -ignorecase outline<CR>\n
+            \ nnoremap <Leader>lF :<C-u>DeniteBufferDir file_rec<CR>
+            \ nnoremap <Leader>ld :<C-u>Denite file_rec<CR>
+            \ "})
+call dein#add('Shougo/unite.vim') "FIXME: deprecate
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tags and outline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('xolox/vim-easytags', { 'hook_add' : "
+            \ let g:easytags_file='./tags'\n
+            \ let g:easytags_ignored_filetypes=''\n
+            \ let g:easytags_on_cursorhold = 0\n
+            \ let g:easytags_auto_update = 0\n
+            \ let g:easytags_updatetime_min = 600000\n
+            \ " })
+call dein#add('vim-scripts/VOoM', { 'hook_add' : "
+            \ let g:voom_ft_modes = { 'python':'python', 'tex':'latex' }\n
+            \ let g:voom_tree_width = 60\n
+            \ let g:voom_tree_placement='right'\n
+            \ nmap <silent> <Leader>wo :VoomToggle<CR>\n
+            \ " })
+command! -nargs=0 TagbarToggle        call tagbar#ToggleWindow()
+call dein#add('majutsushi/tagbar', { 'hook_add' : "
+            \ nnoremap <silent> <Leader>wt :TagbarToggle<CR>\n
+            \ let g:tagbar_autoclose = 1\n
+            \ let g:tagbar_compact = 1\n
+            \ let g:tagbar_autofocus = 1\n
+            \ let g:tagbar_autoshowtag = 1\n
+            \ let g:tagbar_type_tex = {
+            \               'ctagstype' : 'latex',
+            \               'kinds'     : [
+            \               's:sections',
+            \               'g:graphics',
+            \               'l:labels',
+            \               'r:refs:1',
+            \               'p:pagerefs:1',
+            \               'f:includes'
+            \               ],
+            \               'sort'    : 0,
+            \               }\n
+            \ let g:tagbar_type_make = {
+            \               'ctagstype' : 'make',
+            \               'kinds'     : [
+            \               'm:macros',
+            \               't:task',
+            \               ],
+            \               'sort'    : 0,
+            \               }\n
+            \ " })
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Files and Folders
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('vim-scripts/Rename')
+call dein#add('chrisbra/SudoEdit.vim', { 'hook_add' : "inoremap <S-F2> :SudoWrite<CR>" })
+call dein#add('ervandew/archive')
+call dein#add('xolox/vim-misc')
+call dein#add('xolox/vim-shell', { 'depends' : 'vim-misc', 'hook_add' : "
+            \ let g:shell_mappings_enabled = 0\n
+            \ let g:shell_fullscreen_items = 'mTe'\n
+            \ nnoremap <Leader>op :Open<CR>\n
+            \ nnoremap <Leader>if :Fullscreen<CR>\n
+            \ " })
+call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "let g:ranger_replace_netrw = 0\n
+                                                         \ let g:NERDTreeHijackNetrw = 0"} )
+call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
+            \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
+            \ "})
+call dein#add('Shougo/neossh.vim')
+call dein#add('derekwyatt/vim-fswitch', { 'hook_add' : "
+            \ au! BufEnter *.cpp,*.c,*.C,*.cxx,*.cc,*.CC let b:fswitchdst = 'hpp,h,H,hh,HH,hxx' | let b:fswitchlocs = '../inc,../include'\n
+            \ au! BufEnter *.hpp,*.h,*.H,*.hh,*.HH,*.hxx let b:fswitchdst = 'cpp,c,C,cc,CC,cxx' | let b:fswitchlocs = '../src'\n
+            \ let g:fsnonewfiles=1\n
+            \ nmap <silent> <Leader>aa :FSHere<CR>\n
+            \ nmap <silent> <Leader>ar :tab FSRight<CR>\n
+            \ nmap <silent> <Leader>al :tab FSLeft<CR>\n
+            \ nmap <silent> <Leader>aR :tab FSSplitRight<CR>\n
+            \ nmap <silent> <Leader>aL :tab FSSplitLeft<CR>\n
+            \ " })
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Compilation and running
+call dein#add('scrooloose/syntastic', { 'hook_add' : "
+            \ let g:syntastic_mode_map = { 'mode': 'passive',
+            \                              'active_filetypes': [],
+            \                              'passive_filetypes': [] } \n
+            \ let g:syntastic_ignore_files = ['^/usr/include/', '\.C$'] \n
+            \ if executable( 'clang++' ) \n
+            \     let g:syntastic_cpp_compiler = 'clang++' \n
+            \ endif \n
+            \ let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++' \n
+            \ let g:syntastic_python_checkers = [ 'python' ] \n
+            \ nmap <silent> <Leader>we :Errors<CR> \n
+            \ " })
+call dein#add('xuhdev/SingleCompile')
+call dein#add('wbthomason/buildit.nvim')
+call dein#add('tpope/vim-dispatch', { 'hook_add' : "
+            \ nnoremap <Leader>qm :Make<CR>\n
+            \ nnoremap <Leader>qM :Make!<CR>\n
+            \ nnoremap <Leader>qc :Copen<CR>\n
+            \ nnoremap <Leader>qC :Copen!<CR>\n
+            \ " })
+
+"call dein#add('ivanov/vim-ipython', { 'hook_add' : "let g:ipy_perform_mappings=0" })
+
+call dein#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Matchit (included in default scripts)
+au FileType text,txt let b:match_words="“:”,‘:’,«:»,„:“"
 
 let g:ConflictMotions_TakeMappingPrefix = '<Leader>='
 
