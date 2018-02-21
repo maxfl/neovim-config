@@ -7,18 +7,24 @@ call dein#begin( expand('~/.vim/bundle/') )
 let g:dein#types#git#clone_depth = 1
 
 call dein#add('Shougo/dein.vim')
+
+call dein#add('tpope/vim-sensible')
 call dein#local("~/.vim/bundle_local")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tim Pope
+" Libraries
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('tpope/vim-sensible')
+call dein#add('inkarkat/vim-ingo-library')
+call dein#add('inkarkat/vim-CountJump', {'depends': 'vim-ingo-library' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('altercation/vim-colors-solarized', { 'hook_add' : "colorscheme solarized"})
-call dein#add('jszakmeister/vim-togglecursor')                                                     " change cursor for insert/normal modes
+call dein#add('altercation/vim-colors-solarized', { 'hook_add' : "
+            \ colorscheme solarized\n
+            \ \" let g:solarized_termcolors=256\n
+            \ "})
+call dein#add('wincent/terminus')
 call dein#add('powerman/vim-plugin-AnsiEsc')
 call dein#add('bronson/vim-trailing-whitespace', { 'hook_add' : "
             \ nnoremap <Leader>rts :FixWhitespace<CR>\n
@@ -26,6 +32,7 @@ call dein#add('bronson/vim-trailing-whitespace', { 'hook_add' : "
             \ " })
 
 call dein#add('vim-airline/vim-airline', { 'depends': 'tagbar', 'hook_add' : "
+            \ let g:airline#extensions#wordcount#filetypes='\\vmarkdown|text|txt'\n
             \ let g:airline_detect_iminsert=1\n
             \ let g:airline_powerline_fonts=1\n
             \ let g:airline_theme='solarized'\n
@@ -63,10 +70,10 @@ call dein#add('vim-airline/vim-airline-themes')
 call dein#add('paranoida/vim-airlineish')
 
 " FIXME: almost not used
-call dein#add('kien/rainbow_parentheses.vim', { 'hook_add' : "nnoremap <Leader>R :RainbowParenthesesToggle<CR>" })
-"
-" FIXME: almost not used
-call dein#add('nathanaelkane/vim-indent-guides', { 'hook_add' : "let g:indent_guides_color_change_percent=2" })
+call dein#add('thiagoalessio/rainbow_levels.vim', { 'hook_add' : "nnoremap <Leader>iL :RainbowLevelsToggle<CR>" })
+call dein#add('kien/rainbow_parentheses.vim',     { 'hook_add' : "nnoremap <Leader>ip :RainbowParenthesesToggle<CR>" })
+call dein#add('Yggdroot/indentLine',              { 'hook_add' : "nnoremap <Leader>il :IndentLinesToggle<CR>" })
+call dein#add('nathanaelkane/vim-indent-guides',  { 'hook_add' : "nnoremap <Leader>ig :IndentGuidesToggle<CR>" }) "let g:indent_guides_color_change_percent=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
@@ -103,11 +110,16 @@ call dein#add('rhysd/clever-f.vim', { 'hook_add' : "
 call dein#add('bkad/camelcasemotion', { 'hook_add' : "
             \ call camelcasemotion#CreateMotionMappings(',')
             \ " })
+call dein#add('inkarkat/vim-JumpToVerticalBlock', {'depends': 'vim-CountJump'})
+call dein#add('inkarkat/vim-JumpToVerticalOccurrence', {'depends': 'vim-CountJump'})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('vim-scripts/RepeatableYank')
+call dein#add('inkarkat/vim-UnconditionalPaste', {
+            \ 'depends': ['vim-ingo-library', 'vim-repeat']
+            \ })
+call dein#add('vim-scripts/RepeatableYank')                                           "karkat
 call dein#add('machakann/vim-highlightedyank')
 call dein#add('vim-scripts/ExplainPattern')
 call dein#add('svermeulen/vim-easyclip', { 'hook_add' : "
@@ -115,7 +127,7 @@ call dein#add('svermeulen/vim-easyclip', { 'hook_add' : "
             \ noremap gx x\n
             \ noremap gX X\n
             \ noremap gm m\n
-            \ 
+            \
             \ let bindings =
             \   [
             \     ['gr',  '<plug>SubstituteOverMotionMap',  'n',  1],
@@ -131,6 +143,9 @@ call dein#add('svermeulen/vim-easyclip', { 'hook_add' : "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('dkarter/bullets.vim', { 'hook_add' : "
+            \ let g:bullets_enabled_file_types=['markdown', 'rst', 'text', 'txt', 'gitcommit']\n
+            \ " })
 call dein#add('sjl/gundo.vim', { 'hook_add' : "
             \ nnoremap <Leader>wu :GundoToggle<CR>\n
             \ let g:gundo_preview_bottom=1\n
@@ -145,14 +160,14 @@ call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
                 \ let g:deoplete#disable_auto_complete = 0 \n
                 \ let g:deoplete#enable_smart_case = 1 \n
                 \ let g:deoplete#auto_complete_start_length = 2 \n
-                \ inoremap <expr><C-X><C-X> neocomplete#manual_complete() \n
+                \ inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
                 \ "})
 call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             \ let g:multi_cursor_start_key='<C-n>'\n
             \ let g:multi_cursor_quit_key='<C-z>'\n
             \ \"let g:multi_cursor_exit_from_insert_mode=1\n
             \ \"let g:multi_cursor_exit_from_visual_mode=1\n
-            \ 
+            \
             \ function! Multiple_cursors_before()\n
             \     if exists('*deoplete#disable')\n
             \         call deoplete#disable()\n
@@ -172,7 +187,7 @@ call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             \         ounmap T\n
             \     endif\n
             \ endfunction\n
-            \ 
+            \
             \ function! Multiple_cursors_after()\n
             \     if exists('*deoplete#enable')\n
             \         call deoplete#enable()\n
@@ -201,6 +216,7 @@ call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
 call dein#add('vim-scripts/RelativeNumberCurrentWindow')
 call dein#add('vim-scripts/RangeMacro')
 call dein#add('wgurecky/vimSum')
+call dein#add('Floobits/floobits-neovim')
 
 " FIXME: Almost not used
 call dein#add('moll/vim-bbye', { 'hook_add' : "
@@ -211,9 +227,11 @@ call dein#add('nhooyr/neoman.vim')
 call dein#add('chrisbra/unicode.vim')
 call dein#add('thinca/vim-prettyprint')
 call dein#add('romgrk/pp.vim')
-call dein#add('ciaranm/detectindent')
+call dein#add('ciaranm/detectindent', {'hook_add' : "
+      \ au FileType cpp,python :DetectIndent
+      \ "})
 call dein#add('tpope/vim-fugitive', { 'hook_add' : "
-            \ nmap <silent> <Leader>ga :Git add %<CR>\n
+            \ nmap <silent> <Leader>ga :!git add %<CR>\n
             \ nmap <silent> <Leader>gR :Gremove!<CR>\n
             \ nmap <silent> <Leader>gc :Gcommit -a<CR>\n
             \ nmap <silent> <Leader>gC :Gcommit<CR>\n
@@ -223,6 +241,7 @@ call dein#add('tpope/vim-fugitive', { 'hook_add' : "
             \ nmap <silent> <Leader>gb :Gblame<CR>\n
             \ nmap <silent> <Leader>gi :Gsplit! svn info<CR>\n
             \ " })
+call dein#add('idanarye/vim-merginal')
 "call dein#add('lyokha/vim-xkbswitch', { 'hook_add' : "
             "\ let g:XkbSwitchEnabled = 1\n
             "\ let g:XkbSwitchLib = '/usr/local/lib/libxkbswitch.so'\n
@@ -233,6 +252,7 @@ call dein#add('tpope/vim-fugitive', { 'hook_add' : "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjects
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('andymass/vim-matchup')
 function! ConfigureSandwich()
     let g:TexEnvironments = [
                 \   'array', 'center', 'description', 'enumerate', 'eqnarray', 'equation',
@@ -280,9 +300,11 @@ function! ConfigureSandwich()
                 \	{'buns': ['«', '»'],                 'nesting': 1, 'input': [ 'u<' ]  },
                 \ ]
     let g:sandwich#recipes += [
-                \   {'buns': ["``", "``"],               'nesting': 0, 'input': [ "2`" ], 'filetype': ['rst'] },
-                \   {'buns': ["'''", "'''"],             'nesting': 0, 'input': [ "3'" ], 'filetype': ['python'] },
-                \   {'buns': ['"""', '"""'],             'nesting': 0, 'input': [ '3"' ], 'filetype': ['python'] },
+                \   {'buns': ["``", "``"],               'nesting': 0, 'input': [ "2`" ],  'filetype': ['rst'] },
+                \   {'buns': ["'''", "'''"],             'nesting': 0, 'input': [ "3'" ],  'filetype': ['python'] },
+                \   {'buns': ['"""', '"""'],             'nesting': 0, 'input': [ '3"' ],  'filetype': ['python'] },
+                \   {'buns': ['[(', ')]'],               'nesting': 1, 'input': [ '2[' ],  'filetype': ['python'] },
+                \   {'buns': ['([', '])'],               'nesting': 1, 'input': [ '2(' ],  'filetype': ['python'] },
                 \ ]
     let g:sandwich#recipes += [
                 \   {'buns': ["`", "'"],                 'nesting': 1, 'input': [ "l'", "l`" ], 'filetype': ['tex', 'plaintex', 'rst'] },
@@ -506,7 +528,7 @@ call dein#add('machakann/vim-sandwich', { 'hook_add' : "call ConfigureSandwich()
 call dein#add('kana/vim-textobj-user', { 'hook_add' : "
             \ call textobj#user#plugin('mylatex', {
             \                 'latex-amp': {
-            \                   'pattern': [ '\(&\|^\)\s*', '\s*\(&\|\\\\\)' ],
+            \                   'pattern': [ '\\(&\\|^\\)\\s*', '\\s*\\(&\\|\\\\\\\\\\)' ],
             \                   'select-a': 'a&',
             \                   'select-i': 'i&'
             \                 },
@@ -582,18 +604,18 @@ call dein#add('AndrewRadev/switch.vim', { 'hook_add' : "
             \       [ 'black', 'white', 'grey', 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow' ],
             \       [ 'TODO', 'DONE', 'XXX', 'FIXME' ],
             \       [ 'TRUE', 'FALSE' ],
-            \       { '\C\<yes\>': 'no', '\C\<no\>':  'yes',  }, { '\C\<Yes\>': 'No', '\C\<No\>':  'Yes',  }, { '\C\<YES\>': 'NO', '\C\<NO\>':  'YES',  },
-            \       { '\C\<on\>': 'off', '\C\<off\>':  'on',  }, { '\C\<On\>': 'Off', '\C\<Off\>':  'On',  }, { '\C\<ON\>': 'OFF', '\C\<OFF\>':  'ON',  },
-            \       { '\C\<AND\>': 'OR', '\C\<OR\>':  'AND',  }, { '\C\<and\>': 'or', '\C\<or\>':  'and',  },
+            \       { '\\C\\<yes\\>': 'no', '\\C\\<no\\>':  'yes',  }, { '\\C\\<Yes\\>': 'No', '\\C\\<No\\>':  'Yes',  }, { '\\C\\<YES\\>': 'NO', '\\C\\<NO\\>':  'YES',  },
+            \       { '\\C\\<on\\>': 'off', '\\C\\<off\\>':  'on',  }, { '\\C\\<On\\>': 'Off', '\\C\\<Off\\>':  'On',  }, { '\\C\\<ON\\>': 'OFF', '\\C\\<OFF\\>':  'ON',  },
+            \       { '\\C\\<AND\\>': 'OR', '\\C\\<OR\\>':  'AND',  }, { '\\C\\<and\\>': 'or', '\\C\\<or\\>':  'and',  },
             \       [ '[ ]', '[✔]', '[✘]', '[✔✘]', '[?]' ],
             \     ]\n
             \ autocmd FileType gitrebase let b:switch_custom_definitions = [
             \       [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec' ]
             \     ]\n
             \ autocmd FileType tex,plaintex let b:switch_custom_definitions = [
-            \         [ '\\tiny', '\\scriptsize', '\\footnotesize', '\\small', '\\normalsize', '\\large', '\\Large', '\\LARGE', '\\huge', '\\Huge' ],
-            \         [ '\\displaystyle', '\\scriptstyle', '\\scriptscriptstyle', '\\textstyle' ],
-            \         [ '\\part', '\\chapter', '\\section', '\\subsection', '\\subsubsection', '\\paragraph', '\\subparagraph' ],
+            \         [ '\\\\tiny', '\\\\scriptsize', '\\\\footnotesize', '\\\\small', '\\\\normalsize', '\\\\large', '\\\\Large', '\\\\LARGE', '\\\\huge', '\\\\Huge' ],
+            \         [ '\\\\displaystyle', '\\\\scriptstyle', '\\\\scriptscriptstyle', '\\\\textstyle' ],
+            \         [ '\\\\part', '\\\\chapter', '\\\\section', '\\\\subsection', '\\\\subsubsection', '\\\\paragraph', '\\\\subparagraph' ],
             \         [ 'part:', 'chap:', 'sec:', 'subsec:', 'subsubsec:' ],
             \         [ 'article', 'report', 'book', 'letter', 'slides' ],
             \         [ 'a4paper', 'a5paper', 'b5paper', 'executivepaper', 'legalpaper', 'letterpaper', 'beamer', 'subfiles', 'standalone' ],
@@ -609,19 +631,6 @@ call dein#add('AndrewRadev/switch.vim', { 'hook_add' : "
             \      ]\n
             \ " })
 call dein#add('scrooloose/nerdcommenter')
-call dein#add('junegunn/vim-easy-align', { 'hook_add' : "
-            \ vmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
-            \ vmap <silent> <leader>eA <Plug>(EasyAlign)\n
-            \ nmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
-            \ nmap <silent> <leader>et  :let p=getpos('.')<CR>vie:EasyAlign * &<CR>:call setpos('.', p)<CR>\n
-            \ nmap <silent> <leader>es  :let p=getpos('.')<CR>vaE:EasyAlign *\ <CR>:call setpos('.', p)<CR>\n
-            \ nmap <silent> <leader>e-- :let p=getpos('.')<CR>vaE:EasyAlign */ -- /<CR>:call setpos('.', p)<CR>\n
-            \ vmap <silent> <leader>et  :'<,'>EasyAlign * &<CR>\n
-            \ vmap <silent> <leader>es  :'<,'>EasyAlign *\ <CR>\n
-            \ vmap <silent> <leader>e-- :'<,'>EasyAlign */ -- /<CR>\n
-            \ " })
-call dein#add('salsifis/vim-transpose', { 'hook_add' : "vmap <silent> <leader>et :TransposeInteractive<CR>" })
-
 call dein#add('t9md/vim-textmanip', { 'hook_add' : "
             \ function! TMoff()\n
             \     set ei+=TextYankPost\n
@@ -638,6 +647,25 @@ call dein#add('t9md/vim-textmanip', { 'hook_add' : "
             \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tables
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('dhruvasagar/vim-table-mode', {'hook_add' : "
+            \ let g:table_mode_corner_corner='+'
+            \ "})
+call dein#add('junegunn/vim-easy-align', { 'hook_add' : "
+            \ vmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
+            \ vmap <silent> <leader>eA <Plug>(EasyAlign)\n
+            \ nmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
+            \ nmap <silent> <leader>et  :let p=getpos('.')<CR>vie:EasyAlign * &<CR>:call setpos('.', p)<CR>\n
+            \ nmap <silent> <leader>es  :let p=getpos('.')<CR>vaE:EasyAlign *\ <CR>:call setpos('.', p)<CR>\n
+            \ nmap <silent> <leader>e-- :let p=getpos('.')<CR>vaE:EasyAlign */ -- /<CR>:call setpos('.', p)<CR>\n
+            \ vmap <silent> <leader>et  :'<,'>EasyAlign * &<CR>\n
+            \ vmap <silent> <leader>es  :'<,'>EasyAlign *\ <CR>\n
+            \ vmap <silent> <leader>e-- :'<,'>EasyAlign */ -- /<CR>\n
+            \ " })
+call dein#add('salsifis/vim-transpose', { 'hook_add' : "vmap <silent> <leader>et :TransposeInteractive<CR>" })
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff tools
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('will133/vim-dirdiff', { 'hook_add' : "
@@ -651,7 +679,8 @@ call dein#add('AndrewRadev/linediff.vim', { 'hook_add' : "
             \ nmap <Leader>dl :Linediff<CR>\n
             \ nmap <Leader>dr :LinediffReset<CR>\n
             \ " })
-call dein#add('vim-scripts/diffchar.vim', { 'hook_add' : "let g:DiffModeSync=0" })
+call dein#add('rickhowe/spotdiff.vim')
+call dein#add('rickhowe/diffchar.vim', { 'hook_add' : "let g:DiffModeSync=0" })
 call dein#add('chrisbra/vim-diff-enhanced')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -690,7 +719,7 @@ call dein#add('lervag/vimtex', { 'hook_add' : "
             \ " })
 call dein#add('joom/latex-unicoder.vim', { 'hook_add' : "let g:unicoder_no_map=1" })
 call dein#add('aliva/vim-fish')
-call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,<S-Tab>'" })
+"call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,<S-Tab>'" })
 call dein#add('plasticboy/vim-markdown')
 call dein#add('JuliaEditorSupport/julia-vim')
 
@@ -730,6 +759,7 @@ call dein#add('Shougo/denite.nvim', { 'depends': 'neomru.vim', 'hook_add' : "
             \ nnoremap <Leader>ld :<C-u>Denite file_rec<CR>
             \ "})
 call dein#add('Shougo/unite.vim') "FIXME: deprecate
+call dein#add('lifepillar/vim-cheat40')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tags and outline
@@ -805,6 +835,7 @@ call dein#add('derekwyatt/vim-fswitch', { 'hook_add' : "
             \ nmap <silent> <Leader>aR :tab FSSplitRight<CR>\n
             \ nmap <silent> <Leader>aL :tab FSSplitLeft<CR>\n
             \ " })
+call dein#add('zenbro/mirror.vim')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compilation and running
