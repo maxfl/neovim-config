@@ -3,13 +3,14 @@ if &shell =~# 'fish$'
 endif
 
 set runtimepath^=~/.vim/bundle/repos/github.com/Shougo/dein.vim
-call dein#begin( expand('~/.vim/bundle/') )
+
+call dein#begin( expand('~/.config/nvim/bundle/') )
 let g:dein#types#git#clone_depth = 1
 
 call dein#add('Shougo/dein.vim')
+call dein#add('haya14busa/dein-command.vim')
 
 call dein#add('tpope/vim-sensible')
-call dein#local("~/.vim/bundle_local")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Libraries
@@ -72,7 +73,11 @@ call dein#add('paranoida/vim-airlineish')
 " FIXME: almost not used
 call dein#add('thiagoalessio/rainbow_levels.vim', { 'hook_add' : "nnoremap <Leader>iL :RainbowLevelsToggle<CR>" })
 call dein#add('kien/rainbow_parentheses.vim',     { 'hook_add' : "nnoremap <Leader>ip :RainbowParenthesesToggle<CR>" })
-call dein#add('Yggdroot/indentLine',              { 'hook_add' : "nnoremap <Leader>il :IndentLinesToggle<CR>" })
+call dein#add('Yggdroot/indentLine',              { 'hook_add' : "
+            \ let g:indentLine_enabled=0\n
+            \ nnoremap <Leader>il :IndentLinesToggle<CR>\n
+            \ au FileType cpp,python :IndentLinesEnable\n
+            \ " })
 call dein#add('nathanaelkane/vim-indent-guides',  { 'hook_add' : "nnoremap <Leader>ig :IndentGuidesToggle<CR>" }) "let g:indent_guides_color_change_percent=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -116,29 +121,49 @@ call dein#add('inkarkat/vim-JumpToVerticalOccurrence', {'depends': 'vim-CountJum
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('inkarkat/vim-UnconditionalPaste', {
-            \ 'depends': ['vim-ingo-library', 'vim-repeat']
-            \ })
+noremap  d   "_d
+vnoremap d   "_d
+nnoremap dd "_dd
+noremap  m     d
+vnoremap m     d
+nnoremap mm   dd
+
 call dein#add('vim-scripts/RepeatableYank')                                           "karkat
 call dein#add('machakann/vim-highlightedyank')
 call dein#add('vim-scripts/ExplainPattern')
-call dein#add('svermeulen/vim-easyclip', { 'hook_add' : "
-            \ let g:EasyClipEnableBlackHoleRedirectForChangeOperator=0\n
-            \ noremap gx x\n
-            \ noremap gX X\n
-            \ noremap gm m\n
-            \
-            \ let bindings =
-            \   [
-            \     ['gr',  '<plug>SubstituteOverMotionMap',  'n',  1],
-            \     ['grr',  '<plug>SubstituteLine',  'n',  1],
-            \     ['gr',  '<plug>XEasyClipPaste',  'x',  1],
-            \     ['gR',  '<plug>SubstituteToEndOfLine',  'n',  1],
-            \   ]\n
-            \ for binding in bindings\n
-            \     call call('EasyClip#AddWeakMapping', binding)\n
-            \ endfor\n
-            \ " })
+call dein#add('bfredl/nvim-miniyank', {'hook_add' : "
+            \ map p <Plug>(miniyank-autoput)\n
+            \ map P <Plug>(miniyank-autoPut)\n
+            \ map <Leader>n <Plug>(miniyank-cycle)\n
+            \ map <Leader>yc <Plug>(miniyank-tochar)\n
+            \ map <Leader>yl <Plug>(miniyank-toline)\n
+            \ map <Leader>yb <Plug>(miniyank-toblock)\n
+            \ "})
+call dein#add('vim-scripts/ReplaceWithRegister')
+call dein#add('inkarkat/vim-UnconditionalPaste', {
+            \ 'depends': ['vim-ingo-library', 'vim-repeat']
+            \ })
+
+" overridden by miniyank
+
+"    Outdated
+"    call dein#add('svermeulen/vim-easyclip', { 'hook_add' : "
+"                \ let g:EasyClipEnableBlackHoleRedirectForChangeOperator=0\n
+"                \ noremap gx x\n
+"                \ noremap gX X\n
+"                \ noremap gm m\n
+"                \
+"                \ let bindings =
+"                \   [
+"                \     ['gr',  '<plug>SubstituteOverMotionMap',  'n',  1],
+"                \     ['grr',  '<plug>SubstituteLine',  'n',  1],
+"                \     ['gr',  '<plug>XEasyClipPaste',  'x',  1],
+"                \     ['gR',  '<plug>SubstituteToEndOfLine',  'n',  1],
+"                \   ]\n
+"                \ for binding in bindings\n
+"                \     call call('EasyClip#AddWeakMapping', binding)\n
+"                \ endfor\n
+"                \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
@@ -169,9 +194,7 @@ call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             \ \"let g:multi_cursor_exit_from_visual_mode=1\n
             \
             \ function! Multiple_cursors_before()\n
-            \     if exists('*deoplete#disable')\n
-            \         call deoplete#disable()\n
-            \     endif\n
+            \     let b:deoplete_disable_auto_complete = 1\n
             \     if dein#tap('clever-f.vim')\n
             \         nunmap f\n
             \         xunmap f\n
@@ -189,9 +212,7 @@ call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             \ endfunction\n
             \
             \ function! Multiple_cursors_after()\n
-            \     if exists('*deoplete#enable')\n
-            \         call deoplete#enable()\n
-            \     endif\n
+            \     let b:deoplete_disable_auto_complete = 0\n
             \     if dein#tap('clever-f.vim')\n
             \         nmap f <Plug>(clever-f-f)\n
             \         xmap f <Plug>(clever-f-f)\n
@@ -216,7 +237,7 @@ call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
 call dein#add('vim-scripts/RelativeNumberCurrentWindow')
 call dein#add('vim-scripts/RangeMacro')
 call dein#add('wgurecky/vimSum')
-call dein#add('Floobits/floobits-neovim')
+"call dein#add('Floobits/floobits-neovim')
 
 " FIXME: Almost not used
 call dein#add('moll/vim-bbye', { 'hook_add' : "
@@ -234,7 +255,10 @@ call dein#add('tpope/vim-fugitive', { 'hook_add' : "
             \ nmap <silent> <Leader>ga :!git add %<CR>\n
             \ nmap <silent> <Leader>gR :Gremove!<CR>\n
             \ nmap <silent> <Leader>gc :Gcommit -a<CR>\n
+            \ nmap <silent> <Leader>gA :Gcommit -a --amend<CR>\n
             \ nmap <silent> <Leader>gC :Gcommit<CR>\n
+            \ nmap <silent> <Leader>gp :Gpush<CR>\n
+            \ nmap <silent> <Leader>gP :Gpull<CR>\n
             \ nmap <silent> <Leader>gd :Gdiff<CR>\n
             \ nmap <silent> <Leader>gs :Gstatus<CR>\n
             \ nmap <silent> <Leader>gl :Glog<CR>\n
@@ -248,6 +272,7 @@ call dein#add('idanarye/vim-merginal')
             "\ let g:XkbSwitchILayout = 'us'\n
             "\ let g:XkbSwitchNLayout = 'us'\n
             "\  })
+call dein#add('kabbamine/zeavim.vim')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjects
@@ -314,6 +339,7 @@ function! ConfigureSandwich()
                 \	{'buns': ['<<', '>>'],               'nesting': 1, 'input': [ 'l<' ],       'filetype': ['tex', 'plaintex', 'rst'] },
                 \	{'buns': ['\{', '\}'],               'nesting': 1, 'input': [ '\{' ],       'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
                 \	{'buns': ['\[', '\]'],               'nesting': 1, 'input': [ '\[' ],       'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
+                \	{'buns': ['\(', '\)'],               'nesting': 1, 'input': [ '\(' ],       'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
                 \ ]
     let g:sandwich#recipes += [
                 \   {'buns': ['\left(',           '\right)'],           'nesting': 1, 'input': [ 'm(' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '(,)' },
@@ -700,9 +726,18 @@ call dein#add('lervag/vimtex', { 'hook_add' : "
             \ \" let g:vimtex_view_method='mupdf'\n
             \ let g:vimtex_imaps_enabled=0\n
             \ let g:vimtex_index_split_width=60\n
+            \ if exepath('nvr')!=''\n
+            \   let g:vimtex_compiler_progname='nvr'\n
+            \ endif\n
+            \ \" if exepath('pplatex')!=''\n
+            \ \"   let g:vimtex_quickfix_method='pplatex'\n
+            \ \" endif\n
             \ let g:vimtex_index_split_pos='vert botright'\n
             \ noremap <localleader>lL <plug>(vimtex-compile-ss)\n
             \ noremap <localleader>l0 :let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>\n
+            \    let g:vimtex_quickfix_latexlog = {
+            \           'default' : 0
+            \          }
             \ \" let g:neocomplete#sources#omni#input_patterns.tex =
             \             \" '\v\\%('
             \             \" . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
@@ -730,46 +765,52 @@ call dein#add('brooth/far.vim')        " :Far
 call dein#add('eugen0329/vim-esearch') " \ff
 call dein#add('tpope/vim-abolish')     " :%S////
 call dein#add('t9md/vim-quickhl', { 'hook_add' : "
-            \ nmap <leader>m <Plug>(quickhl-manual-this)\n
-            \ xmap <leader>m <Plug>(quickhl-manual-this)\n
-            \ nmap <leader>n <Plug>(quickhl-manual-reset)\n
-            \ xmap <leader>n <Plug>(quickhl-manual-reset)\n
+            \ nmap <leader>hm <Plug>(quickhl-manual-this)\n
+            \ xmap <leader>hm <Plug>(quickhl-manual-this)\n
+            \ nmap <leader>hn <Plug>(quickhl-manual-reset)\n
+            \ xmap <leader>hn <Plug>(quickhl-manual-reset)\n
             \ \n
-            \ nmap <leader>M :exe 'QuickhlManualAdd! \\<'.expand('<cword>').'\\>'<CR>\n
-            \ xmap <leader>M :exe 'QuickhlManualAdd! \\<'.expand('<cword>').'\\>'<CR>\n
-            \ nmap <leader>N :exe 'QuickhlManualDelete! \\<'.expand('<cword>').'\\>'<CR>\n
-            \ xmap <leader>N :exe 'QuickhlManualDelete! \\<'.expand('<cword>').'\\>'<CR>\n
+            \ nmap <leader>hM :exe 'QuickhlManualAdd! \\<'.expand('<cword>').'\\>'<CR>\n
+            \ xmap <leader>hM :exe 'QuickhlManualAdd! \\<'.expand('<cword>').'\\>'<CR>\n
+            \ nmap <leader>hN :exe 'QuickhlManualDelete! \\<'.expand('<cword>').'\\>'<CR>\n
+            \ xmap <leader>hN :exe 'QuickhlManualDelete! \\<'.expand('<cword>').'\\>'<CR>\n
             \ \n
             \ \"nmap <Space>j <Plug>(quickhl-cword-toggle)\n
             \ \"nmap <Space>] <Plug>(quickhl-tag-toggle)\n
-            \ map <leader>H <Plug>(operator-quickhl-manual-this-motion)\n
+            \ map <leader>hH <Plug>(operator-quickhl-manual-this-motion)\n
             \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Menus
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('vim-ctrlspace/vim-ctrlspace')
+call dein#add('vim-ctrlspace/vim-ctrlspace', { 'hook_add' : "
+            \ let g:CtrlSpaceSetDefaultMapping=1\n
+            \ let g:CtrlSpaceDefaultMappingKey='<C-Space> '
+            \ " })
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/denite.nvim', { 'depends': 'neomru.vim', 'hook_add' : "
             \ nnoremap <Leader>lb :<C-u>Denite buffer file_mru<CR>\n
             \ nnoremap <Leader>lf :<C-u>DeniteBufferDir file<CR>\n
             \ nnoremap <Leader>ln :<C-u>exe \"DeniteBufferDir -input=\".expand(\"<cfile>\").\" file:new file\"<CR>\n
             \ nnoremap <Leader>lO :<C-u>Denite -ignorecase outline<CR>\n
-            \ nnoremap <Leader>lF :<C-u>DeniteBufferDir file_rec<CR>
+            \ nnoremap <Leader>lF :<C-u>DeniteBufferDir file_rec<CR>\n
             \ nnoremap <Leader>ld :<C-u>Denite file_rec<CR>
             \ "})
 call dein#add('Shougo/unite.vim') "FIXME: deprecate
-call dein#add('lifepillar/vim-cheat40')
+call dein#add('lifepillar/vim-cheat40') " \? for cheatsheet
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tags and outline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('xolox/vim-easytags', { 'hook_add' : "
-            \ let g:easytags_file='./tags'\n
-            \ let g:easytags_ignored_filetypes=''\n
-            \ let g:easytags_on_cursorhold = 0\n
-            \ let g:easytags_auto_update = 0\n
-            \ let g:easytags_updatetime_min = 600000\n
+"call dein#add('xolox/vim-easytags', { 'hook_add' : "
+            "\ let g:easytags_file='./tags'\n
+            "\ let g:easytags_ignored_filetypes=''\n
+            "\ let g:easytags_on_cursorhold = 0\n
+            "\ let g:easytags_auto_update = 0\n
+            "\ let g:easytags_updatetime_min = 600000\n
+            "\ " })
+call dein#add('jsfaint/gen_tags.vim', { 'hook_add' : "
+            \ let g:loaded_gentags#gtags=1
             \ " })
 call dein#add('vim-scripts/VOoM', { 'hook_add' : "
             \ let g:voom_ft_modes = { 'python':'python', 'tex':'latex' }\n
@@ -819,8 +860,12 @@ call dein#add('xolox/vim-shell', { 'depends' : 'vim-misc', 'hook_add' : "
             \ nnoremap <Leader>op :Open<CR>\n
             \ nnoremap <Leader>if :Fullscreen<CR>\n
             \ " })
-call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "let g:ranger_replace_netrw = 0\n
-                                                         \ let g:NERDTreeHijackNetrw = 0"} )
+call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
+            \ let g:ranger_replace_netrw = 0\n
+            \ let g:NERDTreeHijackNetrw = 0\n
+            \ nnoremap <silent> <Leader>wf :RangerCurrentDirectory<CR>\n
+            \ nnoremap <silent> <Leader>wF :RangerWorkingDirectory<CR>\n
+            \ "} )
 call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
             \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
             \ "})
@@ -835,7 +880,10 @@ call dein#add('derekwyatt/vim-fswitch', { 'hook_add' : "
             \ nmap <silent> <Leader>aR :tab FSSplitRight<CR>\n
             \ nmap <silent> <Leader>aL :tab FSSplitLeft<CR>\n
             \ " })
-call dein#add('zenbro/mirror.vim')
+call dein#add('zenbro/mirror.vim', { 'hook_add' : "
+            \ nmap <Leader>rc :MirrorPush<CR>\n
+            \ nmap <Leader>rp :MirrorPull<CR>\n
+            \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compilation and running
@@ -861,6 +909,17 @@ call dein#add('tpope/vim-dispatch', { 'hook_add' : "
             \ " })
 
 "call dein#add('ivanov/vim-ipython', { 'hook_add' : "let g:ipy_perform_mappings=0" })
+"call dein#add('Vigemus/iron.nvim')
+call dein#add('bfredl/nvim-ipy', {'hook_add' : "
+            \ let g:nvim_ipy_perform_mappings=1\n
+            \ map <Leader>ii <Plug>(IPy-Run)\n
+            \ map <Leader>ic <Plug>(IPy-RunCell)\n
+            \ map <Leader>ia <Plug>(IPy-RunAll)\n
+            \ map <Leader>is <Plug>(IPy-Interrupt)\n
+            \ map <Leader>it <Plug>(IPy-Terminate)\n
+            \ "})
+call dein#add('kassio/neoterm')
+call dein#local("~/.vim/bundle_local", { 'depends': 'CountJump' })
 
 call dein#end()
 
