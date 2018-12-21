@@ -241,8 +241,10 @@ call dein#add('wgurecky/vimSum')
 
 " FIXME: Almost not used
 call dein#add('moll/vim-bbye', { 'hook_add' : "
-            \ nnoremap ZW :Bdelete<CR>\n
-            \ nnoremap ZX :write<CR>:Bdelete<CR>\n
+            \ nnoremap ZQ :Bdelete<CR>\n
+            \ nnoremap ZZ :write<CR>:Bdelete<CR>\n
+            \ nnoremap <Leader>ZZ ZZ\n
+            \ nnoremap <Leader>ZQ ZQ\n
             \ " })
 call dein#add('nhooyr/neoman.vim')
 call dein#add('chrisbra/unicode.vim')
@@ -909,16 +911,20 @@ call dein#add('tpope/vim-dispatch', { 'hook_add' : "
             \ " })
 
 "call dein#add('ivanov/vim-ipython', { 'hook_add' : "let g:ipy_perform_mappings=0" })
-"call dein#add('Vigemus/iron.nvim')
-call dein#add('bfredl/nvim-ipy', {'hook_add' : "
-            \ let g:nvim_ipy_perform_mappings=1\n
-            \ map <Leader>ii <Plug>(IPy-Run)\n
-            \ map <Leader>ic <Plug>(IPy-RunCell)\n
-            \ map <Leader>ia <Plug>(IPy-RunAll)\n
-            \ map <Leader>is <Plug>(IPy-Interrupt)\n
-            \ map <Leader>it <Plug>(IPy-Terminate)\n
-            \ "})
-call dein#add('kassio/neoterm')
+"call dein#add('Vigemus/iron.nvim')                         " deprecated
+"call dein#add('bfredl/nvim-ipy', {'hook_add' : "           " deprecated
+            "\ let g:nvim_ipy_perform_mappings=1\n
+            "\ map <Leader>ii <Plug>(IPy-Run)\n
+            "\ map <Leader>ic <Plug>(IPy-RunCell)\n
+            "\ map <Leader>ia <Plug>(IPy-RunAll)\n
+            "\ map <Leader>is <Plug>(IPy-Interrupt)\n
+            "\ map <Leader>it <Plug>(IPy-Terminate)\n
+            "\ "})
+call dein#add('kassio/neoterm')                     " how to use it?
+" call dein#add('williamjameshandley/vimteractive') " not working with neovim
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Local bundles
 call dein#local("~/.vim/bundle_local", { 'depends': 'CountJump' })
 
 call dein#end()
