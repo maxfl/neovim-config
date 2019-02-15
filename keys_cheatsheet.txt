@@ -15,6 +15,14 @@ Other motions:
     (i)y - pasted text (vimrc)
     a=, ax, i= - conflicts
 
+    \\w, \\e, \\.... - easy motion
+    \- - window motion
+
+Windows and splits:
+    \- - window motion
+    \ww - window mode
+    Alt+[sdf], Alt+[hjkl], Alt+[oO]
+
 Textobj-user motions
     l - line
     v - continuous line (FIXME: use)

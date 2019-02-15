@@ -1,5 +1,5 @@
 if &shell =~# 'fish$'
-  set shell=/bin/bash
+    set shell=/bin/bash
 endif
 
 set runtimepath^=~/.vim/bundle/repos/github.com/Shougo/dein.vim
@@ -41,18 +41,24 @@ call dein#add('vim-airline/vim-airline', { 'depends': 'tagbar', 'hook_add' : "
             \ let g:airline_section_z0 = '%-4b %-5(0x%B%)'\n
             \ let g:airline_section_z = '%3P %{g:airline_symbols.linenr} %3l:%3c'\n
             \ let g:airline_mode_map = {
-            \               '__' : '-',
-            \               'n'  : 'N',
-            \               'i'  : 'I',
-            \               'R'  : 'R',
-            \               'c'  : 'C',
-            \               'v'  : 'V',
-            \               'V'  : 'V',
-            \               '' : 'V',
-            \               's'  : 'S',
-            \               'S'  : 'S',
-            \               '' : 'S',
-            \               }\n
+            \     '__' : '-',
+            \     'c'  : 'C',
+            \     'i'  : 'I',
+            \     'ic' : 'I',
+            \     'ix' : 'I',
+            \     'n'  : 'N',
+            \     'ni' : 'N',
+            \     'no' : 'N',
+            \     'R'  : 'R',
+            \     'Rv' : 'R',
+            \     's'  : 'S',
+            \     'S'  : 'S',
+            \     '' : 'S',
+            \     't'  : 'T',
+            \     'v'  : 'V',
+            \     'V'  : 'V',
+            \     '' : 'V',
+            \ }\n
             \ let g:airline#extensions#default#section_truncate_width = {
             \               'b':  88,
             \               'x':  70,
@@ -79,6 +85,13 @@ call dein#add('Yggdroot/indentLine',              { 'hook_add' : "
             \ au FileType cpp,python :IndentLinesEnable\n
             \ " })
 call dein#add('nathanaelkane/vim-indent-guides',  { 'hook_add' : "nnoremap <Leader>ig :IndentGuidesToggle<CR>" }) "let g:indent_guides_color_change_percent=2
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Windows and splits
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('t9md/vim-choosewin', { 'hook_add': "nmap <leader>-  <Plug>(choosewin)" })
+call dein#add('romgrk/winteract.vim', { 'hook_add': "nmap <leader>w :InteractiveWindow<CR>" })
+call dein#add('fabi1cazenave/suckless.vim')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
@@ -121,6 +134,8 @@ call dein#add('inkarkat/vim-JumpToVerticalOccurrence', {'depends': 'vim-CountJum
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap  x   "_x
+vnoremap x   "_x
 noremap  d   "_d
 vnoremap d   "_d
 nnoremap dd "_dd
@@ -781,6 +796,27 @@ call dein#add('t9md/vim-quickhl', { 'hook_add' : "
             \ \"nmap <Space>] <Plug>(quickhl-tag-toggle)\n
             \ map <leader>hH <Plug>(operator-quickhl-manual-this-motion)\n
             \ " })
+call dein#add('qxxxb/vim-searchhi', { 'hook_add' : "
+            \ nmap / <Plug>(searchhi-/)\n
+            \ nmap ? <Plug>(searchhi-?)\n
+            \ nmap n <Plug>(searchhi-n)\n
+            \ nmap N <Plug>(searchhi-N)\n
+            \ nmap * <Plug>(searchhi-*)\n
+            \ nmap # <Plug>(searchhi-#)\n
+            \ nmap g* <Plug>(searchhi-g*)\n
+            \ nmap g# <Plug>(searchhi-g#)\n
+            \ nmap <silent> <C-L> <Plug>(searchhi-off-all)\n
+            \ 
+            \ vmap / <Plug>(searchhi-v-/)\n
+            \ vmap ? <Plug>(searchhi-v-?)\n
+            \ vmap n <Plug>(searchhi-v-n)\n
+            \ vmap N <Plug>(searchhi-v-N)\n
+            \ vmap * <Plug>(searchhi-v-*)\n
+            \ vmap # <Plug>(searchhi-v-#)\n
+            \ vmap g* <Plug>(searchhi-v-g*)\n
+            \ vmap g# <Plug>(searchhi-v-g#)\n
+            \ vmap <silent> <C-L> <Plug>(searchhi-v-off-all)\n
+            \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Menus
@@ -789,17 +825,22 @@ call dein#add('vim-ctrlspace/vim-ctrlspace', { 'hook_add' : "
             \ let g:CtrlSpaceSetDefaultMapping=1\n
             \ let g:CtrlSpaceDefaultMappingKey='<C-Space> '
             \ " })
-call dein#add('Shougo/neomru.vim')
-call dein#add('Shougo/denite.nvim', { 'depends': 'neomru.vim', 'hook_add' : "
-            \ nnoremap <Leader>lb :<C-u>Denite buffer file_mru<CR>\n
-            \ nnoremap <Leader>lf :<C-u>DeniteBufferDir file<CR>\n
-            \ nnoremap <Leader>ln :<C-u>exe \"DeniteBufferDir -input=\".expand(\"<cfile>\").\" file:new file\"<CR>\n
-            \ nnoremap <Leader>lO :<C-u>Denite -ignorecase outline<CR>\n
-            \ nnoremap <Leader>lF :<C-u>DeniteBufferDir file_rec<CR>\n
-            \ nnoremap <Leader>ld :<C-u>Denite file_rec<CR>
-            \ "})
-call dein#add('Shougo/unite.vim') "FIXME: deprecate
 call dein#add('lifepillar/vim-cheat40') " \? for cheatsheet
+call dein#add('ctrlpvim/ctrlp.vim', {'hook_add' : "
+            \ let g:ctrlp_working_path_mode='c'
+            \ "})
+
+"" Deprecate deniteunite and co?
+"call dein#add('Shougo/neomru.vim')
+"call dein#add('Shougo/denite.nvim', { 'depends': 'neomru.vim', 'hook_add' : "
+            "\ nnoremap <Leader>lb :<C-u>Denite buffer file_mru<CR>\n
+            "\ nnoremap <Leader>lf :<C-u>DeniteBufferDir file<CR>\n
+            "\ nnoremap <Leader>ln :<C-u>exe \"DeniteBufferDir -input=\".expand(\"<cfile>\").\" file:new file\"<CR>\n
+            "\ nnoremap <Leader>lO :<C-u>Denite -ignorecase outline<CR>\n
+            "\ nnoremap <Leader>lF :<C-u>DeniteBufferDir file_rec<CR>\n
+            "\ nnoremap <Leader>ld :<C-u>Denite file_rec<CR>
+            "\ "})
+"call dein#add('Shougo/unite.vim') "FIXME: deprecate
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tags and outline
@@ -888,7 +929,7 @@ call dein#add('zenbro/mirror.vim', { 'hook_add' : "
             \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Compilation and running
+" Compilation
 call dein#add('scrooloose/syntastic', { 'hook_add' : "
             \ let g:syntastic_mode_map = { 'mode': 'passive',
             \                              'active_filetypes': [],
@@ -903,12 +944,15 @@ call dein#add('scrooloose/syntastic', { 'hook_add' : "
             \ " })
 call dein#add('xuhdev/SingleCompile')
 call dein#add('wbthomason/buildit.nvim')
-call dein#add('tpope/vim-dispatch', { 'hook_add' : "
-            \ nnoremap <Leader>qm :Make<CR>\n
-            \ nnoremap <Leader>qM :Make!<CR>\n
-            \ nnoremap <Leader>qc :Copen<CR>\n
-            \ nnoremap <Leader>qC :Copen!<CR>\n
-            \ " })
+"call dein#add('tpope/vim-dispatch', { 'hook_add' : "
+            "\ nnoremap <Leader>qm :Make<CR>\n
+            "\ nnoremap <Leader>qM :Make!<CR>\n
+            "\ nnoremap <Leader>qc :Copen<CR>\n
+            "\ nnoremap <Leader>qC :Copen!<CR>\n
+            "\ " })
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Terminal and repl
 
 "call dein#add('ivanov/vim-ipython', { 'hook_add' : "let g:ipy_perform_mappings=0" })
 "call dein#add('Vigemus/iron.nvim')                         " deprecated
@@ -920,7 +964,10 @@ call dein#add('tpope/vim-dispatch', { 'hook_add' : "
             "\ map <Leader>is <Plug>(IPy-Interrupt)\n
             "\ map <Leader>it <Plug>(IPy-Terminate)\n
             "\ "})
-call dein#add('kassio/neoterm')                     " how to use it?
+call dein#add('kassio/neoterm', { 'hook_add' : "
+            \ let g:neoterm_shell = '/usr/bin/fish'\n
+            \ let g:neoterm_automap_keys = '<Leader>qm'
+            \ " })
 " call dein#add('williamjameshandley/vimteractive') " not working with neovim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -937,10 +984,10 @@ au FileType text,txt let b:match_words="“:”,‘:’,«:»,„:“"
 
 let g:ConflictMotions_TakeMappingPrefix = '<Leader>='
 
-nmap <Leader><C-O>      <Plug>EnhancedJumpsOlder
-nmap <Leader><C-I>      <Plug>EnhancedJumpsNewer
-nmap <Leader><Leader><C-O> <Plug>EnhancedJumpsLocalOlder
-nmap <Leader><Leader><C-I> <Plug>EnhancedJumpsLocalNewer
-nmap <M-o>      <Plug>EnhancedJumpsRemoteOlder
-nmap <M-i>      <Plug>EnhancedJumpsRemoteNewer
+nmap <Leader><C-O> <Plug>EnhancedJumpsOlder
+nmap <Leader><C-I> <Plug>EnhancedJumpsNewer
+nmap <C-O>         <Plug>EnhancedJumpsLocalOlder
+nmap <C-I>         <Plug>EnhancedJumpsLocalNewer
+nmap g<C-o>        <Plug>EnhancedJumpsRemoteOlder
+nmap g<C-i>        <Plug>EnhancedJumpsRemoteNewer
 let g:EnhancedJumps_CaptureJumpMessages = 0
