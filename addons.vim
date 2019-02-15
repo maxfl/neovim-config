@@ -91,7 +91,11 @@ call dein#add('nathanaelkane/vim-indent-guides',  { 'hook_add' : "nnoremap <Lead
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('t9md/vim-choosewin', { 'hook_add': "nmap <leader>-  <Plug>(choosewin)" })
 call dein#add('romgrk/winteract.vim', { 'hook_add': "nmap <leader>w :InteractiveWindow<CR>" })
-call dein#add('fabi1cazenave/suckless.vim')
+call dein#add('fabi1cazenave/suckless.vim', { 'hook_add': "
+            \ let g:suckless_tabline=0\n
+            \ nmap <M--> :tabprev<CR>\n
+            \ nmap <M-=> :tabnext<CR>\n
+            \" })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
@@ -815,7 +819,7 @@ call dein#add('qxxxb/vim-searchhi', { 'hook_add' : "
             \ vmap # <Plug>(searchhi-v-#)\n
             \ vmap g* <Plug>(searchhi-v-g*)\n
             \ vmap g# <Plug>(searchhi-v-g#)\n
-            \ vmap <silent> <C-L> <Plug>(searchhi-v-off-all)\n
+            \ \" vmap <silent> <C-L> <Plug>(searchhi-v-off-all)\n
             \ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -827,7 +831,8 @@ call dein#add('vim-ctrlspace/vim-ctrlspace', { 'hook_add' : "
             \ " })
 call dein#add('lifepillar/vim-cheat40') " \? for cheatsheet
 call dein#add('ctrlpvim/ctrlp.vim', {'hook_add' : "
-            \ let g:ctrlp_working_path_mode='c'
+            \ let g:ctrlp_working_path_mode='c'\n
+            \ let g:ctrlp_cmd='CtrlPMRUFiles'
             \ "})
 
 "" Deprecate deniteunite and co?
