@@ -25,7 +25,13 @@ call dein#add('altercation/vim-colors-solarized', { 'hook_add' : "
             \ colorscheme solarized\n
             \ \" let g:solarized_termcolors=256\n
             \ "})
-call dein#add('wincent/terminus')
+"call dein#add('blueyed/vim-diminactive', {'depends' : 'vim-colors-solarized'})
+call dein#add('tadaa/vimade', {'depends' : 'vim-colors-solarized', 'hook_add' : "
+            \ let g:vimade = {}\n
+            \ let g:vimade.fadelevel = 0.2\n
+            \ let g:vimade.usecursorhold=1\n
+            \ "})
+"call dein#add('wincent/terminus')
 call dein#add('powerman/vim-plugin-AnsiEsc')
 call dein#add('bronson/vim-trailing-whitespace', { 'hook_add' : "
             \ nnoremap <Leader>rts :FixWhitespace<CR>\n
@@ -103,6 +109,7 @@ call dein#add('fabi1cazenave/suckless.vim', { 'hook_add': "
 call dein#add('jiangmiao/auto-pairs', { 'hook_add' : "
             \ let g:AutoPairsFlyMode = 1\n
             \ let g:AutoPairsShortcutToggle=''\n
+            \ let g:AutoPairsShortcutJump=''\n
             \ noremap <Leader>( :call AutoPairsToggle()<CR>\n
             \ let g:AutoPairs = {'(':')', '[':']', '{':'}',\"'\":\"'\",'\"':'\"', '`':'`'}\n
             \ call extend( g:AutoPairs, {'“':'”', '‘' : '’', '„':'“', '«':'»'} )\n
@@ -196,16 +203,18 @@ call dein#add('sjl/gundo.vim', { 'hook_add' : "
             \ let g:gundo_width=30\n
             \ let g:gundo_right=1\n
             \ " })
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#disable_auto_complete = 0
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#auto_complete_start_length = 2
 call dein#add('tpope/vim-repeat')
 call dein#add("vim-scripts/visualrepeat")
 call dein#add('vim-scripts/ChangeGlobally') "karkat FIXME: not used
 call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
-                \ let g:deoplete#enable_at_startup = 1 \n
-                \ let g:deoplete#disable_auto_complete = 0 \n
-                \ let g:deoplete#enable_smart_case = 1 \n
-                \ let g:deoplete#auto_complete_start_length = 2 \n
-                \ inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
-                \ "})
+            \ call deoplete#custom#option('auto_refresh_delay', 200)\n
+            \ inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
+            \ "})
 call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             \ let g:multi_cursor_start_key='<C-n>'\n
             \ let g:multi_cursor_quit_key='<C-z>'\n
@@ -213,7 +222,9 @@ call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             \ \"let g:multi_cursor_exit_from_visual_mode=1\n
             \
             \ function! Multiple_cursors_before()\n
-            \     let b:deoplete_disable_auto_complete = 1\n
+            \     if dein#tap('deoplete.nvim')\n
+            \         call deoplete#custom#buffer_option('auto_complete', v:false)\n
+            \     endif\n
             \     if dein#tap('clever-f.vim')\n
             \         nunmap f\n
             \         xunmap f\n
@@ -231,7 +242,9 @@ call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             \ endfunction\n
             \
             \ function! Multiple_cursors_after()\n
-            \     let b:deoplete_disable_auto_complete = 0\n
+            \     if dein#tap('deoplete.nvim')\n
+            \         call deoplete#custom#buffer_option('auto_complete', v:true)\n
+            \     endif\n
             \     if dein#tap('clever-f.vim')\n
             \         nmap f <Plug>(clever-f-f)\n
             \         xmap f <Plug>(clever-f-f)\n
@@ -258,13 +271,13 @@ call dein#add('vim-scripts/RangeMacro')
 call dein#add('wgurecky/vimSum')
 "call dein#add('Floobits/floobits-neovim')
 
-" FIXME: Almost not used
 call dein#add('moll/vim-bbye', { 'hook_add' : "
             \ nnoremap ZQ :Bdelete<CR>\n
             \ nnoremap ZZ :write<CR>:Bdelete<CR>\n
             \ nnoremap <Leader>ZZ ZZ\n
             \ nnoremap <Leader>ZQ ZQ\n
             \ " })
+call dein#add('rbgrouleff/bclose.vim') " same as bbye, required by ranger
 call dein#add('nhooyr/neoman.vim')
 call dein#add('chrisbra/unicode.vim')
 call dein#add('thinca/vim-prettyprint')
@@ -902,18 +915,25 @@ call dein#add('vim-scripts/Rename')
 call dein#add('chrisbra/SudoEdit.vim', { 'hook_add' : "inoremap <S-F2> :SudoWrite<CR>" })
 call dein#add('ervandew/archive')
 call dein#add('xolox/vim-misc')
-call dein#add('xolox/vim-shell', { 'depends' : 'vim-misc', 'hook_add' : "
-            \ let g:shell_mappings_enabled = 0\n
-            \ let g:shell_fullscreen_items = 'mTe'\n
-            \ nnoremap <Leader>op :Open<CR>\n
-            \ nnoremap <Leader>if :Fullscreen<CR>\n
-            \ " })
+"call dein#add('xolox/vim-shell', { 'depends' : 'vim-misc', 'hook_add' : "
+            "\ let g:shell_mappings_enabled = 0\n
+            "\ let g:shell_fullscreen_items = 'mTe'\n
+            "\ nnoremap <Leader>op :Open<CR>\n
+            "\ nnoremap <Leader>if :Fullscreen<CR>\n
+            "\ " })
+call dein#add('itchyny/vim-external', {'hook_add': "
+            \ map <Leader>oe <Plug>(external-editor)\n
+            \ map <Leader>oo <Plug>(external-explorer)\n
+            \ map <Leader>ob <Plug>(external-browser)\n
+            \ "})
 call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
             \ let g:ranger_replace_netrw = 0\n
             \ let g:NERDTreeHijackNetrw = 0\n
             \ nnoremap <silent> <Leader>wf :RangerCurrentDirectory<CR>\n
             \ nnoremap <silent> <Leader>wF :RangerWorkingDirectory<CR>\n
-            \ "} )
+            \ ",
+            \ 'depends' : 'bclose.vim'
+            \} )
 call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
             \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
             \ "})
@@ -971,7 +991,9 @@ call dein#add('wbthomason/buildit.nvim')
             "\ "})
 call dein#add('kassio/neoterm', { 'hook_add' : "
             \ let g:neoterm_shell = '/usr/bin/fish'\n
-            \ let g:neoterm_automap_keys = '<Leader>qm'
+            \ let g:neoterm_automap_keys = '<Leader>qm'\n
+            \ nmap <M-t> :Tnew<CR>\n
+            \ nmap <M-T> :Tnew<CR>i\n
             \ " })
 " call dein#add('williamjameshandley/vimteractive') " not working with neovim
 
@@ -993,6 +1015,6 @@ nmap <Leader><C-O> <Plug>EnhancedJumpsOlder
 nmap <Leader><C-I> <Plug>EnhancedJumpsNewer
 nmap <C-O>         <Plug>EnhancedJumpsLocalOlder
 nmap <C-I>         <Plug>EnhancedJumpsLocalNewer
-nmap g<C-o>        <Plug>EnhancedJumpsRemoteOlder
-nmap g<C-i>        <Plug>EnhancedJumpsRemoteNewer
+nmap <M-p>         <Plug>EnhancedJumpsRemoteOlder
+nmap <M-S-p>       <Plug>EnhancedJumpsRemoteNewer
 let g:EnhancedJumps_CaptureJumpMessages = 0

@@ -1,3 +1,5 @@
+\? - help on keys
+
 Text Objects
 
 Default text objects:
@@ -52,3 +54,7 @@ Guides
     il - indent lines
     iL - indent Levels
     ip - rainbow parentheses
+
+Command line mode
+    ^r<register> - paste from register
+    ^f - extended command line mode
