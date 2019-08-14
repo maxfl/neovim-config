@@ -1,0 +1,1 @@
+SwapText-1.02.vmb.gz: call delete('/home/gonchar/.vim/bundle_local/./SwapText-1.02/autoload/SwapText.vim')|call delete('/home/gonchar/.vim/bundle_local/./SwapText-1.02/plugin/SwapText.vim')|call delete('/home/gonchar/.vim/bundle_local/./SwapText-1.02/doc/SwapText.txt')

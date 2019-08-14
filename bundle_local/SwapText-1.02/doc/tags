@@ -1,0 +1,15 @@
+<Leader>X	SwapText.txt	/*<Leader>X*
+<Leader>x	SwapText.txt	/*<Leader>x*
+<Leader>xx	SwapText.txt	/*<Leader>xx*
+SwapText-dependencies	SwapText.txt	/*SwapText-dependencies*
+SwapText-description	SwapText.txt	/*SwapText-description*
+SwapText-history	SwapText.txt	/*SwapText-history*
+SwapText-ideas	SwapText.txt	/*SwapText-ideas*
+SwapText-installation	SwapText.txt	/*SwapText-installation*
+SwapText-known-problems	SwapText.txt	/*SwapText-known-problems*
+SwapText-limitations	SwapText.txt	/*SwapText-limitations*
+SwapText-todo	SwapText.txt	/*SwapText-todo*
+SwapText-usage	SwapText.txt	/*SwapText-usage*
+SwapText.txt	SwapText.txt	/*SwapText.txt*
+SwapText.vim	SwapText.txt	/*SwapText.vim*
+v_<Leader>x	SwapText.txt	/*v_<Leader>x*

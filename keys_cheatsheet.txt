@@ -58,3 +58,13 @@ Guides
 Command line mode
     ^r<register> - paste from register
     ^f - extended command line mode
+
+User modes:
+    \mm - textmanip: >, <
+
+Commands to use:
+    :g/pattern
+    :v/pattern
+
+    :vimgrep pattern %
+    :cwin

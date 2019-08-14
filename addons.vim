@@ -25,13 +25,12 @@ call dein#add('altercation/vim-colors-solarized', { 'hook_add' : "
             \ colorscheme solarized\n
             \ \" let g:solarized_termcolors=256\n
             \ "})
-"call dein#add('blueyed/vim-diminactive', {'depends' : 'vim-colors-solarized'})
+" fade unfocused buffers
 call dein#add('tadaa/vimade', {'depends' : 'vim-colors-solarized', 'hook_add' : "
             \ let g:vimade = {}\n
             \ let g:vimade.fadelevel = 0.2\n
             \ let g:vimade.usecursorhold=1\n
             \ "})
-"call dein#add('wincent/terminus')
 call dein#add('powerman/vim-plugin-AnsiEsc')
 call dein#add('bronson/vim-trailing-whitespace', { 'hook_add' : "
             \ nnoremap <Leader>rts :FixWhitespace<CR>\n
@@ -101,6 +100,7 @@ call dein#add('fabi1cazenave/suckless.vim', { 'hook_add': "
             \ let g:suckless_tabline=0\n
             \ nmap <M--> :tabprev<CR>\n
             \ nmap <M-=> :tabnext<CR>\n
+            \ nmap <M-+> :tabnew<CR>\n
             \" })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,6 +141,18 @@ call dein#add('bkad/camelcasemotion', { 'hook_add' : "
             \ " })
 call dein#add('inkarkat/vim-JumpToVerticalBlock', {'depends': 'vim-CountJump'})
 call dein#add('inkarkat/vim-JumpToVerticalOccurrence', {'depends': 'vim-CountJump'})
+call dein#add('inkarkat/vim-EnhancedJumps', {
+            \ 'depends': 'vim-ingo-library',
+            \ 'hook_add': "
+            \ nmap <Leader><C-O> <Plug>EnhancedJumpsOlder\n
+            \ nmap <Leader><C-I> <Plug>EnhancedJumpsNewer\n
+            \ nmap <C-O>         <Plug>EnhancedJumpsLocalOlder\n
+            \ nmap <C-I>         <Plug>EnhancedJumpsLocalNewer\n
+            \ nmap <M-p>         <Plug>EnhancedJumpsRemoteOlder\n
+            \ nmap <M-S-p>       <Plug>EnhancedJumpsRemoteNewer\n
+            \ let g:EnhancedJumps_CaptureJumpMessages = 0\n
+            \ "
+            \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
@@ -222,6 +234,7 @@ call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             \ \"let g:multi_cursor_exit_from_visual_mode=1\n
             \
             \ function! Multiple_cursors_before()\n
+            \     nunmap <F2>\n
             \     if dein#tap('deoplete.nvim')\n
             \         call deoplete#custom#buffer_option('auto_complete', v:false)\n
             \     endif\n
@@ -242,6 +255,7 @@ call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             \ endfunction\n
             \
             \ function! Multiple_cursors_after()\n
+            \     nnoremap <F2> :w<CR>\n
             \     if dein#tap('deoplete.nvim')\n
             \         call deoplete#custom#buffer_option('auto_complete', v:true)\n
             \     endif\n
@@ -266,6 +280,12 @@ call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('kana/vim-submode', {'hook_add' : "
+            \ call submode#enter_with('textmanip', 'x', '', '<Leader>mm')\n
+            \ call submode#leave_with('textmanip', 'xn', '', '<Esc>')\n
+            \ call submode#map(       'textmanip', 'x', '', '>', '>>')\n
+            \ call submode#map(       'textmanip', 'x', '', '<', '<<')\n
+            \ "})
 call dein#add('vim-scripts/RelativeNumberCurrentWindow')
 call dein#add('vim-scripts/RangeMacro')
 call dein#add('wgurecky/vimSum')
@@ -704,7 +724,12 @@ call dein#add('t9md/vim-textmanip', { 'hook_add' : "
             \ xmap <C-k> <Plug>(textmanip-move-up)\n
             \ xmap <C-h> <Plug>(textmanip-move-left)\n
             \ xmap <C-l> <Plug>(textmanip-move-right)\n
-            \ " })
+            \ call submode#map(       'textmanip', 'x', 'r', 'j', '<C-j>')\n
+            \ call submode#map(       'textmanip', 'x', 'r', 'k', '<C-k>')\n
+            \ call submode#map(       'textmanip', 'x', 'r', 'h', '<C-h>')\n
+            \ call submode#map(       'textmanip', 'x', 'r', 'l', '<C-l>')\n
+            \ ",
+            \ "depends": "vim-submode" })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tables
@@ -755,6 +780,7 @@ call dein#add('chrisbra/vim-diff-enhanced')
             "\ let g:pymode_options = 0\n
             "\ let g:pymode_trim_whitespaces = 0\n
             "\ " })
+call dein#add('kalekundert/vim-coiled-snake')
 call dein#add('lervag/vimtex', { 'hook_add' : "
             \ let g:vimtex_view_method='zathura'\n
             \ \" let g:vimtex_view_method='mupdf'\n
@@ -786,11 +812,14 @@ call dein#add('lervag/vimtex', { 'hook_add' : "
             \             \" . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
             \             \" . ')'
             \ " })
+call dein#add('lervag/wiki.vim')
+call dein#add('lervag/wiki-ft.vim', { 'depends' : 'wiki.vim'})
 call dein#add('joom/latex-unicoder.vim', { 'hook_add' : "let g:unicoder_no_map=1" })
-call dein#add('aliva/vim-fish')
+call dein#add('dag/vim-fish')
 "call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,<S-Tab>'" })
 call dein#add('plasticboy/vim-markdown')
 call dein#add('JuliaEditorSupport/julia-vim')
+call dein#add('bfrg/vim-cpp-modern')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search and replace
@@ -822,8 +851,8 @@ call dein#add('qxxxb/vim-searchhi', { 'hook_add' : "
             \ nmap # <Plug>(searchhi-#)\n
             \ nmap g* <Plug>(searchhi-g*)\n
             \ nmap g# <Plug>(searchhi-g#)\n
-            \ nmap <silent> <C-L> <Plug>(searchhi-off-all)\n
-            \ 
+            \ nmap <silent> <C-L> <Plug>(searchhi-clear-all)\n
+            \
             \ vmap / <Plug>(searchhi-v-/)\n
             \ vmap ? <Plug>(searchhi-v-?)\n
             \ vmap n <Plug>(searchhi-v-n)\n
@@ -834,13 +863,16 @@ call dein#add('qxxxb/vim-searchhi', { 'hook_add' : "
             \ vmap g# <Plug>(searchhi-v-g#)\n
             \ \" vmap <silent> <C-L> <Plug>(searchhi-v-off-all)\n
             \ " })
+call dein#add('inkarkat/vim-ExtractMatches', { 'depends': 'vim-ingo-library' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Menus
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('vim-ctrlspace/vim-ctrlspace', { 'hook_add' : "
             \ let g:CtrlSpaceSetDefaultMapping=1\n
-            \ let g:CtrlSpaceDefaultMappingKey='<C-Space> '
+            \ let g:CtrlSpaceDefaultMappingKey='<C-Space> '\n
+            \ nmap <M-u>    :CtrlSpaceGoUp<CR>\n
+            \ nmap <M-S-u>  :CtrlSpaceGoDown<CR>\n
             \ " })
 call dein#add('lifepillar/vim-cheat40') " \? for cheatsheet
 call dein#add('ctrlpvim/ctrlp.vim', {'hook_add' : "
@@ -929,8 +961,8 @@ call dein#add('itchyny/vim-external', {'hook_add': "
 call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
             \ let g:ranger_replace_netrw = 0\n
             \ let g:NERDTreeHijackNetrw = 0\n
-            \ nnoremap <silent> <Leader>wf :RangerCurrentDirectory<CR>\n
-            \ nnoremap <silent> <Leader>wF :RangerWorkingDirectory<CR>\n
+            \ nnoremap <silent> <M-r> :RangerCurrentFile<CR>\n
+            \ nnoremap <silent> <M-R> :RangerWorkingDirectory<CR>\n
             \ ",
             \ 'depends' : 'bclose.vim'
             \} )
@@ -999,7 +1031,7 @@ call dein#add('kassio/neoterm', { 'hook_add' : "
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Local bundles
-call dein#local("~/.vim/bundle_local", { 'depends': 'CountJump' })
+call dein#local("~/.config/nvim/bundle_local", { 'depends': 'CountJump' })
 
 call dein#end()
 
@@ -1010,11 +1042,3 @@ call dein#end()
 au FileType text,txt let b:match_words="“:”,‘:’,«:»,„:“"
 
 let g:ConflictMotions_TakeMappingPrefix = '<Leader>='
-
-nmap <Leader><C-O> <Plug>EnhancedJumpsOlder
-nmap <Leader><C-I> <Plug>EnhancedJumpsNewer
-nmap <C-O>         <Plug>EnhancedJumpsLocalOlder
-nmap <C-I>         <Plug>EnhancedJumpsLocalNewer
-nmap <M-p>         <Plug>EnhancedJumpsRemoteOlder
-nmap <M-S-p>       <Plug>EnhancedJumpsRemoteNewer
-let g:EnhancedJumps_CaptureJumpMessages = 0

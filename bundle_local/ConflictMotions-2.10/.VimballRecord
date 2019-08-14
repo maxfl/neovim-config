@@ -1,0 +1,1 @@
+ConflictMotions-2.10.vmb.gz: call delete('/home/gonchar/.vim/bundle_local/./ConflictMotions-2.10/autoload/ConflictMotions.vim')|call delete('/home/gonchar/.vim/bundle_local/./ConflictMotions-2.10/plugin/ConflictMotions.vim')|call delete('/home/gonchar/.vim/bundle_local/./ConflictMotions-2.10/doc/ConflictMotions.txt')
