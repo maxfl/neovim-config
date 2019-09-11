@@ -178,10 +178,8 @@ call dein#add('bfredl/nvim-miniyank', {'hook_add' : "
             \ map <Leader>yl <Plug>(miniyank-toline)\n
             \ map <Leader>yb <Plug>(miniyank-toblock)\n
             \ "})
-call dein#add('vim-scripts/ReplaceWithRegister')
-call dein#add('inkarkat/vim-UnconditionalPaste', {
-            \ 'depends': ['vim-ingo-library', 'vim-repeat']
-            \ })
+call dein#add('inkarkat/vim-ReplaceWithRegister', { 'depends': ['vim-repeat', 'vim-visualrepeat'] })
+call dein#add('inkarkat/vim-UnconditionalPaste', { 'depends': ['vim-ingo-library', 'vim-repeat'] })
 
 " overridden by miniyank
 
@@ -222,8 +220,8 @@ let g:deoplete#disable_auto_complete = 0
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#auto_complete_start_length = 2
 call dein#add('tpope/vim-repeat')
-call dein#add("vim-scripts/visualrepeat")
-call dein#add('vim-scripts/ChangeGlobally') "karkat FIXME: not used
+call dein#add('inkarkat/vim-visualrepeat')
+call dein#add('inkarkat/vim-ChangeGlobally', { 'depends' : ['vim-ingo-library', 'vim-repeat', 'vim-visualrepeat'] })
 call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
             \ call deoplete#custom#option('auto_refresh_delay', 200)\n
             \ inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
@@ -288,7 +286,7 @@ call dein#add('kana/vim-submode', {'hook_add' : "
             \ call submode#map(       'textmanip', 'x', '', '<', '<<')\n
             \ "})
 call dein#add('vim-scripts/RelativeNumberCurrentWindow')
-call dein#add('vim-scripts/RangeMacro')
+call dein#add('vim-scripts/RangeMacro') " karkat
 call dein#add('wgurecky/vimSum')
 "call dein#add('Floobits/floobits-neovim')
 
@@ -909,7 +907,7 @@ call dein#add('ctrlpvim/ctrlp.vim', {'hook_add' : "
 call dein#add('jsfaint/gen_tags.vim', { 'hook_add' : "
             \ let g:loaded_gentags#gtags=1
             \ " })
-call dein#add('vim-scripts/VOoM', { 'hook_add' : "
+call dein#add('vim-voom/voom', { 'hook_add' : "
             \ let g:voom_ft_modes = { 'python':'python', 'tex':'latex' }\n
             \ let g:voom_tree_width = 60\n
             \ let g:voom_tree_placement='right'\n

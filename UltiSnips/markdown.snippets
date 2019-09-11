@@ -1,8 +1,15 @@
 snippet link "link"
-[$1]($2)$0
+[$1](${2:${VISUAL}})$0
 endsnippet
 
-snippet dbdocdb "Daya Bay DocDB link"
-[$1](http://dayabay.ihep.ac.cn/cgi-bin/DocDB/ShowDocument?docid=$1)$0
+snippet dbdb "Daya Bay DocDB link"
+[${1:${VISUAL}}](http://dayabay.ihep.ac.cn/cgi-bin/DocDB/ShowDocument?docid=$1)$0
 endsnippet
 
+snippet cbi "Checkbox item"
+* [ ]  ${1:${VISUAL}}
+endsnippet
+
+snippet cb "Checkbox"
+[ ]  ${1:${VISUAL}}
+endsnippet
