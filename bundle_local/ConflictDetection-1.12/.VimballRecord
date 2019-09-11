@@ -1,1 +1,0 @@
-ConflictDetection-1.12.vmb.gz: call delete('/home/gonchar/.vim/bundle_local/./ConflictDetection-1.12/autoload/ConflictDetection.vim')|call delete('/home/gonchar/.vim/bundle_local/./ConflictDetection-1.12/plugin/ConflictDetection.vim')|call delete('/home/gonchar/.vim/bundle_local/./ConflictDetection-1.12/doc/ConflictDetection.txt')

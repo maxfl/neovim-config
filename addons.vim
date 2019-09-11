@@ -8,7 +8,8 @@ call dein#begin( expand('~/.config/nvim/bundle/') )
 let g:dein#types#git#clone_depth = 1
 
 call dein#add('Shougo/dein.vim')
-call dein#add('haya14busa/dein-command.vim')
+call dein#add('wsdjeg/dein-ui.vim', {'depends': 'dein.vim' })
+call dein#add('haya14busa/dein-command.vim', {'depends': 'dein.vim' })
 
 call dein#add('tpope/vim-sensible')
 
@@ -230,8 +231,8 @@ call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
 call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             \ let g:multi_cursor_start_key='<C-n>'\n
             \ let g:multi_cursor_quit_key='<C-z>'\n
-            \ \"let g:multi_cursor_exit_from_insert_mode=1\n
-            \ \"let g:multi_cursor_exit_from_visual_mode=1\n
+            \ let g:multi_cursor_exit_from_insert_mode=1\n
+            \ let g:multi_cursor_exit_from_visual_mode=1\n
             \
             \ function! Multiple_cursors_before()\n
             \     nunmap <F2>\n
@@ -326,7 +327,8 @@ call dein#add('idanarye/vim-merginal')
             "\ let g:XkbSwitchILayout = 'us'\n
             "\ let g:XkbSwitchNLayout = 'us'\n
             "\  })
-call dein#add('kabbamine/zeavim.vim')
+call dein#add('kabbamine/zeavim.vim') "call zeal
+call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjects
