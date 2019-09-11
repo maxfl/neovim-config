@@ -1,0 +1,66 @@
+
+global !p
+import vim
+
+try:
+    rst_char_len = vim.strwidth  #  RequiresVim 7.3+
+except AttributeError:
+    from unicodedata import east_asian_width
+    def rst_char_len(s):
+        """Return the required over-/underline length for s."""
+        result = 0
+        for c in s:
+            result += 2 if east_asian_width(c) in ('W', 'F') else 1
+        return result
+
+endglobal
+
+snippet inputfile
+.. literalinclude:: ${1:../../../}
+    :linenos:
+    :lines: ${2:1-}${3:
+    :emphasize-lines: ${4:1}}
+    :caption: :download:\``!p snip.rv=t[1].split('/')[-1]` <$1>\`
+endsnippet
+
+snippet spara "Subparagraph" b
+${1:${VISUAL:Paragraph name}}
+`!p snip.rv = rst_char_len(t[1])*"'"`
+
+$0
+endsnippet
+
+snippet sspara "Subsubparagraph" b
+${1:${VISUAL:Paragraph name}}
+`!p snip.rv = rst_char_len(t[1])*"+"`
+
+$0
+endsnippet
+
+snippet lqd "quoted literal and M-dash"
+\`\`'$1'\`\` — $0
+endsnippet
+
+snippet `` "interpreted"
+\`\`${VISUAL}$1\`\`$0
+endsnippet
+
+snippet math "inline math"
+:math:\`$1\`$0
+endsnippet
+
+snippet Math "math block"
+.. math::
+   $0
+endsnippet
+
+snippet Ro "role"
+:${1}:\`$2\`$0
+endsnippet
+
+snippet Dir "directive with block"
+.. ${1}::
+
+   $0
+endsnippet
+

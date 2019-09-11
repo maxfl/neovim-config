@@ -819,7 +819,9 @@ call dein#add('lervag/wiki-ft.vim', { 'depends' : 'wiki.vim'})
 call dein#add('joom/latex-unicoder.vim', { 'hook_add' : "let g:unicoder_no_map=1" })
 call dein#add('dag/vim-fish')
 "call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,<S-Tab>'" })
-call dein#add('plasticboy/vim-markdown')
+call dein#add('plasticboy/vim-markdown', { 'hook_add' : "
+            \ au BufRead,BufEnter /tmp/qutebrowser-editor-* set ft=markdown spell
+            \ " })
 call dein#add('JuliaEditorSupport/julia-vim')
 call dein#add('bfrg/vim-cpp-modern')
 
@@ -968,6 +970,7 @@ call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
             \ ",
             \ 'depends' : 'bclose.vim'
             \} )
+call dein#add('ipod825/vim-netranger')
 call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
             \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
             \ "})

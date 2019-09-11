@@ -1,0 +1,329 @@
+snippet %! "main file" b
+%! TEX root = ${1:talk.tex}$0
+endsnippet
+
+snippet verb "verbatim macro"
+\verb${1:+}${0:text}$1
+endsnippet
+
+snippet env "begin{} / end{}" b
+\begin{${1:something}}${4:[$5]}${2:{$3}}
+	${0:${VISUAL}}
+\end{$1}
+endsnippet
+
+snippet rotate "\rotatebox"
+\rotatebox{${1:90}}{${2}${VISUAL}}$0
+endsnippet
+
+snippet link "\href"
+\href{$1}{${VISUAL}}$0
+endsnippet
+
+snippet multirow "Multirow"
+\multirow{${1:2}}{${2:*}}{${3:${VISUAL}}}$0
+endsnippet
+
+snippet multicol "Multicolumn"
+\multicolumn{${1:2}}{${2:c}}{${3:${VISUAL}}}$0
+endsnippet
+
+snippet ,, "quotes"
+,,${VISUAL}$1\`\`$0
+endsnippet
+
+snippet \( "inline math"
+\(${VISUAL}$1\)$0
+endsnippet
+
+snippet \[ "display math"
+\[${VISUAL}$1\]$0
+endsnippet
+
+snippet NOYO "disable ё"
+\catcode`\ё=13\relax\defё{е}
+endsnippet
+
+snippet pdf "includepdf"
+\includepdf${1:[pages=${2:1}]}{$3}$0
+endsnippet
+
+snippet rbox "resizebox"
+\resizebox{${1:\linewidth}}{!}{$0}
+endsnippet
+
+snippet sirange "SI range"
+\SIrange{$1}{$2}{$3}
+endsnippet
+
+snippet si "a number with SI unit"
+\SI{$1}{$2}
+endsnippet
+
+snippet cmd2 "command with two arguments"
+\\$1{$2}{$3}$0
+endsnippet
+
+snippet cmd01 "command with two arguments"
+\\$1[$2]{$3}$0
+endsnippet
+
+snippet newglos "new glossary entry"
+\newglossaryentry{${1:key}}{name={${2:name}},description={${3:description}}}$0
+endsnippet
+
+snippet sbox "resizebox"
+\scalebox{${1:1.0}}{$0}
+endsnippet
+
+snippet clfile "callableframe in a file" b
+%! TEX root = ${1:talk}.tex
+
+\callableframe[label=current]{\\${2:FCmd}}{%
+  \frametitle{$3}
+  $0
+}
+endsnippet
+
+snippet acro "acronym"
+\\glsform${1:[glsgen]}{$2}$0
+endsnippet
+
+snippet ref "reference" i
+~\\${1:labelc}ref{${2:fig:}}$0
+endsnippet
+
+snippet cite "cite" i
+~\cite{$1}$0
+endsnippet
+
+snippet subfig "Figure environment" b
+\begin{subfigure}{${2:${3:0.5}\linewidth}}
+	\includegraphics[width=$4\linewidth]{${5:name.ext}}
+	\caption{${5/(\w+)\.\w+/\u$1/}$0}
+	\label{fig:${5/(\w+)\.\w+/$1/}}
+\end{subfigure}%
+endsnippet
+
+snippet fig2 "Figure environment with two subfigures" b
+\begin{figure}[${1:htpb}]
+	\centering
+	\begin{subfigure}{0.5\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{${2:name.ext}}
+		\caption{}
+		%\label{fig:${4}}
+	\end{subfigure}%
+	\begin{subfigure}{0.5\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{${3:name.ext}}
+		\caption{}
+		%\label{fig:${5}}
+	\end{subfigure}%
+	\caption{$0}
+	\label{fig:$6}
+\end{figure}
+endsnippet
+
+snippet fig3 "Figure environment with two subfigures" b
+\begin{figure}[${1:htpb}]
+	\centering
+	\begin{subfigure}{0.333\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{${2:name.ext}}
+		\caption{}
+		%\label{fig:${5}}
+	\end{subfigure}%
+	\begin{subfigure}{0.333\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{${3:name.ext}}
+		\caption{}
+		%\label{fig:${6}}
+	\end{subfigure}%
+	\begin{subfigure}{0.333\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{${4:name.ext}}
+		\caption{}
+		%\label{fig:${6}}
+	\end{subfigure}%
+	\caption{$0}
+	\label{fig:$7}
+\end{figure}
+endsnippet
+
+snippet subfile "Subfile documentclass" !b
+\documentclass[$1.tex]{subfiles}
+
+\begin{document}
+${VISUAL}
+$0
+\end{document}
+endsnippet
+
+snippet '\\(big|Big|)left(\(|\\\{|\[|\\langle)' "\leftX \rightX" r
+\\`!p snip.rv=match.group(1)`left`!p snip.rv=match.group(2)` $1 \\`!p snip.rv=match.group(1)`right`!p snip.rv={ '(':'', '[' : '', r'\{' : r'\}', r'\langle' : r'\rangle' }[ match.group(2) ]`
+endsnippet
+
+#snippet "\\begin{([a-zA-Z0-9*]+)}(.*)" "begin{} / end{}" br
+#\begin{`!p snip.rv=match.group(1)`}`!p snip.rv=match.group(2)`
+	#${0:${VISUAL}}
+#\end{`!p snip.rv=match.group(1)`}
+#endsnippet
+
+snippet boox "Onyx boox screen size" b
+\newcommand{\vmargin}{2mm}
+\newcommand{\hmargin}{2mm}
+\newcommand{\phsize}{3.6in}
+\newcommand{\pvsize}{4.8in}
+\usepackage[paperwidth=\phsize,paperheight=\pvsize,bottom=\vmargin,top=\vmargin,left=\hmargin,right=\hmargin]{geometry}
+endsnippet
+
+snippet paper "documentclass paper" b
+\documentclass[10pt,a4paper]{${1:article}}
+
+\usepackage[rus]{maxfl-loc}
+
+\usepackage[
+  a4paper, includefoot, %showframe,
+  %twoside, %% for two-sided printing
+  left=3cm, right=1cm,
+  top=2cm, bottom=2cm,
+  headsep=1cm, footskip=1cm
+]{geometry}
+\usepackage[obeyFinal,colorinlistoftodos,textsize=footnotesize,textwidth=2.5cm]{todonotes}
+\reversemarginpar
+\setlength{\marginparwidth}{2.5cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Structure/navigation
+%
+\usepackage[unicode,hidelinks]{hyperref}
+\usepackage{comment}
+\usepackage{etoolbox}
+\usepackage{xparse}
+\usepackage{subfiles}
+\usepackage[inline]{enumitem}
+\usepackage[russian,noabbrev]{cleveref}
+
+\usepackage[intlimits,sumlimits]{amsmath}
+\usepackage[separate-uncertainty=true,multi-part-units=single,detect-mode=true]{siunitx}
+\usepackage{siunitx-rus}
+
+\usepackage{graphicx}
+\usepackage[compatibility=false]{caption}
+\usepackage{subcaption}
+\captionsetup{subrefformat=parens}
+
+\title{${3:title}}
+\author{${3:Maxim Gonchar}}
+\date{${4:\today}}
+
+\begin{document}
+\maketitle
+$0  
+\end{document}
+endsnippet
+
+snippet frame "Beamer frame" 
+\begin{frame}[label=${3:current}]${1:{${2:Frame title}}}
+  $0
+\end{frame}
+endsnippet
+
+snippet columns "Beamer columns"
+\begin{columns}
+  \begin{column}{${1:${2:0.50}\linewidth}}
+    ${VISUAL}$0
+  \end{column}
+
+  \begin{column}{${3:${4:0.50}\linewidth}}
+
+  \end{column}
+\end{columns}
+endsnippet
+
+snippet column "Beamer column"
+\begin{column}{${1:${2:0.50}\linewidth}}
+	$0
+\end{column}
+endsnippet
+
+snippet Begin "Begin environment"
+\begin{${1:enumerate}}$2
+  $0
+\end{$1}
+endsnippet
+
+snippet graph "Include graphics" i
+\includegraphics[${1:${2:width}=${3:${4:0.9}\linewidth}}]{${5:img/image}}
+endsnippet
+
+#snippet "fig(ure)?" "Include graphics" r
+#\begin{figure}${1:[ht]}
+	#\centering
+	#\includegraphics[${2:${3:width}=${4:${5:0.9}\linewidth}}]{${6:img/image}}
+	#\caption{${7:caption}}
+	#\label{fig:${8:label}}
+#\end{figure}
+#endsnippet
+
+snippet "head(erbox)?" "baposter headerbox command" r
+\\headerbox\{${1:Title}\}\{name=${2:name},column=${3:1}${4:,below=${5:upper}},span=${6:1}\}\{%
+  $0
+\}
+endsnippet
+
+snippet beamer "Initialize beamer presentation" b
+\documentclass{beamer}
+\mode<presentation>
+
+\usepackage[${1:T1}]{fontenc}
+\usepackage[${2:utf8}]{inputenc}
+\usepackage[${3:english}]{babel}
+
+\usetheme{Boadilla}
+\useoutertheme{split}
+
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{caption}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{itemize item}{---}
+%\setbeamertemplate{enumerate items}[square]
+%\setbeamertemplate{enumerate item}[\insertenumlabel]
+\setbeamertemplate{enumerate item}[1.]
+
+\begin{document}
+\title{${4:title}}
+\author${6:[Maxim Gonchar]}{${5:Maxim Gonchar}}
+\institute${8:[ЛЯП]}{${7:Лаборатория Ядерных Проблем, ОИЯИ}}
+
+\frame[plain]{\titlepage}
+
+\begin{frame}${9:{${10:Frame title}}}
+  $0
+\end{frame}
+  
+\end{document}
+endsnippet
+
+snippet "r(eport)?" "Initialize report" br
+\documentclass{report}
+
+\usepackage[${1:T1}]{fontenc}
+\usepackage[${2:utf8}]{inputenc}
+\usepackage[${3:english}]{babel}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\begin{document}
+\title{${4:title}}
+\author${6:[Maxim Gonchar]}{${5:Maxim Gonchar}}
+\institute${8:[ЛЯП]}{${7:Лаборатория Ядерных Проблем, ОИЯИ}}
+
+\maketitle
+
+\end{document}
+endsnippet
+

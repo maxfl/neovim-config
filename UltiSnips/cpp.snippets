@@ -1,0 +1,97 @@
+clearsnippets cl
+
+snippet "runtime(_error)?" "throw runtime error" r
+throw std::runtime_error("$0");
+endsnippet
+
+snippet "cl(ass)?" "class .. (class)" !r
+class ${1:`!p snip.rv = snip.basename or "name"`}${2: : public ${3:TNamed}}${4}
+{
+public:
+	${1/(\w+).*/$1/}(${5});
+	virtual ~${1/(\w+).*/$1/}();
+
+private:
+	${0:/* data */}
+};
+endsnippet
+
+snippet for "for( auto )" !
+for(auto${2} ${1:var}: ${3:iterable}){
+    ${4:$1->}$0
+}
+endsnippet
+
+snippet method "Class method definition" !b
+${3:void} ${4:`!p snip.rv = snip.basename or "class"`}::${1:`!p snip.rv = snip.basename or "method"`}(${2}){
+    ${0:/* code */}
+}
+endsnippet
+
+snippet getset "Get and set methods"
+${1:double} get${2:Variable}()      { return m_$2; }
+void set$2($1 ${3:value}) { m_$2 = $3; }
+endsnippet
+
+snippet get "Get method"
+${1:double} get${2:Variable}()      { return m_$2; }
+endsnippet
+
+snippet set "Set method"
+void set${1:Value}(${2:double} ${3:value}) { m_$1 = $3; }
+endsnippet
+
+snippet Getset "Get and set methods"
+${1:double} Get${2:Variable}()      { return m_$2; }
+void Set$2($1 ${3:value}) { m_$2 = $3; }
+endsnippet
+
+snippet Get "Get method"
+${1:double} Get${2:Variable}()      { return m_$2; }
+endsnippet
+
+snippet Set "Set method"
+void Set${1:Value}(${2:double} ${3:value}) { m_$1 = $3; }
+endsnippet
+
+snippet "constr(uctor)?" "Class constructor/destructor definition" br
+${2:`!p snip.rv = snip.basename or "class"`}::${3}$2(${1})${4}{
+    ${0:/* code */}
+}
+endsnippet
+
+snippet cldef "ROOT: ClassDef" 
+ClassDef( ${1:`!p snip.rv = snip.basename or "name"`}, ${2:1} );$0
+endsnippet
+
+snippet Streamer "ROOT: Streamer implementation" b
+void ${1:`!p snip.rv = snip.basename or "name"`}::Streamer( TBuffer &R__b ){
+    if ( R__b.IsReading() ) {
+        $1::Class()->ReadBuffer(R__b, this);$0
+    } else {
+        $1::Class()->WriteBuffer(R__b, this);
+    }
+}
+endsnippet
+
+snippet /** "Doxygen comment for the method or function"
+/**
+ * @brief ${1}
+ *
+ * ${2}
+ *
+ * @param ${3}
+ * @return ${4}
+ */
+endsnippet
+
+snippet /**c "Doxygen comment for the class"
+/**
+ * @brief ${1}
+ *
+ * ${2}
+ *
+ * @author ${3:Maxim Gonchar}
+ * @date ${4}
+ */
+endsnippet
