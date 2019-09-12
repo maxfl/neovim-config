@@ -222,6 +222,10 @@ let g:deoplete#auto_complete_start_length = 2
 call dein#add('tpope/vim-repeat')
 call dein#add('inkarkat/vim-visualrepeat')
 call dein#add('inkarkat/vim-ChangeGlobally', { 'depends' : ['vim-ingo-library', 'vim-repeat', 'vim-visualrepeat'] })
+call dein#add('AndrewRadev/multichange.vim', { 'hook_add' : "
+            \ let g:multichange_mapping = '<Leader><c-n>'\n
+            \ let g:multichange_motion_mapping = '<c-n>'
+            \ " })
 call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
             \ call deoplete#custom#option('auto_refresh_delay', 200)\n
             \ inoremap <expr><C-X><C-X> deoplete#manual_complete() \n

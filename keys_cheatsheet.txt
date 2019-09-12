@@ -1,48 +1,47 @@
 \? - help on keys
 
 Text Objects
+    Default text objects:
+        w - word
+        W - word (all characters)
+        s - sentence
+        p - paragraph
+        (), {}, [], '', "", <>, ``
+        b - () block
+        B - {} block
+        t - tag block
 
-Default text objects:
-    w - word
-    W - word (all characters)
-    s - sentence
-    p - paragraph
-    (), {}, [], '', "", <>, ``
-    b - () block
-    B - {} block
-    t - tag block
+    Other motions:
+        ,w ,b ,e - camel case motions (camelcasemotion)
+        (i)y - pasted text (vimrc)
+        a=, ax, i= - conflicts
 
-Other motions:
-    ,w ,b ,e - camel case motions (camelcasemotion)
-    (i)y - pasted text (vimrc)
-    a=, ax, i= - conflicts
+        \\w, \\e, \\.... - easy motion
+        \- - window motion
 
-    \\w, \\e, \\.... - easy motion
-    \- - window motion
+    Windows and splits:
+        \- - window motion
+        \ww - window mode
+        Alt+[sdf], Alt+[hjkl], Alt+[oO]
 
-Windows and splits:
-    \- - window motion
-    \ww - window mode
-    Alt+[sdf], Alt+[hjkl], Alt+[oO]
-
-Textobj-user motions
-    l - line
-    v - continuous line (FIXME: use)
-    c - comment
-    C - comment
-    E - entire
-    i - indent, I - indent
-    , - parameter (disabled)
-    . - parameter
-    f - function, ]pf, [pf
-    c - class, ]pc, [pc
-    F - python function
-    P - python class
-    @ - function call (FIXME: use)
-    u - url
-    o - indblock, O - indblock (FIXME: use)
-    da, dd, df, dt, dz - datetime: auto, date, full, time, tz (FIXME: use)
-    _<char> - between characters
+    Textobj-user motions
+        l - line
+        v - continuous line (FIXME: use)
+        c - comment
+        C - comment
+        E - entire
+        i - indent, I - indent
+        , - parameter (disabled)
+        . - parameter
+        f - function, ]pf, [pf
+        c - class, ]pc, [pc
+        F - python function
+        P - python class
+        @ - function call (FIXME: use)
+        u - url
+        o - indblock, O - indblock (FIXME: use)
+        da, dd, df, dt, dz - datetime: auto, date, full, time, tz (FIXME: use)
+        _<char> - between characters
 
 Miniyank
     p/P
@@ -61,6 +60,13 @@ Command line mode
 
 User modes:
     \mm - textmanip: >, <
+
+Changes:
+    gn     - text object of last change
+    cgn    - repeat last change
+    \<C-n><motion> - start multichange mode
+    \<C-n><C-n>    - start multichange mode on entire buffer
+    \/             - search for the last motion (non-magic mode)
 
 Commands to use:
     :g/pattern

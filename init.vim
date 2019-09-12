@@ -1,16 +1,20 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vim/vimrc
 
-imap <M-Space> <Space><Space><Left>
-imap <S-Space> <Space><Space><Left>
-imap <M-BS> <Del><BS>
-
 " Toggle paste mode
-noremap  \tp :set paste!<CR>
+noremap                                         \tp :set paste!<CR>
 set pastetoggle=<F4>
 
+" make space before and after
+inoremap                                        <M-Space> <Space><Space><Left>
+" make space before and after
+inoremap                                        <S-Space> <Space><Space><Left>
+" remove symbol before and after
+inoremap                                        <M-BS> <BS><Del>
 
+" search for the visually selected text
+vnoremap                                        <Leader>/ y/<C-R>"<CR>\M
+" search for previous visuall selected text
+nnoremap                                        <Leader>/  gvy/<C-R>"<CR>\M
 
 source ~/.config/nvim/addons.vim
-
