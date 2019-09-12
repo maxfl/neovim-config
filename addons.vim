@@ -816,7 +816,9 @@ call dein#add('lervag/vimtex', { 'hook_add' : "
             \             \" . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
             \             \" . ')'
             \ " })
-call dein#add('lervag/wiki.vim')
+call dein#add('lervag/wiki.vim', { 'hook_add' : "
+            \ let g:wiki_mappings_use_defaults=0
+            \ " })
 call dein#add('lervag/wiki-ft.vim', { 'depends' : 'wiki.vim'})
 call dein#add('joom/latex-unicoder.vim', { 'hook_add' : "let g:unicoder_no_map=1" })
 call dein#add('dag/vim-fish')

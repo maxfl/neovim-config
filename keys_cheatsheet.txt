@@ -11,37 +11,37 @@ Text Objects
         B - {} block
         t - tag block
 
-    Other motions:
-        ,w ,b ,e - camel case motions (camelcasemotion)
-        (i)y - pasted text (vimrc)
-        a=, ax, i= - conflicts
+Textobj-user motions
+    l - line
+    v - continuous line (FIXME: use)
+    c - comment
+    C - comment
+    E - entire
+    i - indent, I - indent
+    , - parameter (disabled)
+    . - parameter
+    f - function, ]pf, [pf
+    c - class, ]pc, [pc
+    F - python function
+    P - python class
+    @ - function call (FIXME: use)
+    u - url
+    o - indblock, O - indblock (FIXME: use)
+    da, dd, df, dt, dz - datetime: auto, date, full, time, tz (FIXME: use)
+    _<char> - between characters
 
-        \\w, \\e, \\.... - easy motion
-        \- - window motion
+Other motions:
+    ,w ,b ,e - camel case motions (camelcasemotion)
+    (i)y - pasted text (vimrc)
+    a=, ax, i= - conflicts
 
-    Windows and splits:
-        \- - window motion
-        \ww - window mode
-        Alt+[sdf], Alt+[hjkl], Alt+[oO]
+    \\w, \\e, \\.... - easy motion
+    \- - window motion
 
-    Textobj-user motions
-        l - line
-        v - continuous line (FIXME: use)
-        c - comment
-        C - comment
-        E - entire
-        i - indent, I - indent
-        , - parameter (disabled)
-        . - parameter
-        f - function, ]pf, [pf
-        c - class, ]pc, [pc
-        F - python function
-        P - python class
-        @ - function call (FIXME: use)
-        u - url
-        o - indblock, O - indblock (FIXME: use)
-        da, dd, df, dt, dz - datetime: auto, date, full, time, tz (FIXME: use)
-        _<char> - between characters
+Windows and splits:
+    \- - window motion
+    \ww - window mode
+    Alt+[sdf], Alt+[hjkl], Alt+[oO] - splits
 
 Miniyank
     p/P
