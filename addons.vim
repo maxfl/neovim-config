@@ -230,61 +230,65 @@ call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
             \ call deoplete#custom#option('auto_refresh_delay', 200)\n
             \ inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
             \ "})
-call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
-            \ let g:multi_cursor_start_key='<C-n>'\n
-            \ let g:multi_cursor_quit_key='<C-z>'\n
-            \ let g:multi_cursor_exit_from_insert_mode=1\n
-            \ let g:multi_cursor_exit_from_visual_mode=1\n
-            \
-            \ function! Multiple_cursors_before()\n
-            \     nunmap <F2>\n
-            \     if dein#tap('deoplete.nvim')\n
-            \         call deoplete#custom#buffer_option('auto_complete', v:false)\n
-            \     endif\n
-            \     if dein#tap('clever-f.vim')\n
-            \         nunmap f\n
-            \         xunmap f\n
-            \         ounmap f\n
-            \         nunmap F\n
-            \         xunmap F\n
-            \         ounmap F\n
-            \         nunmap t\n
-            \         xunmap t\n
-            \         ounmap t\n
-            \         nunmap T\n
-            \         xunmap T\n
-            \         ounmap T\n
-            \     endif\n
-            \ endfunction\n
-            \
-            \ function! Multiple_cursors_after()\n
-            \     nnoremap <F2> :w<CR>\n
-            \     if dein#tap('deoplete.nvim')\n
-            \         call deoplete#custom#buffer_option('auto_complete', v:true)\n
-            \     endif\n
-            \     if dein#tap('clever-f.vim')\n
-            \         nmap f <Plug>(clever-f-f)\n
-            \         xmap f <Plug>(clever-f-f)\n
-            \         omap f <Plug>(clever-f-f)\n
-            \         nmap F <Plug>(clever-f-F)\n
-            \         xmap F <Plug>(clever-f-F)\n
-            \         omap F <Plug>(clever-f-F)\n
-            \         nmap t <Plug>(clever-f-t)\n
-            \         xmap t <Plug>(clever-f-t)\n
-            \         omap t <Plug>(clever-f-t)\n
-            \         nmap T <Plug>(clever-f-T)\n
-            \         xmap T <Plug>(clever-f-T)\n
-            \         omap T <Plug>(clever-f-T)\n
-            \     endif\n
-            \ endfunction\n
-            \ " })
+
+"call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
+            "\ let g:multi_cursor_start_key='<C-n>'\n
+            "\ let g:multi_cursor_quit_key='<C-z>'\n
+            "\ let g:multi_cursor_exit_from_insert_mode=1\n
+            "\ let g:multi_cursor_exit_from_visual_mode=1\n
+            "\
+            "\ function! Multiple_cursors_before()\n
+            "\     nunmap <F2>\n
+            "\     if dein#tap('deoplete.nvim')\n
+            "\         call deoplete#custom#buffer_option('auto_complete', v:false)\n
+            "\     endif\n
+            "\     if dein#tap('clever-f.vim')\n
+            "\         nunmap f\n
+            "\         xunmap f\n
+            "\         ounmap f\n
+            "\         nunmap F\n
+            "\         xunmap F\n
+            "\         ounmap F\n
+            "\         nunmap t\n
+            "\         xunmap t\n
+            "\         ounmap t\n
+            "\         nunmap T\n
+            "\         xunmap T\n
+            "\         ounmap T\n
+            "\     endif\n
+            "\ endfunction\n
+            "\
+            "\ function! Multiple_cursors_after()\n
+            "\     nnoremap <F2> :w<CR>\n
+            "\     if dein#tap('deoplete.nvim')\n
+            "\         call deoplete#custom#buffer_option('auto_complete', v:true)\n
+            "\     endif\n
+            "\     if dein#tap('clever-f.vim')\n
+            "\         nmap f <Plug>(clever-f-f)\n
+            "\         xmap f <Plug>(clever-f-f)\n
+            "\         omap f <Plug>(clever-f-f)\n
+            "\         nmap F <Plug>(clever-f-F)\n
+            "\         xmap F <Plug>(clever-f-F)\n
+            "\         omap F <Plug>(clever-f-F)\n
+            "\         nmap t <Plug>(clever-f-t)\n
+            "\         xmap t <Plug>(clever-f-t)\n
+            "\         omap t <Plug>(clever-f-t)\n
+            "\         nmap T <Plug>(clever-f-T)\n
+            "\         xmap T <Plug>(clever-f-T)\n
+            "\         omap T <Plug>(clever-f-T)\n
+            "\     endif\n
+            "\ endfunction\n
+            "\ " })
+call dein#add('mg979/vim-visual-multi', {'hook_add' : "
+            \ let g:VM_leader='<Leader>m'
+            \ "})
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('kana/vim-submode', {'hook_add' : "
-            \ call submode#enter_with('textmanip', 'x', '', '<Leader>mm')\n
+            \ call submode#enter_with('textmanip', 'x', '', '<Leader>Mm')\n
             \ call submode#leave_with('textmanip', 'xn', '', '<Esc>')\n
             \ call submode#map(       'textmanip', 'x', '', '>', '>>')\n
             \ call submode#map(       'textmanip', 'x', '', '<', '<<')\n
@@ -974,7 +978,9 @@ call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
             \ ",
             \ 'depends' : 'bclose.vim'
             \} )
-call dein#add('ipod825/vim-netranger')
+call dein#add('ipod825/vim-netranger', { 'hook_add' : "
+            \ let g:NETRDefaultMapSkip = ['<cr>']
+            \ " })
 call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
             \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
             \ "})

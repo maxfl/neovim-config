@@ -13,11 +13,11 @@ inoremap                                        <S-Space> <Space><Space><Left>
 inoremap                                        <M-BS> <BS><Del>
 
 " search for the visually selected text
-vnoremap                                        <Leader>/ y/<C-R>"<CR>\V
+vnoremap                                        <Leader>/ y/<C-R>"\V<CR>
 " search for previous visually selected text
-nnoremap                                        <Leader>#  gvy/<C-R>"<CR>\V
-" seach previously changed text (small change)
-nnoremap                                        <Leader>/  /<C-R>-<CR>\V
+nnoremap                                        <Leader>#  gvy/<C-R>"\V<CR>
+" search previously changed text (small change)
+nnoremap                                        <Leader>/  /<C-R>-\V<CR>
 
 " SourceRange
 noremap                                         <Leader>S :SourceRange<CR>
