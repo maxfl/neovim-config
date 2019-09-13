@@ -13,11 +13,13 @@ inoremap                                        <S-Space> <Space><Space><Left>
 inoremap                                        <M-BS> <BS><Del>
 
 " search for the visually selected text
-vnoremap                                        <Leader>/ y/<C-R>"<CR>\M
-" search for previous visuall selected text
-nnoremap                                        <Leader>/  gvy/<C-R>"<CR>\M
+vnoremap                                        <Leader>/ y/<C-R>"<CR>\V
+" search for previous visually selected text
+nnoremap                                        <Leader>#  gvy/<C-R>"<CR>\V
+" seach previously changed text (small change)
+nnoremap                                        <Leader>/  /<C-R>-<CR>\V
 
 " SourceRange
-vnoremap <Leader>S :SourceRange<CR>
+noremap                                         <Leader>S :SourceRange<CR>
 
 source ~/.config/nvim/addons.vim
