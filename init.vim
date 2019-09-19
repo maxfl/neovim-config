@@ -1,6 +1,8 @@
 let &packpath = &runtimepath
 source ~/.vim/vimrc
 
+set splitbelow splitright
+
 " Toggle paste mode
 noremap                                         \tp :set paste!<CR>
 set pastetoggle=<F4>

@@ -92,6 +92,11 @@ call dein#add('Yggdroot/indentLine',              { 'hook_add' : "
             \ " })
 call dein#add('nathanaelkane/vim-indent-guides',  { 'hook_add' : "nnoremap <Leader>ig :IndentGuidesToggle<CR>" }) "let g:indent_guides_color_change_percent=2
 
+call dein#add('ncm2/float-preview.nvim', {'hook_add' : "
+            \ let g:float_preview#docked=1\n
+            \ set completeopt+=preview\n
+            \ "})
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -229,7 +234,8 @@ call dein#add('AndrewRadev/multichange.vim', { 'hook_add' : "
 call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
             \ call deoplete#custom#option('auto_refresh_delay', 200)\n
             \ inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
-            \ "})
+            \ ",
+            \ 'depends' : 'float-preview.nvim'})
 
 "call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
             "\ let g:multi_cursor_start_key='<C-n>'\n
@@ -306,7 +312,6 @@ call dein#add('moll/vim-bbye', { 'hook_add' : "
             \ " })
 call dein#add('rbgrouleff/bclose.vim') " same as bbye, required by ranger
 call dein#add('nhooyr/neoman.vim')
-call dein#add('chrisbra/unicode.vim')
 call dein#add('thinca/vim-prettyprint')
 call dein#add('romgrk/pp.vim')
 call dein#add('ciaranm/detectindent', {'hook_add' : "
@@ -335,6 +340,9 @@ call dein#add('idanarye/vim-merginal')
             "\  })
 call dein#add('kabbamine/zeavim.vim') "call zeal
 call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git')
+
+call dein#add('chrisbra/unicode.vim')
+call dein#add('Konfekt/vim-unicode-homoglyphs', {'hood_add': "let g:is_homoglyph_on=0"})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjects
