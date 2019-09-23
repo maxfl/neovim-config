@@ -171,6 +171,7 @@ nnoremap dd "_dd
 noremap  m     d
 vnoremap m     d
 nnoremap mm   dd
+nnoremap gm    m
 
 call dein#add('vim-scripts/RepeatableYank')                                           "karkat
 call dein#add('machakann/vim-highlightedyank')

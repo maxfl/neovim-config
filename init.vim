@@ -14,6 +14,9 @@ inoremap                                        <S-Space> <Space><Space><Left>
 " remove symbol before and after
 inoremap                                        <M-BS> <BS><Del>
 
+" add <N> empty lines from normal mode
+nnoremap                                        <Leader><CR> o<Esc>`[
+
 " search for the visually selected text
 vnoremap                                        <Leader>/ y/<C-R>"\V<CR>
 " search for previous visually selected text
