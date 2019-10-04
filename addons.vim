@@ -24,7 +24,9 @@ call dein#add('inkarkat/vim-CountJump', {'depends': 'vim-ingo-library' })
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('altercation/vim-colors-solarized', { 'hook_add' : "
             \ colorscheme solarized\n
-            \ \" let g:solarized_termcolors=256\n
+            \ "})
+call dein#add('JulioJu/neovim-qt-colors-solarized-truecolor-only', { 'hook_add' : "
+            \ au UIEnter * colorscheme solarized_nvimqt\n
             \ "})
 " fade unfocused buffers
 call dein#add('tadaa/vimade', {'depends' : 'vim-colors-solarized', 'hook_add' : "
@@ -343,7 +345,8 @@ call dein#add('kabbamine/zeavim.vim') "call zeal
 call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git')
 
 call dein#add('chrisbra/unicode.vim')
-call dein#add('Konfekt/vim-unicode-homoglyphs', {'hood_add': "let g:is_homoglyph_on=0"})
+let g:is_homoglyph_on=0
+call dein#add('Konfekt/vim-unicode-homoglyphs')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjects
@@ -901,18 +904,6 @@ call dein#add('ctrlpvim/ctrlp.vim', {'hook_add' : "
             \ let g:ctrlp_cmd='CtrlPMRUFiles'
             \ "})
 
-"" Deprecate deniteunite and co?
-"call dein#add('Shougo/neomru.vim')
-"call dein#add('Shougo/denite.nvim', { 'depends': 'neomru.vim', 'hook_add' : "
-            "\ nnoremap <Leader>lb :<C-u>Denite buffer file_mru<CR>\n
-            "\ nnoremap <Leader>lf :<C-u>DeniteBufferDir file<CR>\n
-            "\ nnoremap <Leader>ln :<C-u>exe \"DeniteBufferDir -input=\".expand(\"<cfile>\").\" file:new file\"<CR>\n
-            "\ nnoremap <Leader>lO :<C-u>Denite -ignorecase outline<CR>\n
-            "\ nnoremap <Leader>lF :<C-u>DeniteBufferDir file_rec<CR>\n
-            "\ nnoremap <Leader>ld :<C-u>Denite file_rec<CR>
-            "\ "})
-"call dein#add('Shougo/unite.vim') "FIXME: deprecate
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tags and outline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -987,9 +978,6 @@ call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
             \ ",
             \ 'depends' : 'bclose.vim'
             \} )
-call dein#add('ipod825/vim-netranger', { 'hook_add' : "
-            \ let g:NETRDefaultMapSkip = ['<cr>']
-            \ " })
 call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
             \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
             \ "})

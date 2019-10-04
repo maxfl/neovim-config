@@ -133,3 +133,21 @@ $3.set_ylabel( '${6}' )
 $3.set_title( '${7}' )
 endsnippet
 
+#
+# Properties
+#
+snippet roprop "read only property"
+@property
+def ${1:name}(self):
+    return self._$1
+endsnippet
+
+snippet rwprop "read/write property"
+@property
+def ${1:name}(self):
+    return self._$1
+
+@$1.setter
+def $1(self, $1):
+    self._$1 = $1
+endsnippet

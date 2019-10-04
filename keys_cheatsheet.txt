@@ -38,6 +38,10 @@ Other motions:
     \\w, \\e, \\.... - easy motion
     \- - window motion
 
+    ]m, [m, [M, ]M- next/previous function (Python, Java, ...)
+    [(, ]) - next, previous unmatched (, )
+    [{, ]} - next, previous unmatched {, }
+
 Windows and splits:
     \- - window motion
     \ww - window mode
@@ -74,3 +78,5 @@ Commands to use:
 
     :vimgrep pattern %
     :cwin
+
+% vim: ft=text
