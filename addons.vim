@@ -34,7 +34,7 @@ call dein#add('jonathanfilip/vim-lucius', {'hook_add': "
 " fade unfocused buffers
 call dein#add('tadaa/vimade', {'hook_add' : "
             \ let g:vimade = {}\n
-            \ let g:vimade.fadelevel = 0.2\n
+            \ let g:vimade.fadelevel = 0.5\n
             \ let g:vimade.usecursorhold=1\n
             \ "})
 call dein#add('powerman/vim-plugin-AnsiEsc')
