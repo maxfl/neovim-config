@@ -26,6 +26,10 @@ call dein#add('inkarkat/vim-CountJump', {'depends': 'vim-ingo-library' })
             "\ colorscheme solarized\n
             "\ "})
 "call dein#add('JulioJu/neovim-qt-colors-solarized-truecolor-only')
+call dein#add('jonathanfilip/vim-lucius', {'hook_add': "
+            \ colorscheme lucius\n
+            \ LuciusBlack\n
+            \ "})
 
 " fade unfocused buffers
 call dein#add('tadaa/vimade', {'hook_add' : "

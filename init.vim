@@ -1,7 +1,9 @@
 let &packpath = &runtimepath
 
-set background=dark
 source ~/.vim/vimrc
+set termguicolors
+set background=dark
+"colorscheme maxfl
 
 set splitbelow splitright
 
