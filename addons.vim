@@ -22,14 +22,13 @@ call dein#add('inkarkat/vim-CountJump', {'depends': 'vim-ingo-library' })
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('altercation/vim-colors-solarized', { 'hook_add' : "
-            \ colorscheme solarized\n
-            \ "})
-call dein#add('JulioJu/neovim-qt-colors-solarized-truecolor-only', { 'hook_add' : "
-            \ au UIEnter * colorscheme solarized_nvimqt\n
-            \ "})
+"call dein#add('altercation/vim-colors-solarized', { 'hook_add' : "
+            "\ colorscheme solarized\n
+            "\ "})
+"call dein#add('JulioJu/neovim-qt-colors-solarized-truecolor-only')
+
 " fade unfocused buffers
-call dein#add('tadaa/vimade', {'depends' : 'vim-colors-solarized', 'hook_add' : "
+call dein#add('tadaa/vimade', {'hook_add' : "
             \ let g:vimade = {}\n
             \ let g:vimade.fadelevel = 0.2\n
             \ let g:vimade.usecursorhold=1\n
@@ -44,7 +43,6 @@ call dein#add('vim-airline/vim-airline', { 'depends': 'tagbar', 'hook_add' : "
             \ let g:airline#extensions#wordcount#filetypes='\\vmarkdown|text|txt'\n
             \ let g:airline_detect_iminsert=1\n
             \ let g:airline_powerline_fonts=1\n
-            \ let g:airline_theme='solarized'\n
             \ let g:airline_section_y = '%{printf(\"%s%s%s\",(&fenc==\"utf-8\")?\"\":&fenc,(&ff==\"unix\")?\"\":\" [\".&ff.\"]\",&et?\"\":\" [t]\")}'\n
             \ let g:airline_section_z0 = '%-4b %-5(0x%B%)'\n
             \ let g:airline_section_z = '%3P %{g:airline_symbols.linenr} %3l:%3c'\n
@@ -81,7 +79,7 @@ call dein#add('vim-airline/vim-airline', { 'depends': 'tagbar', 'hook_add' : "
             \ let g:airline#extensions#xkblayout#enabled=0\n
             \ let g:airline#extensions#keymap#enabled=0\n
             \ " })
-call dein#add('vim-airline/vim-airline-themes')
+"call dein#add('vim-airline/vim-airline-themes')
 call dein#add('paranoida/vim-airlineish')
 
 " FIXME: almost not used
@@ -110,6 +108,11 @@ call dein#add('fabi1cazenave/suckless.vim', { 'hook_add': "
             \ nmap <M-=> :tabnext<CR>\n
             \ nmap <M-+> :tabnew<CR>\n
             \" })
+"call dein#add('voldikss/vim-floaterm', { 'on_cmd': 'FloatermToggle', 'hook_add' : "
+            "\ noremap  <silent> <F12> :FloatermToggle<CR>i\n
+            "\ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>i\n
+            "\ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
+            "\ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
@@ -121,7 +124,7 @@ call dein#add('jiangmiao/auto-pairs', { 'hook_add' : "
             \ noremap <Leader>( :call AutoPairsToggle()<CR>\n
             \ let g:AutoPairs = {'(':')', '[':']', '{':'}',\"'\":\"'\",'\"':'\"', '`':'`'}\n
             \ call extend( g:AutoPairs, {'“':'”', '‘' : '’', '„':'“', '«':'»'} )\n
-            \ " } )
+            \ "})
 call dein#add('honza/vim-snippets')
 call dein#add('SirVer/ultisnips', { 'hook_add' : "
             \ let g:UltiSnipsExpandTrigger='<Tab>'\n
@@ -135,9 +138,10 @@ call dein#add('tpope/vim-endwise')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('kopischke/vim-fetch')                                                               " jump to file:line:col
 call dein#add('tmhedberg/indent-motion')
-call dein#add('Lokaltog/vim-easymotion', {
-            \ 'hook_add' : "nnoremap <Leader><Leader>. <Plug>(easymotion-repeat)"
-            \ })
+call dein#add('Lokaltog/vim-easymotion', { 'hook_add' : "
+            \ map <Leader>m <Plug>(easymotion-prefix)\n
+            \ nnoremap <Leader>m. <Plug>(easymotion-repeat)
+            \ "})
                                                                                                    " clefer f/F/t/T mappings
 call dein#add('rhysd/clever-f.vim', { 'hook_add' : "
             \ nnoremap <Leader>fr <Plug>(clever-f-reset)\n
@@ -239,58 +243,7 @@ call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
             \ inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
             \ ",
             \ 'depends' : 'float-preview.nvim'})
-
-"call dein#add('terryma/vim-multiple-cursors', { 'hook_add' : "
-            "\ let g:multi_cursor_start_key='<C-n>'\n
-            "\ let g:multi_cursor_quit_key='<C-z>'\n
-            "\ let g:multi_cursor_exit_from_insert_mode=1\n
-            "\ let g:multi_cursor_exit_from_visual_mode=1\n
-            "\
-            "\ function! Multiple_cursors_before()\n
-            "\     nunmap <F2>\n
-            "\     if dein#tap('deoplete.nvim')\n
-            "\         call deoplete#custom#buffer_option('auto_complete', v:false)\n
-            "\     endif\n
-            "\     if dein#tap('clever-f.vim')\n
-            "\         nunmap f\n
-            "\         xunmap f\n
-            "\         ounmap f\n
-            "\         nunmap F\n
-            "\         xunmap F\n
-            "\         ounmap F\n
-            "\         nunmap t\n
-            "\         xunmap t\n
-            "\         ounmap t\n
-            "\         nunmap T\n
-            "\         xunmap T\n
-            "\         ounmap T\n
-            "\     endif\n
-            "\ endfunction\n
-            "\
-            "\ function! Multiple_cursors_after()\n
-            "\     nnoremap <F2> :w<CR>\n
-            "\     if dein#tap('deoplete.nvim')\n
-            "\         call deoplete#custom#buffer_option('auto_complete', v:true)\n
-            "\     endif\n
-            "\     if dein#tap('clever-f.vim')\n
-            "\         nmap f <Plug>(clever-f-f)\n
-            "\         xmap f <Plug>(clever-f-f)\n
-            "\         omap f <Plug>(clever-f-f)\n
-            "\         nmap F <Plug>(clever-f-F)\n
-            "\         xmap F <Plug>(clever-f-F)\n
-            "\         omap F <Plug>(clever-f-F)\n
-            "\         nmap t <Plug>(clever-f-t)\n
-            "\         xmap t <Plug>(clever-f-t)\n
-            "\         omap t <Plug>(clever-f-t)\n
-            "\         nmap T <Plug>(clever-f-T)\n
-            "\         xmap T <Plug>(clever-f-T)\n
-            "\         omap T <Plug>(clever-f-T)\n
-            "\     endif\n
-            "\ endfunction\n
-            "\ " })
-call dein#add('mg979/vim-visual-multi', {'hook_add' : "
-            \ let g:VM_leader='<Leader>m'
-            \ "})
+call dein#add('mg979/vim-visual-multi')
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1021,7 +974,7 @@ call dein#add('wbthomason/buildit.nvim')
             "\ " })
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Terminal and repl
+" Terminal, repl, embedding
 
 "call dein#add('ivanov/vim-ipython', { 'hook_add' : "let g:ipy_perform_mappings=0" })
 "call dein#add('Vigemus/iron.nvim')                         " deprecated
@@ -1040,6 +993,7 @@ call dein#add('kassio/neoterm', { 'hook_add' : "
             \ nmap <M-T> :Tnew<CR>i\n
             \ " })
 " call dein#add('williamjameshandley/vimteractive') " not working with neovim
+call dein#add('glacambre/firenvim')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Local bundles

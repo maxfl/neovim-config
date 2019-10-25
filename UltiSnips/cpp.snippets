@@ -16,6 +16,10 @@ private:
 };
 endsnippet
 
+snippet template "Template wrap"
+${2:name}<${1:${VISUAL}}>$0
+endsnippet
+
 snippet for "for( auto )" !
 for(auto${2} ${1:var}: ${3:iterable}){
     ${4:$1->}$0
@@ -105,4 +109,59 @@ snippet /**c "Doxygen comment for the class"
  * @author ${3:Maxim Gonchar}
  * @date ${4}
  */
+endsnippet
+
+snippet \clearlineafter "" i
+\033[0K
+endsnippet
+snippet \clearlinebefore "" i
+\033[1K
+endsnippet
+snippet \clearline "" i
+\033[2K
+endsnippet
+snippet \reset "" i
+\033[0m
+endsnippet
+snippet \cursorhome "" i
+\033[H
+endsnippet
+snippet \cursorup "" i
+\033[$1A$0
+endsnippet
+snippet \cursordown "" i
+\033[$1B$0
+endsnippet
+snippet \cursorleft "" i
+\033[$1D$0
+endsnippet
+snippet \cursoright "" i
+\033[$1C$0
+endsnippet
+snippet \cursorsave "" i
+\033[s
+endsnippet
+snippet \cursorrestore "" i
+\033[u
+endsnippet
+snippet \bright "" i
+\033[1m
+endsnippet
+snippet \dim "" i
+\033[2m
+endsnippet
+snippet \blink "" i
+\033[5m
+endsnippet
+snippet \fgred "" i
+\033[31m
+endsnippet
+snippet \fggreen "" i
+\033[32m
+endsnippet
+snippet \fgmagenta "" i
+\033[35m
+endsnippet
+snippet \fgdef "" i
+\033[39m
 endsnippet

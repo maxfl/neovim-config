@@ -1,4 +1,6 @@
 let &packpath = &runtimepath
+
+set background=dark
 source ~/.vim/vimrc
 
 set splitbelow splitright
