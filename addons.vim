@@ -432,7 +432,7 @@ function! ConfigureSandwich()
                 \       'linewise' : 1,
                 \       'input'   : ['e'],
                 \       'indentkeys-' : '{,},0{,0}',
-                \       'autoindent' : 0
+                \       'autoindent' : 2
                 \   },
                 \   {
                 \       'buns'    : ['\\\a\+\*\?{', '}'],
