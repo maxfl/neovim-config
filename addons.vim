@@ -8,8 +8,8 @@ call dein#begin( expand('~/.config/nvim/bundle/') )
 let g:dein#types#git#clone_depth = 1
 
 call dein#add('Shougo/dein.vim')
-call dein#add('wsdjeg/dein-ui.vim', {'depends': 'dein.vim' })
-call dein#add('haya14busa/dein-command.vim', {'depends': 'dein.vim' })
+call dein#add('wsdjeg/dein-ui.vim',          {'depends': 'dein.vim', 'lazy': 1, 'on_cmd': 'DeinUpdate' })
+call dein#add('haya14busa/dein-command.vim', {'depends': 'dein.vim', 'lazy': 1, 'on_cmd': 'Dein' })
 
 call dein#add('tpope/vim-sensible')
 
@@ -18,6 +18,7 @@ call dein#add('tpope/vim-sensible')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('inkarkat/vim-ingo-library')
 call dein#add('inkarkat/vim-CountJump', {'depends': 'vim-ingo-library' })
+call dein#add('inkarkat/vim-SyntaxRange', {'depends': 'vim-ingo-library' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
@@ -37,7 +38,7 @@ call dein#add('tadaa/vimade', {'hook_add' : "
             \ let g:vimade.fadelevel = 0.7\n
             \ let g:vimade.usecursorhold=1\n
             \ "})
-call dein#add('powerman/vim-plugin-AnsiEsc')
+call dein#add('powerman/vim-plugin-AnsiEsc', {'lazy': 1, 'on_cmd': 'AnsiEsc'})
 call dein#add('bronson/vim-trailing-whitespace', { 'hook_add' : "
             \ nnoremap <Leader>rts :FixWhitespace<CR>\n
             \ autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace\n
@@ -85,16 +86,34 @@ call dein#add('vim-airline/vim-airline', { 'depends': 'tagbar', 'hook_add' : "
             \ " })
 "call dein#add('vim-airline/vim-airline-themes')
 call dein#add('paranoida/vim-airlineish')
+call dein#add('skywind3000/vim-quickui', { 'hook_add' : "
+            \ let g:quickui_border_style = 2\n
+            \ nmap <F9> :call quickui#menu#open()<CR>\n
+            \ let g:quickui_show_tip = 1\n
+            \ call quickui#menu#install('&Editing', [
+            \   [ '&Remove trailing whitespace	\\rts', 'FixWhitespace', 'Remove trailing whitespace' ],
+            \ ])\n
+            \ call quickui#menu#install('&Highlight', [
+            \   [ '&Indent lines',        'IndentLinesToggle',        'Toggle indent lines' ],
+            \   [ 'Indent &guides',       'IndentGuidesToggle',       'Toggle indent guides' ],
+            \   [ '--', '--' ],
+            \   [ 'Rainbow &levels',      'RainbowLevelsToggle',      'Toggle rainbow levels' ],
+            \   [ 'Rainbow &parentheses', 'RainbowParenthesesToggle', 'Toggle rainbow parentheses' ],
+            \ ])
+            \ "})
 
 " FIXME: almost not used
-call dein#add('thiagoalessio/rainbow_levels.vim', { 'hook_add' : "nnoremap <Leader>iL :RainbowLevelsToggle<CR>" })
-call dein#add('kien/rainbow_parentheses.vim',     { 'hook_add' : "nnoremap <Leader>ip :RainbowParenthesesToggle<CR>" })
+call dein#add('thiagoalessio/rainbow_levels.vim', { 'lazy': 1, 'on_cmd': 'RainbowLevelsToggle' })
+call dein#add('kien/rainbow_parentheses.vim',     { 'lazy': 1, 'on_cmd': 'RainbowParenthesesToggle' })
 call dein#add('Yggdroot/indentLine',              { 'hook_add' : "
             \ let g:indentLine_enabled=0\n
-            \ nnoremap <Leader>il :IndentLinesToggle<CR>\n
             \ au FileType cpp,python :IndentLinesEnable\n
-            \ " })
-call dein#add('nathanaelkane/vim-indent-guides',  { 'hook_add' : "nnoremap <Leader>ig :IndentGuidesToggle<CR>" }) "let g:indent_guides_color_change_percent=2
+            \ ",
+            \ 'lazy': 1, 'on_cmd': ['IndentLinesEnable', 'IndentLinesToggle' ]
+            \ })
+call dein#add('nathanaelkane/vim-indent-guides',  {
+            \ 'lazy': 1, 'on_cmd': ['IndentGuidesEnable', 'IndentGuidesToggle' ]
+            \ })
 
 call dein#add('ncm2/float-preview.nvim', {'hook_add' : "
             \ let g:float_preview#docked=1\n
@@ -797,10 +816,11 @@ call dein#add('joom/latex-unicoder.vim', { 'hook_add' : "let g:unicoder_no_map=1
 call dein#add('dag/vim-fish')
 "call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,<S-Tab>'" })
 call dein#add('plasticboy/vim-markdown', { 'hook_add' : "
-            \ au BufRead,BufEnter /tmp/qutebrowser-editor-* set ft=markdown spell
+            \ au BufRead,BufEnter /tmp/qutebrowser-editor-* setl ft=markdown spell
             \ " })
 call dein#add('JuliaEditorSupport/julia-vim')
 call dein#add('bfrg/vim-cpp-modern')
+call dein#add('vim-scripts/ebnf.vim')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search and replace
@@ -997,7 +1017,19 @@ call dein#add('kassio/neoterm', { 'hook_add' : "
             \ nmap <M-T> :Tnew<CR>i\n
             \ " })
 " call dein#add('williamjameshandley/vimteractive') " not working with neovim
-call dein#add('glacambre/firenvim')
+call dein#add('glacambre/firenvim', {
+            \ 'hook_post_update': { _ -> firenvim#install(0) },
+            \ 'hook_add' : "
+            \ let g:firenvim_config = {
+            \     'localSettings': {
+            \         '.*': {
+            \             'priority': 1,
+            \             'takeover': 'never',
+            \         },
+            \     }
+            \ }
+            \ "
+            \ })
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Local bundles

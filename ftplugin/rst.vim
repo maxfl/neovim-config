@@ -1,2 +1,2 @@
-set spell
-set textwidth=120
+setl spell
+setl textwidth=120
