@@ -2,9 +2,9 @@ if &shell =~# 'fish$'
     set shell=/bin/bash
 endif
 
-set runtimepath^=~/.vim/bundle/repos/github.com/Shougo/dein.vim
+set runtimepath^=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-call dein#begin( expand('~/.config/nvim/bundle/') )
+call dein#begin( expand('~/.cache/dein') )
 let g:dein#types#git#clone_depth = 1
 
 call dein#add('Shougo/dein.vim')
