@@ -103,8 +103,8 @@ call dein#add('skywind3000/vim-quickui', { 'hook_add' : "
             \   [ 'Rainbow &parentheses', 'RainbowParenthesesToggle', 'Toggle rainbow parentheses' ],
             \ ])\n
             \ call quickui#menu#install('&Windows', [
-            \   [ 'Choosewin	\\-', 'normal \\-'],
-            \   [ 'Winteract	\\w', 'normal \\w'],
+            \   [ 'Choosewin	\\-', 'call feedkeys(\"\\\\-\")'],
+            \   [ 'Winteract	\\w', 'call feedkeys(\"\\\\w\")'],
             \ ])
             \ ",
             \ 'lazy': 1})
