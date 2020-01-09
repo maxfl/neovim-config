@@ -91,6 +91,8 @@ call dein#add('skywind3000/vim-quickui', { 'hook_add' : "
             \ nmap <F9> :call quickui#menu#open()<CR>\n
             \ let g:quickui_show_tip = 1\n
             \ call quickui#menu#install('&Editing', [
+            \   [ 'Toggle &autopairs	\\(',    'call AutoPairsToggle()',   'Toggle autopairs' ],
+            \   [ '--', '--' ],
             \   [ '&Remove trailing whitespace	\\rts', 'FixWhitespace', 'Remove trailing whitespace' ],
             \ ])\n
             \ call quickui#menu#install('&Highlight', [
@@ -99,8 +101,13 @@ call dein#add('skywind3000/vim-quickui', { 'hook_add' : "
             \   [ '--', '--' ],
             \   [ 'Rainbow &levels',      'RainbowLevelsToggle',      'Toggle rainbow levels' ],
             \   [ 'Rainbow &parentheses', 'RainbowParenthesesToggle', 'Toggle rainbow parentheses' ],
+            \ ])\n
+            \ call quickui#menu#install('&Windows', [
+            \   [ 'Choosewin	\\-', 'normal \\-'],
+            \   [ 'Winteract	\\w', 'normal \\w'],
             \ ])
-            \ "})
+            \ ",
+            \ 'lazy': 1})
 
 " FIXME: almost not used
 call dein#add('thiagoalessio/rainbow_levels.vim', { 'lazy': 1, 'on_cmd': 'RainbowLevelsToggle' })
@@ -123,8 +130,10 @@ call dein#add('ncm2/float-preview.nvim', {'hook_add' : "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('t9md/vim-choosewin', { 'hook_add': "nmap <leader>-  <Plug>(choosewin)" })
-call dein#add('romgrk/winteract.vim', { 'hook_add': "nmap <leader>w :InteractiveWindow<CR>" })
+call dein#add('t9md/vim-choosewin', { 'hook_add': "nmap <leader>-  <Plug>(choosewin)",
+            \ 'lazy': 1})
+call dein#add('romgrk/winteract.vim', { 'hook_add': "nmap <leader>w :InteractiveWindow<CR>",
+            \ 'lazy': 1})
 call dein#add('fabi1cazenave/suckless.vim', { 'hook_add': "
             \ let g:suckless_tabline=0\n
             \ nmap <M--> :tabprev<CR>\n
