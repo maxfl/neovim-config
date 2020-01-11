@@ -86,10 +86,10 @@ call dein#add('paranoida/vim-airlineish')
 call dein#add('skywind3000/vim-quickui', {
             \ 'hook_add' : "
             \   nmap <F9> :call quickui#menu#open()<CR>\n
-            \ ",
-            \ 'hook_post_source' : "
             \   let g:quickui_border_style = 2\n
             \   let g:quickui_show_tip = 1\n
+            \ ",
+            \ 'hook_post_source' : "
             \   call quickui#menu#install('&Editing', [
             \     [ 'Toggle &autopairs	\\(',    'call AutoPairsToggle()',   'Toggle autopairs' ],
             \     [ '--', '--' ],
