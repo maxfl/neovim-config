@@ -81,49 +81,10 @@ call dein#add('vim-airline/vim-airline', { 'depends': 'tagbar', 'hook_add' : "
             \ let g:airline#extensions#xkblayout#enabled=0\n
             \ let g:airline#extensions#keymap#enabled=0\n
             \ " })
-"call dein#add('vim-airline/vim-airline-themes')
 call dein#add('paranoida/vim-airlineish')
 call dein#add('skywind3000/vim-quickui', {
-            \ 'hook_add' : "
-            \   nmap <F9> :call quickui#menu#open()<CR>\n
-            \   let g:quickui_border_style = 2\n
-            \   let g:quickui_show_tip = 1\n
-            \ ",
-            \ 'hook_post_source' : "
-            \   call quickui#menu#install('&Editing', [
-            \     [ 'Toggle &autopairs	\\(',    'call AutoPairsToggle()',   'Toggle autopairs' ],
-            \     [ '--', '--' ],
-            \     [ '&Remove trailing whitespace	\\rts', 'FixWhitespace', 'Remove trailing whitespace' ],
-            \   ])\n
-            \   call quickui#menu#install('&Highlight', [
-            \     [ '&Indent lines',        'IndentLinesToggle',        'Toggle indent lines' ],
-            \     [ 'Indent &guides',       'IndentGuidesToggle',       'Toggle indent guides' ],
-            \     [ '--', '--' ],
-            \     [ 'Rainbow &levels',      'RainbowLevelsToggle',      'Toggle rainbow levels' ],
-            \     [ 'Rainbow &parentheses', 'RainbowParenthesesToggle', 'Toggle rainbow parentheses' ],
-            \   ])\n
-            \   call quickui#menu#install('&Windows', [
-            \     [ '&Choosewin	\\-', 'call feedkeys(\"\\\\-\")'],
-            \     [ '&Winteract	\\w', 'call feedkeys(\"\\\\w\")'],
-            \   ])\n
-            \   call quickui#menu#install('&Motions', [
-            \     [ '&Easy motion	\\m', 'call feedkeys(\"\\\\m\")'],
-            \     [ '--', '--' ],
-            \     [ '&Indent next	\\]', 'call feedkeys(\"\\\\]\")'],
-            \     [ 'I&ndent previous	\\[', 'call feedkeys(\"\\\\m\")'],
-            \   ])\n
-            \   call quickui#menu#install('&Completion', [
-            \     [ '&Deoplete	<C-x><C-x>', 'call feedkeys(\"a\\<C-x>\\<C-x>\")'],
-            \     [ '&Unicode	<C-x><C-z>', 'call feedkeys(\"a\\<C-x>\\<C-u>\")'],
-            \     [ 'Diggraph	<C-x><C-G>', 'call feedkeys(\"a\\<C-x>\\<C-u>\")'],
-            \   ])\n
-            \   call quickui#menu#install('&Tools', [
-            \     [ '&Gundo	\\wu', 'GundoToggle' ],
-            \     [ '--', '--' ],
-            \     [ 'PrettyPrint &1', 'call feedkeys(\":PP \")' ],
-            \     [ 'PrettyPrint &2', 'call feedkeys(\":Pp \")' ],
-            \   ])
-            \ ",
+            \ 'hook_add':         "call plugin_cfg#quickui#add()",
+            \ 'hook_post_source': "call plugin_cfg#quickui#post_source()",
             \ 'lazy': 1, 'on_func': 'quickui#menu#open'
             \})
 
@@ -140,7 +101,7 @@ call dein#add('nathanaelkane/vim-indent-guides',  {
             \ 'lazy': 1, 'on_cmd': ['IndentGuidesEnable', 'IndentGuidesToggle' ]
             \ })
 
-call dein#add('ncm2/float-preview.nvim', {'hook_post_source' : "
+call dein#add('ncm2/float-preview.nvim', {'hook_add' : "
             \ let g:float_preview#docked=1\n
             \ set completeopt+=preview\n
             \ "})
@@ -149,9 +110,9 @@ call dein#add('ncm2/float-preview.nvim', {'hook_post_source' : "
 " Windows and splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('t9md/vim-choosewin', { 'hook_post_source': "nmap <leader>-  <Plug>(choosewin)",
-            \ 'lazy': 1, 'on_map': '<Plug>(choosewin)'})
+            \ 'lazy': 0, 'on_map': '<Plug>(choosewin)'})
 call dein#add('romgrk/winteract.vim', { 'hook_add': "nmap <leader>w :InteractiveWindow<CR>",
-            \ 'lazy': 1, 'on_cmd': 'InteractiveWindow'})
+            \ 'lazy': 0, 'on_cmd': 'InteractiveWindow'})
 call dein#add('fabi1cazenave/suckless.vim', { 'hook_post_source': "
             \ let g:suckless_tabline=0\n
             \ nmap <M--> :tabprev<CR>\n
@@ -188,11 +149,11 @@ call dein#add('tpope/vim-endwise')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('kopischke/vim-fetch')                                                               " jump to file:line:col
 call dein#add('tmhedberg/indent-motion')
-call dein#add('Lokaltog/vim-easymotion', { 'hook_post_source' : "
+call dein#add('Lokaltog/vim-easymotion', { 'hook_add' : "
             \ map <Leader>m <Plug>(easymotion-prefix)\n
             \ nnoremap <Leader>m. <Plug>(easymotion-repeat)
             \ ",
-            \ 'lazy': 1,
+            \ 'lazy': 0,
             \ 'on_map': '<Plug>(easymotion-'
             \ })
                                                                                                    " clefer f/F/t/T mappings
@@ -323,7 +284,7 @@ call dein#add('tpope/vim-fugitive', { 'hook_post_source' : "
             \ nmap <silent> <Leader>gi :Gsplit! svn info<CR>\n
             \ " })
 call dein#add('idanarye/vim-merginal', {'lazy': 1, 'on_cmd': ['Merginal', 'MerginalToggle']})
-call dein#add('kabbamine/zeavim.vim', {'lazy': 1, 'on_cmd': ['Zeavim', 'ZeavimV'], 'on_map': '<Leader>z'}) "call zeal
+call dein#add('kabbamine/zeavim.vim', {'lazy': 1, 'on_cmd': ['Zeavim', 'ZeavimV'], 'on_map': ['<Leader>z', '<Leader><Leader>z']}) "call zeal
 call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', {'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
 
 call dein#add('chrisbra/unicode.vim') " , {'lazy': 1, 'on_cmd': ['UnicodeSearch', 'Digraph', 'UnicodeTable', 'UnicodeName']}
