@@ -2,6 +2,7 @@ if &shell =~# 'fish$'
     set shell=/bin/bash
 endif
 
+autocmd VimEnter * call dein#call_hook('post_source')
 set runtimepath^=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin( expand('~/.cache/dein') )
@@ -23,11 +24,7 @@ call dein#add('inkarkat/vim-SyntaxRange', {'depends': 'vim-ingo-library' })
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"call dein#add('altercation/vim-colors-solarized', { 'hook_add' : "
-            "\ colorscheme solarized\n
-            "\ "})
-"call dein#add('JulioJu/neovim-qt-colors-solarized-truecolor-only')
-call dein#add('jonathanfilip/vim-lucius', {'hook_add': "
+call dein#add('jonathanfilip/vim-lucius', {'hook_post_source': "
             \ colorscheme lucius\n
             \ LuciusBlack\n
             \ "})
@@ -39,7 +36,7 @@ call dein#add('tadaa/vimade', {'hook_add' : "
             \ let g:vimade.usecursorhold=1\n
             \ "})
 call dein#add('powerman/vim-plugin-AnsiEsc', {'lazy': 1, 'on_cmd': 'AnsiEsc'})
-call dein#add('bronson/vim-trailing-whitespace', { 'hook_add' : "
+call dein#add('bronson/vim-trailing-whitespace', { 'hook_post_source' : "
             \ nnoremap <Leader>rts :FixWhitespace<CR>\n
             \ autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace\n
             \ " })
@@ -86,46 +83,50 @@ call dein#add('vim-airline/vim-airline', { 'depends': 'tagbar', 'hook_add' : "
             \ " })
 "call dein#add('vim-airline/vim-airline-themes')
 call dein#add('paranoida/vim-airlineish')
-call dein#add('skywind3000/vim-quickui', { 'hook_add' : "
-            \ let g:quickui_border_style = 2\n
-            \ nmap <F9> :call quickui#menu#open()<CR>\n
-            \ let g:quickui_show_tip = 1\n
-            \ call quickui#menu#install('&Editing', [
-            \   [ 'Toggle &autopairs	\\(',    'call AutoPairsToggle()',   'Toggle autopairs' ],
-            \   [ '--', '--' ],
-            \   [ '&Remove trailing whitespace	\\rts', 'FixWhitespace', 'Remove trailing whitespace' ],
-            \ ])\n
-            \ call quickui#menu#install('&Highlight', [
-            \   [ '&Indent lines',        'IndentLinesToggle',        'Toggle indent lines' ],
-            \   [ 'Indent &guides',       'IndentGuidesToggle',       'Toggle indent guides' ],
-            \   [ '--', '--' ],
-            \   [ 'Rainbow &levels',      'RainbowLevelsToggle',      'Toggle rainbow levels' ],
-            \   [ 'Rainbow &parentheses', 'RainbowParenthesesToggle', 'Toggle rainbow parentheses' ],
-            \ ])\n
-            \ call quickui#menu#install('&Windows', [
-            \   [ '&Choosewin	\\-', 'call feedkeys(\"\\\\-\")'],
-            \   [ '&Winteract	\\w', 'call feedkeys(\"\\\\w\")'],
-            \ ])\n
-            \ call quickui#menu#install('&Motions', [
-            \   [ '&Easy motion	\\m', 'call feedkeys(\"\\\\m\")'],
-            \   [ '--', '--' ],
-            \   [ '&Indent next	\\]', 'call feedkeys(\"\\\\]\")'],
-            \   [ 'I&ndent previous	\\[', 'call feedkeys(\"\\\\m\")'],
-            \ ])\n
-            \ call quickui#menu#install('&Completion', [
-            \   [ '&Deoplete	<C-x><C-x>', 'call feedkeys(\"a\\<C-x>\\<C-x>\")'],
-            \   [ '&Unicode	<C-x><C-x>', 'call feedkeys(\"a\\<C-x>\\<C-u>\")'],
-            \ ])\n
-            \ call quickui#menu#install('&Tools', [
-            \   [ '&Gundo	\\wu', 'GundoToggle' ],
-            \ ])
+call dein#add('skywind3000/vim-quickui', {
+            \ 'hook_add' : "
+            \   nmap <F9> :call quickui#menu#open()<CR>\n
             \ ",
-            \ 'lazy': 1})
+            \ 'hook_post_source' : "
+            \   let g:quickui_border_style = 2\n
+            \   let g:quickui_show_tip = 1\n
+            \   call quickui#menu#install('&Editing', [
+            \     [ 'Toggle &autopairs	\\(',    'call AutoPairsToggle()',   'Toggle autopairs' ],
+            \     [ '--', '--' ],
+            \     [ '&Remove trailing whitespace	\\rts', 'FixWhitespace', 'Remove trailing whitespace' ],
+            \   ])\n
+            \   call quickui#menu#install('&Highlight', [
+            \     [ '&Indent lines',        'IndentLinesToggle',        'Toggle indent lines' ],
+            \     [ 'Indent &guides',       'IndentGuidesToggle',       'Toggle indent guides' ],
+            \     [ '--', '--' ],
+            \     [ 'Rainbow &levels',      'RainbowLevelsToggle',      'Toggle rainbow levels' ],
+            \     [ 'Rainbow &parentheses', 'RainbowParenthesesToggle', 'Toggle rainbow parentheses' ],
+            \   ])\n
+            \   call quickui#menu#install('&Windows', [
+            \     [ '&Choosewin	\\-', 'call feedkeys(\"\\\\-\")'],
+            \     [ '&Winteract	\\w', 'call feedkeys(\"\\\\w\")'],
+            \   ])\n
+            \   call quickui#menu#install('&Motions', [
+            \     [ '&Easy motion	\\m', 'call feedkeys(\"\\\\m\")'],
+            \     [ '--', '--' ],
+            \     [ '&Indent next	\\]', 'call feedkeys(\"\\\\]\")'],
+            \     [ 'I&ndent previous	\\[', 'call feedkeys(\"\\\\m\")'],
+            \   ])\n
+            \   call quickui#menu#install('&Completion', [
+            \     [ '&Deoplete	<C-x><C-x>', 'call feedkeys(\"a\\<C-x>\\<C-x>\")'],
+            \     [ '&Unicode	<C-x><C-x>', 'call feedkeys(\"a\\<C-x>\\<C-u>\")'],
+            \   ])\n
+            \   call quickui#menu#install('&Tools', [
+            \     [ '&Gundo	\\wu', 'GundoToggle' ],
+            \   ])
+            \ ",
+            \ 'lazy': 1, 'on_func': 'quickui#menu#open'
+            \})
 
 " FIXME: almost not used
 call dein#add('thiagoalessio/rainbow_levels.vim', { 'lazy': 1, 'on_cmd': 'RainbowLevelsToggle' })
 call dein#add('kien/rainbow_parentheses.vim',     { 'lazy': 1, 'on_cmd': 'RainbowParenthesesToggle' })
-call dein#add('Yggdroot/indentLine',              { 'hook_add' : "
+call dein#add('Yggdroot/indentLine',              { 'hook_post_source' : "
             \ let g:indentLine_enabled=0\n
             \ au FileType cpp,python :IndentLinesEnable\n
             \ ",
@@ -135,7 +136,7 @@ call dein#add('nathanaelkane/vim-indent-guides',  {
             \ 'lazy': 1, 'on_cmd': ['IndentGuidesEnable', 'IndentGuidesToggle' ]
             \ })
 
-call dein#add('ncm2/float-preview.nvim', {'hook_add' : "
+call dein#add('ncm2/float-preview.nvim', {'hook_post_source' : "
             \ let g:float_preview#docked=1\n
             \ set completeopt+=preview\n
             \ "})
@@ -143,11 +144,11 @@ call dein#add('ncm2/float-preview.nvim', {'hook_add' : "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('t9md/vim-choosewin', { 'hook_add': "nmap <leader>-  <Plug>(choosewin)",
-            \ 'lazy': 1})
+call dein#add('t9md/vim-choosewin', { 'hook_post_source': "nmap <leader>-  <Plug>(choosewin)",
+            \ 'lazy': 1, 'on_map': '<Plug>(choosewin)'})
 call dein#add('romgrk/winteract.vim', { 'hook_add': "nmap <leader>w :InteractiveWindow<CR>",
-            \ 'lazy': 1})
-call dein#add('fabi1cazenave/suckless.vim', { 'hook_add': "
+            \ 'lazy': 1, 'on_cmd': 'InteractiveWindow'})
+call dein#add('fabi1cazenave/suckless.vim', { 'hook_post_source': "
             \ let g:suckless_tabline=0\n
             \ nmap <M--> :tabprev<CR>\n
             \ nmap <M-=> :tabnext<CR>\n
@@ -162,7 +163,7 @@ call dein#add('fabi1cazenave/suckless.vim', { 'hook_add': "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('jiangmiao/auto-pairs', { 'hook_add' : "
+call dein#add('jiangmiao/auto-pairs', { 'hook_post_source' : "
             \ let g:AutoPairsFlyMode = 1\n
             \ let g:AutoPairsShortcutToggle=''\n
             \ let g:AutoPairsShortcutJump=''\n
@@ -171,7 +172,7 @@ call dein#add('jiangmiao/auto-pairs', { 'hook_add' : "
             \ call extend( g:AutoPairs, {'“':'”', '‘' : '’', '„':'“', '«':'»'} )\n
             \ "})
 call dein#add('honza/vim-snippets')
-call dein#add('SirVer/ultisnips', { 'hook_add' : "
+call dein#add('SirVer/ultisnips', { 'hook_post_source' : "
             \ let g:UltiSnipsExpandTrigger='<Tab>'\n
             \ let g:UltiSnipsJumpForwardTrigger='<Tab>'\n
             \ let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'\n
@@ -183,7 +184,7 @@ call dein#add('tpope/vim-endwise')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('kopischke/vim-fetch')                                                               " jump to file:line:col
 call dein#add('tmhedberg/indent-motion')
-call dein#add('Lokaltog/vim-easymotion', { 'hook_add' : "
+call dein#add('Lokaltog/vim-easymotion', { 'hook_post_source' : "
             \ map <Leader>m <Plug>(easymotion-prefix)\n
             \ nnoremap <Leader>m. <Plug>(easymotion-repeat)
             \ ",
@@ -191,26 +192,26 @@ call dein#add('Lokaltog/vim-easymotion', { 'hook_add' : "
             \ 'on_map': '<Plug>(easymotion-'
             \ })
                                                                                                    " clefer f/F/t/T mappings
-call dein#add('rhysd/clever-f.vim', { 'hook_add' : "
+call dein#add('rhysd/clever-f.vim', { 'hook_post_source' : "
             \ nnoremap <Leader>fr <Plug>(clever-f-reset)\n
             \ nnoremap ; <Plug>(clever-f-repeat-forward)\n
             \ \"nnoremap , <Plug>(clever-f-repeat-back)\n
             \ "})
-call dein#add('bkad/camelcasemotion', { 'hook_add' : "
+call dein#add('bkad/camelcasemotion', { 'hook_post_source' : "
             \ call camelcasemotion#CreateMotionMappings(',')
             \ " })
 call dein#add('inkarkat/vim-JumpToVerticalBlock', {'depends': 'vim-CountJump'})
 call dein#add('inkarkat/vim-JumpToVerticalOccurrence', {'depends': 'vim-CountJump'})
 call dein#add('inkarkat/vim-EnhancedJumps', {
             \ 'depends': 'vim-ingo-library',
-            \ 'hook_add': "
-            \ nmap <Leader><C-O> <Plug>EnhancedJumpsOlder\n
-            \ nmap <Leader><C-I> <Plug>EnhancedJumpsNewer\n
-            \ nmap <C-O>         <Plug>EnhancedJumpsLocalOlder\n
-            \ nmap <C-I>         <Plug>EnhancedJumpsLocalNewer\n
-            \ nmap <M-p>         <Plug>EnhancedJumpsRemoteOlder\n
-            \ nmap <M-S-p>       <Plug>EnhancedJumpsRemoteNewer\n
-            \ let g:EnhancedJumps_CaptureJumpMessages = 0\n
+            \ 'hook_post_source': "
+            \   nmap <Leader><C-O> <Plug>EnhancedJumpsOlder\n
+            \   nmap <Leader><C-I> <Plug>EnhancedJumpsNewer\n
+            \   nmap <C-O>         <Plug>EnhancedJumpsLocalOlder\n
+            \   nmap <C-I>         <Plug>EnhancedJumpsLocalNewer\n
+            \   nmap <M-p>         <Plug>EnhancedJumpsRemoteOlder\n
+            \   nmap <M-S-p>       <Plug>EnhancedJumpsRemoteNewer\n
+            \   let g:EnhancedJumps_CaptureJumpMessages = 0\n
             \ "
             \ })
 
@@ -230,7 +231,7 @@ nnoremap gm    m
 call dein#add('vim-scripts/RepeatableYank')                                           "karkat
 call dein#add('machakann/vim-highlightedyank')
 call dein#add('vim-scripts/ExplainPattern')
-call dein#add('bfredl/nvim-miniyank', {'hook_add' : "
+call dein#add('bfredl/nvim-miniyank', {'hook_post_source' : "
             \ map p <Plug>(miniyank-autoput)\n
             \ map P <Plug>(miniyank-autoPut)\n
             \ map <Leader>n <Plug>(miniyank-cycle)\n
@@ -244,10 +245,10 @@ call dein#add('inkarkat/vim-UnconditionalPaste', { 'depends': ['vim-ingo-library
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('dkarter/bullets.vim', { 'hook_add' : "
+call dein#add('dkarter/bullets.vim', { 'hook_post_source' : "
             \ let g:bullets_enabled_file_types=['markdown', 'rst', 'text', 'txt', 'gitcommit']\n
             \ " })
-call dein#add('sjl/gundo.vim', { 'hook_add' : "
+call dein#add('sjl/gundo.vim', { 'hook_post_source' : "
             \ nnoremap <Leader>wu :GundoToggle<CR>\n
             \ let g:gundo_preview_bottom=1\n
             \ let g:gundo_width=30\n
@@ -259,13 +260,16 @@ call dein#add('sjl/gundo.vim', { 'hook_add' : "
 call dein#add('tpope/vim-repeat')
 call dein#add('inkarkat/vim-visualrepeat')
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#disable_auto_complete = 0
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#auto_complete_start_length = 2
-call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
-            \ call deoplete#custom#option('auto_refresh_delay', 200)\n
-            \ inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
+call dein#add('Shougo/deoplete.nvim', {
+            \ 'hook_add' : "
+            \   let g:deoplete#enable_at_startup = 1\n
+            \   let g:deoplete#disable_auto_complete = 0\n
+            \   let g:deoplete#enable_smart_case = 1\n
+            \   let g:deoplete#auto_complete_start_length = 2\n
+            \ ",
+            \ 'hook_post_source' : "
+            \   call deoplete#custom#option('auto_refresh_delay', 200)\n
+            \   inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
             \ ",
             \ 'depends' : 'float-preview.nvim'})
 call dein#add('mg979/vim-visual-multi')
@@ -273,7 +277,7 @@ call dein#add('mg979/vim-visual-multi')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('kana/vim-submode', {'hook_add' : "
+call dein#add('kana/vim-submode', {'hook_post_source' : "
             \ call submode#enter_with('textmanip', 'x', '', '<Leader>Mm')\n
             \ call submode#leave_with('textmanip', 'xn', '', '<Esc>')\n
             \ call submode#map(       'textmanip', 'x', '', '>', '>>')\n
@@ -284,7 +288,7 @@ call dein#add('vim-scripts/RangeMacro') " karkat
 call dein#add('wgurecky/vimSum')
 "call dein#add('Floobits/floobits-neovim')
 
-call dein#add('moll/vim-bbye', { 'hook_add' : "
+call dein#add('moll/vim-bbye', { 'hook_post_source' : "
             \ nnoremap ZQ :Bdelete<CR>\n
             \ nnoremap ZZ :write<CR>:Bdelete<CR>\n
             \ nnoremap <Leader>ZZ ZZ\n
@@ -294,10 +298,10 @@ call dein#add('rbgrouleff/bclose.vim') " same as bbye, required by ranger
 call dein#add('nhooyr/neoman.vim')
 call dein#add('thinca/vim-prettyprint')
 call dein#add('romgrk/pp.vim')
-call dein#add('ciaranm/detectindent', {'hook_add' : "
+call dein#add('ciaranm/detectindent', {'hook_post_source' : "
       \ au FileType cpp,python :DetectIndent
       \ "})
-call dein#add('tpope/vim-fugitive', { 'hook_add' : "
+call dein#add('tpope/vim-fugitive', { 'hook_post_source' : "
             \ nmap <silent> <Leader>ga :!git add %<CR>\n
             \ nmap <silent> <Leader>gR :Gremove!<CR>\n
             \ nmap <silent> <Leader>gc :Gcommit -a<CR>\n
@@ -594,9 +598,9 @@ function! ConfigureSandwich()
                 \   },
                 \ ]
 endfunction
-call dein#add('machakann/vim-sandwich', { 'hook_add' : "call ConfigureSandwich()" })
+call dein#add('machakann/vim-sandwich', { 'hook_post_source' : "call ConfigureSandwich()" })
 
-call dein#add('kana/vim-textobj-user', { 'hook_add' : "
+call dein#add('kana/vim-textobj-user', { 'hook_post_source' : "
             \ call textobj#user#plugin('mylatex', {
             \                 'latex-amp': {
             \                   'pattern': [ '\\(&\\|^\\)\\s*', '\\s*\\(&\\|\\\\\\\\\\)' ],
