@@ -83,8 +83,8 @@ call dein#add('vim-airline/vim-airline', { 'depends': 'tagbar', 'hook_add' : "
             \ " })
 call dein#add('paranoida/vim-airlineish')
 call dein#add('skywind3000/vim-quickui', {
-            \ 'hook_add':         "call plugin_cfg#quickui#add()",
-            \ 'hook_post_source': "call plugin_cfg#quickui#post_source()",
+            \ 'hook_add':         function('plugin_cfg#quickui#add'),
+            \ 'hook_post_source': function('plugin_cfg#quickui#post_source'),
             \ 'lazy': 1, 'on_func': 'quickui#menu#open'
             \})
 
