@@ -103,8 +103,21 @@ call dein#add('skywind3000/vim-quickui', { 'hook_add' : "
             \   [ 'Rainbow &parentheses', 'RainbowParenthesesToggle', 'Toggle rainbow parentheses' ],
             \ ])\n
             \ call quickui#menu#install('&Windows', [
-            \   [ 'Choosewin	\\-', 'call feedkeys(\"\\\\-\")'],
-            \   [ 'Winteract	\\w', 'call feedkeys(\"\\\\w\")'],
+            \   [ '&Choosewin	\\-', 'call feedkeys(\"\\\\-\")'],
+            \   [ '&Winteract	\\w', 'call feedkeys(\"\\\\w\")'],
+            \ ])\n
+            \ call quickui#menu#install('&Motions', [
+            \   [ '&Easy motion	\\m', 'call feedkeys(\"\\\\m\")'],
+            \   [ '--', '--' ],
+            \   [ '&Indent next	\\]', 'call feedkeys(\"\\\\]\")'],
+            \   [ 'I&ndent previous	\\[', 'call feedkeys(\"\\\\m\")'],
+            \ ])\n
+            \ call quickui#menu#install('&Completion', [
+            \   [ '&Deoplete	<C-x><C-x>', 'call feedkeys(\"a\\<C-x>\\<C-x>\")'],
+            \   [ '&Unicode	<C-x><C-x>', 'call feedkeys(\"a\\<C-x>\\<C-u>\")'],
+            \ ])\n
+            \ call quickui#menu#install('&Tools', [
+            \   [ '&Gundo	\\wu', 'GundoToggle' ],
             \ ])
             \ ",
             \ 'lazy': 1})
@@ -173,7 +186,10 @@ call dein#add('tmhedberg/indent-motion')
 call dein#add('Lokaltog/vim-easymotion', { 'hook_add' : "
             \ map <Leader>m <Plug>(easymotion-prefix)\n
             \ nnoremap <Leader>m. <Plug>(easymotion-repeat)
-            \ "})
+            \ ",
+            \ 'lazy': 1,
+            \ 'on_map': '<Plug>(easymotion-'
+            \ })
                                                                                                    " clefer f/F/t/T mappings
 call dein#add('rhysd/clever-f.vim', { 'hook_add' : "
             \ nnoremap <Leader>fr <Plug>(clever-f-reset)\n
@@ -225,27 +241,6 @@ call dein#add('bfredl/nvim-miniyank', {'hook_add' : "
 call dein#add('inkarkat/vim-ReplaceWithRegister', { 'depends': ['vim-repeat', 'vim-visualrepeat'] })
 call dein#add('inkarkat/vim-UnconditionalPaste', { 'depends': ['vim-ingo-library', 'vim-repeat'] })
 
-" overridden by miniyank
-
-"    Outdated
-"    call dein#add('svermeulen/vim-easyclip', { 'hook_add' : "
-"                \ let g:EasyClipEnableBlackHoleRedirectForChangeOperator=0\n
-"                \ noremap gx x\n
-"                \ noremap gX X\n
-"                \ noremap gm m\n
-"                \
-"                \ let bindings =
-"                \   [
-"                \     ['gr',  '<plug>SubstituteOverMotionMap',  'n',  1],
-"                \     ['grr',  '<plug>SubstituteLine',  'n',  1],
-"                \     ['gr',  '<plug>XEasyClipPaste',  'x',  1],
-"                \     ['gR',  '<plug>SubstituteToEndOfLine',  'n',  1],
-"                \   ]\n
-"                \ for binding in bindings\n
-"                \     call call('EasyClip#AddWeakMapping', binding)\n
-"                \ endfor\n
-"                \ " })
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -257,26 +252,23 @@ call dein#add('sjl/gundo.vim', { 'hook_add' : "
             \ let g:gundo_preview_bottom=1\n
             \ let g:gundo_width=30\n
             \ let g:gundo_right=1\n
-            \ " })
+            \ ",
+            \ 'lazy': 1, 'on_cmd': 'GundoToggle'
+            \ })
+
+call dein#add('tpope/vim-repeat')
+call dein#add('inkarkat/vim-visualrepeat')
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#disable_auto_complete = 0
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#auto_complete_start_length = 2
-call dein#add('tpope/vim-repeat')
-call dein#add('inkarkat/vim-visualrepeat')
-call dein#add('inkarkat/vim-ChangeGlobally', { 'depends' : ['vim-ingo-library', 'vim-repeat', 'vim-visualrepeat'] })
-call dein#add('AndrewRadev/multichange.vim', { 'hook_add' : "
-            \ let g:multichange_mapping = '<Leader><c-n>'\n
-            \ let g:multichange_motion_mapping = '<c-n>'
-            \ " })
 call dein#add('Shougo/deoplete.nvim', { 'hook_add' : "
             \ call deoplete#custom#option('auto_refresh_delay', 200)\n
             \ inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
             \ ",
             \ 'depends' : 'float-preview.nvim'})
 call dein#add('mg979/vim-visual-multi')
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
@@ -320,12 +312,6 @@ call dein#add('tpope/vim-fugitive', { 'hook_add' : "
             \ nmap <silent> <Leader>gi :Gsplit! svn info<CR>\n
             \ " })
 call dein#add('idanarye/vim-merginal')
-"call dein#add('lyokha/vim-xkbswitch', { 'hook_add' : "
-            "\ let g:XkbSwitchEnabled = 1\n
-            "\ let g:XkbSwitchLib = '/usr/local/lib/libxkbswitch.so'\n
-            "\ let g:XkbSwitchILayout = 'us'\n
-            "\ let g:XkbSwitchNLayout = 'us'\n
-            "\  })
 call dein#add('kabbamine/zeavim.vim') "call zeal
 call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git')
 
