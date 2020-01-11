@@ -114,10 +114,14 @@ call dein#add('skywind3000/vim-quickui', {
             \   ])\n
             \   call quickui#menu#install('&Completion', [
             \     [ '&Deoplete	<C-x><C-x>', 'call feedkeys(\"a\\<C-x>\\<C-x>\")'],
-            \     [ '&Unicode	<C-x><C-x>', 'call feedkeys(\"a\\<C-x>\\<C-u>\")'],
+            \     [ '&Unicode	<C-x><C-z>', 'call feedkeys(\"a\\<C-x>\\<C-u>\")'],
+            \     [ 'Diggraph	<C-x><C-G>', 'call feedkeys(\"a\\<C-x>\\<C-u>\")'],
             \   ])\n
             \   call quickui#menu#install('&Tools', [
             \     [ '&Gundo	\\wu', 'GundoToggle' ],
+            \     [ '--', '--' ],
+            \     [ 'PrettyPrint &1', 'call feedkeys(\":PP \")' ],
+            \     [ 'PrettyPrint &2', 'call feedkeys(\":Pp \")' ],
             \   ])
             \ ",
             \ 'lazy': 1, 'on_func': 'quickui#menu#open'
@@ -282,10 +286,11 @@ call dein#add('kana/vim-submode', {'hook_post_source' : "
             \ call submode#leave_with('textmanip', 'xn', '', '<Esc>')\n
             \ call submode#map(       'textmanip', 'x', '', '>', '>>')\n
             \ call submode#map(       'textmanip', 'x', '', '<', '<<')\n
-            \ "})
+            \ ",
+            \ })
 call dein#add('vim-scripts/RelativeNumberCurrentWindow')
 call dein#add('vim-scripts/RangeMacro') " karkat
-call dein#add('wgurecky/vimSum')
+call dein#add('wgurecky/vimSum', { 'lazy': 1, 'on_cmd': ['VisSum', 'VisMean', 'VisMult'] })
 "call dein#add('Floobits/floobits-neovim')
 
 call dein#add('moll/vim-bbye', { 'hook_post_source' : "
@@ -293,11 +298,13 @@ call dein#add('moll/vim-bbye', { 'hook_post_source' : "
             \ nnoremap ZZ :write<CR>:Bdelete<CR>\n
             \ nnoremap <Leader>ZZ ZZ\n
             \ nnoremap <Leader>ZQ ZQ\n
-            \ " })
+            \ ",
+            \ 'lazy': 1, 'on_cmd': 'Bdelete'
+            \ })
 call dein#add('rbgrouleff/bclose.vim') " same as bbye, required by ranger
 call dein#add('nhooyr/neoman.vim')
-call dein#add('thinca/vim-prettyprint')
-call dein#add('romgrk/pp.vim')
+call dein#add('thinca/vim-prettyprint', {'lazy': 1, 'on_cmd': ['PrettyPrint', 'PP']})
+call dein#add('romgrk/pp.vim',          {'lazy': 1, 'on_cmd': 'Pp'})
 call dein#add('ciaranm/detectindent', {'hook_post_source' : "
       \ au FileType cpp,python :DetectIndent
       \ "})
@@ -315,13 +322,12 @@ call dein#add('tpope/vim-fugitive', { 'hook_post_source' : "
             \ nmap <silent> <Leader>gb :Gblame<CR>\n
             \ nmap <silent> <Leader>gi :Gsplit! svn info<CR>\n
             \ " })
-call dein#add('idanarye/vim-merginal')
-call dein#add('kabbamine/zeavim.vim') "call zeal
-call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git')
+call dein#add('idanarye/vim-merginal', {'lazy': 1, 'on_cmd': ['Merginal', 'MerginalToggle']})
+call dein#add('kabbamine/zeavim.vim', {'lazy': 1, 'on_cmd': ['Zeavim', 'ZeavimV'], 'on_map': '<Leader>z'}) "call zeal
+call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', {'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
 
-call dein#add('chrisbra/unicode.vim')
-let g:is_homoglyph_on=0
-call dein#add('Konfekt/vim-unicode-homoglyphs')
+call dein#add('chrisbra/unicode.vim') " , {'lazy': 1, 'on_cmd': ['UnicodeSearch', 'Digraph', 'UnicodeTable', 'UnicodeName']}
+call dein#add('Konfekt/vim-unicode-homoglyphs', { 'hook_source': "let g:is_homoglyph_on=0", 'lazy': 1 })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjects
