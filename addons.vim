@@ -10,8 +10,8 @@ let g:dein#types#git#clone_depth = 1
 let g:dein#enable_name_conversion = 1
 
 call dein#add('Shougo/dein.vim')
-call dein#add('wsdjeg/dein-ui.vim',          {'depends': 'dein.vim', 'lazy': 1, 'on_cmd': 'DeinUpdate' })
-call dein#add('haya14busa/dein-command.vim', {'depends': 'dein.vim', 'lazy': 1, 'on_cmd': 'Dein' })
+call dein#add('wsdjeg/dein-ui.vim',          {'depends': 'dein', 'lazy': 1, 'on_cmd': 'DeinUpdate' })
+call dein#add('haya14busa/dein-command.vim', {'depends': 'dein', 'lazy': 1, 'on_cmd': 'Dein' })
 
 call dein#add('tpope/vim-sensible')
 
@@ -105,7 +105,7 @@ call dein#add('jiangmiao/auto-pairs', { 'hook_post_source' : "
             \ call extend( g:AutoPairs, {'“':'”', '‘' : '’', '„':'“', '«':'»'} )\n
             \ "})
 call dein#add('honza/vim-snippets')
-call dein#add('SirVer/ultisnips', { 'hook_post_source' : "
+call dein#add('SirVer/ultisnips', { 'hook_add' : "
             \ let g:UltiSnipsExpandTrigger='<Tab>'\n
             \ let g:UltiSnipsJumpForwardTrigger='<Tab>'\n
             \ let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'\n
@@ -221,7 +221,7 @@ call dein#add('moll/vim-bbye', { 'hook_post_source' : "
             \ 'lazy': 1, 'on_cmd': 'Bdelete'
             \ })
 call dein#add('rbgrouleff/bclose.vim') " same as bbye, required by ranger
-call dein#add('nhooyr/neoman.vim')
+"call dein#add('nhooyr/neoman.vim')
 call dein#add('thinca/vim-prettyprint', {'lazy': 1, 'on_cmd': ['PrettyPrint', 'PP']})
 call dein#add('romgrk/pp.vim',          {'lazy': 1, 'on_cmd': 'Pp'})
 call dein#add('ciaranm/detectindent', {'hook_post_source' : "
@@ -415,7 +415,7 @@ call dein#add('lervag/vimtex', { 'hook_add' : "
 call dein#add('lervag/wiki.vim', { 'hook_add' : "
             \ let g:wiki_mappings_use_defaults=0
             \ " })
-call dein#add('lervag/wiki-ft.vim', { 'depends' : 'wiki.vim'})
+call dein#add('lervag/wiki-ft.vim', { 'depends' : 'wiki'})
 call dein#add('joom/latex-unicoder.vim', { 'hook_add' : "let g:unicoder_no_map=1" })
 call dein#add('dag/vim-fish')
 "call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,<S-Tab>'" })
@@ -557,7 +557,7 @@ call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
             \ nnoremap <silent> <M-r> :RangerCurrentFile<CR>\n
             \ nnoremap <silent> <M-R> :RangerWorkingDirectory<CR>\n
             \ ",
-            \ 'depends' : 'bclose.vim'
+            \ 'depends' : 'bclose'
             \} )
 call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
             \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
