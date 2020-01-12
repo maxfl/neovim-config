@@ -13,19 +13,19 @@ call dein#add('Shougo/dein.vim')
 call dein#add('wsdjeg/dein-ui.vim',          {'depends': 'dein', 'lazy': 1, 'on_cmd': 'DeinUpdate' })
 call dein#add('haya14busa/dein-command.vim', {'depends': 'dein', 'lazy': 1, 'on_cmd': 'Dein' })
 
-call dein#add('tpope/vim-sensible')
+call dein#add('tpope/vim-sensible', { 'normalized_name': 'sensible' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Libraries
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('inkarkat/vim-ingo-library')
-call dein#add('inkarkat/vim-CountJump', {'depends': 'vim-ingo-library' })
-call dein#add('inkarkat/vim-SyntaxRange', {'depends': 'vim-ingo-library' })
+call dein#add('inkarkat/vim-ingo-library', { 'normalized_name': 'ingo-library'})
+call dein#add('inkarkat/vim-CountJump',    { 'normalized_name': 'CountJump', 'depends': 'ingo-library' })
+call dein#add('inkarkat/vim-SyntaxRange',  { 'normalized_name': 'SyntaxRange', 'depends': 'ingo-library' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('jonathanfilip/vim-lucius', {'hook_post_source': "
+call dein#add('jonathanfilip/vim-lucius', { 'normalized_name': 'lucius', 'hook_post_source': "
             \ colorscheme lucius\n
             \ LuciusBlack\n
             \ "})
@@ -36,8 +36,8 @@ call dein#add('tadaa/vimade', {'hook_add' : "
             \ let g:vimade.fadelevel = 0.7\n
             \ let g:vimade.usecursorhold=1\n
             \ "})
-call dein#add('powerman/vim-plugin-AnsiEsc', {'lazy': 1, 'on_cmd': 'AnsiEsc'})
-call dein#add('bronson/vim-trailing-whitespace', { 'hook_post_source' : "
+call dein#add('powerman/vim-plugin-AnsiEsc', { 'normalized_name': 'plugin-AnsiEsc', 'lazy': 1, 'on_cmd': 'AnsiEsc'})
+call dein#add('bronson/vim-trailing-whitespace', { 'normalized_name': 'trailing-whitespace',  'hook_post_source' : "
             \ nnoremap <Leader>rts :FixWhitespace<CR>\n
             \ autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace\n
             \ " })
@@ -48,8 +48,8 @@ call dein#add('vim-airline/vim-airline', {
             \ 'hook_add': function('plugin_cfg#airline#add'),
             \ 'hook_post_source': function('plugin_cfg#airline#post_source')
             \ })
-call dein#add('paranoida/vim-airlineish')
-call dein#add('skywind3000/vim-quickui', {
+call dein#add('paranoida/vim-airlineish', { 'normalized_name': 'airlineish' })
+call dein#add('skywind3000/vim-quickui', { 'normalized_name': 'quickui',
             \ 'hook_add':         function('plugin_cfg#quickui#add'),
             \ 'hook_post_source': function('plugin_cfg#quickui#post_source'),
             \ 'lazy': 1,
@@ -65,7 +65,7 @@ call dein#add('Yggdroot/indentLine',              { 'hook_post_source' : "
             \ ",
             \ 'lazy': 1, 'on_cmd': ['IndentLinesEnable', 'IndentLinesToggle' ]
             \ })
-call dein#add('nathanaelkane/vim-indent-guides',  {
+call dein#add('nathanaelkane/vim-indent-guides',  { 'normalized_name': 'indent-guides',
             \ 'lazy': 1, 'on_cmd': ['IndentGuidesEnable', 'IndentGuidesToggle' ]
             \ })
 
@@ -77,7 +77,7 @@ call dein#add('ncm2/float-preview.nvim', {'hook_add' : "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('t9md/vim-choosewin', { 'hook_add': "nmap <leader>-  <Plug>(choosewin)",
+call dein#add('t9md/vim-choosewin', { 'normalized_name': 'choosewin',  'hook_add': "nmap <leader>-  <Plug>(choosewin)",
             \ 'lazy': 0, 'on_map': '<Plug>(choosewin)'})
 call dein#add('romgrk/winteract.vim', { 'hook_add': "nmap <leader>w :InteractiveWindow<CR>",
             \ 'lazy': 0, 'on_cmd': 'InteractiveWindow'})
@@ -87,7 +87,7 @@ call dein#add('fabi1cazenave/suckless.vim', { 'hook_post_source': "
             \ nmap <M-=> :tabnext<CR>\n
             \ nmap <M-+> :tabnew<CR>\n
             \" })
-"call dein#add('voldikss/vim-floaterm', { 'on_cmd': 'FloatermToggle', 'hook_add' : "
+"call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add' : "
             "\ noremap  <silent> <F12> :FloatermToggle<CR>i\n
             "\ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>i\n
             "\ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
@@ -104,20 +104,20 @@ call dein#add('jiangmiao/auto-pairs', { 'hook_post_source' : "
             \ let g:AutoPairs = {'(':')', '[':']', '{':'}',\"'\":\"'\",'\"':'\"', '`':'`'}\n
             \ call extend( g:AutoPairs, {'“':'”', '‘' : '’', '„':'“', '«':'»'} )\n
             \ "})
-call dein#add('honza/vim-snippets')
+call dein#add('honza/vim-snippets', { 'normalized_name': 'snippets' })
 call dein#add('SirVer/ultisnips', { 'hook_add' : "
             \ let g:UltiSnipsExpandTrigger='<Tab>'\n
             \ let g:UltiSnipsJumpForwardTrigger='<Tab>'\n
             \ let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'\n
             \ " })
-call dein#add('tpope/vim-endwise')
+call dein#add('tpope/vim-endwise', { 'normalized_name': 'endwise' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('kopischke/vim-fetch')                                                               " jump to file:line:col
+call dein#add('kopischke/vim-fetch', { 'normalized_name': 'fetch' })                                                               " jump to file:line:col
 call dein#add('tmhedberg/indent-motion')
-call dein#add('Lokaltog/vim-easymotion', { 'hook_add' : "
+call dein#add('Lokaltog/vim-easymotion', { 'normalized_name': 'easymotion',  'hook_add' : "
             \ map <Leader>m <Plug>(easymotion-prefix)\n
             \ nnoremap <Leader>m. <Plug>(easymotion-repeat)
             \ ",
@@ -133,10 +133,10 @@ call dein#add('rhysd/clever-f.vim', { 'hook_add' : "
 call dein#add('bkad/camelcasemotion', { 'hook_post_source' : "
             \ call camelcasemotion#CreateMotionMappings(',')
             \ " })
-call dein#add('inkarkat/vim-JumpToVerticalBlock', {'depends': 'vim-CountJump'})
-call dein#add('inkarkat/vim-JumpToVerticalOccurrence', {'depends': 'vim-CountJump'})
-call dein#add('inkarkat/vim-EnhancedJumps', {
-            \ 'depends': 'vim-ingo-library',
+call dein#add('inkarkat/vim-JumpToVerticalBlock', { 'normalized_name': 'JumpToVerticalBlock', 'depends': 'CountJump'})
+call dein#add('inkarkat/vim-JumpToVerticalOccurrence', { 'normalized_name': 'JumpToVerticalOccurrence', 'depends': 'CountJump'})
+call dein#add('inkarkat/vim-EnhancedJumps', { 'normalized_name': 'EnhancedJumps',
+            \ 'depends': 'ingo-library',
             \ 'hook_add': "
             \   nmap <Leader><C-O> <Plug>EnhancedJumpsOlder\n
             \   nmap <Leader><C-I> <Plug>EnhancedJumpsNewer\n
@@ -152,7 +152,7 @@ call dein#add('inkarkat/vim-EnhancedJumps', {
 " Clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('vim-scripts/RepeatableYank')                                           "karkat
-call dein#add('machakann/vim-highlightedyank')
+call dein#add('machakann/vim-highlightedyank', { 'normalized_name': 'highlightedyank' })
 call dein#add('vim-scripts/ExplainPattern')
 call dein#add('bfredl/nvim-miniyank', {'hook_add' : "
             \ map p <Plug>(miniyank-autoput)\n
@@ -162,8 +162,8 @@ call dein#add('bfredl/nvim-miniyank', {'hook_add' : "
             \ map <Leader>yl <Plug>(miniyank-toline)\n
             \ map <Leader>yb <Plug>(miniyank-toblock)\n
             \ "})
-call dein#add('inkarkat/vim-ReplaceWithRegister', { 'depends': ['vim-repeat', 'vim-visualrepeat'] })
-call dein#add('inkarkat/vim-UnconditionalPaste', { 'depends': ['vim-ingo-library', 'vim-repeat'] })
+call dein#add('inkarkat/vim-ReplaceWithRegister', { 'normalized_name': 'ReplaceWithRegister',  'depends': ['repeat', 'visualrepeat'] })
+call dein#add('inkarkat/vim-UnconditionalPaste', { 'normalized_name': 'UnconditionalPaste',  'depends': ['ingo-library', 'repeat'] })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
@@ -180,8 +180,8 @@ call dein#add('sjl/gundo.vim', { 'hook_post_source' : "
             \ 'lazy': 1, 'on_cmd': 'GundoToggle'
             \ })
 
-call dein#add('tpope/vim-repeat')
-call dein#add('inkarkat/vim-visualrepeat')
+call dein#add('tpope/vim-repeat', { 'normalized_name': 'repeat' })
+call dein#add('inkarkat/vim-visualrepeat', { 'normalized_name': 'visualrepeat' })
 
 call dein#add('Shougo/deoplete.nvim', {
             \ 'hook_add' : "
@@ -195,12 +195,12 @@ call dein#add('Shougo/deoplete.nvim', {
             \   inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
             \ ",
             \ 'depends' : 'float-preview.nvim'})
-call dein#add('mg979/vim-visual-multi')
+call dein#add('mg979/vim-visual-multi', { 'normalized_name': 'visual-multi' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('kana/vim-submode', {'hook_post_source' : "
+call dein#add('kana/vim-submode', { 'normalized_name': 'submode', 'hook_post_source' : "
             \ call submode#enter_with('textmanip', 'x', '', '<Leader>Mm')\n
             \ call submode#leave_with('textmanip', 'xn', '', '<Esc>')\n
             \ call submode#map(       'textmanip', 'x', '', '>', '>>')\n
@@ -212,7 +212,7 @@ call dein#add('vim-scripts/RangeMacro') " karkat
 call dein#add('wgurecky/vimSum', { 'lazy': 1, 'on_cmd': ['VisSum', 'VisMean', 'VisMult'] })
 "call dein#add('Floobits/floobits-neovim')
 
-call dein#add('moll/vim-bbye', { 'hook_post_source' : "
+call dein#add('moll/vim-bbye', { 'normalized_name': 'bbye',  'hook_post_source' : "
             \ nnoremap ZQ :Bdelete<CR>\n
             \ nnoremap ZZ :write<CR>:Bdelete<CR>\n
             \ nnoremap <Leader>ZZ ZZ\n
@@ -222,29 +222,29 @@ call dein#add('moll/vim-bbye', { 'hook_post_source' : "
             \ })
 call dein#add('rbgrouleff/bclose.vim') " same as bbye, required by ranger
 "call dein#add('nhooyr/neoman.vim')
-call dein#add('thinca/vim-prettyprint', {'lazy': 1, 'on_cmd': ['PrettyPrint', 'PP']})
+call dein#add('thinca/vim-prettyprint', { 'normalized_name': 'prettyprint', 'lazy': 1, 'on_cmd': ['PrettyPrint', 'PP']})
 call dein#add('romgrk/pp.vim',          {'lazy': 1, 'on_cmd': 'Pp'})
 call dein#add('ciaranm/detectindent', {'hook_post_source' : "
       \ au FileType cpp,python :DetectIndent
       \ "})
-call dein#add('tpope/vim-fugitive') " , { 'hook_post_source' : function("plugin_cfg#fugitive#post_source") }
-call dein#add('idanarye/vim-merginal', {'lazy': 1, 'on_cmd': ['Merginal', 'MerginalToggle']})
+call dein#add('tpope/vim-fugitive', { 'normalized_name': 'fugitive' }) " , { 'hook_post_source' : function("plugin_cfg#fugitive#post_source") }
+call dein#add('idanarye/vim-merginal', { 'normalized_name': 'merginal', 'lazy': 1, 'on_cmd': ['Merginal', 'MerginalToggle']})
 call dein#add('kabbamine/zeavim.vim', {'lazy': 1, 'on_cmd': ['Zeavim', 'ZeavimV'], 'on_map': ['<Leader>z', '<Leader><Leader>z']}) "call zeal
-call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', {'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
+call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', { 'normalized_name': 'open-or-create-path-and-file', 'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
 
 call dein#add('chrisbra/unicode.vim') " , {'lazy': 1, 'on_cmd': ['UnicodeSearch', 'Digraph', 'UnicodeTable', 'UnicodeName']}
-call dein#add('Konfekt/vim-unicode-homoglyphs', { 'hook_source': "let g:is_homoglyph_on=0", 'lazy': 1 })
+call dein#add('Konfekt/vim-unicode-homoglyphs', { 'normalized_name': 'unicode-homoglyphs',  'hook_source': "let g:is_homoglyph_on=0", 'lazy': 1 })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjects
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('andymass/vim-matchup')
+call dein#add('andymass/vim-matchup', { 'normalized_name': 'matchup' })
 call dein#add('machakann/vim-sandwich', {
             \ 'normalized_name': 'sandwich',
             \ 'hook_post_source': function('plugin_cfg#sandwich#post_source')
             \ })
 
-call dein#add('kana/vim-textobj-user', { 'hook_post_source' : "
+call dein#add('kana/vim-textobj-user', { 'normalized_name': 'textobj-user',  'hook_post_source' : "
             \ call textobj#user#plugin('mylatex', {
             \                 'latex-amp': {
             \                   'pattern': [ '\\(&\\|^\\)\\s*', '\\s*\\(&\\|\\\\\\\\\\)' ],
@@ -253,34 +253,34 @@ call dein#add('kana/vim-textobj-user', { 'hook_post_source' : "
             \                 },
             \               })
             \ " })
-"call dein#add('haya14busa/vim-operator-flashy')
-call dein#add('kana/vim-textobj-line')
-call dein#add('rhysd/vim-textobj-continuous-line')
-call dein#add('glts/vim-textobj-comment')
-call dein#add('kana/vim-textobj-entire', { 'hook_add' : "
+"call dein#add('haya14busa/vim-operator-flashy', { 'normalized_name': 'operator-flashy' })
+call dein#add('kana/vim-textobj-line', { 'normalized_name': 'textobj-line' })
+call dein#add('rhysd/vim-textobj-continuous-line', { 'normalized_name': 'textobj-continuous-line' })
+call dein#add('glts/vim-textobj-comment', { 'normalized_name': 'textobj-comment' })
+call dein#add('kana/vim-textobj-entire', { 'normalized_name': 'textobj-entire',  'hook_add' : "
             \ let g:textobj_entire_no_default_key_mappings=1\n
             \ xmap iE <Plug>(textobj-entire-i)\n
             \ omap iE <Plug>(textobj-entire-i)\n
             \ xmap aE <Plug>(textobj-entire-a)\n
             \ omap aE <Plug>(textobj-entire-a)\n
             \ " })
-call dein#add('kana/vim-textobj-indent')
-call dein#add('sgur/vim-textobj-parameter', { 'hook_add' : "
+call dein#add('kana/vim-textobj-indent', { 'normalized_name': 'textobj-indent' })
+call dein#add('sgur/vim-textobj-parameter', { 'normalized_name': 'textobj-parameter',  'hook_add' : "
             \ let g:textobj_parameter_no_default_key_mappings=1\n
             \ xmap a. <Plug>(textobj-parameter-a)\n
             \ omap a. <Plug>(textobj-parameter-a)\n
             \ xmap i. <Plug>(textobj-parameter-i)\n
             \ omap i. <Plug>(textobj-parameter-i)\n
             \ " })
-call dein#add('machakann/vim-textobj-functioncall', { 'hook_add' : "
+call dein#add('machakann/vim-textobj-functioncall', { 'normalized_name': 'textobj-functioncall',  'hook_add' : "
             \ let g:textobj_functioncall_no_default_key_mappings = 1\n
             \ xmap i@ <Plug>(textobj-functioncall-i)\n
             \ omap i@ <Plug>(textobj-functioncall-i)\n
             \ xmap a@ <Plug>(textobj-functioncall-a)\n
             \ omap a@ <Plug>(textobj-functioncall-a)\n
             \ " })
-call dein#add('kana/vim-textobj-function')
-call dein#add('bps/vim-textobj-python', { 'hook_add' : "
+call dein#add('kana/vim-textobj-function', { 'normalized_name': 'textobj-function' })
+call dein#add('bps/vim-textobj-python', { 'normalized_name': 'textobj-python',  'hook_add' : "
             \ xmap aF <Plug>(textobj-python-function-a)\n
             \ omap aF <Plug>(textobj-python-function-a)\n
             \ xmap iF <Plug>(textobj-python-function-i)\n
@@ -290,11 +290,11 @@ call dein#add('bps/vim-textobj-python', { 'hook_add' : "
             \ xmap iP <Plug>(textobj-python-class-i)\n
             \ omap iP <Plug>(textobj-python-class-i)\n
             \ " })
-call dein#add('jceb/vim-textobj-uri')
-call dein#add('glts/vim-textobj-indblock')
-call dein#add('kana/vim-textobj-datetime')
-"call dein#add('rbonvall/vim-textobj-latex')
-call dein#add('thinca/vim-textobj-between', { 'hook_add' : "
+call dein#add('jceb/vim-textobj-uri', { 'normalized_name': 'textobj-uri' })
+call dein#add('glts/vim-textobj-indblock', { 'normalized_name': 'textobj-indblock' })
+call dein#add('kana/vim-textobj-datetime', { 'normalized_name': 'textobj-datetime' })
+"call dein#add('rbonvall/vim-textobj-latex', { 'normalized_name': 'textobj-latex' })
+call dein#add('thinca/vim-textobj-between', { 'normalized_name': 'textobj-between',  'hook_add' : "
             \ let g:textobj_between_no_default_key_mappings=1\n
             \ xmap a_ <Plug>(textobj-between-a)\n
             \ omap a_ <Plug>(textobj-between-a)\n
@@ -311,7 +311,7 @@ call dein#add('AndrewRadev/switch.vim', {
             \ 'hook_post_source': function('plugin_cfg#switch#post_source')
             \ })
 call dein#add('scrooloose/nerdcommenter')
-call dein#add('t9md/vim-textmanip', { 'hook_add' : "
+call dein#add('t9md/vim-textmanip', { 'normalized_name': 'textmanip',  'hook_add' : "
             \ function! TMoff()\n
             \     set ei+=TextYankPost\n
             \ endfunction\n
@@ -334,10 +334,10 @@ call dein#add('t9md/vim-textmanip', { 'hook_add' : "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tables
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('dhruvasagar/vim-table-mode', {'hook_add' : "
+call dein#add('dhruvasagar/vim-table-mode', { 'normalized_name': 'table-mode', 'hook_add' : "
             \ let g:table_mode_corner_corner='+'
             \ "})
-call dein#add('junegunn/vim-easy-align', { 'hook_add' : "
+call dein#add('junegunn/vim-easy-align', { 'normalized_name': 'easy-align',  'hook_add' : "
             \ vmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
             \ vmap <silent> <leader>eA <Plug>(EasyAlign)\n
             \ nmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
@@ -348,12 +348,12 @@ call dein#add('junegunn/vim-easy-align', { 'hook_add' : "
             \ vmap <silent> <leader>es  :'<,'>EasyAlign *\ <CR>\n
             \ vmap <silent> <leader>e-- :'<,'>EasyAlign */ -- /<CR>\n
             \ " })
-call dein#add('salsifis/vim-transpose', { 'hook_add' : "vmap <silent> <leader>et :TransposeInteractive<CR>" })
+call dein#add('salsifis/vim-transpose', { 'normalized_name': 'transpose',  'hook_add' : "vmap <silent> <leader>et :TransposeInteractive<CR>" })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff tools
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('will133/vim-dirdiff', { 'hook_add' : "
+call dein#add('will133/vim-dirdiff', { 'normalized_name': 'dirdiff',  'hook_add' : "
             \ map <unique> <Leader>Dg <Plug>DirDiffGet\n
             \ map <unique> <Leader>Dp <Plug>DirDiffPut\n
             \ map <unique> <Leader>Dj <Plug>DirDiffNext\n
@@ -366,7 +366,7 @@ call dein#add('AndrewRadev/linediff.vim', { 'hook_add' : "
             \ " })
 call dein#add('rickhowe/spotdiff.vim')
 call dein#add('rickhowe/diffchar.vim', { 'hook_add' : "let g:DiffModeSync=0" })
-call dein#add('chrisbra/vim-diff-enhanced')
+call dein#add('chrisbra/vim-diff-enhanced', { 'normalized_name': 'diff-enhanced' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype
@@ -380,7 +380,7 @@ call dein#add('chrisbra/vim-diff-enhanced')
             "\ let g:pymode_options = 0\n
             "\ let g:pymode_trim_whitespaces = 0\n
             "\ " })
-call dein#add('kalekundert/vim-coiled-snake')
+call dein#add('kalekundert/vim-coiled-snake', { 'normalized_name': 'coiled-snake' })
 call dein#add('lervag/vimtex', { 'hook_add' : "
             \ let g:vimtex_view_method='zathura'\n
             \ \" let g:vimtex_view_method='mupdf'\n
@@ -417,22 +417,22 @@ call dein#add('lervag/wiki.vim', { 'hook_add' : "
             \ " })
 call dein#add('lervag/wiki-ft.vim', { 'depends' : 'wiki'})
 call dein#add('joom/latex-unicoder.vim', { 'hook_add' : "let g:unicoder_no_map=1" })
-call dein#add('dag/vim-fish')
+call dein#add('dag/vim-fish', { 'normalized_name': 'fish' })
 "call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,<S-Tab>'" })
-call dein#add('plasticboy/vim-markdown', { 'hook_add' : "
+call dein#add('plasticboy/vim-markdown', { 'normalized_name': 'markdown',  'hook_add' : "
             \ au BufRead,BufEnter /tmp/qutebrowser-editor-* setl ft=markdown spell
             \ " })
 call dein#add('JuliaEditorSupport/julia-vim')
-call dein#add('bfrg/vim-cpp-modern')
+call dein#add('bfrg/vim-cpp-modern', { 'normalized_name': 'cpp-modern' })
 call dein#add('vim-scripts/ebnf.vim')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search and replace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('brooth/far.vim')        " :Far
-call dein#add('eugen0329/vim-esearch') " \ff
-call dein#add('tpope/vim-abolish')     " :%S////
-call dein#add('t9md/vim-quickhl', { 'hook_add' : "
+call dein#add('eugen0329/vim-esearch', { 'normalized_name': 'esearch' }) " \ff
+call dein#add('tpope/vim-abolish', { 'normalized_name': 'abolish' })     " :%S////
+call dein#add('t9md/vim-quickhl', { 'normalized_name': 'quickhl',  'hook_add' : "
             \ nmap <leader>hm <Plug>(quickhl-manual-this)\n
             \ xmap <leader>hm <Plug>(quickhl-manual-this)\n
             \ nmap <leader>hn <Plug>(quickhl-manual-reset)\n
@@ -447,7 +447,7 @@ call dein#add('t9md/vim-quickhl', { 'hook_add' : "
             \ \"nmap <Space>] <Plug>(quickhl-tag-toggle)\n
             \ map <leader>hH <Plug>(operator-quickhl-manual-this-motion)\n
             \ " })
-call dein#add('qxxxb/vim-searchhi', { 'hook_add' : "
+call dein#add('qxxxb/vim-searchhi', { 'normalized_name': 'searchhi',  'hook_add' : "
             \ nmap / <Plug>(searchhi-/)\n
             \ nmap ? <Plug>(searchhi-?)\n
             \ nmap n <Plug>(searchhi-n)\n
@@ -468,18 +468,18 @@ call dein#add('qxxxb/vim-searchhi', { 'hook_add' : "
             \ vmap g# <Plug>(searchhi-v-g#)\n
             \ \" vmap <silent> <C-L> <Plug>(searchhi-v-off-all)\n
             \ " })
-call dein#add('inkarkat/vim-ExtractMatches', { 'depends': 'vim-ingo-library' })
+call dein#add('inkarkat/vim-ExtractMatches', { 'normalized_name': 'ExtractMatches',  'depends': 'ingo-library' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Menus
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('vim-ctrlspace/vim-ctrlspace', { 'hook_add' : "
+call dein#add('vim-ctrlspace/vim-ctrlspace', { 'normalized_name': 'ctrlspace',  'hook_add' : "
             \ let g:CtrlSpaceSetDefaultMapping=1\n
             \ let g:CtrlSpaceDefaultMappingKey='<C-Space> '\n
             \ nmap <M-u>    :CtrlSpaceGoUp<CR>\n
             \ nmap <M-S-u>  :CtrlSpaceGoDown<CR>\n
             \ " })
-call dein#add('lifepillar/vim-cheat40') " \? for cheatsheet
+call dein#add('lifepillar/vim-cheat40', { 'normalized_name': 'cheat40' }) " \? for cheatsheet
 call dein#add('ctrlpvim/ctrlp.vim', {'hook_add' : "
             \ let g:ctrlp_working_path_mode='c'\n
             \ let g:ctrlp_cmd='CtrlPMRUFiles'
@@ -488,7 +488,7 @@ call dein#add('ctrlpvim/ctrlp.vim', {'hook_add' : "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tags and outline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"call dein#add('xolox/vim-easytags', { 'hook_add' : "
+"call dein#add('xolox/vim-easytags', { 'normalized_name': 'easytags',  'hook_add' : "
             "\ let g:easytags_file='./tags'\n
             "\ let g:easytags_ignored_filetypes=''\n
             "\ let g:easytags_on_cursorhold = 0\n
@@ -539,14 +539,14 @@ call dein#add('majutsushi/tagbar', { 'hook_add' : "
 call dein#add('vim-scripts/Rename')
 call dein#add('chrisbra/SudoEdit.vim', { 'hook_add' : "inoremap <S-F2> :SudoWrite<CR>" })
 call dein#add('ervandew/archive')
-call dein#add('xolox/vim-misc')
-"call dein#add('xolox/vim-shell', { 'depends' : 'vim-misc', 'hook_add' : "
+call dein#add('xolox/vim-misc', { 'normalized_name': 'misc' })
+"call dein#add('xolox/vim-shell', { 'normalized_name': 'shell',  'depends' : 'vim-misc', 'hook_add' : "
             "\ let g:shell_mappings_enabled = 0\n
             "\ let g:shell_fullscreen_items = 'mTe'\n
             "\ nnoremap <Leader>op :Open<CR>\n
             "\ nnoremap <Leader>if :Fullscreen<CR>\n
             "\ " })
-call dein#add('itchyny/vim-external', {'hook_add': "
+call dein#add('itchyny/vim-external', { 'normalized_name': 'external', 'hook_add': "
             \ map <Leader>oe <Plug>(external-editor)\n
             \ map <Leader>oo <Plug>(external-explorer)\n
             \ map <Leader>ob <Plug>(external-browser)\n
@@ -563,7 +563,7 @@ call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
             \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
             \ "})
 call dein#add('Shougo/neossh.vim')
-call dein#add('derekwyatt/vim-fswitch', { 'hook_add' : "
+call dein#add('derekwyatt/vim-fswitch', { 'normalized_name': 'fswitch',  'hook_add' : "
             \ au! BufEnter *.cpp,*.c,*.C,*.cxx,*.cc,*.CC let b:fswitchdst = 'hpp,h,H,hh,HH,hxx' | let b:fswitchlocs = '../inc,../include'\n
             \ au! BufEnter *.hpp,*.h,*.H,*.hh,*.HH,*.hxx let b:fswitchdst = 'cpp,c,C,cc,CC,cxx' | let b:fswitchlocs = '../src'\n
             \ let g:fsnonewfiles=1\n
