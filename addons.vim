@@ -41,52 +41,19 @@ call dein#add('bronson/vim-trailing-whitespace', { 'hook_post_source' : "
             \ autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace\n
             \ " })
 
-call dein#add('vim-airline/vim-airline', { 'depends': 'tagbar', 'hook_add' : "
-            \ let g:airline#extensions#wordcount#filetypes='\\vmarkdown|text|txt'\n
-            \ let g:airline_detect_iminsert=1\n
-            \ let g:airline_powerline_fonts=1\n
-            \ let g:airline_section_y = '%{printf(\"%s%s%s\",(&fenc==\"utf-8\")?\"\":&fenc,(&ff==\"unix\")?\"\":\" [\".&ff.\"]\",&et?\"\":\" [t]\")}'\n
-            \ let g:airline_section_z0 = '%-4b %-5(0x%B%)'\n
-            \ let g:airline_section_z = '%3P %{g:airline_symbols.linenr} %3l:%3c'\n
-            \ let g:airline_mode_map = {
-            \     '__' : '-',
-            \     'c'  : 'C',
-            \     'i'  : 'I',
-            \     'ic' : 'I',
-            \     'ix' : 'I',
-            \     'n'  : 'N',
-            \     'ni' : 'N',
-            \     'no' : 'N',
-            \     'R'  : 'R',
-            \     'Rv' : 'R',
-            \     's'  : 'S',
-            \     'S'  : 'S',
-            \     '' : 'S',
-            \     't'  : 'T',
-            \     'v'  : 'V',
-            \     'V'  : 'V',
-            \     '' : 'V',
-            \ }\n
-            \ let g:airline#extensions#default#section_truncate_width = {
-            \               'b':  88,
-            \               'x':  70,
-            \               'z0': 60,
-            \               'z':  45,
-            \               }\n
-            \ let g:airline#extensions#default#layout = [
-            \               [ 'a', 'b', 'c' ],
-            \               [ 'x', 'y', 'z', 'warning' ]
-            \               ]\n
-            \ autocmd User VimtexEventInitPost :AirlineRefresh\n
-            \ let g:airline#extensions#xkblayout#enabled=0\n
-            \ let g:airline#extensions#keymap#enabled=0\n
-            \ " })
+call dein#add('vim-airline/vim-airline', {
+            \ 'normalized_name': 'airline',
+            \ 'depends': 'tagbar',
+            \ 'hook_add': function('plugin_cfg#airline#add'),
+            \ 'hook_post_source': function('plugin_cfg#airline#post_source')
+            \ })
 call dein#add('paranoida/vim-airlineish')
 call dein#add('skywind3000/vim-quickui', {
             \ 'hook_add':         function('plugin_cfg#quickui#add'),
             \ 'hook_post_source': function('plugin_cfg#quickui#post_source'),
-            \ 'lazy': 1, 'on_func': 'quickui#menu#open'
-            \})
+            \ 'lazy': 1,
+            \ 'on_func': 'quickui#menu#open'
+            \ })
 
 " FIXME: almost not used
 call dein#add('thiagoalessio/rainbow_levels.vim', { 'lazy': 1, 'on_cmd': 'RainbowLevelsToggle' })
@@ -183,16 +150,6 @@ call dein#add('inkarkat/vim-EnhancedJumps', {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap  x   "_x
-vnoremap x   "_x
-noremap  d   "_d
-vnoremap d   "_d
-nnoremap dd "_dd
-noremap  m     d
-vnoremap m     d
-nnoremap mm   dd
-nnoremap gm    m
-
 call dein#add('vim-scripts/RepeatableYank')                                           "karkat
 call dein#add('machakann/vim-highlightedyank')
 call dein#add('vim-scripts/ExplainPattern')
@@ -269,20 +226,7 @@ call dein#add('romgrk/pp.vim',          {'lazy': 1, 'on_cmd': 'Pp'})
 call dein#add('ciaranm/detectindent', {'hook_post_source' : "
       \ au FileType cpp,python :DetectIndent
       \ "})
-call dein#add('tpope/vim-fugitive', { 'hook_post_source' : "
-            \ nmap <silent> <Leader>ga :!git add %<CR>\n
-            \ nmap <silent> <Leader>gR :Gremove!<CR>\n
-            \ nmap <silent> <Leader>gc :Gcommit -a<CR>\n
-            \ nmap <silent> <Leader>gA :Gcommit -a --amend<CR>\n
-            \ nmap <silent> <Leader>gC :Gcommit<CR>\n
-            \ nmap <silent> <Leader>gp :Gpush<CR>\n
-            \ nmap <silent> <Leader>gP :Gpull<CR>\n
-            \ nmap <silent> <Leader>gd :Gdiff<CR>\n
-            \ nmap <silent> <Leader>gs :Gstatus<CR>\n
-            \ nmap <silent> <Leader>gl :Glog<CR>\n
-            \ nmap <silent> <Leader>gb :Gblame<CR>\n
-            \ nmap <silent> <Leader>gi :Gsplit! svn info<CR>\n
-            \ " })
+call dein#add('tpope/vim-fugitive') " , { 'hook_post_source' : function("plugin_cfg#fugitive#post_source") }
 call dein#add('idanarye/vim-merginal', {'lazy': 1, 'on_cmd': ['Merginal', 'MerginalToggle']})
 call dein#add('kabbamine/zeavim.vim', {'lazy': 1, 'on_cmd': ['Zeavim', 'ZeavimV'], 'on_map': ['<Leader>z', '<Leader><Leader>z']}) "call zeal
 call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', {'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
@@ -294,278 +238,10 @@ call dein#add('Konfekt/vim-unicode-homoglyphs', { 'hook_source': "let g:is_homog
 " Textobjects
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('andymass/vim-matchup')
-function! ConfigureSandwich()
-    let g:TexEnvironments = [
-                \   'array', 'center', 'description', 'enumerate', 'eqnarray', 'equation',
-                \   'equation*', 'figure', 'flushleft', 'flushright', 'itemize', 'list',
-                \   'minipage', 'picture', 'quotation', 'quote', 'tabbing', 'table',
-                \   'tabular', 'tabular*', 'thebibliography', 'theorem', 'titlepage',
-                \   'verbatim', 'verse'
-                \ ]
-
-    function! TexEnvCompl(argread, cmdline, cursorpos) abort
-        let n = strlen(a:argread)
-        let list = copy(g:TexEnvironments)
-        if n > 0
-            let list = filter(list, 'v:val[: n-1] ==# a:argread')
-        endif
-        return list
-    endfunction
-
-    function! TexEnvInput(is_head) abort
-        if a:is_head
-            let b:TexEnvLast = input('Environment-name: ', '', 'customlist,TexEnvCompl')
-            let command = printf('\begin{%s}', b:TexEnvLast)
-        else
-            let command = printf('\end{%s}', b:TexEnvLast)
-        endif
-        return command
-    endfunction
-
-    function! TexCmdInput(is_head) abort
-        if a:is_head
-            let l:TexCmdLast = input('Command: ', '')
-            let command = printf('\%s{', l:TexCmdLast)
-        else
-            let command = '}'
-        endif
-        return command
-    endfunction
-
-    nmap s <Nop>
-    xmap s <Nop>
-    let g:sandwich#recipes = [
-                \	{'buns': ["‘", "’"],                 'nesting': 1, 'input': [ "u'" ]  },
-                \	{'buns': ['“', '”'],                 'nesting': 1, 'input': [ 'u"' ]  },
-                \	{'buns': ['„', '“'],                 'nesting': 1, 'input': [ 'u,' ]  },
-                \	{'buns': ['«', '»'],                 'nesting': 1, 'input': [ 'u<' ]  },
-                \ ]
-    let g:sandwich#recipes += [
-                \   {'buns': ["``", "``"],               'nesting': 0, 'input': [ "2`" ],  'filetype': ['rst'] },
-                \   {'buns': ["'''", "'''"],             'nesting': 0, 'input': [ "3'" ],  'filetype': ['python'] },
-                \   {'buns': ['"""', '"""'],             'nesting': 0, 'input': [ '3"' ],  'filetype': ['python'] },
-                \   {'buns': ['[(', ')]'],               'nesting': 1, 'input': [ '2[' ],  'filetype': ['python'] },
-                \   {'buns': ['([', '])'],               'nesting': 1, 'input': [ '2(' ],  'filetype': ['python'] },
-                \ ]
-    let g:sandwich#recipes += [
-                \   {'buns': ["`", "'"],                 'nesting': 1, 'input': [ "l'", "l`" ], 'filetype': ['tex', 'plaintex', 'rst'] },
-                \	{'buns': ["``", "''"],               'nesting': 1, 'input': [ 'l"' ],       'filetype': ['tex', 'plaintex', 'rst'], },
-                \	{'buns': ['"`', "\"'"],              'nesting': 1, 'input': [ 'L"' ],       'filetype': ['tex', 'plaintex', 'rst'] },
-                \	{'buns': [",,", "``"],               'nesting': 1, 'input': [ 'l,' ],       'filetype': ['tex', 'plaintex', 'rst'], },
-                \	{'buns': ['<<', '>>'],               'nesting': 1, 'input': [ 'l<' ],       'filetype': ['tex', 'plaintex', 'rst'] },
-                \	{'buns': ['\{', '\}'],               'nesting': 1, 'input': [ '\{' ],       'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
-                \	{'buns': ['\[', '\]'],               'nesting': 1, 'input': [ '\[' ],       'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
-                \	{'buns': ['\(', '\)'],               'nesting': 1, 'input': [ '\(' ],       'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
-                \ ]
-    let g:sandwich#recipes += [
-                \   {'buns': ['\left(',           '\right)'],           'nesting': 1, 'input': [ 'm(' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '(,)' },
-                \	{'buns': ['\left[',           '\right]'],           'nesting': 1, 'input': [ 'm[' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '[,]' },
-                \	{'buns': ['\left|',           '\right|'],           'nesting': 1, 'input': [ 'm|' ],    'filetype': ['tex', 'plaintex', 'rst'] },
-                \	{'buns': ['\left\{',          '\right\}'],          'nesting': 1, 'input': [ 'm{' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
-                \	{'buns': ['\left\langle ',    '\right\rangle '],    'nesting': 1, 'input': [ 'm<' ],    'filetype': ['tex', 'plaintex', 'rst'] },
-                \	{'buns': ['\bigleft(',        '\bigright)'],        'nesting': 1, 'input': [ 'M(' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '(,)' },
-                \	{'buns': ['\bigleft[',        '\bigright]'],        'nesting': 1, 'input': [ 'M[' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '[,]' },
-                \	{'buns': ['\bigleft|',        '\bigright|'],        'nesting': 1, 'input': [ 'M|' ],    'filetype': ['tex', 'plaintex', 'rst'] },
-                \	{'buns': ['\bigleft\{',       '\bigright\}'],       'nesting': 1, 'input': [ 'M{' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
-                \	{'buns': ['\bigleft\langle ', '\bigright\rangle '], 'nesting': 1, 'input': [ 'M<' ],    'filetype': ['tex', 'plaintex', 'rst'] },
-                \ ]
-    "if exists( 'g:sandwich#default_recipes' )
-    let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)+g:sandwich#recipes
-    "else
-        "let g:sandwich#recipes = []+g:sandwich#recipes
-    "end
-
-    let g:sandwich#recipes += [
-                \   {
-                \       'buns'    : ['‘\|“\|«', '’\|”\|»'],
-                \       'kind'    : ['delete', 'replace', 'auto', 'query'],
-                \       'regex'   : 1,
-                \       'nesting' : 1,
-                \       'input'   : ['U'],
-                \   },
-                \   {
-                \       'buns'    : ['\begingroup', '\endgroup'],
-                \       'nesting' : 1,
-                \       'input': [ '\gr' ],
-                \       'filetype': ['tex', 'plaintex'],
-                \       'linewise': 1
-                \   },
-                \   {
-                \       'buns'    : ['\toprule', '\bottomrule'],
-                \       'nesting' : 1,
-                \       'input': [ '\tr', '\br' ],
-                \       'filetype': ['tex', 'plaintex'],
-                \       'linewise': 1
-                \   },
-                \   {
-                \       'buns'    : ['TexCmdInput(1)', 'TexCmdInput(0)'],
-                \       'filetype': ['tex', 'plaintex', 'rst'],
-                \       'kind'    : ['add', 'replace'],
-                \       'action'  : ['add'],
-                \       'expr'    : 1,
-                \       'nesting' : 1,
-                \       'input'   : ['c'],
-                \       'indentkeys-' : '{,},0{,0}'
-                \   },
-                \   {
-                \       'buns'    : ['TexEnvInput(1)', 'TexEnvInput(0)'],
-                \       'filetype': ['tex', 'plaintex'],
-                \       'kind'    : ['add', 'replace'],
-                \       'action'  : ['add'],
-                \       'expr'    : 1,
-                \       'nesting' : 1,
-                \       'linewise' : 1,
-                \       'input'   : ['e'],
-                \       'indentkeys-' : '{,},0{,0}',
-                \       'autoindent' : 2
-                \   },
-                \   {
-                \       'buns'    : ['\\\a\+\*\?{', '}'],
-                \       'filetype': ['tex', 'plaintex', 'rst'],
-                \       'kind'    : ['delete', 'replace', 'auto', 'query'],
-                \       'regex'   : 1,
-                \       'nesting' : 1,
-                \       'input'   : ['c'],
-                \       'indentkeys-' : '{,},0{,0}'
-                \   },
-                \   {
-                \       'buns'    : ['\\begin{[^}]*}\(\[.*\]\)\?', '\\end{[^}]*}'],
-                \       'filetype': ['tex', 'plaintex'],
-                \       'kind'    : ['delete', 'replace', 'auto', 'query'],
-                \       'regex'   : 1,
-                \       'nesting' : 1,
-                \       'linewise' : 1,
-                \       'input'   : ['e'],
-                \       'indentkeys-' : '{,},0{,0}',
-                \       'autoindent' : 0
-                \   },
-                \   {
-                \       'buns'    : ['\(\\left\((\|\[\||\|\\{\|\\langle\|\\lvert\)\|\\left\.\)', '\(\\right\()\|]\||\|\\}\|\\rangle\|\\rvert\)\|\\right\.\)'],
-                \       'filetype': ['tex', 'plaintex', 'rst'],
-                \       'kind'    : ['delete', 'replace', 'auto', 'query'],
-                \       'regex'   : 1,
-                \       'nesting' : 1,
-                \       'input'   : ['ma'],
-                \       'indentkeys-' : '{,},0{,0}',
-                \       'autoindent' : 0
-                \   },
-                \ ]
-    let g:sandwich#recipes += [
-                \	{
-                \       'buns': ['{ ', ' }'],
-                \       'input' : ['}'],
-                \       'kind'    : ['add', 'replace'],
-                \       'action'  : ['add'],
-                \       'nesting': 1,
-                \       'match_syntax': 1,
-                \       'skip_break': 1,
-                \       'indentkeys-' : '{,},0{,0}'
-                \   },
-                \	{
-                \       'buns': ['[ ', ' ]'],
-                \       'input' : [']'],
-                \       'kind'    : ['add', 'replace'],
-                \       'action'  : ['add'],
-                \       'nesting': 1,
-                \       'match_syntax': 1,
-                \       'indentkeys-' : '[,]'
-                \   },
-                \	{
-                \       'buns': ['( ', ' )'],
-                \       'input' : [')'],
-                \       'kind'    : ['add', 'replace'],
-                \       'action'  : ['add'],
-                \       'nesting': 1,
-                \       'match_syntax': 1,
-                \       'indentkeys-' : '(,)'
-                \   },
-                \	{
-                \       'buns': ['{\s*', '\s*}'],
-                \       'input' : ['}'],
-                \       'kind'    : ['delete', 'replace', 'auto', 'query'],
-                \       'regex'   : 1,
-                \       'nesting': 1,
-                \       'match_syntax': 1,
-                \       'skip_break': 1,
-                \       'indentkeys-' : '{,},0{,0}'
-                \   },
-                \	{
-                \       'buns': ['\[\s*', '\s*\]'],
-                \       'input' : [']'],
-                \       'kind'    : ['delete', 'replace', 'auto', 'query'],
-                \       'regex'   : 1,
-                \       'nesting': 1,
-                \       'match_syntax': 1,
-                \       'indentkeys-' : '[,]'
-                \   },
-                \	{
-                \       'buns': ['(\s*', '\s*)'],
-                \       'input' : [')'],
-                \       'kind'    : ['delete', 'replace', 'auto', 'query'],
-                \       'regex'   : 1,
-                \       'nesting': 1,
-                \       'match_syntax': 1,
-                \       'indentkeys-' : '(,)'
-                \   },
-                \ ]
-
-    let g:sandwich#recipes += [
-                \   {
-                \       'buns'    : ['\(if\|function\|switch\|for\|while\)', 'end'],
-                \       'filetype': ['fish'],
-                \       'kind'    : ['delete', 'replace', 'auto', 'query'],
-                \       'regex'   : 1,
-                \       'nesting' : 1,
-                \       'input'   : ['S'],
-                \   },
-                \   {
-                \       'buns'    : ['^\s*\(if\|function\|switch\|for\|while\).*', '^\s*end\s*$'],
-                \       'filetype': ['fish'],
-                \       'kind'    : ['delete', 'replace', 'auto', 'query'],
-                \       'regex'   : 1,
-                \       'nesting' : 1,
-                \       'linewise': 1,
-                \       'input'   : ['s'],
-                \   },
-                \   {
-                \       'buns'    : ['function', 'end'],
-                \       'filetype': ['fish'],
-                \       'nesting' : 1,
-                \       'input'   : ['ff'],
-                \   },
-                \   {
-                \       'buns'    : ['begin', 'end'],
-                \       'filetype': ['fish'],
-                \       'nesting' : 1,
-                \       'input'   : ['fb'],
-                \   },
-                \   {
-                \       'buns'    : ['while', 'end'],
-                \       'filetype': ['fish'],
-                \       'nesting' : 1,
-                \       'input'   : ['fw'],
-                \   },
-                \   {
-                \       'buns'    : ['for', 'end'],
-                \       'filetype': ['fish'],
-                \       'nesting' : 1,
-                \       'input'   : ['fc'],
-                \   },
-                \   {
-                \       'buns'    : ['switch', 'end'],
-                \       'filetype': ['fish'],
-                \       'nesting' : 1,
-                \       'input'   : ['fs'],
-                \   },
-                \   {
-                \       'buns'    : ['if', 'end'],
-                \       'filetype': ['fish'],
-                \       'nesting' : 1,
-                \       'input'   : ['fi'],
-                \   },
-                \ ]
-endfunction
-call dein#add('machakann/vim-sandwich', { 'hook_post_source' : "call ConfigureSandwich()" })
+call dein#add('machakann/vim-sandwich', {
+            \ 'normalized_name': 'sandwich',
+            \ 'hook_post_source': function('plugin_cfg#sandwich#post_source')
+            \ })
 
 call dein#add('kana/vim-textobj-user', { 'hook_post_source' : "
             \ call textobj#user#plugin('mylatex', {
@@ -628,50 +304,10 @@ call dein#add('thinca/vim-textobj-between', { 'hook_add' : "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text manipulation
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('AndrewRadev/switch.vim', { 'hook_add' : "
-            \ let g:switch_mapping='-'\n
-            \ let g:switch_reverse_mapping='+'\n
-            \ let g:switch_find_smallest_match=0\n
-            \ let g:switch_custom_definitions = [
-            \       [ '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉' ],
-            \       [ '⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹' ],
-            \       [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ],
-            \       [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ],
-            \       [ 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье' ],
-            \       [ 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье' ],
-            \       [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
-            \       [ 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december' ],
-            \       [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
-            \       [ 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ],
-            \       [ 'black', 'white', 'grey', 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow' ],
-            \       [ 'TODO', 'DONE', 'XXX', 'FIXME' ],
-            \       [ 'TRUE', 'FALSE' ],
-            \       { '\\C\\<yes\\>': 'no', '\\C\\<no\\>':  'yes',  }, { '\\C\\<Yes\\>': 'No', '\\C\\<No\\>':  'Yes',  }, { '\\C\\<YES\\>': 'NO', '\\C\\<NO\\>':  'YES',  },
-            \       { '\\C\\<on\\>': 'off', '\\C\\<off\\>':  'on',  }, { '\\C\\<On\\>': 'Off', '\\C\\<Off\\>':  'On',  }, { '\\C\\<ON\\>': 'OFF', '\\C\\<OFF\\>':  'ON',  },
-            \       { '\\C\\<AND\\>': 'OR', '\\C\\<OR\\>':  'AND',  }, { '\\C\\<and\\>': 'or', '\\C\\<or\\>':  'and',  },
-            \       [ '[ ]', '[✔]', '[✘]', '[✔✘]', '[?]' ],
-            \     ]\n
-            \ autocmd FileType gitrebase let b:switch_custom_definitions = [
-            \       [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec' ]
-            \     ]\n
-            \ autocmd FileType tex,plaintex let b:switch_custom_definitions = [
-            \         [ '\\\\tiny', '\\\\scriptsize', '\\\\footnotesize', '\\\\small', '\\\\normalsize', '\\\\large', '\\\\Large', '\\\\LARGE', '\\\\huge', '\\\\Huge' ],
-            \         [ '\\\\displaystyle', '\\\\scriptstyle', '\\\\scriptscriptstyle', '\\\\textstyle' ],
-            \         [ '\\\\part', '\\\\chapter', '\\\\section', '\\\\subsection', '\\\\subsubsection', '\\\\paragraph', '\\\\subparagraph' ],
-            \         [ 'part:', 'chap:', 'sec:', 'subsec:', 'subsubsec:' ],
-            \         [ 'article', 'report', 'book', 'letter', 'slides' ],
-            \         [ 'a4paper', 'a5paper', 'b5paper', 'executivepaper', 'legalpaper', 'letterpaper', 'beamer', 'subfiles', 'standalone' ],
-            \         [ 'onecolumn', 'twocolumn' ],
-            \         [ 'oneside', 'twoside' ],
-            \         [ 'draft', 'final' ],
-            \         [ 'AnnArbor', 'Antibes', 'Bergen', 'Berkeley',
-            \           'Berlin', 'Boadilla', 'CambridgeUS', 'Copenhagen', 'Darmstadt',
-            \           'Dresden', 'Frankfurt', 'Goettingen', 'Hannover', 'Ilmenau',
-            \           'JuanLesPins', 'Luebeck', 'Madrid', 'Malmoe', 'Marburg',
-            \           'Montpellier', 'PaloAlto', 'Pittsburgh', 'Rochester', 'Singapore',
-            \           'Szeged', 'Warsaw' ]
-            \      ]\n
-            \ " })
+call dein#add('AndrewRadev/switch.vim', {
+            \ 'normalized_name': 'switch',
+            \ 'hook_post_source': function('plugin_cfg#switch#post_source')
+            \ })
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('t9md/vim-textmanip', { 'hook_add' : "
             \ function! TMoff()\n
@@ -999,7 +635,7 @@ call dein#add('glacambre/firenvim', {
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Local bundles
-call dein#local("~/.config/nvim/bundle_local", { 'depends': 'CountJump' })
+call dein#local("~/.config/nvim/bundle_local", { 'depends': 'CountJump', 'frozen': 1 })
 
 call dein#end()
 

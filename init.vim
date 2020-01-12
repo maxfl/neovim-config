@@ -33,4 +33,15 @@ nnoremap                                        <Leader>/  /<C-R>-\V<CR>
 " SourceRange
 noremap                                         <Leader>S :SourceRange<CR>
 
+" Clipboard mappings
+noremap  x   "_x
+vnoremap x   "_x
+noremap  d   "_d
+vnoremap d   "_d
+nnoremap dd "_dd
+noremap  m     d
+vnoremap m     d
+nnoremap mm   dd
+nnoremap gm    m
+
 source ~/.config/nvim/addons.vim
