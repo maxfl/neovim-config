@@ -6,9 +6,15 @@ endfunction
 
 function plugin_cfg#quickui#post_source()
     call quickui#menu#install('&Editing', [
-                \   [ 'Toggle &autopairs	\(',    'call AutoPairsToggle()',   'Toggle autopairs' ],
+                \   [ 'Toggle &autopairs	\(',    'call AutoPairsToggle()'],
+                \   [ 'Toggle &table-mode	\tm',   'normal \tm'],
                 \   [ '--', '--' ],
-                \   [ '&Remove trailing whitespace	\rts', 'FixWhitespace', 'Remove trailing whitespace' ],
+                \   [ '&Remove trailing whitespace	\rts', 'FixWhitespace'],
+                \ ])
+
+    call quickui#menu#install('&Search', [
+                \   [ '&Far	:Far',    'call feedkeys(":Far ")'],
+                \   [ '&Esearch	\ff', 'normal \ff'],
                 \ ])
 
     call quickui#menu#install('&Highlight', [
