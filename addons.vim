@@ -74,7 +74,7 @@ call dein#add('skywind3000/vim-quickui', { 'normalized_name': 'quickui',
 " FIXME: almost not used
 call dein#add('thiagoalessio/rainbow_levels.vim', { 'lazy': 1, 'on_cmd': 'RainbowLevelsToggle' })
 call dein#add('kien/rainbow_parentheses.vim',     { 'lazy': 1, 'on_cmd': 'RainbowParenthesesToggle' })
-call dein#add('Yggdroot/indentLine',              { 'hook_post_source' : "
+call dein#add('Yggdroot/indentLine',              { 'hook_add' : "
             \ let g:indentLine_enabled=0\n
             \ au FileType cpp,python :IndentLinesEnable\n
             \ ",
@@ -111,7 +111,7 @@ call dein#add('fabi1cazenave/suckless.vim', { 'hook_post_source': "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('jiangmiao/auto-pairs', { 'hook_post_source' : "
+call dein#add('jiangmiao/auto-pairs', { 'hook_add' : "
             \ let g:AutoPairsFlyMode = 1\n
             \ let g:AutoPairsShortcutToggle=''\n
             \ let g:AutoPairsShortcutJump=''\n
@@ -150,7 +150,8 @@ call dein#add('bkad/camelcasemotion', { 'hook_post_source' : "
             \ " })
 call dein#add('inkarkat/vim-JumpToVerticalBlock', { 'normalized_name': 'JumpToVerticalBlock', 'depends': 'CountJump'})
 call dein#add('inkarkat/vim-JumpToVerticalOccurrence', { 'normalized_name': 'JumpToVerticalOccurrence', 'depends': 'CountJump'})
-call dein#add('inkarkat/vim-EnhancedJumps', { 'normalized_name': 'EnhancedJumps',
+call dein#add('inkarkat/vim-EnhancedJumps', {
+            \ 'normalized_name': 'EnhancedJumps',
             \ 'depends': 'ingo-library',
             \ 'hook_add': "
             \   nmap <Leader><C-O> <Plug>EnhancedJumpsOlder\n
@@ -186,7 +187,7 @@ call dein#add('inkarkat/vim-UnconditionalPaste', { 'normalized_name': 'Unconditi
 call dein#add('dkarter/bullets.vim', { 'hook_post_source' : "
             \ let g:bullets_enabled_file_types=['markdown', 'rst', 'text', 'txt', 'gitcommit']\n
             \ " })
-call dein#add('sjl/gundo.vim', { 'hook_post_source' : "
+call dein#add('sjl/gundo.vim', { 'hook_add' : "
             \ nnoremap <Leader>wu :GundoToggle<CR>\n
             \ let g:gundo_preview_bottom=1\n
             \ let g:gundo_width=30\n
@@ -227,7 +228,7 @@ call dein#add('vim-scripts/RangeMacro') " karkat
 call dein#add('wgurecky/vimSum', { 'lazy': 1, 'on_cmd': ['VisSum', 'VisMean', 'VisMult'] })
 "call dein#add('Floobits/floobits-neovim')
 
-call dein#add('moll/vim-bbye', { 'normalized_name': 'bbye',  'hook_post_source' : "
+call dein#add('moll/vim-bbye', { 'normalized_name': 'bbye',  'hook_add' : "
             \ nnoremap ZQ :Bdelete<CR>\n
             \ nnoremap ZZ :write<CR>:Bdelete<CR>\n
             \ nnoremap <Leader>ZZ ZZ\n
@@ -326,25 +327,12 @@ call dein#add('AndrewRadev/switch.vim', {
             \ 'hook_post_source': function('plugin_cfg#switch#post_source')
             \ })
 call dein#add('scrooloose/nerdcommenter')
-call dein#add('t9md/vim-textmanip', { 'normalized_name': 'textmanip',  'hook_add' : "
-            \ function! TMoff()\n
-            \     set ei+=TextYankPost\n
-            \ endfunction\n
-            \ function! TMon()\n
-            \     set ei-=TextYankPost\n
-            \ endfunction\n
-            \ let g:textmanip_enable_mappings=0\n
-            \ let g:textmanip_move_ignore_shiftwidth=1\n
-            \ xmap <C-j> <Plug>(textmanip-move-down)\n
-            \ xmap <C-k> <Plug>(textmanip-move-up)\n
-            \ xmap <C-h> <Plug>(textmanip-move-left)\n
-            \ xmap <C-l> <Plug>(textmanip-move-right)\n
-            \ call submode#map(       'textmanip', 'x', 'r', 'j', '<C-j>')\n
-            \ call submode#map(       'textmanip', 'x', 'r', 'k', '<C-k>')\n
-            \ call submode#map(       'textmanip', 'x', 'r', 'h', '<C-h>')\n
-            \ call submode#map(       'textmanip', 'x', 'r', 'l', '<C-l>')\n
-            \ ",
-            \ "depends": "vim-submode" })
+call dein#add('t9md/vim-textmanip', {
+            \ 'normalized_name': 'textmanip',
+            \ 'hook_add': function('plugin_cfg#textmanip#add'),
+            \ 'hook_post_source': function('plugin_cfg#textmanip#post_source'),
+            \ "depends": "vim-submode"
+            \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tables
