@@ -7,6 +7,7 @@ set runtimepath^=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin( expand('~/.cache/dein') )
 let g:dein#types#git#clone_depth = 1
+let g:dein#enable_name_conversion = 1
 
 call dein#add('Shougo/dein.vim')
 call dein#add('wsdjeg/dein-ui.vim',          {'depends': 'dein.vim', 'lazy': 1, 'on_cmd': 'DeinUpdate' })
@@ -76,7 +77,7 @@ call dein#add('ncm2/float-preview.nvim', {'hook_add' : "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('t9md/vim-choosewin', { 'hook_post_source': "nmap <leader>-  <Plug>(choosewin)",
+call dein#add('t9md/vim-choosewin', { 'hook_add': "nmap <leader>-  <Plug>(choosewin)",
             \ 'lazy': 0, 'on_map': '<Plug>(choosewin)'})
 call dein#add('romgrk/winteract.vim', { 'hook_add': "nmap <leader>w :InteractiveWindow<CR>",
             \ 'lazy': 0, 'on_cmd': 'InteractiveWindow'})
@@ -124,7 +125,7 @@ call dein#add('Lokaltog/vim-easymotion', { 'hook_add' : "
             \ 'on_map': '<Plug>(easymotion-'
             \ })
                                                                                                    " clefer f/F/t/T mappings
-call dein#add('rhysd/clever-f.vim', { 'hook_post_source' : "
+call dein#add('rhysd/clever-f.vim', { 'hook_add' : "
             \ nnoremap <Leader>fr <Plug>(clever-f-reset)\n
             \ nnoremap ; <Plug>(clever-f-repeat-forward)\n
             \ \"nnoremap , <Plug>(clever-f-repeat-back)\n
@@ -136,7 +137,7 @@ call dein#add('inkarkat/vim-JumpToVerticalBlock', {'depends': 'vim-CountJump'})
 call dein#add('inkarkat/vim-JumpToVerticalOccurrence', {'depends': 'vim-CountJump'})
 call dein#add('inkarkat/vim-EnhancedJumps', {
             \ 'depends': 'vim-ingo-library',
-            \ 'hook_post_source': "
+            \ 'hook_add': "
             \   nmap <Leader><C-O> <Plug>EnhancedJumpsOlder\n
             \   nmap <Leader><C-I> <Plug>EnhancedJumpsNewer\n
             \   nmap <C-O>         <Plug>EnhancedJumpsLocalOlder\n
@@ -153,7 +154,7 @@ call dein#add('inkarkat/vim-EnhancedJumps', {
 call dein#add('vim-scripts/RepeatableYank')                                           "karkat
 call dein#add('machakann/vim-highlightedyank')
 call dein#add('vim-scripts/ExplainPattern')
-call dein#add('bfredl/nvim-miniyank', {'hook_post_source' : "
+call dein#add('bfredl/nvim-miniyank', {'hook_add' : "
             \ map p <Plug>(miniyank-autoput)\n
             \ map P <Plug>(miniyank-autoPut)\n
             \ map <Leader>n <Plug>(miniyank-cycle)\n
