@@ -1,4 +1,4 @@
-function plugin_cfg#switch#post_source()
+function plugin_cfg#switch#add()
     let g:switch_mapping='-'
     let g:switch_reverse_mapping='+'
     let g:switch_find_smallest_match=0
@@ -21,6 +21,9 @@ function plugin_cfg#switch#post_source()
                 \  { '\C\<AND\>': 'OR', '\C\<OR\>':  'AND',  }, { '\C\<and\>': 'or', '\C\<or\>':  'and',  },
                 \  [ '[ ]', '[✔]', '[✘]', '[✔✘]', '[?]' ],
                 \ ]
+endfunction
+
+function plugin_cfg#switch#post_source()
     autocmd FileType gitrebase let b:switch_custom_definitions = [
                 \   [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec' ]
                 \ ]
@@ -42,4 +45,3 @@ function plugin_cfg#switch#post_source()
                 \     'Szeged', 'Warsaw' ]
                 \ ]
 endfunction
-

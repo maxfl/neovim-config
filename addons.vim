@@ -306,6 +306,7 @@ call dein#add('thinca/vim-textobj-between', { 'hook_add' : "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('AndrewRadev/switch.vim', {
             \ 'normalized_name': 'switch',
+            \ 'hook_add': function('plugin_cfg#switch#add'),
             \ 'hook_post_source': function('plugin_cfg#switch#post_source')
             \ })
 call dein#add('scrooloose/nerdcommenter')
@@ -592,45 +593,19 @@ call dein#add('scrooloose/syntastic', { 'hook_add' : "
             \ " })
 call dein#add('xuhdev/SingleCompile')
 call dein#add('wbthomason/buildit.nvim')
-"call dein#add('tpope/vim-dispatch', { 'hook_add' : "
-            "\ nnoremap <Leader>qm :Make<CR>\n
-            "\ nnoremap <Leader>qM :Make!<CR>\n
-            "\ nnoremap <Leader>qc :Copen<CR>\n
-            "\ nnoremap <Leader>qC :Copen!<CR>\n
-            "\ " })
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Terminal, repl, embedding
-
-"call dein#add('ivanov/vim-ipython', { 'hook_add' : "let g:ipy_perform_mappings=0" })
-"call dein#add('Vigemus/iron.nvim')                         " deprecated
-"call dein#add('bfredl/nvim-ipy', {'hook_add' : "           " deprecated
-            "\ let g:nvim_ipy_perform_mappings=1\n
-            "\ map <Leader>ii <Plug>(IPy-Run)\n
-            "\ map <Leader>ic <Plug>(IPy-RunCell)\n
-            "\ map <Leader>ia <Plug>(IPy-RunAll)\n
-            "\ map <Leader>is <Plug>(IPy-Interrupt)\n
-            "\ map <Leader>it <Plug>(IPy-Terminate)\n
-            "\ "})
 call dein#add('kassio/neoterm', { 'hook_add' : "
             \ let g:neoterm_shell = '/usr/bin/fish'\n
             \ let g:neoterm_automap_keys = '<Leader>qm'\n
             \ nmap <M-t> :Tnew<CR>\n
             \ nmap <M-T> :Tnew<CR>i\n
             \ " })
-" call dein#add('williamjameshandley/vimteractive') " not working with neovim
+
 call dein#add('glacambre/firenvim', {
             \ 'hook_post_update': { _ -> firenvim#install(0) },
-            \ 'hook_add' : "
-            \ let g:firenvim_config = {
-            \     'localSettings': {
-            \         '.*': {
-            \             'priority': 1,
-            \             'takeover': 'never',
-            \         },
-            \     }
-            \ }
-            \ "
+            \ 'hook_add' : function('plugin_cfg#firenvim#add')
             \ })
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
