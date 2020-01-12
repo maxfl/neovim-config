@@ -10,24 +10,39 @@ let g:dein#types#git#clone_depth = 1
 let g:dein#enable_name_conversion = 1
 
 call dein#add('Shougo/dein.vim')
-call dein#add('wsdjeg/dein-ui.vim',          {'depends': 'dein', 'lazy': 1, 'on_cmd': 'DeinUpdate' })
-call dein#add('haya14busa/dein-command.vim', {'depends': 'dein', 'lazy': 1, 'on_cmd': 'Dein' })
-
+call dein#add('wsdjeg/dein-ui.vim', {
+            \ 'depends': 'dein',
+            \ 'lazy': 1,
+            \ 'on_cmd': 'DeinUpdate'
+            \ })
+call dein#add('haya14busa/dein-command.vim', {
+            \ 'depends': 'dein',
+            \ 'lazy': 1,
+            \ 'on_cmd': 'Dein'
+            \ })
 call dein#add('tpope/vim-sensible', { 'normalized_name': 'sensible' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Libraries
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('inkarkat/vim-ingo-library', { 'normalized_name': 'ingo-library'})
-call dein#add('inkarkat/vim-CountJump',    { 'normalized_name': 'CountJump', 'depends': 'ingo-library' })
-call dein#add('inkarkat/vim-SyntaxRange',  { 'normalized_name': 'SyntaxRange', 'depends': 'ingo-library' })
+call dein#add('inkarkat/vim-CountJump',    {
+            \ 'normalized_name': 'CountJump',
+            \ 'depends': 'ingo-library'
+            \ })
+call dein#add('inkarkat/vim-SyntaxRange',  {
+            \ 'normalized_name': 'SyntaxRange',
+            \ 'depends': 'ingo-library'
+            \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('jonathanfilip/vim-lucius', { 'normalized_name': 'lucius', 'hook_post_source': "
-            \ colorscheme lucius\n
-            \ LuciusBlack\n
+call dein#add('jonathanfilip/vim-lucius', {
+            \ 'normalized_name': 'lucius',
+            \ 'hook_post_source': "
+            \     colorscheme lucius\n
+            \     LuciusBlack\n
             \ "})
 
 " fade unfocused buffers
