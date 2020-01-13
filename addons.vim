@@ -111,14 +111,10 @@ call dein#add('fabi1cazenave/suckless.vim', { 'hook_post_source': "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('jiangmiao/auto-pairs', { 'hook_add' : "
-            \ let g:AutoPairsFlyMode = 1\n
-            \ let g:AutoPairsShortcutToggle=''\n
-            \ let g:AutoPairsShortcutJump=''\n
-            \ noremap <Leader>( :call AutoPairsToggle()<CR>\n
-            \ let g:AutoPairs = {'(':')', '[':']', '{':'}',\"'\":\"'\",'\"':'\"', '`':'`'}\n
-            \ call extend( g:AutoPairs, {'“':'”', '‘' : '’', '„':'“', '«':'»'} )\n
-            \ "})
+call dein#add('jiangmiao/auto-pairs', {
+            \ 'hook_add' : function("plugin_cfg#autopairs#add"),
+            \ 'hook_post_source' : function("plugin_cfg#autopairs#post_source")
+            \ })
 call dein#add('honza/vim-snippets', { 'normalized_name': 'snippets' })
 call dein#add('SirVer/ultisnips', { 'hook_add' : "
             \ let g:UltiSnipsExpandTrigger='<Tab>'\n
@@ -237,13 +233,16 @@ call dein#add('moll/vim-bbye', { 'normalized_name': 'bbye',  'hook_add' : "
             \ 'lazy': 1, 'on_cmd': 'Bdelete'
             \ })
 call dein#add('rbgrouleff/bclose.vim') " same as bbye, required by ranger
-"call dein#add('nhooyr/neoman.vim')
+" call dein#add('nhooyr/neoman.vim')
 call dein#add('thinca/vim-prettyprint', { 'normalized_name': 'prettyprint', 'lazy': 1, 'on_cmd': ['PrettyPrint', 'PP']})
 call dein#add('romgrk/pp.vim',          {'lazy': 1, 'on_cmd': 'Pp'})
-call dein#add('ciaranm/detectindent', {'hook_post_source' : "
-      \ au FileType cpp,python :DetectIndent
-      \ "})
-call dein#add('tpope/vim-fugitive', { 'normalized_name': 'fugitive' }) " , { 'hook_post_source' : function("plugin_cfg#fugitive#post_source") }
+call dein#add('ciaranm/detectindent', {
+            \   'hook_post_source' : "au FileType cpp,python :DetectIndent"
+            \ })
+call dein#add('tpope/vim-fugitive', {
+            \   'normalized_name': 'fugitive',
+            \   'hook_post_source': function("plugin_cfg#fugitive#post_source")
+            \ })
 call dein#add('idanarye/vim-merginal', { 'normalized_name': 'merginal', 'lazy': 1, 'on_cmd': ['Merginal', 'MerginalToggle']})
 call dein#add('kabbamine/zeavim.vim', {'lazy': 1, 'on_cmd': ['Zeavim', 'ZeavimV'], 'on_map': ['<Leader>z', '<Leader><Leader>z']}) "call zeal
 call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', { 'normalized_name': 'open-or-create-path-and-file', 'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
@@ -384,37 +383,7 @@ call dein#add('chrisbra/vim-diff-enhanced', { 'normalized_name': 'diff-enhanced'
             "\ let g:pymode_trim_whitespaces = 0\n
             "\ " })
 call dein#add('kalekundert/vim-coiled-snake', { 'normalized_name': 'coiled-snake' })
-call dein#add('lervag/vimtex', { 'hook_add' : "
-            \ let g:vimtex_view_method='zathura'\n
-            \ \" let g:vimtex_view_method='mupdf'\n
-            \ let g:vimtex_imaps_enabled=0\n
-            \ let g:vimtex_index_split_width=60\n
-            \ if exepath('nvr')!=''\n
-            \   let g:vimtex_compiler_progname='nvr'\n
-            \ endif\n
-            \ \" if exepath('pplatex')!=''\n
-            \ \"   let g:vimtex_quickfix_method='pplatex'\n
-            \ \" endif\n
-            \ let g:vimtex_index_split_pos='vert botright'\n
-            \ noremap <localleader>lL <plug>(vimtex-compile-ss)\n
-            \ noremap <localleader>l0 :let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>\n
-            \    let g:vimtex_quickfix_latexlog = {
-            \           'default' : 0
-            \          }
-            \ \" let g:neocomplete#sources#omni#input_patterns.tex =
-            \             \" '\v\\%('
-            \             \" . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \             \" . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-            \             \" . '|hyperref\s*\[[^]]*'
-            \             \" . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \             \" . '|%(include%(only)?|input)\s*\{[^}]*'
-            \             \" . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \             \" . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \             \" . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \             \" . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \             \" . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
-            \             \" . ')'
-            \ " })
+call dein#add('lervag/vimtex', { 'hook_post_source' : function("plugin_cfg#vimtex#post_source" )})
 call dein#add('lervag/wiki.vim', { 'hook_add' : "
             \ let g:wiki_mappings_use_defaults=0
             \ " })
@@ -507,34 +476,10 @@ call dein#add('vim-voom/voom', { 'hook_add' : "
             \ let g:voom_tree_placement='right'\n
             \ nmap <silent> <Leader>wo :VoomToggle<CR>\n
             \ " })
-command! -nargs=0 TagbarToggle        call tagbar#ToggleWindow()
-call dein#add('majutsushi/tagbar', { 'hook_add' : "
-            \ nnoremap <silent> <Leader>wt :TagbarToggle<CR>\n
-            \ let g:tagbar_autoclose = 1\n
-            \ let g:tagbar_compact = 1\n
-            \ let g:tagbar_autofocus = 1\n
-            \ let g:tagbar_autoshowtag = 1\n
-            \ let g:tagbar_type_tex = {
-            \               'ctagstype' : 'latex',
-            \               'kinds'     : [
-            \               's:sections',
-            \               'g:graphics',
-            \               'l:labels',
-            \               'r:refs:1',
-            \               'p:pagerefs:1',
-            \               'f:includes'
-            \               ],
-            \               'sort'    : 0,
-            \               }\n
-            \ let g:tagbar_type_make = {
-            \               'ctagstype' : 'make',
-            \               'kinds'     : [
-            \               'm:macros',
-            \               't:task',
-            \               ],
-            \               'sort'    : 0,
-            \               }\n
-            \ " })
+call dein#add('majutsushi/tagbar', {
+            \   'hook_add': function("plugin_cfg#tagbar#add"),
+            \   'hook_post_source': function("plugin_cfg#tagbar#post_source")
+            \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and Folders
