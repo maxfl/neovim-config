@@ -327,21 +327,18 @@ call dein#add('t9md/vim-textmanip', {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tables
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('dhruvasagar/vim-table-mode', { 'normalized_name': 'table-mode', 'hook_add' : "
-            \ let g:table_mode_corner_corner='+'
-            \ "})
-call dein#add('junegunn/vim-easy-align', { 'normalized_name': 'easy-align',  'hook_add' : "
-            \ vmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
-            \ vmap <silent> <leader>eA <Plug>(EasyAlign)\n
-            \ nmap <silent> <leader>ea <Plug>(LiveEasyAlign)\n
-            \ nmap <silent> <leader>et  :let p=getpos('.')<CR>vie:EasyAlign * &<CR>:call setpos('.', p)<CR>\n
-            \ nmap <silent> <leader>es  :let p=getpos('.')<CR>vaE:EasyAlign *\ <CR>:call setpos('.', p)<CR>\n
-            \ nmap <silent> <leader>e-- :let p=getpos('.')<CR>vaE:EasyAlign */ -- /<CR>:call setpos('.', p)<CR>\n
-            \ vmap <silent> <leader>et  :'<,'>EasyAlign * &<CR>\n
-            \ vmap <silent> <leader>es  :'<,'>EasyAlign *\ <CR>\n
-            \ vmap <silent> <leader>e-- :'<,'>EasyAlign */ -- /<CR>\n
-            \ " })
-call dein#add('salsifis/vim-transpose', { 'normalized_name': 'transpose',  'hook_add' : "vmap <silent> <leader>et :TransposeInteractive<CR>" })
+call dein#add('dhruvasagar/vim-table-mode', {
+            \ 'normalized_name': 'table-mode',
+            \ 'hook_add' : "let g:table_mode_corner_corner='+'"
+            \ })
+call dein#add('junegunn/vim-easy-align', {
+            \ 'normalized_name': 'easy-align',
+            \ 'hook_add' : function("plugin_cfg#easy_align#add")
+            \ })
+call dein#add('salsifis/vim-transpose', {
+            \ 'normalized_name': 'transpose',
+            \ 'hook_add' : "vmap <silent> <leader>et :TransposeInteractive<CR>"
+            \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff tools
@@ -364,27 +361,16 @@ call dein#add('chrisbra/vim-diff-enhanced', { 'normalized_name': 'diff-enhanced'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"call dein#add('klen/python-mode', { 'hook_add' : "
-            "\ let g:pymode = 1\n
-            "\ let g:pymode_lint = 0\n
-            "\ let g:pymode_rope = 0\n
-            "\ let g:pymode_rope_guess_project = 0\n
-            "\ let g:pymode_virtualenv = 0\n
-            "\ let g:pymode_options = 0\n
-            "\ let g:pymode_trim_whitespaces = 0\n
-            "\ " })
 call dein#add('kalekundert/vim-coiled-snake', { 'normalized_name': 'coiled-snake' })
-call dein#add('lervag/vimtex', { 'hook_post_source' : function("plugin_cfg#vimtex#post_source" )})
-call dein#add('lervag/wiki.vim', { 'hook_add' : "
-            \ let g:wiki_mappings_use_defaults=0
-            \ " })
+call dein#add('lervag/vimtex', { 'hook_post_source': function("plugin_cfg#vimtex#post_source" )})
+call dein#add('lervag/wiki.vim', { 'hook_add' : "let g:wiki_mappings_use_defaults=0" })
 call dein#add('lervag/wiki-ft.vim', { 'depends' : 'wiki'})
 call dein#add('joom/latex-unicoder.vim', { 'hook_add' : "let g:unicoder_no_map=1" })
 call dein#add('dag/vim-fish', { 'normalized_name': 'fish' })
-"call dein#add('Rykka/riv.vim', { 'hook_add' : "let g:riv_ignored_imaps = '<Tab>,<S-Tab>'" })
-call dein#add('plasticboy/vim-markdown', { 'normalized_name': 'markdown',  'hook_add' : "
-            \ au BufRead,BufEnter /tmp/qutebrowser-editor-* setl ft=markdown spell
-            \ " })
+call dein#add('plasticboy/vim-markdown', {
+            \ 'normalized_name': 'markdown',
+            \ 'hook_add' : "au BufRead,BufEnter /tmp/qutebrowser-editor-* setl ft=markdown spell"
+            \ })
 call dein#add('JuliaEditorSupport/julia-vim')
 call dein#add('bfrg/vim-cpp-modern', { 'normalized_name': 'cpp-modern' })
 call dein#add('vim-scripts/ebnf.vim')
@@ -395,42 +381,14 @@ call dein#add('vim-scripts/ebnf.vim')
 call dein#add('brooth/far.vim')        " :Far
 call dein#add('eugen0329/vim-esearch', { 'normalized_name': 'esearch' }) " \ff
 call dein#add('tpope/vim-abolish', { 'normalized_name': 'abolish' })     " :%S////
-call dein#add('t9md/vim-quickhl', { 'normalized_name': 'quickhl',  'hook_add' : "
-            \ nmap <leader>hm <Plug>(quickhl-manual-this)\n
-            \ xmap <leader>hm <Plug>(quickhl-manual-this)\n
-            \ nmap <leader>hn <Plug>(quickhl-manual-reset)\n
-            \ xmap <leader>hn <Plug>(quickhl-manual-reset)\n
-            \ \n
-            \ nmap <leader>hM :exe 'QuickhlManualAdd! \\<'.expand('<cword>').'\\>'<CR>\n
-            \ xmap <leader>hM :exe 'QuickhlManualAdd! \\<'.expand('<cword>').'\\>'<CR>\n
-            \ nmap <leader>hN :exe 'QuickhlManualDelete! \\<'.expand('<cword>').'\\>'<CR>\n
-            \ xmap <leader>hN :exe 'QuickhlManualDelete! \\<'.expand('<cword>').'\\>'<CR>\n
-            \ \n
-            \ \"nmap <Space>j <Plug>(quickhl-cword-toggle)\n
-            \ \"nmap <Space>] <Plug>(quickhl-tag-toggle)\n
-            \ map <leader>hH <Plug>(operator-quickhl-manual-this-motion)\n
-            \ " })
-call dein#add('qxxxb/vim-searchhi', { 'normalized_name': 'searchhi',  'hook_add' : "
-            \ nmap / <Plug>(searchhi-/)\n
-            \ nmap ? <Plug>(searchhi-?)\n
-            \ nmap n <Plug>(searchhi-n)\n
-            \ nmap N <Plug>(searchhi-N)\n
-            \ nmap * <Plug>(searchhi-*)\n
-            \ nmap # <Plug>(searchhi-#)\n
-            \ nmap g* <Plug>(searchhi-g*)\n
-            \ nmap g# <Plug>(searchhi-g#)\n
-            \ nmap <silent> <C-L> <Plug>(searchhi-clear-all)\n
-            \
-            \ vmap / <Plug>(searchhi-v-/)\n
-            \ vmap ? <Plug>(searchhi-v-?)\n
-            \ vmap n <Plug>(searchhi-v-n)\n
-            \ vmap N <Plug>(searchhi-v-N)\n
-            \ vmap * <Plug>(searchhi-v-*)\n
-            \ vmap # <Plug>(searchhi-v-#)\n
-            \ vmap g* <Plug>(searchhi-v-g*)\n
-            \ vmap g# <Plug>(searchhi-v-g#)\n
-            \ \" vmap <silent> <C-L> <Plug>(searchhi-v-off-all)\n
-            \ " })
+call dein#add('t9md/vim-quickhl', {
+            \ 'normalized_name': 'quickhl',
+            \ 'hook_add' : function("plugin_cfg#quickhl#add")
+            \ })
+call dein#add('qxxxb/vim-searchhi', {
+            \ 'normalized_name': 'searchhi',
+            \ 'hook_add': function("plugin_cfg#searchhi#add")
+            \ })
 call dein#add('inkarkat/vim-ExtractMatches', { 'normalized_name': 'ExtractMatches',  'depends': 'ingo-library' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -519,18 +477,7 @@ call dein#add('zenbro/mirror.vim', { 'hook_add' : "
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compilation
-call dein#add('scrooloose/syntastic', { 'hook_add' : "
-            \ let g:syntastic_mode_map = { 'mode': 'passive',
-            \                              'active_filetypes': [],
-            \                              'passive_filetypes': [] } \n
-            \ let g:syntastic_ignore_files = ['^/usr/include/', '\.C$'] \n
-            \ if executable( 'clang++' ) \n
-            \     let g:syntastic_cpp_compiler = 'clang++' \n
-            \ endif \n
-            \ let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++' \n
-            \ let g:syntastic_python_checkers = [ 'python' ] \n
-            \ nmap <silent> <Leader>we :Errors<CR> \n
-            \ " })
+call dein#add('scrooloose/syntastic', { 'hook_add': function("plugin_cfg#syntastic#add") })
 call dein#add('xuhdev/SingleCompile')
 call dein#add('wbthomason/buildit.nvim')
 
