@@ -149,15 +149,7 @@ call dein#add('inkarkat/vim-JumpToVerticalOccurrence', { 'normalized_name': 'Jum
 call dein#add('inkarkat/vim-EnhancedJumps', {
             \ 'normalized_name': 'EnhancedJumps',
             \ 'depends': 'ingo-library',
-            \ 'hook_add': "
-            \   nmap <Leader><C-O> <Plug>EnhancedJumpsOlder\n
-            \   nmap <Leader><C-I> <Plug>EnhancedJumpsNewer\n
-            \   nmap <C-O>         <Plug>EnhancedJumpsLocalOlder\n
-            \   nmap <C-I>         <Plug>EnhancedJumpsLocalNewer\n
-            \   nmap <M-p>         <Plug>EnhancedJumpsRemoteOlder\n
-            \   nmap <M-S-p>       <Plug>EnhancedJumpsRemoteNewer\n
-            \   let g:EnhancedJumps_CaptureJumpMessages = 0\n
-            \ "
+            \ 'hook_add': function("plugin_cfg#EnhancedJumps#add")
             \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -235,7 +227,6 @@ call dein#add('moll/vim-bbye', { 'normalized_name': 'bbye',  'hook_add' : "
 call dein#add('rbgrouleff/bclose.vim') " same as bbye, required by ranger
 " call dein#add('nhooyr/neoman.vim')
 call dein#add('thinca/vim-prettyprint', { 'normalized_name': 'prettyprint', 'lazy': 1, 'on_cmd': ['PrettyPrint', 'PP']})
-call dein#add('romgrk/pp.vim',          {'lazy': 1, 'on_cmd': 'Pp'})
 call dein#add('ciaranm/detectindent', {
             \   'hook_post_source' : "au FileType cpp,python :DetectIndent"
             \ })

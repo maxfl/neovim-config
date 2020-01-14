@@ -1,5 +1,5 @@
 function plugin_cfg#quickui#add()
-    nmap <F9> :call quickui#menu#open()<CR>
+    map <F9> :call quickui#menu#open()<CR>
     let g:quickui_border_style = 2
     let g:quickui_show_tip = 1
 endfunction
@@ -13,8 +13,8 @@ function plugin_cfg#quickui#post_source()
                 \ ])
 
     call quickui#menu#install('&Search', [
-                \   [ '&Far	:Far',    'call feedkeys(":Far ")'],
-                \   [ '&Esearch	\ff', 'normal \ff'],
+                \   [ '&Far	:Far…',    'call feedkeys(":Far ")'],
+                \   [ '&Esearch	\ff…', 'normal \ff'],
                 \ ])
 
     call quickui#menu#install('&Highlight', [
@@ -26,12 +26,19 @@ function plugin_cfg#quickui#post_source()
                 \ ])
 
     call quickui#menu#install('&Windows', [
-                \   [ '&Choosewin	\-', "call feedkeys('\\-')"],
-                \   [ '&Winteract	\w', "call feedkeys('\\w')"],
+                \   [ '&Choosewin	\-…', "call feedkeys('\\-')"],
+                \   [ '&Winteract	\w…', "call feedkeys('\\w')"],
                 \ ])
 
     call quickui#menu#install('&Motions', [
-                \   [ '&Easy motion	\m', 'call feedkeys("\\m")'],
+                \   [ 'Next vertical block	]w', 'normal ]w'],
+                \   [ 'Previous vertical block	[w', 'normal [w'],
+                \   [ 'Next vertical occurance	]v', 'normal ]v'],
+                \   [ 'Previous vertical occurance	[v', 'normal [v'],
+                \   [ 'Next vertical occurance	]V{char}', 'call feedkeys("]V")'],
+                \   [ 'Previous vertical occurance	[V{char}', 'call feedkeys("[V")'],
+                \   [ '--', '--' ],
+                \   [ '&Easy motion	\m{char}', 'call feedkeys("\\m")'],
                 \   [ '--', '--' ],
                 \   [ '&Indent next	\]', 'call feedkeys("\\]")'],
                 \   [ 'I&ndent previous	\[', 'call feedkeys("\\m")'],
@@ -39,14 +46,18 @@ function plugin_cfg#quickui#post_source()
 
     call quickui#menu#install('&Completion', [
                 \   [ '&Deoplete	<C-x><C-x>', 'call feedkeys("a\<C-x>\<C-x>")'],
-                \   [ '&Unicode	<C-x><C-z>',     'call feedkeys("a\<C-x>\<C-u>")'],
-                \   [ 'Diggraph	<C-x><C-G>',     'call feedkeys("a\<C-x>\<C-u>")'],
+                \   [ '&Unicode	<C-x><C-z>', 'call feedkeys("a\<C-x>\<C-u>")'],
+                \   [ 'Diggraph	<C-x><C-G>', 'call feedkeys("a\<C-x>\<C-u>")'],
                 \ ])
 
     call quickui#menu#install('&Tools', [
-                \   [ '&Gundo	\wu', 'GundoToggle' ],
+                \   [ '&RangeMacro	\@{register}{motion}', 'call feedkeys("gv:RangeMacro ")' ],
+                \   [ '&PrettyPrint1', 'call feedkeys(":PP ")' ],
                 \   [ '--', '--' ],
-                \   [ 'PrettyPrint &1', 'call feedkeys(":PP ")' ],
-                \   [ 'PrettyPrint &2', 'call feedkeys(":Pp ")' ],
+                \   [ '&Gundo	\wu', 'GundoToggle' ],
+                \   [ '&Tagbar	\wt', 'TagbarToggle' ],
+                \   [ '--', '--' ],
                 \ ])
 endfunction
+
+" vim: tabstop=12 sts=12
