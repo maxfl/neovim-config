@@ -1,6 +1,6 @@
 let &packpath = &runtimepath
 
-source ~/.vim/vimrc
+source vimrc_legacy
 set notermguicolors
 set background=dark
 "colorscheme maxfl
