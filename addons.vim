@@ -102,11 +102,11 @@ call dein#add('fabi1cazenave/suckless.vim', { 'hook_post_source': "
             \ nmap <M-=> :tabnext<CR>\n
             \ nmap <M-+> :tabnew<CR>\n
             \" })
-"call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
-            "\ noremap  <silent> <F12> :FloatermToggle<CR>i\n
-            "\ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>i\n
-            "\ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
-            "\ "})
+call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
+            \ noremap  <silent> <F12> :FloatermToggle<CR>i\n
+            \ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>i\n
+            \ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
+            \ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
@@ -260,10 +260,11 @@ call dein#add('kana/vim-textobj-user', { 'normalized_name': 'textobj-user',  'ho
             \               })
             \ " })
 "call dein#add('haya14busa/vim-operator-flashy', { 'normalized_name': 'operator-flashy' })
-call dein#add('kana/vim-textobj-line', { 'normalized_name': 'textobj-line' })
+call dein#add('kana/vim-textobj-line', { 'normalized_name': 'textobj-line'})
 call dein#add('rhysd/vim-textobj-continuous-line', { 'normalized_name': 'textobj-continuous-line' })
 call dein#add('glts/vim-textobj-comment', { 'normalized_name': 'textobj-comment' })
-call dein#add('kana/vim-textobj-entire', { 'normalized_name': 'textobj-entire',  'hook_add': "
+call dein#add('kana/vim-textobj-entire', { 'normalized_name': 'textobj-entire',
+            \ 'hook_add': "
             \ let g:textobj_entire_no_default_key_mappings=1\n
             \ xmap iE <Plug>(textobj-entire-i)\n
             \ omap iE <Plug>(textobj-entire-i)\n
@@ -362,7 +363,6 @@ call dein#add('chrisbra/vim-diff-enhanced', { 'normalized_name': 'diff-enhanced'
 " Filetype
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('kalekundert/vim-coiled-snake', { 'normalized_name': 'coiled-snake' })
-call dein#add('lervag/vimtex', { 'hook_post_source': function("plugin_cfg#vimtex#post_source" )})
 call dein#add('lervag/wiki.vim', { 'hook_add': "let g:wiki_mappings_use_defaults=0" })
 call dein#add('lervag/wiki-ft.vim', { 'depends': 'wiki'})
 call dein#add('joom/latex-unicoder.vim', { 'hook_add': "let g:unicoder_no_map=1" })
@@ -375,6 +375,8 @@ call dein#add('JuliaEditorSupport/julia-vim')
 call dein#add('bfrg/vim-cpp-modern', { 'normalized_name': 'cpp-modern' })
 call dein#add('vim-scripts/ebnf.vim')
 
+call dein#add('lervag/vimtex', { 'hook_post_source': function("plugin_cfg#vimtex#post_source" ), 'merged': 0})
+call dein#add('KeitaNakamura/tex-conceal.vim')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search and replace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
