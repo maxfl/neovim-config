@@ -51,12 +51,15 @@ function plugin_cfg#quickui#post_source()
                 \ ])
 
     call quickui#menu#install('&Tools', [
+                \   [ 'External &browser	\ob', 'normal \ob' ],
+                \   [ 'External e&xplorer	\oo', 'normal \oo' ],
+                \   [ 'External &editor	\oe', 'normal \oe' ],
+                \   [ '--', '--' ],
                 \   [ '&RangeMacro	\@{register}{motion}', 'call feedkeys("gv:RangeMacro ")' ],
                 \   [ '&PrettyPrint1', 'call feedkeys(":PP ")' ],
                 \   [ '--', '--' ],
                 \   [ '&Gundo	\wu', 'GundoToggle' ],
                 \   [ '&Tagbar	\wt', 'TagbarToggle' ],
-                \   [ '--', '--' ],
                 \ ])
 endfunction
 

@@ -96,8 +96,11 @@ call dein#add('t9md/vim-choosewin', { 'normalized_name': 'choosewin',  'hook_add
             \ 'lazy': 0, 'on_map': '<Plug>(choosewin)'})
 call dein#add('romgrk/winteract.vim', { 'hook_add': "nmap <leader>w :InteractiveWindow<CR>",
             \ 'lazy': 0, 'on_cmd': 'InteractiveWindow'})
-call dein#add('fabi1cazenave/suckless.vim', { 'hook_post_source': "
+call dein#add('fabi1cazenave/suckless.vim', {
+            \ 'hook_add': "
             \ let g:suckless_tabline=0\n
+            \ let g:suckless_guitablabel=0",
+            \ 'hook_post_source': "
             \ nmap <M--> :tabprev<CR>\n
             \ nmap <M-=> :tabnext<CR>\n
             \ nmap <M-+> :tabnew<CR>\n
@@ -398,6 +401,7 @@ call dein#add('inkarkat/vim-ExtractMatches', { 'normalized_name': 'ExtractMatche
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('vim-ctrlspace/vim-ctrlspace', { 'normalized_name': 'ctrlspace',  'hook_add': "
             \ let g:CtrlSpaceSetDefaultMapping=1\n
+            \ let g:CtrlSpaceUseTabline=1\n
             \ let g:CtrlSpaceDefaultMappingKey='<C-Space> '\n
             \ nmap <M-u>    :CtrlSpaceGoUp<CR>\n
             \ nmap <M-S-u>  :CtrlSpaceGoDown<CR>\n
@@ -458,9 +462,9 @@ call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
             \ ",
             \ 'depends' : 'bclose'
             \} )
-call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
-            \ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
-            \ "})
+"call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
+            "\ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
+            "\ "})
 call dein#add('Shougo/neossh.vim')
 call dein#add('derekwyatt/vim-fswitch', {
             \ 'normalized_name': 'fswitch',
@@ -483,7 +487,7 @@ call dein#add('zenbro/mirror.vim', { 'hook_add' : "
 " Compilation
 call dein#add('scrooloose/syntastic', { 'hook_add': function("plugin_cfg#syntastic#add") })
 call dein#add('xuhdev/SingleCompile')
-call dein#add('wbthomason/buildit.nvim')
+"call dein#add('wbthomason/buildit.nvim')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Terminal, repl, embedding
