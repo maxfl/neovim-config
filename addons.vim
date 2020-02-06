@@ -233,16 +233,28 @@ call dein#add('thinca/vim-prettyprint', { 'normalized_name': 'prettyprint', 'laz
 call dein#add('ciaranm/detectindent', {
             \   'hook_post_source': "au FileType cpp,python :DetectIndent"
             \ })
-call dein#add('tpope/vim-fugitive', {
-            \   'normalized_name': 'fugitive',
-            \   'hook_post_source': function("plugin_cfg#fugitive#post_source")
-            \ })
-call dein#add('idanarye/vim-merginal', { 'normalized_name': 'merginal', 'lazy': 1, 'on_cmd': ['Merginal', 'MerginalToggle']})
 call dein#add('kabbamine/zeavim.vim', {'lazy': 1, 'on_cmd': ['Zeavim', 'ZeavimV'], 'on_map': ['<Leader>z', '<Leader><Leader>z']}) "call zeal
 call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', { 'normalized_name': 'open-or-create-path-and-file', 'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
 
 call dein#add('chrisbra/unicode.vim') " , {'lazy': 1, 'on_cmd': ['UnicodeSearch', 'Digraph', 'UnicodeTable', 'UnicodeName']}
 call dein#add('Konfekt/vim-unicode-homoglyphs', { 'normalized_name': 'unicode-homoglyphs',  'hook_source': "let g:is_homoglyph_on=0", 'lazy': 1 })
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VCS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('tpope/vim-fugitive', {
+            \   'normalized_name': 'fugitive',
+            \   'hook_post_source': function("plugin_cfg#fugitive#post_source")
+            \ })
+call dein#add('idanarye/vim-merginal', { 'normalized_name': 'merginal', 'lazy': 1, 'on_cmd': ['Merginal', 'MerginalToggle']})
+call dein#add('inkarkat/vim-ConflictDetection', {
+            \ 'normalized_name': 'ConflictDetection',
+            \ 'depends': 'ingo-library'
+            \ })
+call dein#add('inkarkat/vim-ConflictMotions', {
+            \ 'normalized_name': 'ConflictMotions',
+            \ 'depends': ['ingo-library', 'CountJump', 'repeat', 'visualrepeat']
+            \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjects
