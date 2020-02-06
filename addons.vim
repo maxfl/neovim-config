@@ -253,7 +253,8 @@ call dein#add('inkarkat/vim-ConflictDetection', {
             \ })
 call dein#add('inkarkat/vim-ConflictMotions', {
             \ 'normalized_name': 'ConflictMotions',
-            \ 'depends': ['ingo-library', 'CountJump', 'repeat', 'visualrepeat']
+            \ 'depends': ['ingo-library', 'CountJump', 'repeat', 'visualrepeat'],
+            \ 'hook_add': 'let g:ConflictMotions_TakeMappingPrefix = "<Leader>="'
             \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -527,4 +528,3 @@ call dein#end()
 " Matchit (included in default scripts)
 au FileType text,txt let b:match_words="“:”,‘:’,«:»,„:“"
 
-let g:ConflictMotions_TakeMappingPrefix = '<Leader>='
