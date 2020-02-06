@@ -34,6 +34,8 @@ call dein#add('inkarkat/vim-SyntaxRange',  {
             \ 'normalized_name': 'SyntaxRange',
             \ 'depends': 'ingo-library'
             \ })
+call dein#add('tpope/vim-repeat', { 'normalized_name': 'repeat' })
+call dein#add('inkarkat/vim-visualrepeat', { 'normalized_name': 'visualrepeat' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
@@ -186,9 +188,6 @@ call dein#add('sjl/gundo.vim', { 'hook_add': "
             \ ",
             \ 'lazy': 1, 'on_cmd': 'GundoToggle'
             \ })
-
-call dein#add('tpope/vim-repeat', { 'normalized_name': 'repeat' })
-call dein#add('inkarkat/vim-visualrepeat', { 'normalized_name': 'visualrepeat' })
 
 call dein#add('Shougo/deoplete.nvim', {
             \ 'hook_add': "
@@ -393,6 +392,7 @@ call dein#add('vim-scripts/ebnf.vim')
 
 call dein#add('lervag/vimtex', { 'hook_post_source': function("plugin_cfg#vimtex#post_source" ), 'merged': 0})
 call dein#add('KeitaNakamura/tex-conceal.vim')
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search and replace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
