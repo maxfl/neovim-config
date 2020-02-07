@@ -11,6 +11,8 @@ function plugin_cfg#cycle#post_source()
     call cycle#add_groups([
         \  [ '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉' ],
         \  [ '⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹' ],
+        \ ])
+    call cycle#add_groups([
         \  [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ],
         \  [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ],
         \  [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
@@ -33,6 +35,10 @@ function plugin_cfg#cycle#post_source()
     call cycle#add_group(
           \   [ '{:}', '(:)' ], 'sub_pairs'
           \ )
+    call cycle#add_group(
+          \   ['“:”', '‘:’', '„:“', '‚:‘', '«:»'], 'sub_pairs'
+          \ )
+
 
     let g:cycle_default_groups_for_gitrebase = [
                 \ [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec' ]
@@ -48,6 +54,7 @@ function plugin_cfg#cycle#post_source()
             \   [['onecolumn', 'twocolumn']],
             \   [['draft', 'final']],
             \   [['(:)', '[:]', '\{:\}', '\lvert :\rvert', '\lVert :\rVert', '\lfloor :\rfloor', '\lceil :\rceil', '\langle :\rangle'], 'sub_pairs', 'hard_case', 'match_case'],
+            \   [["``:''", ',,:``', "`:'", "<<:>>"], 'sub_pairs'],
             \   [['\big(:\big)', '\Big(:\Big)', '\bigg(:\bigg)', '\Bigg(:\Bigg)'], 'sub_pairs', 'hard_case', 'match_case'],
             \   [['\big[:\big]', '\Big[:\Big]', '\bigg[:\bigg]', '\Bigg[:\Bigg]'], 'sub_pairs', 'hard_case', 'match_case'],
             \   [['\big\{:\big\}', '\Big\{:\Big\}', '\bigg\{:\bigg\}', '\Bigg\{:\Bigg\}'], 'sub_pairs', 'hard_case', 'match_case'],
