@@ -45,9 +45,10 @@ function plugin_cfg#quickui#post_source()
                 \ ])
 
     call quickui#menu#install('&Completion', [
+                \   [ '&Thesaurus	<C-x><C-u>', 'call feedkeys("a\<C-x>\<C-u>")'],
                 \   [ '&Deoplete	<C-x><C-x>', 'call feedkeys("a\<C-x>\<C-x>")'],
-                \   [ '&Unicode	<C-x><C-z>', 'call feedkeys("a\<C-x>\<C-u>")'],
-                \   [ 'Diggraph	<C-x><C-G>', 'call feedkeys("a\<C-x>\<C-u>")'],
+                \   [ '&Unicode	<C-x><C-z>', 'call feedkeys("a\<C-x>\<C-z>")'],
+                \   [ 'Di&graph	<C-x><C-g>', 'call feedkeys("a\<C-x>\<C-g>")'],
                 \ ])
 
     call quickui#menu#install('&Tools', [
