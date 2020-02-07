@@ -3,7 +3,8 @@ if &shell =~# 'fish$'
 endif
 
 autocmd VimEnter * call dein#call_hook('post_source')
-set runtimepath^=~/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath-=~/.config/nvim
+set runtimepath^=~/.config/nvim,~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin( expand('~/.cache/dein') )
 let g:dein#types#git#clone_depth = 1
