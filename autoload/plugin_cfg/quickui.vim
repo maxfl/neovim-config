@@ -6,7 +6,7 @@ endfunction
 
 function plugin_cfg#quickui#post_source()
     call quickui#menu#install('&Editing', [
-                \   [ 'Toggle &autopairs	\(',    'call AutoPairsToggle()'],
+                \   [ 'Toggle &autopairs',    'call AutoPairsToggle()'],
                 \   [ 'Toggle &table-mode	\tm',   'normal \tm'],
                 \   [ '--', '--' ],
                 \   [ '&Remove trailing whitespace	\rts', 'FixWhitespace'],
