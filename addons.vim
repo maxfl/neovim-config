@@ -327,10 +327,14 @@ call dein#add('thinca/vim-textobj-between', { 'normalized_name': 'textobj-betwee
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text manipulation
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('AndrewRadev/switch.vim', {
-            \ 'normalized_name': 'switch',
-            \ 'hook_add': function('plugin_cfg#switch#add'),
-            \ 'hook_post_source': function('plugin_cfg#switch#post_source')
+"call dein#add('AndrewRadev/switch.vim', {
+            "\ 'normalized_name': 'switch',
+            "\ 'hook_add': function('plugin_cfg#switch#add'),
+            "\ 'hook_post_source': function('plugin_cfg#switch#post_source')
+            "\ })
+call dein#add('bootleq/vim-cycle', {
+            \ 'hook_add': function('plugin_cfg#cycle#add'),
+            \ 'hook_post_source': function('plugin_cfg#cycle#post_source'),
             \ })
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('t9md/vim-textmanip', {
@@ -354,6 +358,9 @@ call dein#add('junegunn/vim-easy-align', {
 call dein#add('salsifis/vim-transpose', {
             \ 'normalized_name': 'transpose',
             \ 'hook_add': "vmap <silent> <leader>et :TransposeInteractive<CR>"
+            \ })
+call dein#add('inkarkat/vim-AdvancedSorters', {
+            \ 'normalized_name': 'AdvancedSorters'
             \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -389,6 +396,7 @@ call dein#add('plasticboy/vim-markdown', {
 call dein#add('JuliaEditorSupport/julia-vim')
 call dein#add('bfrg/vim-cpp-modern', { 'normalized_name': 'cpp-modern' })
 call dein#add('vim-scripts/ebnf.vim')
+"call dein#add('direnv/direnv.vim')
 
 call dein#add('lervag/vimtex', { 'hook_post_source': function("plugin_cfg#vimtex#post_source" ), 'merged': 0})
 call dein#add('KeitaNakamura/tex-conceal.vim')
