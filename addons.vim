@@ -239,7 +239,9 @@ call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git'
 call dein#add('chrisbra/unicode.vim') " , {'lazy': 1, 'on_cmd': ['UnicodeSearch', 'Digraph', 'UnicodeTable', 'UnicodeName']}
 call dein#add('Konfekt/vim-unicode-homoglyphs', { 'normalized_name': 'unicode-homoglyphs',  'hook_source': "let g:is_homoglyph_on=0", 'lazy': 1 })
 
-call dein#add('ron89/thesaurus_query.vim')
+call dein#add('ron89/thesaurus_query.vim', {
+            \ 'hook_add': 'let g:tq_map_keys = 0'
+            \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VCS
