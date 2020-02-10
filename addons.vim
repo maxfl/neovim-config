@@ -242,6 +242,18 @@ call dein#add('Konfekt/vim-unicode-homoglyphs', { 'normalized_name': 'unicode-ho
 call dein#add('ron89/thesaurus_query.vim', {
             \ 'hook_add': 'let g:tq_map_keys = 0'
             \ })
+"call dein#add('dpelle/vim-languagetool', {
+            "\ 'normalized_name': 'languagetool',
+            "\ 'hook_add': "
+            "\ let g:languagetool_jar='/usr/share/java/languagetool/languagetool-commandline.jar'
+            "\ "
+            "\ })
+call dein#add('rhysd/vim-grammarous', {
+            \ 'normalized_name': 'grammarous',
+            \ 'hook_add': "
+            \ let g:grammarous#languagetool_cmd = 'languagetool'
+            \ "
+            \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VCS
@@ -511,12 +523,14 @@ call dein#add('zenbro/mirror.vim', { 'hook_add' : "
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Compilation
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('scrooloose/syntastic', { 'hook_add': function("plugin_cfg#syntastic#add") })
 call dein#add('xuhdev/SingleCompile')
 "call dein#add('wbthomason/buildit.nvim')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Terminal, repl, embedding
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('kassio/neoterm', { 'hook_add' : "
             \ let g:neoterm_shell = '/usr/bin/fish'\n
             \ let g:neoterm_automap_keys = '<Leader>qm'\n
