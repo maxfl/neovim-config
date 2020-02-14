@@ -33,12 +33,17 @@ nnoremap                                        <Leader>/  /<C-R>-\V<CR>
 " SourceRange
 noremap                                         <Leader>S :SourceRange<CR>
 
+" Complete from the normal mode
+nmap <Leader><C-x> ea<C-x>
+
 " Clipboard mappings
+" Make x, d and dd delete with no register
 noremap  x   "_x
 vnoremap x   "_x
 noremap  d   "_d
 vnoremap d   "_d
 nnoremap dd "_dd
+" use m (move) for deleting with register
 noremap  m     d
 vnoremap m     d
 nnoremap mm   dd

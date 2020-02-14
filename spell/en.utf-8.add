@@ -933,3 +933,6 @@ NMO
 subdetectors
 TensorFlow
 TensorFlow
+GPU
+GPUs
+CUDA

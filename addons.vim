@@ -500,6 +500,13 @@ call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
             \ ",
             \ 'depends' : 'bclose'
             \} )
+
+call dein#add('kevinhwang91/rnvimr', {
+            \ 'hook_post_update': "call system('make install')",
+            \ 'hook_post_source': '
+            \   map <Leader>tr :RnvimrToggle<CR>
+            \ '
+            \ }) "ranger
 "call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
             "\ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
             "\ "})
