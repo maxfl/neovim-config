@@ -109,9 +109,9 @@ call dein#add('fabi1cazenave/suckless.vim', {
             \ nmap <M-+> :tabnew<CR>\n
             \" })
 call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
-            \ noremap  <silent> <F12> :FloatermToggle<CR>\n
-            \ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
-            \ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
+            \ \"noremap  <silent> <F12> :FloatermToggle<CR>\n
+            \ \"noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
+            \ \"tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
             \ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -480,7 +480,7 @@ call dein#add('majutsushi/tagbar', {
 call dein#add('vim-scripts/Rename')
 call dein#add('chrisbra/SudoEdit.vim', { 'hook_add': "inoremap <S-F2> :SudoWrite<CR>" })
 call dein#add('ervandew/archive')
-call dein#add('xolox/vim-misc', { 'normalized_name': 'misc' })
+"call dein#add('xolox/vim-misc', { 'normalized_name': 'misc' })
 "call dein#add('xolox/vim-shell', { 'normalized_name': 'shell',  'depends': 'vim-misc', 'hook_add' : "
             "\ let g:shell_mappings_enabled = 0\n
             "\ let g:shell_fullscreen_items = 'mTe'\n
@@ -504,7 +504,7 @@ call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
 call dein#add('kevinhwang91/rnvimr', {
             \ 'hook_post_update': "call system('make install')",
             \ 'hook_post_source': '
-            \   map <Leader>tr :RnvimrToggle<CR>
+            \   map <F11> :RnvimrToggle<CR>
             \ '
             \ }) "ranger
 "call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "

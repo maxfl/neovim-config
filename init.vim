@@ -33,8 +33,12 @@ nnoremap                                        <Leader>/  /<C-R>-\V<CR>
 " SourceRange
 noremap                                         <Leader>S :SourceRange<CR>
 
+" Edit new file based on a word under cursor
+noremap                                         <Leader>gf :e <cfile><CR>
+noremap                                         <Leader>gF :tabe <cfile><CR>
+
 " Complete from the normal mode
-nmap <Leader><C-x> ea<C-x>
+nmap                                            <Leader><C-x> ea<C-x>
 
 " Clipboard mappings
 " Make x, d and dd delete with no register

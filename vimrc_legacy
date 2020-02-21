@@ -130,13 +130,9 @@ inoremap <F2> <ESC>:w<CR>gi
 inoremap <S-F2> <ESC>:w!<CR>gi
 inoremap <F3> <C-^>
 cnoremap <F3> <C-^>
-nnoremap <F10> :bd<CR>
-nnoremap <S-F10> :bd!<CR>
 inoremap <F21> <C-^>
 cnoremap <F21> <C-^>
 nnoremap <M-/> :noh<CR>
-noremap <Leader>gf :e <cfile><CR>
-noremap <Leader>gF :tabe <cfile><CR>
 "inoremap <C-L> <C-K>
 vnoremap > >gv
 vnoremap < <gv
