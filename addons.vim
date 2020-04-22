@@ -109,9 +109,9 @@ call dein#add('fabi1cazenave/suckless.vim', {
             \ nmap <M-+> :tabnew<CR>\n
             \" })
 call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
-            \ \"noremap  <silent> <F12> :FloatermToggle<CR>\n
-            \ \"noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
-            \ \"tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
+            \ noremap  <silent> <F12> :FloatermToggle<CR>\n
+            \ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
+            \ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
             \ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -449,6 +449,7 @@ call dein#add('ctrlpvim/ctrlp.vim', {'hook_add': "
             \ let g:ctrlp_working_path_mode='c'\n
             \ let g:ctrlp_cmd='CtrlPMRUFiles'
             \ "})
+call dein#add('pechorin/any-jump.vim', { 'normalized_name': 'any-jump' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tags and outline
@@ -503,9 +504,11 @@ call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
 
 call dein#add('kevinhwang91/rnvimr', {
             \ 'hook_post_update': "call system('make install')",
-            \ 'hook_post_source': '
-            \   map <F11> :RnvimrToggle<CR>
-            \ '
+            \ 'hook_post_source': "
+            \   map <F11> :RnvimrToggle<CR>\n
+            \   map! <F11> <Esc>:RnvimrToggle<CR>\n
+            \   tnoremap <silent> <F11> <C-\\><C-n>:RnvimrToggle<CR>\n
+            \ "
             \ }) "ranger
 "call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
             "\ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
