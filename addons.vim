@@ -193,12 +193,10 @@ call dein#add('sjl/gundo.vim', { 'hook_add': "
 call dein#add('Shougo/deoplete.nvim', {
             \ 'hook_add': "
             \   let g:deoplete#enable_at_startup = 1\n
-            \   let g:deoplete#disable_auto_complete = 0\n
-            \   let g:deoplete#enable_smart_case = 1\n
-            \   let g:deoplete#auto_complete_start_length = 2\n
             \ ",
             \ 'hook_post_source': "
             \   call deoplete#custom#option('auto_refresh_delay', 200)\n
+            \   call deoplete#custom#option('smart_case', v:true)\n
             \   inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
             \ ",
             \ 'depends': 'float-preview.nvim'})
@@ -236,8 +234,16 @@ call dein#add('ciaranm/detectindent', {
 call dein#add('kabbamine/zeavim.vim', {'lazy': 1, 'on_cmd': ['Zeavim', 'ZeavimV'], 'on_map': ['<Leader>z', '<Leader><Leader>z']}) "call zeal
 call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', { 'normalized_name': 'open-or-create-path-and-file', 'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Characters
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('chrisbra/unicode.vim') " , {'lazy': 1, 'on_cmd': ['UnicodeSearch', 'Digraph', 'UnicodeTable', 'UnicodeName']}
 call dein#add('Konfekt/vim-unicode-homoglyphs', { 'normalized_name': 'unicode-homoglyphs',  'hook_source': "let g:is_homoglyph_on=0", 'lazy': 1 })
+call dein#add('segeljakt/vim-isotope', {'normalized_name': 'isotope'}, {'hook_add': 'let g:isotope_use_default_mappings = 0'})
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Spelling and grammar
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call dein#add('ron89/thesaurus_query.vim', {
             \ 'hook_add': 'let g:tq_map_keys = 0'
