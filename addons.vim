@@ -108,10 +108,16 @@ call dein#add('fabi1cazenave/suckless.vim', {
             \ nmap <M-=> :tabnext<CR>\n
             \ nmap <M-+> :tabnew<CR>\n
             \" })
+call dein#add('camspiers/animate.vim')
+call dein#add('camspiers/lens.vim', {'depends': 'animate', 'hook_add': "
+            \ let g:lens#height_resize_max = 40\n
+            \ let g:lens#width_resize_max = 100\n
+            \ "})
 call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
             \ noremap  <silent> <F12> :FloatermToggle<CR>\n
             \ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
             \ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
+            \ let g:floaterm_shell='fish'\n
             \ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

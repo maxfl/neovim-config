@@ -5,7 +5,17 @@ set notermguicolors
 set background=dark
 "colorscheme maxfl
 
+" Splitting
 set splitbelow splitright
+
+" Keymap
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=-1
+inoremap <F3> <C-^>
+cnoremap <F3> <C-^>
+inoremap <C-Space> <C-^><Space>
+cnoremap <C-Space> <C-^><Space>
 
 " Toggle paste mode
 noremap                                         \tp :set paste!<CR>

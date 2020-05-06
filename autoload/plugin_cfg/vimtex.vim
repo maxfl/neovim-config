@@ -1,3 +1,7 @@
+function! VimtexZathuraHook(status)
+  echom a:status
+endfunction
+
 function plugin_cfg#vimtex#post_source()
     let g:vimtex_view_method='zathura'
     " let g:vimtex_view_method='mupdf'
@@ -26,4 +30,6 @@ function plugin_cfg#vimtex#post_source()
     " . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
     " . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
     " . ')'
+    "
+    let g:vimtex_compiler_callback_hooks = ['VimtexZathuraHook']
 endfunction
