@@ -5,8 +5,11 @@ set notermguicolors
 set background=dark
 "colorscheme maxfl
 
-" Splitting
+" Splitting and field of view
 set splitbelow splitright
+set scrolloff=3
+" Term flicker on due to scrolloff fixed in https://github.com/neovim/neovim/issues/11915
+au TermOpen * setl scrolloff=0
 
 " Keymap
 set keymap=russian-jcukenwin
