@@ -37,6 +37,13 @@ ${1:${VISUAL:Paragraph name}}
 $0
 endsnippet
 
+snippet ssspara "Subsubparagraph" b
+${1:${VISUAL:Paragraph name}}
+`!p snip.rv = rst_char_len(t[1])*"."`
+
+$0
+endsnippet
+
 snippet lqd "quoted literal and M-dash"
 \`\`'$1'\`\` — $0
 endsnippet

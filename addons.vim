@@ -109,10 +109,10 @@ call dein#add('fabi1cazenave/suckless.vim', {
             \ nmap <M-+> :tabnew<CR>\n
             \" })
 call dein#add('camspiers/animate.vim')
-call dein#add('camspiers/lens.vim', {'depends': 'animate', 'hook_add': "
-            \ let g:lens#height_resize_max = 40\n
-            \ let g:lens#width_resize_max = 100\n
-            \ "})
+"call dein#add('camspiers/lens.vim', {'depends': 'animate', 'hook_add': "
+            "\ let g:lens#height_resize_max = 40\n
+            "\ let g:lens#width_resize_max = 100\n
+            "\ "})
 call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
             \ noremap  <silent> <F12> :FloatermToggle<CR>\n
             \ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
@@ -218,6 +218,8 @@ call dein#add('kana/vim-submode', { 'normalized_name': 'submode', 'hook_post_sou
             \ call submode#map(       'textmanip', 'x', '', '<', '<<')\n
             \ ",
             \ })
+" TODO: call dein#add('Iron-E/nvim-libmodal')
+
 call dein#add('vim-scripts/RelativeNumberCurrentWindow')
 call dein#add('vim-scripts/RangeMacro') " karkat
 call dein#add('wgurecky/vimSum', { 'lazy': 1, 'on_cmd': ['VisSum', 'VisMean', 'VisMult'] })
@@ -237,7 +239,15 @@ call dein#add('thinca/vim-prettyprint', { 'normalized_name': 'prettyprint', 'laz
 call dein#add('ciaranm/detectindent', {
             \   'hook_post_source': "au FileType cpp,python :DetectIndent"
             \ })
-call dein#add('kabbamine/zeavim.vim', {'lazy': 1, 'on_cmd': ['Zeavim', 'ZeavimV'], 'on_map': ['<Leader>z', '<Leader><Leader>z']}) "call zeal
+" TODO: call dein#add('zsugabubus/crazy8.nvim') " detect indent
+call dein#add('kabbamine/zeavim.vim', {
+            \ 'lazy': 1,
+            \ 'on_cmd': ['Zeavim', 'ZeavimV', 'Docset'],
+            \ 'on_map': ['<Leader>z', '<Leader><Leader>z'],
+            \ 'hook_add': '
+            \ au filetype python :Docset python,matplotlib,scipy,numpy
+            \ '
+            \ }) "call zeal
 call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', { 'normalized_name': 'open-or-create-path-and-file', 'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -558,6 +568,8 @@ call dein#add('kassio/neoterm', { 'hook_add' : "
             \ let g:neoterm_automap_keys = '<Leader>qm'\n
             \ nmap <M-t> :Tnew<CR>\n
             \ nmap <M-T> :Tnew<CR>i\n
+            \ nmap <Leader>s :TReplSendLine<CR>\n
+            \ vmap <Leader>s :TReplSendSelection<CR>\n
             \ " })
 
 call dein#add('glacambre/firenvim', {
