@@ -401,6 +401,7 @@ call dein#add('salsifis/vim-transpose', {
 call dein#add('inkarkat/vim-AdvancedSorters', {
             \ 'normalized_name': 'AdvancedSorters'
             \ })
+"call dein#add('mipmip/vim-scimark')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff tools
