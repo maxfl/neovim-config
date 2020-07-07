@@ -15,6 +15,10 @@ function plugin_cfg#quickui#post_source()
     call quickui#menu#install('&Search', [
                 \   [ '&Far	:Far…',    'call feedkeys(":Far ")'],
                 \   [ '&Esearch	\ff…', 'normal \ff'],
+                \   [ '--', '--' ],
+                \   [ '&AnyJump	\j', 'normal \j'],
+                \   [ 'AnyJump&Back	\ab', 'normal \ab'],
+                \   [ 'AnyJump&LastResults	\al', 'normal \al'],
                 \ ])
 
     call quickui#menu#install('&Highlight', [

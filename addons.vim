@@ -55,18 +55,22 @@ call dein#add('tadaa/vimade', {'hook_add': "
             \ let g:vimade.usecursorhold=1\n
             \ "})
 call dein#add('powerman/vim-plugin-AnsiEsc', { 'normalized_name': 'plugin-AnsiEsc', 'lazy': 1, 'on_cmd': 'AnsiEsc'})
-call dein#add('bronson/vim-trailing-whitespace', { 'normalized_name': 'trailing-whitespace',  'hook_post_source': "
-            \ nnoremap <Leader>rts :FixWhitespace<CR>\n
-            \ autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace\n
-            \ " })
 
-call dein#add('vim-airline/vim-airline', {
-            \ 'normalized_name': 'airline',
-            \ 'depends': 'tagbar',
-            \ 'hook_add': function('plugin_cfg#airline#add'),
-            \ 'hook_post_source': function('plugin_cfg#airline#post_source')
-            \ })
-call dein#add('paranoida/vim-airlineish', { 'normalized_name': 'airlineish' })
+"
+" Cursor highlight
+"
+call dein#add('danilamihailov/beacon.nvim', {'hook_add': "
+            \ let g:beacon_timeout=1500\n
+            \ let g:beacon_shrink=0\n
+            \ let g:beacon_fade=0\n
+            \ "})
+
+call dein#add('machakann/vim-highlightedyank', { 'normalized_name': 'highlightedyank' })
+
+"
+" Windows and menus
+"
+
 call dein#add('skywind3000/vim-quickui', { 'normalized_name': 'quickui',
             \ 'hook_add':         function('plugin_cfg#quickui#add'),
             \ 'hook_post_source': function('plugin_cfg#quickui#post_source'),
@@ -74,6 +78,25 @@ call dein#add('skywind3000/vim-quickui', { 'normalized_name': 'quickui',
             \ 'on_func': 'quickui#menu#open'
             \ })
 
+call dein#add('ncm2/float-preview.nvim', {'hook_add': "
+            \ let g:float_preview#docked=1\n
+            \ set completeopt+=preview\n
+            \ "})
+
+"
+" Statusline
+"
+call dein#add('vim-airline/vim-airline', {
+            \ 'normalized_name': 'airline',
+            \ 'depends': 'tagbar',
+            \ 'hook_add': function('plugin_cfg#airline#add'),
+            \ 'hook_post_source': function('plugin_cfg#airline#post_source')
+            \ })
+call dein#add('paranoida/vim-airlineish', { 'normalized_name': 'airlineish' })
+
+"
+" Indentation
+"
 " FIXME: almost not used
 call dein#add('thiagoalessio/rainbow_levels.vim', { 'lazy': 1, 'on_cmd': 'RainbowLevelsToggle' })
 call dein#add('kien/rainbow_parentheses.vim',     { 'lazy': 1, 'on_cmd': 'RainbowParenthesesToggle' })
@@ -86,11 +109,6 @@ call dein#add('Yggdroot/indentLine',              { 'hook_add': "
 call dein#add('nathanaelkane/vim-indent-guides',  { 'normalized_name': 'indent-guides',
             \ 'lazy': 1, 'on_cmd': ['IndentGuidesEnable', 'IndentGuidesToggle' ]
             \ })
-
-call dein#add('ncm2/float-preview.nvim', {'hook_add': "
-            \ let g:float_preview#docked=1\n
-            \ set completeopt+=preview\n
-            \ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and splits
@@ -108,17 +126,18 @@ call dein#add('fabi1cazenave/suckless.vim', {
             \ nmap <M-=> :tabnext<CR>\n
             \ nmap <M-+> :tabnew<CR>\n
             \" })
-call dein#add('camspiers/animate.vim')
-"call dein#add('camspiers/lens.vim', {'depends': 'animate', 'hook_add': "
-            "\ let g:lens#height_resize_max = 40\n
-            "\ let g:lens#width_resize_max = 100\n
-            "\ "})
 call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
             \ noremap  <silent> <F12> :FloatermToggle<CR>\n
             \ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
             \ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
             \ let g:floaterm_shell='fish'\n
             \ "})
+
+"call dein#add('camspiers/animate.vim')
+"call dein#add('camspiers/lens.vim', {'depends': 'animate', 'hook_add': "
+            "\ let g:lens#height_resize_max = 40\n
+            "\ let g:lens#width_resize_max = 100\n
+            "\ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
@@ -168,7 +187,6 @@ call dein#add('inkarkat/vim-EnhancedJumps', {
 " Clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('vim-scripts/RepeatableYank')                                           "karkat
-call dein#add('machakann/vim-highlightedyank', { 'normalized_name': 'highlightedyank' })
 call dein#add('vim-scripts/ExplainPattern')
 call dein#add('bfredl/nvim-miniyank', {'hook_add': "
             \ map p <Plug>(miniyank-autoput)\n
@@ -195,6 +213,10 @@ call dein#add('sjl/gundo.vim', { 'hook_add': "
             \ ",
             \ 'lazy': 1, 'on_cmd': 'GundoToggle'
             \ })
+call dein#add('bronson/vim-trailing-whitespace', { 'normalized_name': 'trailing-whitespace',  'hook_post_source': "
+            \ nnoremap <Leader>rts :FixWhitespace<CR>\n
+            \ autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace\n
+            \ " })
 
 call dein#add('Shougo/deoplete.nvim', {
             \ 'hook_add': "
@@ -516,14 +538,14 @@ call dein#add('itchyny/vim-external', { 'normalized_name': 'external', 'hook_add
             \ map <Leader>oo <Plug>(external-explorer)\n
             \ map <Leader>ob <Plug>(external-browser)\n
             \ "})
-call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
-            \ let g:ranger_replace_netrw = 0\n
-            \ let g:NERDTreeHijackNetrw = 0\n
-            \ nnoremap <silent> <M-r> :RangerCurrentFile<CR>\n
-            \ nnoremap <silent> <M-R> :RangerWorkingDirectory<CR>\n
-            \ ",
-            \ 'depends' : 'bclose'
-            \} )
+"call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
+            "\ let g:ranger_replace_netrw = 0\n
+            "\ let g:NERDTreeHijackNetrw = 0\n
+            "\ nnoremap <silent> <M-r> :RangerCurrentFile<CR>\n
+            "\ nnoremap <silent> <M-R> :RangerWorkingDirectory<CR>\n
+            "\ ",
+            "\ 'depends' : 'bclose'
+            "\} )
 
 call dein#add('kevinhwang91/rnvimr', {
             \ 'hook_post_update': "call system('make install')",
