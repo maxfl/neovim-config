@@ -65,6 +65,7 @@ function plugin_cfg#quickui#post_source()
                 \   [ '--', '--' ],
                 \   [ '&Gundo	\wu', 'GundoToggle' ],
                 \   [ '&Tagbar	\wt', 'TagbarToggle' ],
+                \   [ '&OpenInScim	\sc', 'OpenInScim' ],
                 \ ])
 endfunction
 
