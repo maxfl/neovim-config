@@ -118,14 +118,12 @@ call dein#add('t9md/vim-choosewin', { 'normalized_name': 'choosewin',  'hook_add
 call dein#add('romgrk/winteract.vim', { 'hook_add': "nmap <leader>w :InteractiveWindow<CR>",
             \ 'lazy': 0, 'on_cmd': 'InteractiveWindow'})
 call dein#add('fabi1cazenave/suckless.vim', {
-            \ 'hook_add': "
-            \ let g:suckless_tabline=0\n
-            \ let g:suckless_guitablabel=0",
-            \ 'hook_post_source': "
-            \ nmap <M--> :tabprev<CR>\n
-            \ nmap <M-=> :tabnext<CR>\n
-            \ nmap <M-+> :tabnew<CR>\n
-            \" })
+            \ 'hook_add': function('plugin_cfg#suckless#add'),
+            \ 'hook_post_source': function('plugin_cfg#suckless#post_source')
+            \ })
+"call dein#add('zhamlin/tiler.vim', {
+            "\ 'hook_post_source': function("plugin_cfg#tiler#post_source")
+            "\ })
 call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
             \ noremap  <silent> <F12> :FloatermToggle<CR>\n
             \ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
@@ -410,8 +408,10 @@ call dein#add('t9md/vim-textmanip', {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('dhruvasagar/vim-table-mode', {
             \ 'normalized_name': 'table-mode',
-            \ 'hook_add': "let g:table_mode_corner_corner='+'"
-            \ })
+            \ 'hook_add': "
+            \ let g:table_mode_corner_corner='|'\n
+            \ let g:table_mode_corner='|'\n
+            \ "})
 call dein#add('junegunn/vim-easy-align', {
             \ 'normalized_name': 'easy-align',
             \ 'hook_add': function("plugin_cfg#easy_align#add")
