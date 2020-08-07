@@ -59,18 +59,18 @@ call dein#add('powerman/vim-plugin-AnsiEsc', { 'normalized_name': 'plugin-AnsiEs
 "
 " Cursor highlight
 "
-call dein#add('danilamihailov/beacon.nvim', {'hook_add': "
-            \ let g:beacon_timeout=1500\n
-            \ let g:beacon_shrink=0\n
-            \ let g:beacon_fade=0\n
-            \ "})
+" Spoils diff
+"call dein#add('danilamihailov/beacon.nvim', {'hook_add': "
+            "\ let g:beacon_timeout=1500\n
+            "\ let g:beacon_shrink=0\n
+            "\ let g:beacon_fade=0\n
+            "\ "})
 
 call dein#add('machakann/vim-highlightedyank', { 'normalized_name': 'highlightedyank' })
 
 "
 " Windows and menus
 "
-
 call dein#add('skywind3000/vim-quickui', { 'normalized_name': 'quickui',
             \ 'hook_add':         function('plugin_cfg#quickui#add'),
             \ 'hook_post_source': function('plugin_cfg#quickui#post_source'),
@@ -473,6 +473,9 @@ call dein#add('t9md/vim-quickhl', {
             \ 'normalized_name': 'quickhl',
             \ 'hook_add': function("plugin_cfg#quickhl#add")
             \ })
+"call dein#add('https://github.com/inkarkat/vim-mark', {
+            "\ 'hook_add': function("plugin_cfg#mark#add")
+            "\ })
 call dein#add('qxxxb/vim-searchhi', {
             \ 'normalized_name': 'searchhi',
             \ 'hook_add': function("plugin_cfg#searchhi#add")
