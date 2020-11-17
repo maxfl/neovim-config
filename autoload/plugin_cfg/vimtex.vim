@@ -16,7 +16,9 @@ function plugin_cfg#vimtex#post_source()
     let g:vimtex_index_split_pos='vert botright'
     noremap <localleader>lL <plug>(vimtex-compile-ss)
     noremap <localleader>l0 :let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>
-    let g:vimtex_quickfix_latexlog = { 'default' : 0 }
+
+    "let g:vimtex_quickfix_latexlog = { 'default' : 0 }
+
     " let g:neocomplete#sources#omni#input_patterns.tex =
     " '\v\\%('
     " . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
@@ -30,6 +32,6 @@ function plugin_cfg#vimtex#post_source()
     " . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
     " . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
     " . ')'
-    "
-    let g:vimtex_compiler_callback_hooks = ['VimtexZathuraHook']
+
+    "let g:vimtex_compiler_callback_hooks = ['VimtexZathuraHook']
 endfunction
