@@ -260,6 +260,12 @@ call dein#add('ciaranm/detectindent', {
             \   'hook_post_source': "au FileType cpp,python :DetectIndent"
             \ })
 " TODO: call dein#add('zsugabubus/crazy8.nvim') " detect indent
+call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', { 'normalized_name': 'open-or-create-path-and-file', 'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Documentation
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('kabbamine/zeavim.vim', {
             \ 'lazy': 1,
             \ 'on_cmd': ['Zeavim', 'ZeavimV', 'Docset'],
@@ -268,7 +274,13 @@ call dein#add('kabbamine/zeavim.vim', {
             \ au filetype python :Docset python,matplotlib,scipy,numpy
             \ '
             \ }) "call zeal
-call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', { 'normalized_name': 'open-or-create-path-and-file', 'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
+call dein#add('rhysd/devdocs.vim', {
+            \ 'on_cmd': ['DevDocs', 'DevDocsAll'],
+            "\ 'on_map': ['<Leader>Z'],
+            \ 'hook_post_source': '
+            \ nmap <Leader>Z <Plug>(devdocs-under-cursor)
+            \ '
+            \ }) "call zeal
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Characters
@@ -423,7 +435,7 @@ call dein#add('salsifis/vim-transpose', {
 call dein#add('inkarkat/vim-AdvancedSorters', {
             \ 'normalized_name': 'AdvancedSorters'
             \ })
-call dein#add('mipmip/vim-scimark')
+"call dein#add('mipmip/vim-scimark') "sc-im
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff tools
@@ -485,13 +497,11 @@ call dein#add('inkarkat/vim-ExtractMatches', { 'normalized_name': 'ExtractMatche
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Menus
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('vim-ctrlspace/vim-ctrlspace', { 'normalized_name': 'ctrlspace',  'hook_add': "
-            \ let g:CtrlSpaceSetDefaultMapping=1\n
-            \ let g:CtrlSpaceUseTabline=1\n
-            \ let g:CtrlSpaceDefaultMappingKey='<C-Space> '\n
-            \ nmap <M-u>    :CtrlSpaceGoUp<CR>\n
-            \ nmap <M-S-u>  :CtrlSpaceGoDown<CR>\n
-            \ " })
+call dein#add('vim-ctrlspace/vim-ctrlspace', {
+            \ 'normalized_name': 'ctrlspace',
+            \ 'hook_add': function("plugin_cfg#ctrlspace#add"),
+            \ 'hook_post_source': function("plugin_cfg#ctrlspace#post_source")
+            \ })
 call dein#add('lifepillar/vim-cheat40', { 'normalized_name': 'cheat40' }) " \? for cheatsheet
 call dein#add('ctrlpvim/ctrlp.vim', {'hook_add': "
             \ let g:ctrlp_working_path_mode='c'\n

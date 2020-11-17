@@ -47,7 +47,7 @@ function plugin_cfg#sandwich#post_source()
     let g:sandwich#recipes += [
                 \   {'buns': ["``", "``"],               'nesting': 0, 'input': [ "2`" ],  'filetype': ['rst'] },
                 \   {'buns': ["'''", "'''"],             'nesting': 0, 'input': [ "3'" ],  'filetype': ['python'] },
-                \   {'buns': ['"""', '"""'],             'nesting': 0, 'input': [ '3"' ],  'filetype': ['python'] },
+                \   {'buns': ['"""', '"""'],             'nesting': 0, 'input': [ '3"' ],  'filetype': ['python', 'julia'] },
                 \   {'buns': ['[(', ')]'],               'nesting': 1, 'input': [ '2[' ],  'filetype': ['python'] },
                 \   {'buns': ['([', '])'],               'nesting': 1, 'input': [ '2(' ],  'filetype': ['python'] },
                 \ ]
@@ -124,7 +124,7 @@ function plugin_cfg#sandwich#post_source()
                 \       'autoindent' : 2
                 \   },
                 \   {
-                \       'buns'    : ['\\\a\+\*\?{', '}'],
+                \       'buns'    : ['\\\a\+\(\*\?\|<[^>]*>\){', '}'],
                 \       'filetype': ['tex', 'plaintex', 'rst'],
                 \       'kind'    : ['delete', 'replace', 'auto', 'query'],
                 \       'regex'   : 1,
