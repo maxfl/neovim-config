@@ -6,18 +6,15 @@ function plugin_cfg#vimtex#post_source()
     let g:vimtex_view_method='zathura'
     " let g:vimtex_view_method='mupdf'
     let g:vimtex_imaps_enabled=0
-    let g:vimtex_index_split_width=60
     if exepath('nvr')!=''
         let g:vimtex_compiler_progname='nvr'
     endif
-    " if exepath('pplatex')!=''
-    "   let g:vimtex_quickfix_method='pplatex'
-    " endif
-    let g:vimtex_index_split_pos='vert botright'
     noremap <localleader>lL <plug>(vimtex-compile-ss)
     noremap <localleader>l0 :let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>
 
-    "let g:vimtex_quickfix_latexlog = { 'default' : 0 }
+    "let g:vimtex_index_split_width=60
+    "let g:vimtex_index_split_pos='vert botright'
+
 
     " let g:neocomplete#sources#omni#input_patterns.tex =
     " '\v\\%('

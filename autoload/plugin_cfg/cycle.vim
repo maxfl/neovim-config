@@ -44,7 +44,7 @@ function plugin_cfg#cycle#post_source()
                 \ [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec' ]
                 \ ]
     let g:cycle_default_groups_for_tex = [
-            \   [['tiny', 'scriptsize', 'footnotesize', 'small', 'normalsize', 'large', 'Large', 'LARGE', 'huge', 'Huge'], 'hard_case', 'match_case'],
+            \   [[ 'Huge' , 'huge' , 'LARGE' , 'Large' , 'large' , 'normalsize' , 'small' , 'scriptsize' , 'tiny' , 'footnotesize' ], 'hard_case', 'match_case'],
             \   [['displaystyle', 'scriptstyle', 'scriptscriptstyle', 'textstyle']],
             \   [['part', 'chapter', 'section', 'subsection', 'subsubsection', 'paragraph', 'subparagraph']],
             \   [['article', 'report', 'book', 'letter', 'slides']],

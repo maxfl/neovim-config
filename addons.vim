@@ -69,7 +69,7 @@ call dein#add('powerman/vim-plugin-AnsiEsc', { 'normalized_name': 'plugin-AnsiEs
 call dein#add('machakann/vim-highlightedyank', { 'normalized_name': 'highlightedyank' })
 
 "
-" Windows and menus
+" Windows
 "
 call dein#add('skywind3000/vim-quickui', { 'normalized_name': 'quickui',
             \ 'hook_add':         function('plugin_cfg#quickui#add'),
@@ -241,7 +241,6 @@ call dein#add('kana/vim-submode', { 'normalized_name': 'submode', 'hook_post_sou
 " TODO: call dein#add('Iron-E/nvim-libmodal')
 
 call dein#add('vim-scripts/RelativeNumberCurrentWindow')
-call dein#add('vim-scripts/RangeMacro') " karkat
 call dein#add('wgurecky/vimSum', { 'lazy': 1, 'on_cmd': ['VisSum', 'VisMean', 'VisMult'] })
 "call dein#add('Floobits/floobits-neovim')
 
@@ -262,6 +261,11 @@ call dein#add('ciaranm/detectindent', {
 " TODO: call dein#add('zsugabubus/crazy8.nvim') " detect indent
 call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', { 'normalized_name': 'open-or-create-path-and-file', 'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Macro
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call dein#add('vim-scripts/RangeMacro') " karkat
+call dein#add('rbong/vim-buffest')      " edit register
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Documentation

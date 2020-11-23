@@ -92,11 +92,11 @@ snippet sbox "resizebox"
 \scalebox{${1:1.0}}{$0}
 endsnippet
 
-snippet clfile "callableframe in a file" b
-%! TEX root = ${1:talk}.tex
+snippet callableframe "callableframe" b
+\includeonlyframes{${1:label}}
 
-\callableframe[label=current]{\\${2:FCmd}}{%
-  \frametitle{$3}
+\callableframe[t,label=$1]{${2:Frame}}{${3}}{%
+  \frametitle{${4:$3}}
   $0
 }
 endsnippet
