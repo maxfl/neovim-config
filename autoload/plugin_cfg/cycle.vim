@@ -9,19 +9,19 @@ endfunction
 
 function plugin_cfg#cycle#post_source()
     call cycle#add_groups([
-        \  [ '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉' ],
-        \  [ '⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹' ],
+        \  reverse([ '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉' ]),
+        \  reverse([ '⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹' ]),
         \ ])
     call cycle#add_groups([
-        \  [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ],
-        \  [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ],
-        \  [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
-        \  [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
-        \  [ 'black', 'white', 'grey', 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow' ],
+        \  reverse([ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ]),
+        \  reverse([ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ]),
+        \  reverse([ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]),
+        \  reverse([ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ]),
+        \  reverse([ 'black', 'white', 'grey', 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow' ]),
         \ ])
     call cycle#add_groups([
-        \  [[ 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье' ], 'match_case', 'hard_case'],
-        \  [[ 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье' ], 'match_case', 'hard_case']
+        \  [reverse([ 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье' ]), 'match_case', 'hard_case'],
+        \  [reverse([ 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье' ]), 'match_case', 'hard_case']
         \ ])
     call cycle#add_groups([
         \  [[ 'yes', 'no' ],     'match_word', 1 ],
@@ -44,8 +44,8 @@ function plugin_cfg#cycle#post_source()
                 \ [ 'pick', 'reword', 'edit', 'squash', 'fixup', 'exec' ]
                 \ ]
     let g:cycle_default_groups_for_tex = [
-            \   [[ 'Huge' , 'huge' , 'LARGE' , 'Large' , 'large' , 'normalsize' , 'small' , 'scriptsize' , 'tiny' , 'footnotesize' ], 'hard_case', 'match_case'],
-            \   [['displaystyle', 'scriptstyle', 'scriptscriptstyle', 'textstyle']],
+            \   [['Huge' , 'huge' , 'LARGE' , 'Large' , 'large' , 'normalsize' , 'small' , 'scriptsize' , 'tiny' , 'footnotesize' ], 'hard_case', 'match_case'],
+            \   [reverse(['displaystyle', 'scriptstyle', 'scriptscriptstyle', 'textstyle'])],
             \   [['part', 'chapter', 'section', 'subsection', 'subsubsection', 'paragraph', 'subparagraph']],
             \   [['article', 'report', 'book', 'letter', 'slides']],
             \   [['a4paper', 'a5paper', 'b5paper', 'executivepaper', 'legalpaper', 'letterpaper']],
