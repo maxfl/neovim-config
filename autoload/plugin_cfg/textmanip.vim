@@ -14,8 +14,8 @@ function plugin_cfg#textmanip#post_source()
     function! TMon()
         set ei-=TextYankPost
     endfunction
-    call submode#map('textmanip', 'x', 'r', 'j', '<C-j>')
-    call submode#map('textmanip', 'x', 'r', 'k', '<C-k>')
-    call submode#map('textmanip', 'x', 'r', 'h', '<C-h>')
-    call submode#map('textmanip', 'x', 'r', 'l', '<C-l>')
+    "call submode#map('textmanip', 'x', 'r', 'j', '<C-j>')
+    "call submode#map('textmanip', 'x', 'r', 'k', '<C-k>')
+    "call submode#map('textmanip', 'x', 'r', 'h', '<C-h>')
+    "call submode#map('textmanip', 'x', 'r', 'l', '<C-l>')
 endfunction

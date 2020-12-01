@@ -121,21 +121,12 @@ call dein#add('fabi1cazenave/suckless.vim', {
             \ 'hook_add': function('plugin_cfg#suckless#add'),
             \ 'hook_post_source': function('plugin_cfg#suckless#post_source')
             \ })
-"call dein#add('zhamlin/tiler.vim', {
-            "\ 'hook_post_source': function("plugin_cfg#tiler#post_source")
-            "\ })
 call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
             \ noremap  <silent> <F12> :FloatermToggle<CR>\n
             \ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
             \ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
             \ let g:floaterm_shell='fish'\n
             \ "})
-
-"call dein#add('camspiers/animate.vim')
-"call dein#add('camspiers/lens.vim', {'depends': 'animate', 'hook_add': "
-            "\ let g:lens#height_resize_max = 40\n
-            "\ let g:lens#width_resize_max = 100\n
-            "\ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
@@ -194,8 +185,10 @@ call dein#add('bfredl/nvim-miniyank', {'hook_add': "
             \ map <Leader>yl <Plug>(miniyank-toline)\n
             \ map <Leader>yb <Plug>(miniyank-toblock)\n
             \ "})
-call dein#add('inkarkat/vim-ReplaceWithRegister', { 'normalized_name': 'ReplaceWithRegister',  'depends': ['repeat', 'visualrepeat'] })
 call dein#add('inkarkat/vim-UnconditionalPaste', { 'normalized_name': 'UnconditionalPaste',  'depends': ['ingo-library', 'repeat'] })
+
+" In neovim ReplaceWithRegister is overridden by P
+"call dein#add('inkarkat/vim-ReplaceWithRegister', { 'normalized_name': 'ReplaceWithRegister',  'depends': ['repeat', 'visualrepeat'] })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
@@ -231,13 +224,13 @@ call dein#add('mg979/vim-visual-multi', { 'normalized_name': 'visual-multi' })
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('kana/vim-submode', { 'normalized_name': 'submode', 'hook_post_source': "
-            \ call submode#enter_with('textmanip', 'x', '', '<Leader>Mm')\n
-            \ call submode#leave_with('textmanip', 'xn', '', '<Esc>')\n
-            \ call submode#map(       'textmanip', 'x', '', '>', '>>')\n
-            \ call submode#map(       'textmanip', 'x', '', '<', '<<')\n
-            \ ",
-            \ })
+"call dein#add('kana/vim-submode', { 'normalized_name': 'submode', 'hook_post_source': "
+            "\ call submode#enter_with('textmanip', 'x', '', '<Leader>Mm')\n
+            "\ call submode#leave_with('textmanip', 'xn', '', '<Esc>')\n
+            "\ call submode#map(       'textmanip', 'x', '', '>', '>>')\n
+            "\ call submode#map(       'textmanip', 'x', '', '<', '<<')\n
+            "\ ",
+            "\ }) " does not work
 " TODO: call dein#add('Iron-E/nvim-libmodal')
 
 call dein#add('vim-scripts/RelativeNumberCurrentWindow')
@@ -353,51 +346,17 @@ call dein#add('kana/vim-textobj-user', { 'normalized_name': 'textobj-user',  'ho
 call dein#add('kana/vim-textobj-line', { 'normalized_name': 'textobj-line'})
 call dein#add('rhysd/vim-textobj-continuous-line', { 'normalized_name': 'textobj-continuous-line' })
 call dein#add('glts/vim-textobj-comment', { 'normalized_name': 'textobj-comment' })
-call dein#add('kana/vim-textobj-entire', { 'normalized_name': 'textobj-entire',
-            \ 'hook_add': "
-            \ let g:textobj_entire_no_default_key_mappings=1\n
-            \ xmap iE <Plug>(textobj-entire-i)\n
-            \ omap iE <Plug>(textobj-entire-i)\n
-            \ xmap aE <Plug>(textobj-entire-a)\n
-            \ omap aE <Plug>(textobj-entire-a)\n
-            \ " })
+call dein#add('kana/vim-textobj-entire', { 'normalized_name': 'textobj-entire', 'hook_add': function('plugin_cfg#textobj#entire_add') })
 call dein#add('kana/vim-textobj-indent', { 'normalized_name': 'textobj-indent' })
-call dein#add('sgur/vim-textobj-parameter', { 'normalized_name': 'textobj-parameter',  'hook_add': "
-            \ let g:textobj_parameter_no_default_key_mappings=1\n
-            \ xmap a. <Plug>(textobj-parameter-a)\n
-            \ omap a. <Plug>(textobj-parameter-a)\n
-            \ xmap i. <Plug>(textobj-parameter-i)\n
-            \ omap i. <Plug>(textobj-parameter-i)\n
-            \ " })
-call dein#add('machakann/vim-textobj-functioncall', { 'normalized_name': 'textobj-functioncall',  'hook_add': "
-            \ let g:textobj_functioncall_no_default_key_mappings = 1\n
-            \ xmap i@ <Plug>(textobj-functioncall-i)\n
-            \ omap i@ <Plug>(textobj-functioncall-i)\n
-            \ xmap a@ <Plug>(textobj-functioncall-a)\n
-            \ omap a@ <Plug>(textobj-functioncall-a)\n
-            \ " })
+call dein#add('sgur/vim-textobj-parameter', { 'normalized_name': 'textobj-parameter', 'hook_add': function('plugin_cfg#textobj#parameter_add') })
+call dein#add('machakann/vim-textobj-functioncall', { 'normalized_name': 'textobj-functioncall', 'hook_add': function('plugin_cfg#textobj#functioncall_add') })
 call dein#add('kana/vim-textobj-function', { 'normalized_name': 'textobj-function' })
-call dein#add('bps/vim-textobj-python', { 'normalized_name': 'textobj-python',  'hook_add': "
-            \ xmap aF <Plug>(textobj-python-function-a)\n
-            \ omap aF <Plug>(textobj-python-function-a)\n
-            \ xmap iF <Plug>(textobj-python-function-i)\n
-            \ omap iF <Plug>(textobj-python-function-i)\n
-            \ xmap aP <Plug>(textobj-python-class-a)\n
-            \ omap aP <Plug>(textobj-python-class-a)\n
-            \ xmap iP <Plug>(textobj-python-class-i)\n
-            \ omap iP <Plug>(textobj-python-class-i)\n
-            \ " })
+call dein#add('bps/vim-textobj-python', { 'normalized_name': 'textobj-python', 'hook_add': function('plugin_cfg#textobj#python_add')})
 call dein#add('jceb/vim-textobj-uri', { 'normalized_name': 'textobj-uri' })
 call dein#add('glts/vim-textobj-indblock', { 'normalized_name': 'textobj-indblock' })
 call dein#add('kana/vim-textobj-datetime', { 'normalized_name': 'textobj-datetime' })
 "call dein#add('rbonvall/vim-textobj-latex', { 'normalized_name': 'textobj-latex' })
-call dein#add('thinca/vim-textobj-between', { 'normalized_name': 'textobj-between',  'hook_add': "
-            \ let g:textobj_between_no_default_key_mappings=1\n
-            \ xmap a_ <Plug>(textobj-between-a)\n
-            \ omap a_ <Plug>(textobj-between-a)\n
-            \ xmap i_ <Plug>(textobj-between-i)\n
-            \ omap i_ <Plug>(textobj-between-i)\n
-            \ " })
+call dein#add('thinca/vim-textobj-between', { 'normalized_name': 'textobj-between',  'hook_add': function('plugin_cfg#textobj#between_add')})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text manipulation
@@ -416,8 +375,8 @@ call dein#add('t9md/vim-textmanip', {
             \ 'normalized_name': 'textmanip',
             \ 'hook_add': function('plugin_cfg#textmanip#add'),
             \ 'hook_post_source': function('plugin_cfg#textmanip#post_source'),
-            \ "depends": "vim-submode"
             \ })
+" depends: vim-submode
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tables
@@ -467,17 +426,23 @@ call dein#add('lervag/wiki.vim', { 'hook_add': "let g:wiki_mappings_use_defaults
 call dein#add('lervag/wiki-ft.vim', { 'depends': 'wiki'})
 call dein#add('joom/latex-unicoder.vim', { 'hook_add': "let g:unicoder_no_map=1" })
 call dein#add('dag/vim-fish', { 'normalized_name': 'fish' })
-call dein#add('plasticboy/vim-markdown', {
-            \ 'normalized_name': 'markdown',
-            \ 'hook_add': "au BufRead,BufEnter /tmp/qutebrowser-editor-* setl ft=markdown spell"
-            \ })
 call dein#add('JuliaEditorSupport/julia-vim')
 call dein#add('bfrg/vim-cpp-modern', { 'normalized_name': 'cpp-modern' })
 call dein#add('vim-scripts/ebnf.vim')
 "call dein#add('direnv/direnv.vim')
 
-call dein#add('lervag/vimtex', { 'hook_post_source': function("plugin_cfg#vimtex#post_source" ), 'merged': 0})
+
 call dein#add('KeitaNakamura/tex-conceal.vim')
+
+call dein#add('lervag/vimtex', { 'hook_post_source': function("plugin_cfg#vimtex#post_source" ), 'merged': 0})
+
+call dein#add('plasticboy/vim-markdown', {
+            \ 'normalized_name': 'markdown',
+            \ 'hook_add': "au BufRead,BufEnter /tmp/qutebrowser-editor-* setl ft=markdown spell"
+            \ })
+call dein#add('previm/previm', { 'hook_add': "
+            \ let g:previm_open_cmd = \"bash -c 'qutebrowser --target window $* &' -- \"\n
+            \ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search and replace
@@ -526,16 +491,13 @@ call dein#add('pechorin/any-jump.vim', { 'normalized_name': 'any-jump' })
 call dein#add('jsfaint/gen_tags.vim', { 'hook_add': "
             \ let g:loaded_gentags#gtags=1
             \ " })
-call dein#add('vim-voom/voom', { 'hook_add': "
-            \ let g:voom_ft_modes = { 'python':'python', 'tex':'latex' }\n
-            \ let g:voom_tree_width = 60\n
-            \ let g:voom_tree_placement='right'\n
-            \ nmap <silent> <Leader>wo :VoomToggle<CR>\n
-            \ " })
+call dein#add('vim-voom/voom', { 'hook_add': function("plugin_cfg#voom#add") })
 call dein#add('majutsushi/tagbar', {
             \   'hook_add': function("plugin_cfg#tagbar#add"),
             \   'hook_post_source': function("plugin_cfg#tagbar#post_source")
             \ })
+"call dein#add('wfxr/minimap.vim') " since neovim 0.5
+"call dein#add('severin-lemaignan/vim-minimap')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and Folders
@@ -566,6 +528,7 @@ call dein#add('itchyny/vim-external', { 'normalized_name': 'external', 'hook_add
 
 call dein#add('kevinhwang91/rnvimr', {
             \ 'hook_post_update': "call system('make install')",
+            \ 'rev': 'main',
             \ 'hook_post_source': "
             \   map <F11> :RnvimrToggle<CR>\n
             \   map! <F11> <Esc>:RnvimrToggle<CR>\n
@@ -612,10 +575,10 @@ call dein#add('kassio/neoterm', { 'hook_add' : "
             \ vmap <Leader>s :TReplSendSelection<CR>\n
             \ " })
 
-call dein#add('glacambre/firenvim', {
-            \ 'hook_post_update': { _ -> firenvim#install(0) },
-            \ 'hook_add': function('plugin_cfg#firenvim#add')
-            \ })
+"call dein#add('glacambre/firenvim', {
+            "\ 'hook_post_update': { _ -> firenvim#install(0) },
+            "\ 'hook_add': function('plugin_cfg#firenvim#add')
+            "\ })
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Local bundles
