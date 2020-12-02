@@ -186,9 +186,7 @@ call dein#add('bfredl/nvim-miniyank', {'hook_add': "
             \ map <Leader>yb <Plug>(miniyank-toblock)\n
             \ "})
 call dein#add('inkarkat/vim-UnconditionalPaste', { 'normalized_name': 'UnconditionalPaste',  'depends': ['ingo-library', 'repeat'] })
-
-" In neovim ReplaceWithRegister is overridden by P
-"call dein#add('inkarkat/vim-ReplaceWithRegister', { 'normalized_name': 'ReplaceWithRegister',  'depends': ['repeat', 'visualrepeat'] })
+call dein#add('inkarkat/vim-ReplaceWithRegister', { 'normalized_name': 'ReplaceWithRegister',  'depends': ['repeat', 'visualrepeat'] })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
