@@ -567,11 +567,16 @@ call dein#add('xuhdev/SingleCompile')
 call dein#add('kassio/neoterm', { 'hook_add' : "
             \ let g:neoterm_shell = '/usr/bin/fish'\n
             \ let g:neoterm_automap_keys = '<Leader>qm'\n
+            \ let g:neoterm_repl_python = ''\n
             \ nmap <M-t> :Tnew<CR>\n
             \ nmap <M-T> :Tnew<CR>i\n
             \ nmap <Leader>s :TReplSendLine<CR>\n
             \ vmap <Leader>s :TReplSendSelection<CR>\n
-            \ " })
+            \ ",
+            \ 'lazy': 1,
+            \ 'on_cmd': ['Tnew', 'TReplSendLine', 'TReplSendSelection'],
+            \ 'on_if': '&diff==0',
+            \ })
 
 "call dein#add('glacambre/firenvim', {
             "\ 'hook_post_update': { _ -> firenvim#install(0) },
