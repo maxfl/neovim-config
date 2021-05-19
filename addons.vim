@@ -194,13 +194,21 @@ call dein#add('inkarkat/vim-ReplaceWithRegister', { 'normalized_name': 'ReplaceW
 call dein#add('dkarter/bullets.vim', { 'hook_post_source': "
             \ let g:bullets_enabled_file_types=['markdown', 'rst', 'text', 'txt', 'gitcommit']\n
             \ " })
-call dein#add('sjl/gundo.vim', { 'hook_add': "
-            \ nnoremap <Leader>wu :GundoToggle<CR>\n
-            \ let g:gundo_preview_bottom=1\n
-            \ let g:gundo_width=30\n
-            \ let g:gundo_right=1\n
+"call dein#add('sjl/gundo.vim', { 'hook_add': "
+            "\ nnoremap <Leader>wu :GundoToggle<CR>\n
+            "\ let g:gundo_preview_bottom=1\n
+            "\ let g:gundo_width=30\n
+            "\ let g:gundo_right=1\n
+            "\ ",
+            "\ 'lazy': 1, 'on_cmd': 'GundoToggle'
+            "\ })
+call dein#add('simnalamburt/vim-mundo', { 'hook_add': "
+            \ nnoremap <Leader>wu :MundoToggle<CR>\n
+            \ let g:mundo_preview_bottom=1\n
+            \ let g:mundo_width=30\n
+            \ let g:mundo_right=1\n
             \ ",
-            \ 'lazy': 1, 'on_cmd': 'GundoToggle'
+            \ 'lazy': 1, 'on_cmd': 'MundoToggle'
             \ })
 call dein#add('bronson/vim-trailing-whitespace', { 'normalized_name': 'trailing-whitespace',  'hook_post_source': "
             \ nnoremap <Leader>rts :FixWhitespace<CR>\n
@@ -282,12 +290,18 @@ call dein#add('rhysd/devdocs.vim', {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('chrisbra/unicode.vim') " , {'lazy': 1, 'on_cmd': ['UnicodeSearch', 'Digraph', 'UnicodeTable', 'UnicodeName']}
 call dein#add('Konfekt/vim-unicode-homoglyphs', { 'normalized_name': 'unicode-homoglyphs',  'hook_source': "let g:is_homoglyph_on=0", 'lazy': 1 })
-call dein#add('segeljakt/vim-isotope', {'normalized_name': 'isotope'}, {'hook_add': 'let g:isotope_use_default_mappings = 0'})
+call dein#add('segeljakt/vim-isotope', {'normalized_name': 'isotope',
+            \ 'hook_add': "
+            \   let g:isotope_use_default_mappings = v:false\n
+            \   map <Leader>i^ :IsotopeToggle SUPERSCRIPT<CR>\n
+            \   map <Leader>i_ :IsotopeToggle SUBSCRIPT<CR>\n
+            \   map <Leader>if :IsotopeToggle FRAKTUR<CR>\n
+            \   map <Leader>is :IsotopeToggle SMALL_CAPS<CR>\n
+            \ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spelling and grammar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 call dein#add('ron89/thesaurus_query.vim', {
             \ 'hook_add': 'let g:tq_map_keys = 0'
             \ })
@@ -311,7 +325,7 @@ call dein#add('tpope/vim-fugitive', {
             \   'normalized_name': 'fugitive',
             \   'hook_post_source': function("plugin_cfg#fugitive#post_source")
             \ })
-call dein#add('idanarye/vim-merginal', { 'normalized_name': 'merginal', 'lazy': 1, 'on_cmd': ['Merginal', 'MerginalToggle']})
+"call dein#add('idanarye/vim-merginal', { 'normalized_name': 'merginal', 'lazy': 1, 'on_cmd': ['Merginal', 'MerginalToggle']})
 call dein#add('inkarkat/vim-ConflictDetection', {
             \ 'normalized_name': 'ConflictDetection',
             \ 'depends': 'ingo-library'
@@ -356,9 +370,9 @@ call dein#add('kana/vim-textobj-datetime', { 'normalized_name': 'textobj-datetim
 "call dein#add('rbonvall/vim-textobj-latex', { 'normalized_name': 'textobj-latex' })
 call dein#add('thinca/vim-textobj-between', { 'normalized_name': 'textobj-between',  'hook_add': function('plugin_cfg#textobj#between_add')})
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Text manipulation
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Text manipulation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "call dein#add('AndrewRadev/switch.vim', {
             "\ 'normalized_name': 'switch',
             "\ 'hook_add': function('plugin_cfg#switch#add'),
@@ -419,7 +433,11 @@ call dein#add('chrisbra/vim-diff-enhanced', { 'normalized_name': 'diff-enhanced'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('kalekundert/vim-coiled-snake', { 'normalized_name': 'coiled-snake' })
+" python folds
+call dein#add('kalekundert/vim-coiled-snake', {
+            \ 'normalized_name': 'coiled-snake',
+            \ 'hook_add': 'let g:coiled_snake_set_foldexpr=0'
+            \ })
 call dein#add('lervag/wiki.vim', { 'hook_add': "let g:wiki_mappings_use_defaults=0" })
 call dein#add('lervag/wiki-ft.vim', { 'depends': 'wiki'})
 call dein#add('joom/latex-unicoder.vim', { 'hook_add': "let g:unicoder_no_map=1" })
@@ -533,9 +551,6 @@ call dein#add('kevinhwang91/rnvimr', {
             \   tnoremap <silent> <F11> <C-\\><C-n>:RnvimrToggle<CR>\n
             \ "
             \ }) "ranger
-"call dein#add('Shougo/vimfiler.vim', { 'hook_add' : "
-            "\ nnoremap <Leader>ws :exe 'VimFiler '.expand('%:p:h')<CR>\n
-            "\ "})
 call dein#add('Shougo/neossh.vim')
 call dein#add('derekwyatt/vim-fswitch', {
             \ 'normalized_name': 'fswitch',
@@ -554,12 +569,12 @@ call dein#add('zenbro/mirror.vim', { 'hook_add' : "
             \ nmap <Leader>rp :MirrorPull<CR>\n
             \ " })
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Compilation
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('scrooloose/syntastic', { 'hook_add': function("plugin_cfg#syntastic#add") })
-call dein#add('xuhdev/SingleCompile')
-"call dein#add('wbthomason/buildit.nvim')
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Compilation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"call dein#add('scrooloose/syntastic', { 'hook_add': function("plugin_cfg#syntastic#add") })
+"call dein#add('xuhdev/SingleCompile')
+""call dein#add('wbthomason/buildit.nvim')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Terminal, repl, embedding
@@ -578,13 +593,8 @@ call dein#add('kassio/neoterm', { 'hook_add' : "
             \ 'on_if': '&diff==0',
             \ })
 
-"call dein#add('glacambre/firenvim', {
-            "\ 'hook_post_update': { _ -> firenvim#install(0) },
-            "\ 'hook_add': function('plugin_cfg#firenvim#add')
-            "\ })
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Local bundles
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Local bundles
 call dein#local("~/.config/nvim/bundle_local", { 'depends': 'CountJump', 'frozen': 1 })
 
 call dein#end()

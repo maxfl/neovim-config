@@ -53,6 +53,12 @@ noremap                                         <Leader>gF :tabe <cfile><CR>
 " Complete from the normal mode
 nmap                                            <Leader><C-x> ea<C-x>
 
+" Diff selection
+nmap Dp :.diffput<CR>
+vmap Dp :diffput<CR>
+nmap Do :.diffget<CR>
+vmap Do :diffget<CR>
+
 " Clipboard mappings
 " Make x, d and dd delete with no register
 noremap  x   "_x
