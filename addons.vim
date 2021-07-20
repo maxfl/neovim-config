@@ -241,7 +241,6 @@ call dein#add('mg979/vim-visual-multi', { 'normalized_name': 'visual-multi' })
 
 call dein#add('vim-scripts/RelativeNumberCurrentWindow')
 call dein#add('wgurecky/vimSum', { 'lazy': 1, 'on_cmd': ['VisSum', 'VisMean', 'VisMult'] })
-"call dein#add('Floobits/floobits-neovim')
 
 call dein#add('moll/vim-bbye', { 'normalized_name': 'bbye',  'hook_add': "
             \ nnoremap ZQ :Bdelete<CR>\n
@@ -293,10 +292,13 @@ call dein#add('Konfekt/vim-unicode-homoglyphs', { 'normalized_name': 'unicode-ho
 call dein#add('segeljakt/vim-isotope', {'normalized_name': 'isotope',
             \ 'hook_add': "
             \   let g:isotope_use_default_mappings = v:false\n
+            \   map <Leader>iS :IsotopeToggle SUPERSCRIPT<CR>\n
             \   map <Leader>i^ :IsotopeToggle SUPERSCRIPT<CR>\n
             \   map <Leader>i_ :IsotopeToggle SUBSCRIPT<CR>\n
+            \   map <Leader>is :IsotopeToggle SUBSCRIPT<CR>\n
             \   map <Leader>if :IsotopeToggle FRAKTUR<CR>\n
-            \   map <Leader>is :IsotopeToggle SMALL_CAPS<CR>\n
+            \   map <Leader>ic :IsotopeToggle SMALL_CAPS<CR>\n
+            \   map <Leader>id :IsotopeToggle<CR>\n
             \ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -464,7 +466,10 @@ call dein#add('previm/previm', { 'hook_add': "
 " Search and replace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('brooth/far.vim')        " :Far
-call dein#add('eugen0329/vim-esearch', { 'normalized_name': 'esearch' }) " \ff
+call dein#add('eugen0329/vim-esearch', {
+            \ 'normalized_name': 'esearch',
+            \ 'hook_post_source': 'let g:esearch={"root_markers": []}'
+            \ }) " \ff
 call dein#add('tpope/vim-abolish', { 'normalized_name': 'abolish' })     " :%S////
 call dein#add('t9md/vim-quickhl', {
             \ 'normalized_name': 'quickhl',

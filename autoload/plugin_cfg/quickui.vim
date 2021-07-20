@@ -9,6 +9,12 @@ function plugin_cfg#quickui#post_source()
                 \   [ 'Toggle &autopairs',    'call AutoPairsToggle()'],
                 \   [ 'Toggle &table-mode	\tm',   'normal \tm'],
                 \   [ '--', '--' ],
+                \   [ 'Subscript mode (&_)	\is',   'IsotopeToggle SUBSCRIPT'],
+                \   [ 'Superscript mode (&^)	\iS',   'IsotopeToggle SUPERSCRIPT'],
+                \   [ 'Small&caps mode	\ic',   'IsotopeToggle SMALL_CAPS'],
+                \   [ '&Fraktur mode	\if',   'IsotopeToggle FRAKTUR'],
+                \   [ '&Disable Isotope	\id',   'IsotopeToggle'],
+                \   [ '--', '--' ],
                 \   [ '&Remove trailing whitespace	\rts', 'FixWhitespace'],
                 \ ])
 
