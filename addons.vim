@@ -66,8 +66,6 @@ call dein#add('powerman/vim-plugin-AnsiEsc', { 'normalized_name': 'plugin-AnsiEs
             "\ let g:beacon_fade=0\n
             "\ "})
 
-call dein#add('machakann/vim-highlightedyank', { 'normalized_name': 'highlightedyank' })
-
 "
 " Windows
 "
