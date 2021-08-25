@@ -1,4 +1,4 @@
-function! TexBindings()
+function TexBindings()
     inoremap <buffer> #a \alpha
     inoremap <buffer> #b \beta
     inoremap <buffer> #c \chi

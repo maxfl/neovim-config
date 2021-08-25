@@ -9,7 +9,7 @@ set background=dark
 set splitbelow splitright
 set scrolloff=3
 " Term flicker on due to scrolloff fixed in https://github.com/neovim/neovim/issues/11915
-au TermOpen * setl scrolloff=0 cursorline cursorcolumn
+"au TermOpen * setl scrolloff=0 cursorline cursorcolumn
 
 " Keymap
 set keymap=russian-jcukenwin

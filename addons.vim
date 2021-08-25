@@ -37,6 +37,8 @@ call dein#add('inkarkat/vim-SyntaxRange',  {
             \ })
 call dein#add('tpope/vim-repeat', { 'normalized_name': 'repeat' })
 call dein#add('inkarkat/vim-visualrepeat', { 'normalized_name': 'visualrepeat' })
+call dein#add('nvim-lua/plenary.nvim')
+call dein#add('nvim-telescope/telescope.nvim.git', {'depends': 'plenary'})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
@@ -65,6 +67,8 @@ call dein#add('powerman/vim-plugin-AnsiEsc', { 'normalized_name': 'plugin-AnsiEs
             "\ let g:beacon_shrink=0\n
             "\ let g:beacon_fade=0\n
             "\ "})
+
+call dein#add('machakann/vim-highlightedyank')
 
 "
 " Windows
@@ -153,7 +157,8 @@ call dein#add('Lokaltog/vim-easymotion', { 'normalized_name': 'easymotion',  'ho
             \ 'lazy': 0,
             \ 'on_map': '<Plug>(easymotion-'
             \ })
-                                                                                                   " clefer f/F/t/T mappings
+
+" clefer f/F/t/T mappings
 call dein#add('rhysd/clever-f.vim', { 'hook_add': "
             \ nnoremap <Leader>fr <Plug>(clever-f-reset)\n
             \ nnoremap ; <Plug>(clever-f-repeat-forward)\n
@@ -254,8 +259,10 @@ call dein#add('thinca/vim-prettyprint', { 'normalized_name': 'prettyprint', 'laz
 call dein#add('ciaranm/detectindent', {
             \   'hook_post_source': "au FileType cpp,python :DetectIndent"
             \ })
+
 " TODO: call dein#add('zsugabubus/crazy8.nvim') " detect indent
 call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', { 'normalized_name': 'open-or-create-path-and-file', 'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
+call dein#add('duggiefresh/vim-easydir.git')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Macro
@@ -473,7 +480,7 @@ call dein#add('t9md/vim-quickhl', {
             \ 'normalized_name': 'quickhl',
             \ 'hook_add': function("plugin_cfg#quickhl#add")
             \ })
-"call dein#add('https://github.com/inkarkat/vim-mark', {
+"call dein#add('inkarkat/vim-mark', {
             "\ 'hook_add': function("plugin_cfg#mark#add")
             "\ })
 call dein#add('qxxxb/vim-searchhi', {
@@ -490,12 +497,17 @@ call dein#add('vim-ctrlspace/vim-ctrlspace', {
             \ 'hook_add': function("plugin_cfg#ctrlspace#add"),
             \ 'hook_post_source': function("plugin_cfg#ctrlspace#post_source")
             \ })
-call dein#add('lifepillar/vim-cheat40', { 'normalized_name': 'cheat40' }) " \? for cheatsheet
+
 call dein#add('ctrlpvim/ctrlp.vim', {'hook_add': "
             \ let g:ctrlp_working_path_mode='c'\n
             \ let g:ctrlp_cmd='CtrlPMRUFiles'
             \ "})
-call dein#add('pechorin/any-jump.vim', { 'normalized_name': 'any-jump' })
+call dein#add('pechorin/any-jump.vim', { 'normalized_name': 'any-jump' }) " Warning: not used
+
+" vimtexcheat40', { 'normalized_name': 'cheat40' }) " \? for cheatsheet
+call dein#add('sudormrfbin/cheatsheet.nvim.git', {
+            \ 'depends': 'telescope'
+            \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tags and outline
