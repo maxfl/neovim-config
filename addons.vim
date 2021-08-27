@@ -218,6 +218,7 @@ call dein#add('bronson/vim-trailing-whitespace', { 'normalized_name': 'trailing-
             \ autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace\n
             \ " })
 
+" TODO: Deprecated by the author
 call dein#add('Shougo/deoplete.nvim', {
             \ 'hook_add': "
             \   let g:deoplete#enable_at_startup = 1\n

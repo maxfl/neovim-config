@@ -74,4 +74,4 @@ if exists("loaded_matchit")
     let b:match_words.="“:”,‘:’,«:»,„:“"
 endif
 
-call TexBindings()
+"call TexBindings()
