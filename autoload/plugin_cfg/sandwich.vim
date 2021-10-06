@@ -134,13 +134,24 @@ function plugin_cfg#sandwich#post_source()
                 \       'indentkeys-' : '{,},0{,0}'
                 \   },
                 \   {
-                \       'buns'    : ['\\begin{[^}]*}\(\[.*\]\)\?', '\\end{[^}]*}'],
+                \       'buns'    : ['\\begin{[^}]*}', '\\end{[^}]*}'],
                 \       'filetype': ['tex', 'plaintex'],
                 \       'kind'    : ['delete', 'replace', 'auto', 'query'],
                 \       'regex'   : 1,
                 \       'nesting' : 1,
                 \       'linewise' : 1,
                 \       'input'   : ['e'],
+                \       'indentkeys-' : '{,},0{,0}',
+                \       'autoindent' : 0
+                \   },
+                \   {
+                \       'buns'    : ['\\begin{[^}]*}\(\[.*\]\)\?', '\\end{[^}]*}'],
+                \       'filetype': ['tex', 'plaintex'],
+                \       'kind'    : ['delete', 'replace', 'auto', 'query'],
+                \       'regex'   : 1,
+                \       'nesting' : 1,
+                \       'linewise' : 1,
+                \       'input'   : ['E'],
                 \       'indentkeys-' : '{,},0{,0}',
                 \       'autoindent' : 0
                 \   },

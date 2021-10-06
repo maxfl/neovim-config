@@ -12,7 +12,7 @@ setlocal spell
 setlocal shiftwidth=2
 "setlocal textwidth=100
 setlocal matchpairs+=$:$
-setlocal wrap
+"setlocal wrap
 cnoremap <buffer> <C-Space> \_s\+
 
 let b:endwise_words = '\\begin{\zs[a-zA-Z0-9*]*\ze}' " ignored

@@ -115,7 +115,11 @@ call dein#add('nathanaelkane/vim-indent-guides',  { 'normalized_name': 'indent-g
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('t9md/vim-choosewin', { 'normalized_name': 'choosewin',  'hook_add': "nmap <leader>-  <Plug>(choosewin)",
+call dein#add('t9md/vim-choosewin', { 'normalized_name': 'choosewin',
+            \ 'hook_add': "
+            \ nmap <leader>-  <Plug>(choosewin)\n
+            \ let g:choosewin_overlay_enable = 1\n
+            \ ",
             \ 'lazy': 0, 'on_map': '<Plug>(choosewin)'})
 call dein#add('romgrk/winteract.vim', { 'hook_add': "nmap <leader>w :InteractiveWindow<CR>",
             \ 'lazy': 0, 'on_cmd': 'InteractiveWindow'})
@@ -244,7 +248,7 @@ call dein#add('mg979/vim-visual-multi', { 'normalized_name': 'visual-multi' })
 " TODO: call dein#add('Iron-E/nvim-libmodal')
 
 call dein#add('vim-scripts/RelativeNumberCurrentWindow')
-call dein#add('wgurecky/vimSum', { 'lazy': 1, 'on_cmd': ['VisSum', 'VisMean', 'VisMult'] })
+"call dein#add('wgurecky/vimSum', { 'lazy': 1, 'on_cmd': ['VisSum', 'VisMean', 'VisMult'] })
 
 call dein#add('moll/vim-bbye', { 'normalized_name': 'bbye',  'hook_add': "
             \ nnoremap ZQ :Bdelete<CR>\n
@@ -435,8 +439,9 @@ call dein#add('AndrewRadev/linediff.vim', { 'hook_add': "
             \ nmap <Leader>dr :LinediffReset<CR>\n
             \ " })
 call dein#add('rickhowe/spotdiff.vim')
-call dein#add('rickhowe/diffchar.vim', { 'hook_add': "let g:DiffModeSync=0" })
+call dein#add('rickhowe/diffchar.vim')
 call dein#add('chrisbra/vim-diff-enhanced', { 'normalized_name': 'diff-enhanced' })
+call dein#add('sindrets/diffview.nvim')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype
@@ -509,6 +514,12 @@ call dein#add('pechorin/any-jump.vim', { 'normalized_name': 'any-jump' }) " Warn
 call dein#add('sudormrfbin/cheatsheet.nvim.git', {
             \ 'depends': 'telescope'
             \ })
+
+call dein#add('gelguy/wilder.nvim', { 'hook_post_source': "
+            \ call wilder#setup({'modes': [':']})\n
+            \ call wilder#set_option('renderer', wilder#popupmenu_renderer({'highlighter': wilder#basic_highlighter()}))\n
+            \ " })
+            " call wilder#setup({'modes': [':', '/', '?']})\n
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tags and outline
