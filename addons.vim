@@ -58,7 +58,14 @@ call dein#add('tadaa/vimade', {'hook_add': "
             \ "})
 call dein#add('powerman/vim-plugin-AnsiEsc', { 'normalized_name': 'plugin-AnsiEsc', 'lazy': 1, 'on_cmd': 'AnsiEsc'})
 
-"
+" vertically center current buffer/window
+call dein#add('jmckiern/vim-venter', { 'hook_post_source': "
+            \ let g:venter_width=10\n
+            \ augroup venter\n
+            \ au VimResized * let g:venter_width=(&columns-120)/2 | VenterResize\n
+            \ augroup END
+            \ " })
+
 " Cursor highlight
 "
 " Spoils diff
