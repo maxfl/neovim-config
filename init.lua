@@ -2,6 +2,9 @@
 local map = vim.api.nvim_set_keymap
 local set = vim.opt
 
+vim.g['&packpath'] = vim.g['&runtimepath']
+vim.cmd[[source ~/.config/nvim/vimrc_legacy]]
+
 set.termguicolors=false
 set.background='dark'
 
@@ -42,7 +45,7 @@ map('n', 'mm', 'dd', {noremap=true})
 map('n', 'gm', 'm', {noremap=true})
 
 -- Plugins
---require 'packer_cfg.packer'
+require 'packer_cfg.packer'
 
 vim.cmd [[source ~/.config/nvim/addons.vim]]
 

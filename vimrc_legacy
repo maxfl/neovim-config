@@ -61,7 +61,6 @@ au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')
 "set splitbelow
 
 "gui
-set background=dark
 if has("gui_gtk2")
     set guifont=Monospace\ 11
 endif
@@ -172,24 +171,6 @@ if exists('+undofile')
   set undofile
 endif
 
-set keymap=russian-jcukenwin
-"-typewriter
-set iminsert=0
-set imsearch=-1
-
-"function AddRussianKeymap()
-    "inoremap <C-Space> <C-^>
-    "cnoremap <C-Space> <C-^>
-
-    "lmap \[ [
-    "lmap \] ]
-    "lmap \{ {
-    "lmap \} }
-    "lmap \4 $<C-^>
-    "lnoremap \ \<C-^>
-    "lnoremap \\ \\
-"endf
-
 if $LANG =~ '.\+\.UTF-8'
     set langmap=ёйцукенгшщзхъфывапролдэячсмитьюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЯЧСМИТЬБЮ№жЭб;`qwertyuiop[]asdfghjkl'zxcvbnm.~QWERTYUIOP{}ASDFGHJKL:ZXCVBNM<>#\\;\\"\\,
     "ёйцукенгшщзхъфывапролдж  эячсмитьюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭ  ЯЧСМИТЬБЮб
@@ -200,9 +181,6 @@ if $LANG =~ '.\+\.UTF-8'
     "#
 endif
 
-if !has('nvim')
-    so ~/.vim/addons_dein.vim
-endif
 hi LineNr ctermbg=darkgray guibg=black
 hi FoldColumn ctermbg=darkgray guibg=black
 hi SignColumn ctermbg=darkgray guibg=black
