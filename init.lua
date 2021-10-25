@@ -1,3 +1,8 @@
+-- TODO:
+--   - Move definitions from vimrc_legacy
+--   - Move addons from dein to packer
+--   - check what is packpath and why it is set
+--
 -- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 local map = vim.api.nvim_set_keymap
 local set = vim.opt
@@ -32,17 +37,18 @@ map('n', 'Do', ':.diffget<CR>', {})
 map('v', 'Do', ':diffget<CR>', {})
 
 -- Clipboard mappings
+noremap={noremap=true}
 -- Make x, d and dd delete with no register
-map('', 'x', '"_x', {noremap=true})
-map('v', 'x', '"_x', {noremap=true})
-map('', 'd', '"_d', {noremap=true})
-map('v', 'd', '"_d', {noremap=true})
-map('n', 'dd', '"_dd', {noremap=true})
+map('',  'x',  '"_x',  noremap)
+map('v', 'x',  '"_x',  noremap)
+map('',  'd',  '"_d',  noremap)
+map('v', 'd',  '"_d',  noremap)
+map('n', 'dd', '"_dd', noremap)
 -- use m (move) for deleting with register
-map('', 'm', 'd', {noremap=true})
-map('v', 'm', 'd', {noremap=true})
-map('n', 'mm', 'dd', {noremap=true})
-map('n', 'gm', 'm', {noremap=true})
+map('',  'm',  'd',  noremap)
+map('v', 'm',  'd',  noremap)
+map('n', 'mm', 'dd', noremap)
+map('n', 'gm', 'm',  noremap)
 
 -- Plugins
 require 'packer_cfg.packer'
