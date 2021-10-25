@@ -2,7 +2,7 @@
 local map = vim.api.nvim_set_keymap
 local set = vim.opt
 
--- set.termguicolors=false
+set.termguicolors=false
 set.background='dark'
 
 -- Splitting and field of view
@@ -41,16 +41,10 @@ map('v', 'm', 'd', {noremap=true})
 map('n', 'mm', 'dd', {noremap=true})
 map('n', 'gm', 'm', {noremap=true})
 
-vim.cmd [[packadd packer.nvim]]
-local packer=require 'packer'
+-- Plugins
+--require 'packer_cfg.packer'
 
-packer.init{opt_default=false}
-packer.startup(function()
-    use {'nvim-treesitter/nvim-treesitter', config=require'packager_cfg.nvim_treesitter'}
-    use {'neovim/nvim-lspconfig'}
-    use {'anott03/nvim-lspinstall', config=require'packager_cfg.nvim_lspconfig'}
-end)
-
+vim.cmd [[source ~/.config/nvim/addons.vim]]
 
 -- plugins
 -- git clone --depth 1 https://github.com/wbthomason/packer.nvim\

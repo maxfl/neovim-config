@@ -1,4 +1,5 @@
 function plugin_cfg#ctrlspace#add()
+    set hidden
     let g:CtrlSpaceSetDefaultMapping=1
     let g:CtrlSpaceUseTabline=1
     let g:CtrlSpaceDefaultMappingKey='<C-Space> '
