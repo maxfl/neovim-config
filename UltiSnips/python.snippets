@@ -122,23 +122,18 @@ if __name__ == '__main__':
     main(parser.parse_args())
 endsnippet
 
-# matplotlib
 snippet Figure "matplotlib figure"
-${1:fig} = ${2:plt}.figure()
-${3:ax} = $2.subplot( ${4:111} )
-$3.minorticks_on()
-$3.grid()
-$3.set_xlabel( '${5}' )
-$3.set_ylabel( '${6}' )
-$3.set_title( '${7}' )
-endsnippet
-
-snippet figure "matplotlib figure"
 ${1:fig} = ${2:plt}.figure()
 ${3:ax} = $2.subplot(${4:111}, xlabel='${5}', ylabel='${6}', title='${7}')
 $3.minorticks_on()
 $3.grid()
 
+$0
+endsnippet
+
+snippet figure "matplotlib figure"
+plt.figure()
+${1:ax} = plt.subplot(${2:111}, xlabel='${3}', ylabel='${4}', title='${5}')
 $0
 endsnippet
 

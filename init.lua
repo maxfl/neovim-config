@@ -10,8 +10,16 @@ local set = vim.opt
 vim.g['&packpath'] = vim.g['&runtimepath']
 vim.cmd[[source ~/.config/nvim/vimrc_legacy]]
 
-set.termguicolors=false
+--
+-- Options
+--
+-- Interface
+set.termguicolors=true
 set.background='dark'
+set.hidden=true
+set.number=true
+set.relativenumber=true
+set.scrolloff=3
 
 -- Splitting and field of view
 set.splitbelow=true

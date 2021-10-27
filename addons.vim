@@ -37,87 +37,20 @@ call dein#add('inkarkat/vim-SyntaxRange',  {
             \ })
 call dein#add('tpope/vim-repeat', { 'normalized_name': 'repeat' })
 call dein#add('inkarkat/vim-visualrepeat', { 'normalized_name': 'visualrepeat' })
-call dein#add('nvim-lua/plenary.nvim')
-call dein#add('nvim-telescope/telescope.nvim.git', {'depends': 'plenary'})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('jonathanfilip/vim-lucius', {
-            \ 'normalized_name': 'lucius',
-            \ 'hook_post_source': "
-            \     colorscheme lucius\n
-            \     LuciusBlack\n
-            \ "})
-
 " fade unfocused buffers
-call dein#add('tadaa/vimade', {'hook_add': "
-            \ let g:vimade = {}\n
-            \ let g:vimade.fadelevel = 0.7\n
-            \ let g:vimade.usecursorhold=1\n
-            \ "})
 call dein#add('powerman/vim-plugin-AnsiEsc', { 'normalized_name': 'plugin-AnsiEsc', 'lazy': 1, 'on_cmd': 'AnsiEsc'})
 
 " vertically center current buffer/window
-call dein#add('jmckiern/vim-venter', { 'hook_post_source': "
-            \ let g:venter_width=10\n
-            \ augroup venter\n
-            \ au VimResized * let g:venter_width=(&columns-120)/2 | VenterResize\n
-            \ augroup END
-            \ " })
-
-" Cursor highlight
-"
-" Spoils diff
-"call dein#add('danilamihailov/beacon.nvim', {'hook_add': "
-            "\ let g:beacon_timeout=1500\n
-            "\ let g:beacon_shrink=0\n
-            "\ let g:beacon_fade=0\n
-            "\ "})
-
-call dein#add('machakann/vim-highlightedyank')
-
-"
-" Windows
-"
-call dein#add('skywind3000/vim-quickui', { 'normalized_name': 'quickui',
-            \ 'hook_add':         function('plugin_cfg#quickui#add'),
-            \ 'hook_post_source': function('plugin_cfg#quickui#post_source'),
-            \ 'lazy': 1,
-            \ 'on_func': 'quickui#menu#open'
-            \ })
-
-call dein#add('ncm2/float-preview.nvim', {'hook_add': "
-            \ let g:float_preview#docked=1\n
-            \ set completeopt+=preview\n
-            \ "})
-
-"
-" Statusline
-"
-call dein#add('vim-airline/vim-airline', {
-            \ 'normalized_name': 'airline',
-            \ 'depends': 'tagbar',
-            \ 'hook_add': function('plugin_cfg#airline#add'),
-            \ 'hook_post_source': function('plugin_cfg#airline#post_source')
-            \ })
-call dein#add('paranoida/vim-airlineish', { 'normalized_name': 'airlineish' })
-
-"
-" Indentation
-"
-" FIXME: almost not used
-call dein#add('thiagoalessio/rainbow_levels.vim', { 'lazy': 1, 'on_cmd': 'RainbowLevelsToggle' })
-call dein#add('kien/rainbow_parentheses.vim',     { 'lazy': 1, 'on_cmd': 'RainbowParenthesesToggle' })
-call dein#add('Yggdroot/indentLine',              { 'hook_add': "
-            \ let g:indentLine_enabled=0\n
-            \ au FileType cpp,python :IndentLinesEnable\n
-            \ ",
-            \ 'lazy': 1, 'on_cmd': ['IndentLinesEnable', 'IndentLinesToggle' ]
-            \ })
-call dein#add('nathanaelkane/vim-indent-guides',  { 'normalized_name': 'indent-guides',
-            \ 'lazy': 1, 'on_cmd': ['IndentGuidesEnable', 'IndentGuidesToggle' ]
-            \ })
+"call dein#add('jmckiern/vim-venter', { 'hook_post_source': "
+            "\ let g:venter_width=10\n
+            "\ augroup venter\n
+            "\ au VimResized * let g:venter_width=(&columns-120)/2 | VenterResize\n
+            "\ augroup END
+            "\ " })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and splits
@@ -434,12 +367,6 @@ call dein#add('inkarkat/vim-AdvancedSorters', {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff tools
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('will133/vim-dirdiff', { 'normalized_name': 'dirdiff',  'hook_add': "
-            \ map <unique> <Leader>Dg <Plug>DirDiffGet\n
-            \ map <unique> <Leader>Dp <Plug>DirDiffPut\n
-            \ map <unique> <Leader>Dj <Plug>DirDiffNext\n
-            \ map <unique> <Leader>Dk <Plug>DirDiffPrev\n
-            \ " })
 call dein#add('AndrewRadev/linediff.vim', { 'hook_add': "
             \ vmap <Leader>dl :Linediff<CR>\n
             \ nmap <Leader>dl :Linediff<CR>\n
@@ -516,11 +443,6 @@ call dein#add('ctrlpvim/ctrlp.vim', {'hook_add': "
             \ let g:ctrlp_cmd='CtrlPMRUFiles'
             \ "})
 call dein#add('pechorin/any-jump.vim', { 'normalized_name': 'any-jump' }) " Warning: not used
-
-" vimtexcheat40', { 'normalized_name': 'cheat40' }) " \? for cheatsheet
-call dein#add('sudormrfbin/cheatsheet.nvim.git', {
-            \ 'depends': 'telescope'
-            \ })
 
 call dein#add('gelguy/wilder.nvim', { 'hook_post_source': "
             \ call wilder#setup({'modes': [':']})\n
@@ -629,7 +551,7 @@ call dein#add('kassio/neoterm', { 'hook_add' : "
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Local bundles
-call dein#local("~/.config/nvim/bundle_local", { 'depends': 'CountJump', 'frozen': 1 })
+call dein#local("~/.config/nvim/bundle_local/SwapText-1.02", { 'depends': 'CountJump', 'frozen': 1 })
 
 call dein#end()
 
