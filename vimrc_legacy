@@ -1,9 +1,6 @@
 "
 " filetype settings
 "
-let g:load_doxygen_syntax=1
-let g:tex_flavor='latex'
-let g:tex_conceal='abdmg'
 
 " interface
 "set ttimeoutlen=50
@@ -17,23 +14,10 @@ if &listchars ==# 'eol:$'
     let &listchars .= ",tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
   endif
 endif
-set breakindent
 set breakindentopt=shift:-1,min:50
-set showbreak=↪
-set linebreak
-if !has('nvim')
-    set guiheadroom=0
-endif
-set nowrap
-set virtualedit=onemore,block
-set showcmd
 
 set makeprg=make\ -j4
 set path=,.,../include,../inc,/usr/include
-if v:version>702
-    set wildignorecase
-    set colorcolumn=+1
-endif
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/CVS/*
 
 " behavour
@@ -54,35 +38,6 @@ set completeopt+=longest
 au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')
 "set splitbelow
 
-"gui
-if has("gui_gtk2")
-    set guifont=Monospace\ 11
-endif
-if has("gui_running") || $TERM =~ '256color'
-    set t_Co=256
-endif
-set guioptions-=T
-set guioptions-=L
-set guioptions-=m
-set guioptions-=e
-set guioptions-=r
-
-"mouse and keys
-set winaltkeys=no
-set mouse=a
-set mousefocus
-if !has('nvim')
-    set ttymouse=xterm2
-endif
-
-if !has('gui_running') && !has('nvim')
-  let c='a'
-  while c <= 'z'
-    exec "set <A-".c.">=\e".c
-    let c = nr2char(1+char2nr(c))
-  endw
-endif
-
 "indent
 " set smartindent
 set shiftwidth=4
@@ -95,20 +50,17 @@ set cino=g0,i0,(0
 set cinkeys-=0#
 
 "search
-"set nohlsearch
 set ignorecase
 set smartcase
 set grepprg=grep\ -nH\ $*
 
 "language specific
-set spelllang=en,ru_yo
 set commentstring=#%s
 au BufNewFile,BufRead *.wiki set shiftwidth=2
 au BufNewFile,BufRead *.bbx,*.cbx,*.lbx setf tex
 au FileType svn setlocal spell
 au FileType gitcommit setlocal spell
 au FileType vcscommit setlocal spell
-au FileType notes iab <expr> :dts: strftime("%c")
 set cpoptions+=d
 
 " Scroll lock

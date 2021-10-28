@@ -10,53 +10,75 @@ local set = vim.opt
 vim.g['&packpath'] = vim.g['&runtimepath']
 vim.cmd[[source ~/.config/nvim/vimrc_legacy]]
 
---
 -- Options
---
--- Interface
-set.termguicolors=true
-set.background='dark'
-set.hidden=true
-set.number=true
-set.relativenumber=true
-set.scrolloff=3
+    -- Interface
+        set.termguicolors=true
+        set.background='dark'
+        set.hidden=true
+        set.number=true
+        set.relativenumber=true
+        set.scrolloff=3
 
--- Splitting and field of view
-set.splitbelow=true
-set.splitright=true
-set.scrolloff=3
+    -- Splitting and field of view
+        set.splitbelow=true
+        set.splitright=true
+        set.scrolloff=3
 
--- keymap
-set.keymap='russian-jcukenwin'
-set.iminsert=0
-set.imsearch=-1
-map('i', '<F3>', '<C-^>', {noremap=true})
-map('c', '<F3>', '<C-^>', {noremap=true})
-map('i', '<C-Space>', '<C-^><Space>', {noremap=true})
-map('c', '<C-Space>', '<C-^><Space>', {noremap=true})
+    -- breaks and wraps
+        set.wrap=false
+        set.breakindent=true
+        set.showbreak='↪'
+        set.linebreak=true
+        set.colorcolumn='+1'
 
--- some mappings
-set.pastetoggle='<F4>'
+    -- cursor
+        set.virtualedit={'onemore', 'block'}
 
--- Diff selection
-map('n', 'Dp', ':.diffput<CR>', {})
-map('v', 'Dp', ':diffput<CR>', {})
-map('n', 'Do', ':.diffget<CR>', {})
-map('v', 'Do', ':diffget<CR>', {})
+    -- commandline
+        set.wildignorecase=true
 
--- Clipboard mappings
-noremap={noremap=true}
--- Make x, d and dd delete with no register
-map('',  'x',  '"_x',  noremap)
-map('v', 'x',  '"_x',  noremap)
-map('',  'd',  '"_d',  noremap)
-map('v', 'd',  '"_d',  noremap)
-map('n', 'dd', '"_dd', noremap)
--- use m (move) for deleting with register
-map('',  'm',  'd',  noremap)
-map('v', 'm',  'd',  noremap)
-map('n', 'mm', 'dd', noremap)
-map('n', 'gm', 'm',  noremap)
+    -- mouse
+        set.mouse='a'
+        set.mousefocus=true
+
+    -- keymap and lang
+        set.spelllang={'en', 'ru_yo'}
+
+        set.keymap='russian-jcukenwin'
+        set.iminsert=0
+        set.imsearch=-1
+        map('i', '<F3>', '<C-^>', {noremap=true})
+        map('c', '<F3>', '<C-^>', {noremap=true})
+        map('i', '<C-Space>', '<C-^><Space>', {noremap=true})
+        map('c', '<C-Space>', '<C-^><Space>', {noremap=true})
+
+    -- some mappings
+        set.pastetoggle='<F4>'
+
+    -- filetype
+        vim.g.load_doxygen_syntax=1
+        vim.g.tex_flavor='latex'
+        vim.g.tex_conceal='abdmg'
+
+    -- Diff selection
+        map('n', 'Dp', ':.diffput<CR>', {})
+        map('v', 'Dp', ':diffput<CR>', {})
+        map('n', 'Do', ':.diffget<CR>', {})
+        map('v', 'Do', ':diffget<CR>', {})
+
+    -- Clipboard mappings
+        noremap={noremap=true}
+        -- Make x, d and dd delete with no register
+        map('',  'x',  '"_x',  noremap)
+        map('v', 'x',  '"_x',  noremap)
+        map('',  'd',  '"_d',  noremap)
+        map('v', 'd',  '"_d',  noremap)
+        map('n', 'dd', '"_dd', noremap)
+        -- use m (move) for deleting with register
+        map('',  'm',  'd',  noremap)
+        map('v', 'm',  'd',  noremap)
+        map('n', 'mm', 'dd', noremap)
+        map('n', 'gm', 'm',  noremap)
 
 -- Plugins
 require 'packer_cfg.packer'
