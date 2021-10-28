@@ -21,8 +21,12 @@ packer.startup(function()
         -- Clipboard
             use 'machakann/vim-highlightedyank'
 
+        -- VCS
+            use {'lewis6991/gitsigns.nvim', config=function() require('gitsigns').setup() end, requires='nvim-lua/plenary.nvim'}
+
         -- Statusline
-            use {'windwp/windline.nvim', config=function() require('wlsample.airline') end}
+            use {'windwp/windline.nvim', config=function() require('wlsample.airline') end, requires='lewis6991/gitsigns.nvim' }
+            --use {'nvim-lualine/lualine.nvim', config=function() require'lualine'.setup() end, requires={'kyazdani42/nvim-web-devicons', opt = true}}
 
     -- Vimscript
         -- Libraries
@@ -50,6 +54,9 @@ packer.startup(function()
             -- tex
                 use 'KeitaNakamura/tex-conceal.vim'
                 use {'lervag/vimtex', config=require'packer_cfg.vimtex', opt=true, ft={'tex', 'plaintex'}}
+
+            -- lua
+                use 'rafcamlet/nvim-luapad'
 
         -- Files and folders
             use {'zenbro/mirror.vim', opt=true, cmd={'MirrorConfig', 'MirrorPush', 'MirrorPull'},
