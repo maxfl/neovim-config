@@ -81,12 +81,6 @@ call dein#add('jiangmiao/auto-pairs', {
             \ 'hook_add': function("plugin_cfg#autopairs#add"),
             \ 'hook_post_source': function("plugin_cfg#autopairs#post_source")
             \ })
-call dein#add('honza/vim-snippets', { 'normalized_name': 'snippets' })
-call dein#add('SirVer/ultisnips', { 'hook_add': "
-            \ let g:UltiSnipsExpandTrigger='<Tab>'\n
-            \ let g:UltiSnipsJumpForwardTrigger='<Tab>'\n
-            \ let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'\n
-            \ " })
 call dein#add('tpope/vim-endwise', { 'normalized_name': 'endwise' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -163,16 +157,16 @@ call dein#add('bronson/vim-trailing-whitespace', { 'normalized_name': 'trailing-
             \ " })
 
 " TODO: Deprecated by the author
-call dein#add('Shougo/deoplete.nvim', {
-            \ 'hook_add': "
-            \   let g:deoplete#enable_at_startup = 1\n
-            \ ",
-            \ 'hook_post_source': "
-            \   call deoplete#custom#option('auto_refresh_delay', 200)\n
-            \   call deoplete#custom#option('smart_case', v:true)\n
-            \   inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
-            \ ",
-            \ 'depends': 'float-preview.nvim'})
+"call dein#add('Shougo/deoplete.nvim', {
+            "\ 'hook_add': "
+            "\   let g:deoplete#enable_at_startup = 1\n
+            "\ ",
+            "\ 'hook_post_source': "
+            "\   call deoplete#custom#option('auto_refresh_delay', 200)\n
+            "\   call deoplete#custom#option('smart_case', v:true)\n
+            "\   inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
+            "\ ",
+            "\ 'depends': 'float-preview.nvim'})
 call dein#add('mg979/vim-visual-multi', { 'normalized_name': 'visual-multi' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -28,6 +28,26 @@ packer.startup(function()
             use {'windwp/windline.nvim', config=function() require('wlsample.airline') end, requires='lewis6991/gitsigns.nvim' }
             --use {'nvim-lualine/lualine.nvim', config=function() require'lualine'.setup() end, requires={'kyazdani42/nvim-web-devicons', opt = true}}
 
+        -- Filetype
+            -- lua
+                use 'rafcamlet/nvim-luapad'
+
+        -- Completion
+            use {'hrsh7th/nvim-cmp', config=require'packer_cfg.nvim_cmp',
+                    requires={
+                        'hrsh7th/cmp-nvim-lsp',
+                        'hrsh7th/cmp-buffer',
+                        'hrsh7th/cmp-path',
+                        'hrsh7th/cmp-cmdline',
+                        'quangnguyen30192/cmp-nvim-ultisnips',
+                        'petertriho/cmp-git',
+                        'hrsh7th/cmp-nvim-lua',
+                        'f3fora/cmp-spell',
+                        'kdheepak/cmp-latex-symbols',
+                        'hrsh7th/cmp-omni'
+                    }
+                }
+
     -- Vimscript
         -- Libraries
             --use{'inkarkat/vim-CountJump', requires=' inkarkat/vim-ingo-library'} use{'inkarkat/vim-SyntaxRange', requires='inkarkat/vim-ingo-library'}
@@ -55,8 +75,12 @@ packer.startup(function()
                 use 'KeitaNakamura/tex-conceal.vim'
                 use {'lervag/vimtex', config=require'packer_cfg.vimtex', opt=true, ft={'tex', 'plaintex'}}
 
-            -- lua
-                use 'rafcamlet/nvim-luapad'
+        -- Snippets
+            use {'SirVer/ultisnips', requires='honza/vim-snippets', config=function()
+                vim.g.UltiSnipsExpandTrigger='<Tab>'
+                vim.g.UltiSnipsJumpForwardTrigger='<Tab>'
+                vim.g.UltiSnipsJumpBackwardTrigger='<S-Tab>'
+            end}
 
         -- Files and folders
             use {'zenbro/mirror.vim', opt=true, cmd={'MirrorConfig', 'MirrorPush', 'MirrorPull'},
@@ -71,6 +95,7 @@ packer.startup(function()
             use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', opt=true, ft='txt'}
             use {'~/.config/nvim/bundle_local/txtfmt_v3.1', opt=true, ft='txt'}
 end)
+
 
 --[[
 -- Outdated
