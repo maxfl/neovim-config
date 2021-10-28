@@ -394,18 +394,10 @@ call dein#add('bfrg/vim-cpp-modern', { 'normalized_name': 'cpp-modern' })
 call dein#add('vim-scripts/ebnf.vim')
 "call dein#add('direnv/direnv.vim')
 
-
-call dein#add('KeitaNakamura/tex-conceal.vim')
-
-call dein#add('lervag/vimtex', { 'hook_post_source': function("plugin_cfg#vimtex#post_source" ), 'merged': 0})
-
 call dein#add('plasticboy/vim-markdown', {
             \ 'normalized_name': 'markdown',
             \ 'hook_add': "au BufRead,BufEnter /tmp/qutebrowser-editor-* setl ft=markdown spell"
             \ })
-call dein#add('previm/previm', { 'hook_add': "
-            \ let g:previm_open_cmd = \"bash -c 'qutebrowser --target window $* &' -- \"\n
-            \ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search and replace
@@ -519,10 +511,6 @@ call dein#add('derekwyatt/vim-fswitch', {
             \ nmap <silent> <Leader>al :tab FSLeft<CR>\n
             \ nmap <silent> <Leader>aR :tab FSSplitRight<CR>\n
             \ nmap <silent> <Leader>aL :tab FSSplitLeft<CR>\n
-            \ " })
-call dein#add('zenbro/mirror.vim', { 'hook_add' : "
-            \ nmap <Leader>rc :MirrorPush<CR>\n
-            \ nmap <Leader>rp :MirrorPull<CR>\n
             \ " })
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
