@@ -13,8 +13,11 @@ packer.startup(function()
             use {'nvim-telescope/telescope.nvim', requires='nvim-lua/plenary.nvim'}
             use {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
 
-        -- Interface and highlight
+        -- Interface
             use (require 'packer_cfg.shade')
+
+        -- Highlight
+            use 'yamatsum/nvim-cursorline'
 
         -- Colocschemes
             use {'jonathanfilip/vim-lucius', config=function() vim.cmd[[colorscheme lucius | LuciusBlack]] end}
