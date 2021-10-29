@@ -8,8 +8,12 @@ local map = vim.api.nvim_set_keymap
 local set = vim.opt
 
 vim.g['&packpath'] = vim.g['&runtimepath']
+
 vim.cmd[[
-    syntax enable
+    set nocompatible
+    syntax on
+    filetype on
+    filetype plugin on
     filetype plugin indent on
 
     source ~/.config/nvim/vimrc_legacy
@@ -21,6 +25,8 @@ vim.cmd[[
         set.autoread=true
         set.exrc=true
         set.secure=true
+        set.compatible=false
+
 
     -- Interface
         set.termguicolors=true
