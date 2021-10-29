@@ -13,8 +13,6 @@ vim.cmd[[
     set nocompatible
     syntax on
     filetype on
-    filetype plugin on
-    filetype plugin indent on
 
     source ~/.config/nvim/vimrc_legacy
 ]]
@@ -112,7 +110,11 @@ vim.cmd[[
 -- Plugins
 require 'packer_cfg.packer'
 
-vim.cmd [[source ~/.config/nvim/addons.vim]]
+vim.cmd [[
+    source ~/.config/nvim/addons.vim
+    syntax on
+    filetype on
+]]
 
 -- plugins
 -- git clone --depth 1 https://github.com/wbthomason/packer.nvim\
