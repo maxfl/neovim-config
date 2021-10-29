@@ -4,8 +4,11 @@ local packer=require 'packer'
 packer.init{opt_default=false}
 packer.startup(function()
     -- Lua
-        -- Tree sitter and LSP
+        -- Tree sitter
             use {'nvim-treesitter/nvim-treesitter', config=require'packer_cfg.nvim_treesitter'}
+            use {'romgrk/nvim-treesitter-context', requires='nvim-treesitter/nvim-treesitter'}
+
+        -- LSP
             use {'neovim/nvim-lspconfig'}
             use {'anott03/nvim-lspinstall', config=require'packer_cfg.nvim_lspconfig'}
 
@@ -17,7 +20,7 @@ packer.startup(function()
             use (require 'packer_cfg.shade')
 
         -- Highlight
-            use 'yamatsum/nvim-cursorline'
+            -- use 'yamatsum/nvim-cursorline'
 
         -- Colocschemes
             use {'jonathanfilip/vim-lucius', config=function() vim.cmd[[colorscheme lucius | LuciusBlack]] end}
