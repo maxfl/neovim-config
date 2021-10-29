@@ -34,14 +34,15 @@ return {
                 --['<CR>'] = cmp.mapping.confirm({ select = true }),
             --},
             sources = cmp.config.sources({
-                { name = 'spell' },
-                { name = 'nvim_lsp' },
-                { name = 'ultisnips' },
-                { name = 'nvim_lua' },
-                { name = 'latex_symbols' },
-            }, {
+                    { name = 'spell' },
+                    { name = 'nvim_lsp' },
+                    { name = 'ultisnips' },
+                    { name = 'nvim_lua' },
+                    { name = 'latex_symbols' },
+                }, {
                     { name = 'buffer' },
-                })
+            }),
+            completion = {keyword_length=3}
         })
 
         -- Use buffer source for `/`.

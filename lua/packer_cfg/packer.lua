@@ -1,6 +1,16 @@
 vim.cmd [[packadd packer.nvim]]
 local packer=require 'packer'
 
+function update_colocscheme()
+    vim.cmd[[
+        hi LineNr ctermbg=darkgray guibg=black
+        hi FoldColumn ctermbg=darkgray guibg=black
+        hi SignColumn ctermbg=darkgray guibg=black
+        hi SpellBad cterm=underline
+        hi Pmenu guibg=#808080
+    ]]
+end
+
 packer.init{opt_default=false}
 packer.startup(function()
     -- Lua
@@ -25,7 +35,7 @@ packer.startup(function()
             -- use 'yamatsum/nvim-cursorline'
 
         -- Colocschemes
-            use {'jonathanfilip/vim-lucius', config=function() vim.cmd[[colorscheme lucius | LuciusBlack]] end}
+            use {'jonathanfilip/vim-lucius', config=function() vim.cmd[[colorscheme lucius | LuciusBlack]]; update_colocscheme() end}
 
         -- Clipboard
             use 'machakann/vim-highlightedyank'

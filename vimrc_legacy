@@ -109,11 +109,6 @@ if $LANG =~ '.\+\.UTF-8'
     "#
 endif
 
-hi LineNr ctermbg=darkgray guibg=black
-hi FoldColumn ctermbg=darkgray guibg=black
-hi SignColumn ctermbg=darkgray guibg=black
-hi SpellBad cterm=underline
-
 "
 " sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>

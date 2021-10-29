@@ -21,17 +21,17 @@ vim.cmd[[
         set.autowrite=true
         set.autoread=true
         set.exrc=true
-        set.secure=true
+        set.secure=false
         set.compatible=false
 
-
     -- Interface
-        set.termguicolors=true
         set.background='dark'
         set.hidden=true
         set.number=true
         set.relativenumber=true
         set.scrolloff=3
+
+        set.termguicolors=true
 
     -- Splitting and field of view
         set.splitbelow=true
