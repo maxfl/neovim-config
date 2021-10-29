@@ -150,4 +150,3 @@ vim.cmd [[
 --" Complete from the normal mode
 --nmap                                            <Leader><C-x> ea<C-x>
 
---source ~/.config/nvim/addons.vim

@@ -134,14 +134,6 @@ call dein#add('inkarkat/vim-ReplaceWithRegister', { 'normalized_name': 'ReplaceW
 call dein#add('dkarter/bullets.vim', { 'hook_post_source': "
             \ let g:bullets_enabled_file_types=['markdown', 'rst', 'text', 'txt', 'gitcommit']\n
             \ " })
-"call dein#add('sjl/gundo.vim', { 'hook_add': "
-            "\ nnoremap <Leader>wu :GundoToggle<CR>\n
-            "\ let g:gundo_preview_bottom=1\n
-            "\ let g:gundo_width=30\n
-            "\ let g:gundo_right=1\n
-            "\ ",
-            "\ 'lazy': 1, 'on_cmd': 'GundoToggle'
-            "\ })
 call dein#add('simnalamburt/vim-mundo', { 'hook_add': "
             \ nnoremap <Leader>wu :MundoToggle<CR>\n
             \ let g:mundo_preview_bottom=1\n
@@ -155,17 +147,6 @@ call dein#add('bronson/vim-trailing-whitespace', { 'normalized_name': 'trailing-
             \ autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace\n
             \ " })
 
-" TODO: Deprecated by the author
-"call dein#add('Shougo/deoplete.nvim', {
-            "\ 'hook_add': "
-            "\   let g:deoplete#enable_at_startup = 1\n
-            "\ ",
-            "\ 'hook_post_source': "
-            "\   call deoplete#custom#option('auto_refresh_delay', 200)\n
-            "\   call deoplete#custom#option('smart_case', v:true)\n
-            "\   inoremap <expr><C-X><C-X> deoplete#manual_complete() \n
-            "\ ",
-            "\ 'depends': 'float-preview.nvim'})
 call dein#add('mg979/vim-visual-multi', { 'normalized_name': 'visual-multi' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -181,7 +162,6 @@ call dein#add('mg979/vim-visual-multi', { 'normalized_name': 'visual-multi' })
 " TODO: call dein#add('Iron-E/nvim-libmodal')
 
 call dein#add('vim-scripts/RelativeNumberCurrentWindow')
-"call dein#add('wgurecky/vimSum', { 'lazy': 1, 'on_cmd': ['VisSum', 'VisMean', 'VisMult'] })
 
 call dein#add('moll/vim-bbye', { 'normalized_name': 'bbye',  'hook_add': "
             \ nnoremap ZQ :Bdelete<CR>\n
@@ -192,7 +172,6 @@ call dein#add('moll/vim-bbye', { 'normalized_name': 'bbye',  'hook_add': "
             \ 'lazy': 1, 'on_cmd': 'Bdelete'
             \ })
 call dein#add('rbgrouleff/bclose.vim') " same as bbye, required by ranger
-" call dein#add('nhooyr/neoman.vim')
 call dein#add('thinca/vim-prettyprint', { 'normalized_name': 'prettyprint', 'lazy': 1, 'on_cmd': ['PrettyPrint', 'PP']})
 call dein#add('ciaranm/detectindent', {
             \   'hook_post_source': "au FileType cpp,python :DetectIndent"
@@ -250,12 +229,6 @@ call dein#add('segeljakt/vim-isotope', {'normalized_name': 'isotope',
 call dein#add('ron89/thesaurus_query.vim', {
             \ 'hook_add': 'let g:tq_map_keys = 0'
             \ })
-"call dein#add('dpelle/vim-languagetool', {
-            "\ 'normalized_name': 'languagetool',
-            "\ 'hook_add': "
-            "\ let g:languagetool_jar='/usr/share/java/languagetool/languagetool-commandline.jar'
-            "\ "
-            "\ })
 call dein#add('rhysd/vim-grammarous', {
             \ 'normalized_name': 'grammarous',
             \ 'hook_add': "
@@ -378,13 +351,10 @@ call dein#add('kalekundert/vim-coiled-snake', {
             \ 'normalized_name': 'coiled-snake',
             \ 'hook_add': 'let g:coiled_snake_set_foldexpr=0'
             \ })
-call dein#add('lervag/wiki.vim', { 'hook_add': "let g:wiki_mappings_use_defaults=0" })
-call dein#add('lervag/wiki-ft.vim', { 'depends': 'wiki'})
 call dein#add('joom/latex-unicoder.vim', { 'hook_add': "let g:unicoder_no_map=1" })
 call dein#add('dag/vim-fish', { 'normalized_name': 'fish' })
-call dein#add('JuliaEditorSupport/julia-vim')
 call dein#add('bfrg/vim-cpp-modern', { 'normalized_name': 'cpp-modern' })
-call dein#add('vim-scripts/ebnf.vim')
+call dein#add('vim-scripts/ebnf.vim') "
 "call dein#add('direnv/direnv.vim')
 
 call dein#add('plasticboy/vim-markdown', {
@@ -395,7 +365,6 @@ call dein#add('plasticboy/vim-markdown', {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search and replace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('brooth/far.vim')        " :Far
 call dein#add('eugen0329/vim-esearch', {
             \ 'normalized_name': 'esearch',
             \ 'hook_post_source': 'let g:esearch={"root_markers": []}'
@@ -405,9 +374,6 @@ call dein#add('t9md/vim-quickhl', {
             \ 'normalized_name': 'quickhl',
             \ 'hook_add': function("plugin_cfg#quickhl#add")
             \ })
-"call dein#add('inkarkat/vim-mark', {
-            "\ 'hook_add': function("plugin_cfg#mark#add")
-            "\ })
 call dein#add('qxxxb/vim-searchhi', {
             \ 'normalized_name': 'searchhi',
             \ 'hook_add': function("plugin_cfg#searchhi#add")
@@ -427,7 +393,6 @@ call dein#add('ctrlpvim/ctrlp.vim', {'hook_add': "
             \ let g:ctrlp_working_path_mode='c'\n
             \ let g:ctrlp_cmd='CtrlPMRUFiles'
             \ "})
-call dein#add('pechorin/any-jump.vim', { 'normalized_name': 'any-jump' }) " Warning: not used
 
 call dein#add('gelguy/wilder.nvim', { 'hook_post_source': "
             \ call wilder#setup({'modes': [':']})\n
@@ -438,13 +403,6 @@ call dein#add('gelguy/wilder.nvim', { 'hook_post_source': "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tags and outline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"call dein#add('xolox/vim-easytags', { 'normalized_name': 'easytags',  'hook_add': "
-            "\ let g:easytags_file='./tags'\n
-            "\ let g:easytags_ignored_filetypes=''\n
-            "\ let g:easytags_on_cursorhold = 0\n
-            "\ let g:easytags_auto_update = 0\n
-            "\ let g:easytags_updatetime_min = 600000\n
-            "\ " })
 call dein#add('jsfaint/gen_tags.vim', { 'hook_add': "
             \ let g:loaded_gentags#gtags=1
             \ " })
@@ -462,26 +420,12 @@ call dein#add('majutsushi/tagbar', {
 call dein#add('vim-scripts/Rename')
 call dein#add('chrisbra/SudoEdit.vim', { 'hook_add': "inoremap <S-F2> :SudoWrite<CR>" })
 call dein#add('ervandew/archive')
-"call dein#add('xolox/vim-misc', { 'normalized_name': 'misc' })
-"call dein#add('xolox/vim-shell', { 'normalized_name': 'shell',  'depends': 'vim-misc', 'hook_add' : "
-            "\ let g:shell_mappings_enabled = 0\n
-            "\ let g:shell_fullscreen_items = 'mTe'\n
-            "\ nnoremap <Leader>op :Open<CR>\n
-            "\ nnoremap <Leader>if :Fullscreen<CR>\n
-            "\ " })
+
 call dein#add('itchyny/vim-external', { 'normalized_name': 'external', 'hook_add': "
             \ map <Leader>oe <Plug>(external-editor)\n
             \ map <Leader>oo <Plug>(external-explorer)\n
             \ map <Leader>ob <Plug>(external-browser)\n
             \ "})
-"call dein#add('francoiscabrol/ranger.vim', { 'hook_add' : "
-            "\ let g:ranger_replace_netrw = 0\n
-            "\ let g:NERDTreeHijackNetrw = 0\n
-            "\ nnoremap <silent> <M-r> :RangerCurrentFile<CR>\n
-            "\ nnoremap <silent> <M-R> :RangerWorkingDirectory<CR>\n
-            "\ ",
-            "\ 'depends' : 'bclose'
-            "\} )
 
 call dein#add('kevinhwang91/rnvimr', {
             \ 'hook_post_update': "call system('make install')",
@@ -492,7 +436,6 @@ call dein#add('kevinhwang91/rnvimr', {
             \   tnoremap <silent> <F11> <C-\\><C-n>:RnvimrToggle<CR>\n
             \ "
             \ }) "ranger
-call dein#add('Shougo/neossh.vim')
 call dein#add('derekwyatt/vim-fswitch', {
             \ 'normalized_name': 'fswitch',
             \ 'hook_add' : "
@@ -505,13 +448,6 @@ call dein#add('derekwyatt/vim-fswitch', {
             \ nmap <silent> <Leader>aR :tab FSSplitRight<CR>\n
             \ nmap <silent> <Leader>aL :tab FSSplitLeft<CR>\n
             \ " })
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Compilation
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"call dein#add('scrooloose/syntastic', { 'hook_add': function("plugin_cfg#syntastic#add") })
-"call dein#add('xuhdev/SingleCompile')
-""call dein#add('wbthomason/buildit.nvim')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Terminal, repl, embedding

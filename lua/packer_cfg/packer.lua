@@ -100,4 +100,11 @@ end)
             call dein#add('previm/previm', { 'hook_add': "
                         \ let g:previm_open_cmd = \"bash -c 'qutebrowser --target window $* &' -- \"\n
                         \ "})
+    -- Other
+        'Shougo/neossh.vim'
+        "call dein#add('pechorin/any-jump.vim', { 'normalized_name': 'any-jump' }) " Warning: not used
+        call dein#add('lervag/wiki.vim', { 'hook_add': "let g:wiki_mappings_use_defaults=0" })
+        call dein#add('lervag/wiki-ft.vim', { 'depends': 'wiki'})
+        call dein#add('JuliaEditorSupport/julia-vim')
+        "call dein#add('brooth/far.vim')        " :Far
 --]]
