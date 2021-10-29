@@ -21,7 +21,6 @@ call dein#add('haya14busa/dein-command.vim', {
             \ 'lazy': 1,
             \ 'on_cmd': 'Dein'
             \ })
-call dein#add('tpope/vim-sensible', { 'normalized_name': 'sensible' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Libraries

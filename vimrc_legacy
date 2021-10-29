@@ -1,7 +1,3 @@
-"
-" filetype settings
-"
-
 " interface
 "set ttimeoutlen=50
 set nostartofline
@@ -13,6 +9,10 @@ if &listchars ==# 'eol:$'
   if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
     let &listchars .= ",tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
   endif
+endif
+
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
 set breakindentopt=shift:-1,min:50
 
@@ -31,6 +31,7 @@ set nojoinspaces
 set complete+=k
 set completeopt-=preview
 set completeopt+=longest
+set complete-=i
 au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')
 
 "search
@@ -113,4 +114,67 @@ hi FoldColumn ctermbg=darkgray guibg=black
 hi SignColumn ctermbg=darkgray guibg=black
 hi SpellBad cterm=underline
 
-"au BufNewFile,BufRead *.txt setf txt
+"
+" sensible.vim - Defaults everyone can agree on
+" Maintainer:   Tim Pope <http://tpo.pe/>
+" Version:      1.2
+
+" Use :help 'option' to see the documentation for the given option.
+
+set backspace=indent,eol,start
+set smarttab
+
+set nrformats-=octal
+
+if !has('nvim') && &ttimeoutlen == -1
+  set ttimeout
+  set ttimeoutlen=100
+endif
+
+set incsearch
+" Use <C-L> to clear the highlighting of :set hlsearch.
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
+
+set laststatus=2
+set ruler
+set wildmenu
+
+if !&scrolloff
+  set scrolloff=1
+endif
+if !&sidescrolloff
+  set sidescrolloff=5
+endif
+set display+=lastline
+
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j " Delete comment character when joining commented lines
+endif
+
+if has('path_extra')
+  setglobal tags-=./tags tags-=./tags; tags^=./tags;
+endif
+
+if &shell =~# 'fish$' && (v:version < 704 || v:version == 704 && !has('patch276'))
+  set shell=/usr/bin/env\ bash
+endif
+
+if &tabpagemax < 50
+  set tabpagemax=50
+endif
+if !empty(&viminfo)
+  set viminfo^=!
+endif
+set sessionoptions-=options
+set viewoptions-=options
+
+if empty(mapcheck('<C-U>', 'i'))
+  inoremap <C-U> <C-G>u<C-U>
+endif
+if empty(mapcheck('<C-W>', 'i'))
+  inoremap <C-W> <C-G>u<C-W>
+endif
+
+" vim:set ft=vim et sw=2:

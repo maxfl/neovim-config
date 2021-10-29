@@ -8,11 +8,17 @@ local map = vim.api.nvim_set_keymap
 local set = vim.opt
 
 vim.g['&packpath'] = vim.g['&runtimepath']
-vim.cmd[[source ~/.config/nvim/vimrc_legacy]]
+vim.cmd[[
+    syntax enable
+    filetype plugin indent on
+
+    source ~/.config/nvim/vimrc_legacy
+]]
 
 -- Options
     -- Behaviour
         set.autowrite=true
+        set.autoread=true
         set.exrc=true
         set.secure=true
 
@@ -31,7 +37,6 @@ vim.cmd[[source ~/.config/nvim/vimrc_legacy]]
 
     -- breaks and wraps
         set.wrap=false
-        set.breakindent=true
         set.showbreak='↪'
         set.linebreak=true
         set.colorcolumn='+1'
@@ -43,6 +48,8 @@ vim.cmd[[source ~/.config/nvim/vimrc_legacy]]
         set.softtabstop=2
         set.cino:append{'g0','i0','(0'}
         set.cinkeys:remove'0#'
+        set.breakindent=true
+        set.autoindent=true
 
     -- pairs, brackets, etc
         set.showmatch=true
