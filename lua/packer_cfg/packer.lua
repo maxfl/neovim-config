@@ -5,12 +5,14 @@ packer.init{opt_default=false}
 packer.startup(function()
     -- Lua
         -- Tree sitter
-            use {'nvim-treesitter/nvim-treesitter', config=require'packer_cfg.nvim_treesitter'}
+            use {'nvim-treesitter/nvim-treesitter', config=require'packer_cfg.nvim_treesitter', run=function() vim.cmd ":TSUpdate" end}
             use {'romgrk/nvim-treesitter-context', requires='nvim-treesitter/nvim-treesitter'}
 
         -- LSP
             use {'neovim/nvim-lspconfig'}
             use {'anott03/nvim-lspinstall', config=require'packer_cfg.nvim_lspconfig'}
+
+            --use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}, config=function() require'navigator'.setup() end}
 
         -- Libraries
             use {'nvim-telescope/telescope.nvim', requires='nvim-lua/plenary.nvim'}
