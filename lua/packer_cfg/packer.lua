@@ -14,6 +14,7 @@ packer.startup(function()
             use {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
 
         -- Interface and highlight
+            use (require 'packer_cfg.shade')
 
         -- Colocschemes
             use {'jonathanfilip/vim-lucius', config=function() vim.cmd[[colorscheme lucius | LuciusBlack]] end}
@@ -26,11 +27,10 @@ packer.startup(function()
 
         -- Statusline
             use {'windwp/windline.nvim', config=function() require('wlsample.airline') end, requires='lewis6991/gitsigns.nvim' }
-            --use {'nvim-lualine/lualine.nvim', config=function() require'lualine'.setup() end, requires={'kyazdani42/nvim-web-devicons', opt = true}}
 
         -- Filetype
             -- lua
-                use 'rafcamlet/nvim-luapad'
+                use {'rafcamlet/nvim-luapad', opt=true, cmd='Luapad'}
 
         -- Completion
             use (require'packer_cfg.nvim_cmp')
@@ -88,9 +88,6 @@ end)
 -- Outdated
     -- Colorschemes
         use {'mhartington/oceanic-next', config=function() vim.cmd"colorscheme OceanicNext" end}
-
-    -- Interface
-        use {'tadaa/vimade', config=function() vim.g.vimade={fadelevel = 0.7, usecursorhold=true} end}
 
     -- Menus
        call dein#add('sudormrfbin/cheatsheet.nvim.git', { 'depends': 'telescope' })

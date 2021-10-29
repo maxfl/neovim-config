@@ -10,7 +10,6 @@ local set = vim.opt
 vim.g['&packpath'] = vim.g['&runtimepath']
 
 vim.cmd[[
-    set nocompatible
     syntax on
     filetype on
 
