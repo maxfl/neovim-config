@@ -33,20 +33,7 @@ packer.startup(function()
                 use 'rafcamlet/nvim-luapad'
 
         -- Completion
-            use {'hrsh7th/nvim-cmp', config=require'packer_cfg.nvim_cmp',
-                    requires={
-                        'hrsh7th/cmp-nvim-lsp',
-                        'hrsh7th/cmp-buffer',
-                        'hrsh7th/cmp-path',
-                        'hrsh7th/cmp-cmdline',
-                        'quangnguyen30192/cmp-nvim-ultisnips',
-                        'petertriho/cmp-git',
-                        'hrsh7th/cmp-nvim-lua',
-                        'f3fora/cmp-spell',
-                        'kdheepak/cmp-latex-symbols',
-                        'hrsh7th/cmp-omni'
-                    }
-                }
+            use (require'packer_cfg.nvim_cmp')
 
     -- Vimscript
         -- Libraries
@@ -65,7 +52,7 @@ packer.startup(function()
             use {'nathanaelkane/vim-indent-guides',  opt=true, cmd={'IndentGuidesEnable', 'IndentGuidesToggle'}}
 
         -- Menus
-            use {'skywind3000/vim-quickui', opt=true, fn='quickui#menu#open', setup=require'packer_cfg.quickui'.setup, config=require'packer_cfg.quickui'.config}
+            use (require 'packer_cfg.quickui')
 
         -- Diff tools
             use {'will133/vim-dirdiff', opt=true, config=require'packer_cfg.dirdiff', cmd='DirDiff'}

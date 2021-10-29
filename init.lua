@@ -11,6 +11,11 @@ vim.g['&packpath'] = vim.g['&runtimepath']
 vim.cmd[[source ~/.config/nvim/vimrc_legacy]]
 
 -- Options
+    -- Behaviour
+        set.autowrite=true
+        set.exrc=true
+        set.secure=true
+
     -- Interface
         set.termguicolors=true
         set.background='dark'
@@ -30,6 +35,17 @@ vim.cmd[[source ~/.config/nvim/vimrc_legacy]]
         set.showbreak='↪'
         set.linebreak=true
         set.colorcolumn='+1'
+
+    -- indentation
+        set.shiftwidth=4
+        set.expandtab=true
+        set.tabstop=4
+        set.softtabstop=2
+        set.cino:append{'g0','i0','(0'}
+        set.cinkeys:remove'0#'
+
+    -- pairs, brackets, etc
+        set.showmatch=true
 
     -- cursor
         set.virtualedit={'onemore', 'block'}

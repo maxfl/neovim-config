@@ -21,14 +21,10 @@ set path=,.,../include,../inc,/usr/include
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/CVS/*
 
 " behavour
-set showmatch
 set wildmode=longest,full
 set sidescroll=5
-set autowrite
 set switchbuf=useopen,usetab,newtab
 set foldopen+=jump
-set exrc
-set secure
 set nojoinspaces
 
 "completion
@@ -36,18 +32,6 @@ set complete+=k
 set completeopt-=preview
 set completeopt+=longest
 au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')
-"set splitbelow
-
-"indent
-" set smartindent
-set shiftwidth=4
-set expandtab
-set tabstop=4
-set softtabstop=2
-
-" set cindent
-set cino=g0,i0,(0
-set cinkeys-=0#
 
 "search
 set ignorecase
@@ -66,9 +50,6 @@ set cpoptions+=d
 " Scroll lock
 "inoremap <BS> <Del><BS>
 "inoremap <t_%9> <Esc>
-noremap <F1> <Esc>
-inoremap <F1> <Esc>
-noremap <F1> <Esc>
 nnoremap <F2> :w<CR>
 nnoremap <S-F2> :w!<CR>
 inoremap <F2> <ESC>:w<CR>gi
