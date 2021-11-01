@@ -29,7 +29,6 @@ vim.cmd[[
         set.hidden=true
         set.number=true
         set.relativenumber=true
-        set.scrolloff=3
 
         set.termguicolors=true
 
@@ -37,6 +36,7 @@ vim.cmd[[
         set.splitbelow=true
         set.splitright=true
         set.scrolloff=3
+        set.sidescrolloff=5
 
     -- breaks and wraps
         set.wrap=false
@@ -59,6 +59,10 @@ vim.cmd[[
 
     -- cursor
         set.virtualedit={'onemore', 'block'}
+
+    -- search
+        set.ignorecase=true
+        set.smartcase=true
 
     -- commandline
         set.wildignorecase=true
