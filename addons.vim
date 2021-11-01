@@ -13,21 +13,6 @@ let g:dein#enable_name_conversion = 1
 call dein#add('Shougo/dein.vim')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Libraries
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('inkarkat/vim-ingo-library', { 'normalized_name': 'ingo-library'})
-call dein#add('inkarkat/vim-CountJump',    {
-            \ 'normalized_name': 'CountJump',
-            \ 'depends': 'ingo-library'
-            \ })
-call dein#add('inkarkat/vim-SyntaxRange',  {
-            \ 'normalized_name': 'SyntaxRange',
-            \ 'depends': 'ingo-library'
-            \ })
-call dein#add('tpope/vim-repeat', { 'normalized_name': 'repeat' })
-call dein#add('inkarkat/vim-visualrepeat', { 'normalized_name': 'visualrepeat' })
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Interface and highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fade unfocused buffers
@@ -62,16 +47,6 @@ call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd
             \ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
             \ let g:floaterm_shell='fish'\n
             \ "})
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Snippets
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('jiangmiao/auto-pairs', {
-            \ 'hook_add': function("plugin_cfg#autopairs#add"),
-            \ 'hook_post_source': function("plugin_cfg#autopairs#post_source")
-            \ })
-call dein#add('tpope/vim-endwise', { 'normalized_name': 'endwise' })
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -94,18 +69,10 @@ call dein#add('rhysd/clever-f.vim', { 'hook_add': "
 call dein#add('bkad/camelcasemotion', { 'hook_post_source': "
             \ call camelcasemotion#CreateMotionMappings(',')
             \ " })
-call dein#add('inkarkat/vim-JumpToVerticalBlock', { 'normalized_name': 'JumpToVerticalBlock', 'depends': 'CountJump'})
-call dein#add('inkarkat/vim-JumpToVerticalOccurrence', { 'normalized_name': 'JumpToVerticalOccurrence', 'depends': 'CountJump'})
-call dein#add('inkarkat/vim-EnhancedJumps', {
-            \ 'normalized_name': 'EnhancedJumps',
-            \ 'depends': 'ingo-library',
-            \ 'hook_add': function("plugin_cfg#EnhancedJumps#add")
-            \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('vim-scripts/RepeatableYank')                                           "karkat
 call dein#add('vim-scripts/ExplainPattern')
 call dein#add('bfredl/nvim-miniyank', {'hook_add': "
             \ map p <Plug>(miniyank-autoput)\n
@@ -115,15 +82,10 @@ call dein#add('bfredl/nvim-miniyank', {'hook_add': "
             \ map <Leader>yl <Plug>(miniyank-toline)\n
             \ map <Leader>yb <Plug>(miniyank-toblock)\n
             \ "})
-call dein#add('inkarkat/vim-UnconditionalPaste', { 'normalized_name': 'UnconditionalPaste',  'depends': ['ingo-library', 'repeat'] })
-call dein#add('inkarkat/vim-ReplaceWithRegister', { 'normalized_name': 'ReplaceWithRegister',  'depends': ['repeat', 'visualrepeat'] })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('dkarter/bullets.vim', { 'hook_post_source': "
-            \ let g:bullets_enabled_file_types=['markdown', 'rst', 'text', 'txt', 'gitcommit']\n
-            \ " })
 call dein#add('simnalamburt/vim-mundo', { 'hook_add': "
             \ nnoremap <Leader>wu :MundoToggle<CR>\n
             \ let g:mundo_preview_bottom=1\n
@@ -170,12 +132,6 @@ call dein#add('ciaranm/detectindent', {
 " TODO: call dein#add('zsugabubus/crazy8.nvim') " detect indent
 call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', { 'normalized_name': 'open-or-create-path-and-file', 'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
 call dein#add('duggiefresh/vim-easydir.git')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Macro
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('vim-scripts/RangeMacro') " karkat
-call dein#add('rbong/vim-buffest')      " edit register
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Documentation
@@ -225,25 +181,6 @@ call dein#add('rhysd/vim-grammarous', {
             \ let g:grammarous#languagetool_cmd = 'languagetool'
             \ "
             \ })
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VCS
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('tpope/vim-fugitive', {
-            \   'normalized_name': 'fugitive',
-            \   'hook_post_source': function("plugin_cfg#fugitive#post_source")
-            \ })
-"call dein#add('idanarye/vim-merginal', { 'normalized_name': 'merginal', 'lazy': 1, 'on_cmd': ['Merginal', 'MerginalToggle']})
-call dein#add('inkarkat/vim-ConflictDetection', {
-            \ 'normalized_name': 'ConflictDetection',
-            \ 'depends': 'ingo-library'
-            \ })
-call dein#add('inkarkat/vim-ConflictMotions', {
-            \ 'normalized_name': 'ConflictMotions',
-            \ 'depends': ['ingo-library', 'CountJump', 'repeat', 'visualrepeat'],
-            \ 'hook_add': 'let g:ConflictMotions_TakeMappingPrefix = "<Leader>="'
-            \ })
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjects
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -315,9 +252,6 @@ call dein#add('salsifis/vim-transpose', {
             \ 'normalized_name': 'transpose',
             \ 'hook_add': "vmap <silent> <leader>et :TransposeInteractive<CR>"
             \ })
-call dein#add('inkarkat/vim-AdvancedSorters', {
-            \ 'normalized_name': 'AdvancedSorters'
-            \ })
 "call dein#add('mipmip/vim-scimark') "sc-im
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -359,7 +293,6 @@ call dein#add('eugen0329/vim-esearch', {
             \ 'normalized_name': 'esearch',
             \ 'hook_post_source': 'let g:esearch={"root_markers": []}'
             \ }) " \ff
-call dein#add('tpope/vim-abolish', { 'normalized_name': 'abolish' })     " :%S////
 call dein#add('t9md/vim-quickhl', {
             \ 'normalized_name': 'quickhl',
             \ 'hook_add': function("plugin_cfg#quickhl#add")
@@ -368,7 +301,6 @@ call dein#add('qxxxb/vim-searchhi', {
             \ 'normalized_name': 'searchhi',
             \ 'hook_add': function("plugin_cfg#searchhi#add")
             \ })
-call dein#add('inkarkat/vim-ExtractMatches', { 'normalized_name': 'ExtractMatches',  'depends': 'ingo-library' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Menus
@@ -455,10 +387,6 @@ call dein#add('kassio/neoterm', { 'hook_add' : "
             \ 'on_cmd': ['Tnew', 'TReplSendLine', 'TReplSendSelection'],
             \ 'on_if': '&diff==0',
             \ })
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Local bundles
-call dein#local("~/.config/nvim/bundle_local/SwapText-1.02", { 'depends': 'CountJump', 'frozen': 1 })
 
 call dein#end()
 

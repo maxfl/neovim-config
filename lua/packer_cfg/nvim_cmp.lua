@@ -38,7 +38,7 @@ return {
                     { name = 'nvim_lsp' },
                     { name = 'ultisnips' },
                     { name = 'nvim_lua' },
-                    { name = 'latex_symbols' },
+                    --{ name = 'latex_symbols' },
                 }, {
                     { name = 'buffer' },
             }),
