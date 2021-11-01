@@ -22,7 +22,6 @@ vim.cmd[[
         set.autoread=true
         set.exrc=true
         set.secure=false
-        set.compatible=false
 
     -- Interface
         set.background='dark'
