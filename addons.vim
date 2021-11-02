@@ -275,11 +275,6 @@ call dein#add('vim-ctrlspace/vim-ctrlspace', {
             \ 'hook_post_source': function("plugin_cfg#ctrlspace#post_source")
             \ })
 
-call dein#add('ctrlpvim/ctrlp.vim', {'hook_add': "
-            \ let g:ctrlp_working_path_mode='c'\n
-            \ let g:ctrlp_cmd='CtrlPMRUFiles'
-            \ "})
-
 call dein#add('gelguy/wilder.nvim', { 'hook_post_source': "
             \ call wilder#setup({'modes': [':']})\n
             \ call wilder#set_option('renderer', wilder#popupmenu_renderer({'highlighter': wilder#basic_highlighter()}))\n
@@ -303,9 +298,6 @@ call dein#add('majutsushi/tagbar', {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files and Folders
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('vim-scripts/Rename')
-call dein#add('chrisbra/SudoEdit.vim', { 'hook_add': "inoremap <S-F2> :SudoWrite<CR>" })
-call dein#add('ervandew/archive')
 
 call dein#add('itchyny/vim-external', { 'normalized_name': 'external', 'hook_add': "
             \ map <Leader>oe <Plug>(external-editor)\n

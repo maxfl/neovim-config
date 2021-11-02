@@ -26,7 +26,7 @@ packer.startup(function()
         --use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}, config=function() require 'navigator'.setup() end}
 
     -- Libraries
-        use {'nvim-telescope/telescope.nvim', requires='nvim-lua/plenary.nvim'}
+        use (require 'packer_cfg.telescope')
         --use {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
 
     -- Interface
@@ -68,11 +68,7 @@ packer.startup(function()
     -- Indentation
         use {'thiagoalessio/rainbow_levels.vim', opt=true, cmd='RainbowLevelsToggle'}
         use {'kien/rainbow_parentheses.vim',     opt=true, cmd='RainbowParenthesesToggle'}
-        use {'Yggdroot/indentLine',              opt=true, cmd={'IndentLinesEnable', 'IndentLinesToggle'},
-             config=function()
-                 vim.g.indentLine_enabled=0
-                 vim.cmd[[au FileType cpp,python :IndentLinesEnable]]
-             end}
+        use (require 'packer_cfg.indentline')
         use {'nathanaelkane/vim-indent-guides',  opt=true, cmd={'IndentGuidesEnable', 'IndentGuidesToggle'}}
 
     -- Editing
@@ -98,7 +94,7 @@ packer.startup(function()
         use (require 'packer_cfg.quickui')
 
     -- Search and replace
-        use 'tpope/vim-abolish' -- :%S////
+        use {'tpope/vim-abolish', opt=true, cmd='S'} -- :%S////
         use {'vim-scripts/ExplainPattern', opt=true, cmd='ExplainPattern'}
 
     -- Diff tools
@@ -107,34 +103,37 @@ packer.startup(function()
     -- Filetype
         -- tex
         use {'KeitaNakamura/tex-conceal.vim', opt=true, ft={'tex', 'plaintex'}}
-        use {'lervag/vimtex', config=require 'packer_cfg.vimtex', opt=true, ft={'tex', 'plaintex'}}
+        use (require 'packer_cfg.vimtex')
 
         -- julia
         use 'JuliaEditorSupport/julia-vim'
         use {'thinca/vim-prettyprint', opt=true, cmd={'PrettyPrint', 'PP'}}
 
         -- others
-        use 'georgewitteman/vim-fish'
-        use 'vim-scripts/ebnf.vim' -- grammar
+        use {'georgewitteman/vim-fish', opt=true, fg='fish'}
+        use {'vim-scripts/ebnf.vim', opt=true, ft='ebnf'} -- grammar
 
     -- Snippets
         use (require 'packer_cfg.ultisnips')
         use (require 'packer_cfg.auto_pairs')
-        use 'tpope/vim-endwise'
+        use {'tpope/vim-endwise', disable=true} -- not working with TreeSitter
 
     -- Files and folders
         use (require 'packer_cfg.mirror')
+        use {'vim-scripts/Rename', opt=true, cmd='Rename'}
+        use (require 'packer_cfg.sudoedit')
+        use 'ervandew/archive'
 
     -- VCS
         use {'inkarkat/vim-ConflictDetection', requires='inkarkat/vim-ingo-library'}
         use {'inkarkat/vim-ConflictMotions', config=function() vim.g.ConflictMotions_TakeMappingPrefix="<Leader>=" end, requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}, 'tpope/vim-repeat', 'inkarkat/vim-visualrepeat'}}
-        use {'tpope/vim-fugitive', config=require 'packer_cfg.fugitive'}
+        use (require 'packer_cfg.fugitive')
 
     -- Tables and lists
-        use {'dkarter/bullets.vim', setup=function() vim.g.bullets_enabled_file_types={'markdown', 'rst', 'text', 'txt', 'gitcommit'} end, opt=true, ft={'markdown', 'rst', 'text', 'txt', 'gitcommit'}}
-        use 'inkarkat/vim-AdvancedSorters'
+        use (require 'packer_cfg.bullets')
+        use {'inkarkat/vim-AdvancedSorters', opt=true, cmd='SortVisible'}
 
-        -- Local plugins
+    -- Local plugins
         use {"~/.config/nvim/bundle_local/SwapText-1.02", requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
         use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', opt=true, ft='txt'}
         use {'~/.config/nvim/bundle_local/txtfmt_v3.1', opt=true, ft='txt'}
