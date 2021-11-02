@@ -1,4 +1,5 @@
-return { 'sunjon/Shade.nvim',
+return {
+    'sunjon/Shade.nvim',
     cond='not vim.o.diff',
     config=function()
         require'shade'.setup{

@@ -4,6 +4,7 @@ return {
         local map = vim.api.nvim_set_keymap
         map('n', '<leader>w', ':InteractiveWindow<CR>', {})
     end,
-    --opt=false,
-    --cmd='InteractiveWindow'
+    opt=true,
+    cmd='InteractiveWindow',
+    keys={'n', '<leader>w'}
 }
