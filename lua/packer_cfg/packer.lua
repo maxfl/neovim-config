@@ -32,6 +32,9 @@ packer.startup(function()
     -- Interface
         use (require 'packer_cfg.shade')
 
+    -- Windows
+        --use (require 'packer_cfg.winshift')
+
     -- Highlight
         -- use 'yamatsum/nvim-cursorline'
 
@@ -65,11 +68,16 @@ packer.startup(function()
         use {'thiagoalessio/rainbow_levels.vim', opt=true, cmd='RainbowLevelsToggle'}
         use {'kien/rainbow_parentheses.vim',     opt=true, cmd='RainbowParenthesesToggle'}
         use {'Yggdroot/indentLine',              opt=true, cmd={'IndentLinesEnable', 'IndentLinesToggle'},
-        config=function()
-            vim.g.indentLine_enabled=0
-            vim.cmd[[au FileType cpp,python :IndentLinesEnable]]
-        end}
+             config=function()
+                 vim.g.indentLine_enabled=0
+                 vim.cmd[[au FileType cpp,python :IndentLinesEnable]]
+             end}
         use {'nathanaelkane/vim-indent-guides',  opt=true, cmd={'IndentGuidesEnable', 'IndentGuidesToggle'}}
+
+    -- Windows
+        use (require 'packer_cfg.choosewin')
+        use (require 'packer_cfg.winteract')
+        use (require 'packer_cfg.suckless')
 
     -- Motion
         use {'inkarkat/vim-JumpToVerticalBlock', requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}}
@@ -97,6 +105,8 @@ packer.startup(function()
 
         -- julia
         --use {'JuliaEditorSupport/julia-vim', opt=true, ft='julia'}
+        --
+        use {'thinca/vim-prettyprint', opt=true, cmd={'PrettyPrint', 'PP'}}
 
     -- Snippets
         use {'SirVer/ultisnips', requires='honza/vim-snippets', config=function()
@@ -138,20 +148,20 @@ end)
         use {'mhartington/oceanic-next', config=function() vim.cmd"colorscheme OceanicNext" end}
 
         -- Menus
-        call dein#add('sudormrfbin/cheatsheet.nvim.git', { 'depends': 'telescope' })
+        use('sudormrfbin/cheatsheet.nvim.git', { 'depends': 'telescope' })
 
         -- Filetype
         -- Markdown
-        call dein#add('previm/previm', { 'hook_add': "
+        use('previm/previm', { 'hook_add': "
         \ let g:previm_open_cmd = \"bash -c 'qutebrowser --target window $* &' -- \"\n
         \ "})
         -- Other
         'Shougo/neossh.vim'
-        "call dein#add('pechorin/any-jump.vim', { 'normalized_name': 'any-jump' }) " Warning: not used
-        call dein#add('lervag/wiki.vim', { 'hook_add': "let g:wiki_mappings_use_defaults=0" })
-        call dein#add('lervag/wiki-ft.vim', { 'depends': 'wiki'})
-        "call dein#add('brooth/far.vim')        " :Far
-        call dein#add('vim-scripts/RangeMacro') " karkat
-        call dein#add('inkarkat/vim-ExtractMatches', { 'normalized_name': 'ExtractMatches',  'depends': 'ingo-library' })
-        call dein#add('rbong/vim-buffest')      " edit register
+        "use('pechorin/any-jump.vim', { 'normalized_name': 'any-jump' }) " Warning: not used
+        use('lervag/wiki.vim', { 'hook_add': "let g:wiki_mappings_use_defaults=0" })
+        use('lervag/wiki-ft.vim', { 'depends': 'wiki'})
+        "use('brooth/far.vim')        " :Far
+        use('vim-scripts/RangeMacro') " karkat
+        use('inkarkat/vim-ExtractMatches', { 'normalized_name': 'ExtractMatches',  'depends': 'ingo-library' })
+        use('rbong/vim-buffest')      " edit register
         --]]

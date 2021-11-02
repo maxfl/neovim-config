@@ -29,18 +29,6 @@ call dein#add('powerman/vim-plugin-AnsiEsc', { 'normalized_name': 'plugin-AnsiEs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('t9md/vim-choosewin', { 'normalized_name': 'choosewin',
-            \ 'hook_add': "
-            \ nmap <leader>-  <Plug>(choosewin)\n
-            \ let g:choosewin_overlay_enable = 1\n
-            \ ",
-            \ 'lazy': 0, 'on_map': '<Plug>(choosewin)'})
-call dein#add('romgrk/winteract.vim', { 'hook_add': "nmap <leader>w :InteractiveWindow<CR>",
-            \ 'lazy': 0, 'on_cmd': 'InteractiveWindow'})
-call dein#add('fabi1cazenave/suckless.vim', {
-            \ 'hook_add': function('plugin_cfg#suckless#add'),
-            \ 'hook_post_source': function('plugin_cfg#suckless#post_source')
-            \ })
 call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
             \ noremap  <silent> <F12> :FloatermToggle<CR>\n
             \ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
@@ -124,7 +112,6 @@ call dein#add('moll/vim-bbye', { 'normalized_name': 'bbye',  'hook_add': "
             \ 'lazy': 1, 'on_cmd': 'Bdelete'
             \ })
 call dein#add('rbgrouleff/bclose.vim') " same as bbye, required by ranger
-call dein#add('thinca/vim-prettyprint', { 'normalized_name': 'prettyprint', 'lazy': 1, 'on_cmd': ['PrettyPrint', 'PP']})
 call dein#add('ciaranm/detectindent', {
             \   'hook_post_source': "au FileType cpp,python :DetectIndent"
             \ })
