@@ -13,20 +13,6 @@ let g:dein#enable_name_conversion = 1
 call dein#add('Shougo/dein.vim')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Interface and highlight
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" fade unfocused buffers
-call dein#add('powerman/vim-plugin-AnsiEsc', { 'normalized_name': 'plugin-AnsiEsc', 'lazy': 1, 'on_cmd': 'AnsiEsc'})
-
-" vertically center current buffer/window
-"call dein#add('jmckiern/vim-venter', { 'hook_post_source': "
-            "\ let g:venter_width=10\n
-            "\ augroup venter\n
-            "\ au VimResized * let g:venter_width=(&columns-120)/2 | VenterResize\n
-            "\ augroup END
-            "\ " })
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows and splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
@@ -61,7 +47,6 @@ call dein#add('bkad/camelcasemotion', { 'hook_post_source': "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('vim-scripts/ExplainPattern')
 call dein#add('bfredl/nvim-miniyank', {'hook_add': "
             \ map p <Plug>(miniyank-autoput)\n
             \ map P <Plug>(miniyank-autoPut)\n
@@ -82,12 +67,6 @@ call dein#add('simnalamburt/vim-mundo', { 'hook_add': "
             \ ",
             \ 'lazy': 1, 'on_cmd': 'MundoToggle'
             \ })
-call dein#add('bronson/vim-trailing-whitespace', { 'normalized_name': 'trailing-whitespace',  'hook_post_source': "
-            \ nnoremap <Leader>rts :FixWhitespace<CR>\n
-            \ autocmd BufWritePre *.py,*.cc,*.hh,*.cxx,*.h,*.cpp,*.vim,vimrc,*.sh,*.fish :silent FixWhitespace\n
-            \ " })
-
-call dein#add('mg979/vim-visual-multi', { 'normalized_name': 'visual-multi' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
@@ -263,9 +242,7 @@ call dein#add('kalekundert/vim-coiled-snake', {
             \ 'hook_add': 'let g:coiled_snake_set_foldexpr=0'
             \ })
 call dein#add('joom/latex-unicoder.vim', { 'hook_add': "let g:unicoder_no_map=1" })
-call dein#add('dag/vim-fish', { 'normalized_name': 'fish' })
 call dein#add('bfrg/vim-cpp-modern', { 'normalized_name': 'cpp-modern' })
-call dein#add('vim-scripts/ebnf.vim') "
 "call dein#add('direnv/direnv.vim')
 
 call dein#add('plasticboy/vim-markdown', {

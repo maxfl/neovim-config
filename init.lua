@@ -72,6 +72,13 @@ vim.cmd[[
 
     -- keymap and lang
         set.spelllang={'en', 'ru_yo'}
+        vim.cmd[[
+            augroup forcespellcheck
+                au FileType svn setlocal spell
+                au FileType gitcommit setlocal spell
+                au FileType vcscommit setlocal spell
+            augroup END
+        ]]
 
         set.keymap='russian-jcukenwin'
         set.iminsert=0
@@ -88,6 +95,12 @@ vim.cmd[[
         vim.g.load_doxygen_syntax=1
         vim.g.tex_flavor='latex'
         vim.g.tex_conceal='abdmg'
+        vim.cmd [[
+            augroup filetypeextra
+                au BufNewFile,BufRead *.wiki set shiftwidth=2
+                au BufNewFile,BufRead *.bbx,*.cbx,*.lbx setf tex
+            augroup END
+        ]]
 
     -- Diff selection
         map('n', 'Dp', ':.diffput<CR>', {})

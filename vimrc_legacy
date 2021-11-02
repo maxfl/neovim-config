@@ -39,11 +39,6 @@ set grepprg=grep\ -nH\ $*
 
 "language specific
 set commentstring=#%s
-au BufNewFile,BufRead *.wiki set shiftwidth=2
-au BufNewFile,BufRead *.bbx,*.cbx,*.lbx setf tex
-au FileType svn setlocal spell
-au FileType gitcommit setlocal spell
-au FileType vcscommit setlocal spell
 set cpoptions+=d
 
 " Scroll lock
@@ -107,17 +102,6 @@ if $LANG =~ '.\+\.UTF-8'
     "#
 endif
 
-"
-" sensible.vim - Defaults everyone can agree on
-" Maintainer:   Tim Pope <http://tpo.pe/>
-" Version:      1.2
-
-" Use :help 'option' to see the documentation for the given option.
-
-set backspace=indent,eol,start
-
-set nrformats-=octal
-
 if !has('nvim') && &ttimeoutlen == -1
   set ttimeout
   set ttimeoutlen=100
@@ -126,12 +110,6 @@ endif
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-endif
-
-set display+=lastline
-
-if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j " Delete comment character when joining commented lines
 endif
 
 if has('path_extra')
