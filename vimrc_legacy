@@ -2,7 +2,6 @@
 "set ttimeoutlen=50
 set nostartofline
 set fillchars=vert:\│,fold:\—,stlnc:\_
-set history=1000
 set viminfo^=:1000
 if &listchars ==# 'eol:$'
   set listchars+=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+

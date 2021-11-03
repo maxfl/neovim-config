@@ -11,39 +11,6 @@ let g:dein#types#git#clone_depth = 1
 let g:dein#enable_name_conversion = 1
 
 call dein#add('Shougo/dein.vim')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Windows and splits
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
-            \ noremap  <silent> <F12> :FloatermToggle<CR>\n
-            \ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
-            \ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
-            \ let g:floaterm_shell='fish'\n
-            \ "})
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Motion
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('kopischke/vim-fetch', { 'normalized_name': 'fetch' })                                                               " jump to file:line:col
-call dein#add('tmhedberg/indent-motion')
-call dein#add('Lokaltog/vim-easymotion', { 'normalized_name': 'easymotion',  'hook_add': "
-            \ map <Leader>m <Plug>(easymotion-prefix)\n
-            \ nnoremap <Leader>m. <Plug>(easymotion-repeat)
-            \ ",
-            \ 'lazy': 0,
-            \ 'on_map': '<Plug>(easymotion-'
-            \ })
-
-" clefer f/F/t/T mappings
-call dein#add('rhysd/clever-f.vim', { 'hook_add': "
-            \ nnoremap <Leader>fr <Plug>(clever-f-reset)\n
-            \ nnoremap ; <Plug>(clever-f-repeat-forward)\n
-            \ \"nnoremap , <Plug>(clever-f-repeat-back)\n
-            \ "})
-call dein#add('bkad/camelcasemotion', { 'hook_post_source': "
-            \ call camelcasemotion#CreateMotionMappings(',')
-            \ " })
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clipboard
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -57,18 +24,6 @@ call dein#add('bfredl/nvim-miniyank', {'hook_add': "
             \ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Editing
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('simnalamburt/vim-mundo', { 'hook_add': "
-            \ nnoremap <Leader>wu :MundoToggle<CR>\n
-            \ let g:mundo_preview_bottom=1\n
-            \ let g:mundo_width=30\n
-            \ let g:mundo_right=1\n
-            \ ",
-            \ 'lazy': 1, 'on_cmd': 'MundoToggle'
-            \ })
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "call dein#add('kana/vim-submode', { 'normalized_name': 'submode', 'hook_post_source': "
@@ -80,24 +35,11 @@ call dein#add('simnalamburt/vim-mundo', { 'hook_add': "
             "\ }) " does not work
 " TODO: call dein#add('Iron-E/nvim-libmodal')
 
-call dein#add('vim-scripts/RelativeNumberCurrentWindow')
-
-call dein#add('moll/vim-bbye', { 'normalized_name': 'bbye',  'hook_add': "
-            \ nnoremap ZQ :Bdelete<CR>\n
-            \ nnoremap ZZ :write<CR>:Bdelete<CR>\n
-            \ nnoremap <Leader>ZZ ZZ\n
-            \ nnoremap <Leader>ZQ ZQ\n
-            \ ",
-            \ 'lazy': 1, 'on_cmd': 'Bdelete'
-            \ })
-call dein#add('rbgrouleff/bclose.vim') " same as bbye, required by ranger
 call dein#add('ciaranm/detectindent', {
             \   'hook_post_source': "au FileType cpp,python :DetectIndent"
             \ })
-
 " TODO: call dein#add('zsugabubus/crazy8.nvim') " detect indent
-call dein#add('https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', { 'normalized_name': 'open-or-create-path-and-file', 'lazy': 1, 'on_cmd': 'OpenOrCreateFile'})
-call dein#add('duggiefresh/vim-easydir.git')
+"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Documentation
@@ -117,24 +59,6 @@ call dein#add('rhysd/devdocs.vim', {
             \ nmap <Leader>Z <Plug>(devdocs-under-cursor)
             \ '
             \ }) "call zeal
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Characters
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('chrisbra/unicode.vim') " , {'lazy': 1, 'on_cmd': ['UnicodeSearch', 'Digraph', 'UnicodeTable', 'UnicodeName']}
-call dein#add('Konfekt/vim-unicode-homoglyphs', { 'normalized_name': 'unicode-homoglyphs',  'hook_source': "let g:is_homoglyph_on=0", 'lazy': 1 })
-call dein#add('segeljakt/vim-isotope', {'normalized_name': 'isotope',
-            \ 'hook_add': "
-            \   let g:isotope_use_default_mappings = v:false\n
-            \   map <Leader>iS :IsotopeToggle SUPERSCRIPT<CR>\n
-            \   map <Leader>i^ :IsotopeToggle SUPERSCRIPT<CR>\n
-            \   map <Leader>i_ :IsotopeToggle SUBSCRIPT<CR>\n
-            \   map <Leader>is :IsotopeToggle SUBSCRIPT<CR>\n
-            \   map <Leader>if :IsotopeToggle FRAKTUR<CR>\n
-            \   map <Leader>ic :IsotopeToggle SMALL_CAPS<CR>\n
-            \   map <Leader>id :IsotopeToggle<CR>\n
-            \ "})
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spelling and grammar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -193,7 +117,6 @@ call dein#add('bootleq/vim-cycle', {
             \ 'hook_add': function('plugin_cfg#cycle#add'),
             \ 'hook_post_source': function('plugin_cfg#cycle#post_source'),
             \ })
-call dein#add('scrooloose/nerdcommenter')
 call dein#add('t9md/vim-textmanip', {
             \ 'normalized_name': 'textmanip',
             \ 'hook_add': function('plugin_cfg#textmanip#add'),

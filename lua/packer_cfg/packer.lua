@@ -26,14 +26,19 @@ packer.startup(function()
         --use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}, config=function() require 'navigator'.setup() end}
 
     -- Libraries
+        use 'nvim-lua/plenary.nvim'
         use (require 'packer_cfg.telescope')
         --use {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
 
     -- Interface
         use (require 'packer_cfg.shade')
 
-    -- Windows
+    -- Editing
+        use (require 'packer_cfg.comment')
+
+    -- Windows and floats
         --use (require 'packer_cfg.winshift')
+        use (require 'packer_cfg.FTerm')
 
     -- Highlight
         -- use 'yamatsum/nvim-cursorline'
@@ -65,6 +70,9 @@ packer.startup(function()
         use 'tpope/vim-repeat'
         use 'inkarkat/vim-visualrepeat'
 
+    -- Interface
+        use 'vim-scripts/RelativeNumberCurrentWindow'
+
     -- Indentation
         use {'thiagoalessio/rainbow_levels.vim', opt=true, cmd='RainbowLevelsToggle'}
         use {'kien/rainbow_parentheses.vim',     opt=true, cmd='RainbowParenthesesToggle'}
@@ -74,16 +82,28 @@ packer.startup(function()
     -- Editing
         use (require 'packer_cfg.vim_trailing_whitespace')
         use 'mg979/vim-visual-multi'
+        use 'kopischke/vim-fetch' -- jump to file:line:number
+        use (require 'packer_cfg.mundo')
+
+    -- Characters and unicode
+        use 'chrisbra/unicode.vim'
+        use {'Konfekt/vim-unicode-homoglyphs', setup=function() vim.g.is_homoglyph_on=0 end} -- search for hidden unicode characters
+        use (require 'packer_cfg.isotope')
 
     -- Windows
         use (require 'packer_cfg.choosewin')
         use (require 'packer_cfg.winteract')
         use (require 'packer_cfg.suckless')
+        use (require 'packer_cfg.bbye')
 
     -- Motion
         use {'inkarkat/vim-JumpToVerticalBlock', requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}}
         use {'inkarkat/vim-JumpToVerticalOccurrence', requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}}
         use {'inkarkat/vim-EnhancedJumps', config=require 'packer_cfg.EnhancedJumps', requires='inkarkat/vim-ingo-library'}
+        use 'tmhedberg/indent-motion'
+        use (require 'packer_cfg.easymotion')
+        use (require 'packer_cfg.cleverf')
+        use (require 'packer_cfg.camelcase')
 
     -- Clipboard
         use {'inkarkat/vim-UnconditionalPaste', requires={'inkarkat/vim-ingo-library', 'tpope/vim-repeat'} }
@@ -98,7 +118,7 @@ packer.startup(function()
         use {'vim-scripts/ExplainPattern', opt=true, cmd='ExplainPattern'}
 
     -- Diff tools
-        use {'will133/vim-dirdiff', opt=true, config=require 'packer_cfg.dirdiff', cmd='DirDiff'}
+        use (require 'packer_cfg.dirdiff')
 
     -- Filetype
         -- tex
@@ -124,6 +144,9 @@ packer.startup(function()
         use (require 'packer_cfg.sudoedit')
         use 'ervandew/archive'
 
+        use {'https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', opt=true, cmd='OpenOrCreateFile'}
+        use 'duggiefresh/vim-easydir'
+
     -- VCS
         use {'inkarkat/vim-ConflictDetection', requires='inkarkat/vim-ingo-library'}
         use {'inkarkat/vim-ConflictMotions', config=function() vim.g.ConflictMotions_TakeMappingPrefix="<Leader>=" end, requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}, 'tpope/vim-repeat', 'inkarkat/vim-visualrepeat'}}
@@ -139,7 +162,6 @@ packer.startup(function()
         use {'~/.config/nvim/bundle_local/txtfmt_v3.1', opt=true, ft='txt'}
     end
 end)
-
 
         --[[
         -- Outdated
@@ -165,4 +187,11 @@ end)
         use('rbong/vim-buffest')      " edit register
 
         call dein#add('powerman/vim-plugin-AnsiEsc', { 'normalized_name': 'plugin-AnsiEsc', 'lazy': 1, 'on_cmd': 'AnsiEsc'})
+
+        call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
+                    \ noremap  <silent> <F12> :FloatermToggle<CR>\n
+                    \ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
+                    \ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
+                    \ let g:floaterm_shell='fish'\n
+                    \ "})
         --]]

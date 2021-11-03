@@ -1,5 +1,7 @@
 return {
     'lervag/vimtex',
+    opt=true,
+    ft={'tex', 'plaintex'},
     config=function()
         local map = vim.api.nvim_set_keymap
         local noremap={noremap=true}
@@ -20,7 +22,5 @@ return {
             'Empty bibliography',
             'inputenc package ignored with utf8 based engines'
         }
-    end,
-    opt=true,
-    ft={'tex', 'plaintex'}
+    end
 }

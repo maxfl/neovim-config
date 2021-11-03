@@ -23,6 +23,11 @@ vim.cmd[[
         set.exrc=true
         set.secure=false
 
+        if vim.o.history<1000 then
+            set.history=1000
+        end
+
+
     -- Interface
         set.background='dark'
         set.hidden=true
