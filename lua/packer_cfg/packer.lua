@@ -16,12 +16,12 @@ packer.startup(function()
 -- Lua
     do
     -- Tree sitter
-        use {'nvim-treesitter/nvim-treesitter', config=require 'packer_cfg.nvim_treesitter', run=function() vim.cmd ":TSUpdate" end}
+        use (require 'packer_cfg.nvim_treesitter')
         use {'romgrk/nvim-treesitter-context', requires='nvim-treesitter/nvim-treesitter'}
 
     -- LSP
         use {'neovim/nvim-lspconfig'}
-        use {'anott03/nvim-lspinstall', config=require 'packer_cfg.nvim_lspconfig'}
+        use (require 'packer_cfg.nvim_lspinstall')
 
         --use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}, config=function() require 'navigator'.setup() end}
 
