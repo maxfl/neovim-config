@@ -20,7 +20,7 @@ packer.startup(function()
         use {'romgrk/nvim-treesitter-context', requires='nvim-treesitter/nvim-treesitter'}
 
     -- LSP
-        use {'neovim/nvim-lspconfig'}
+        use 'neovim/nvim-lspconfig'
         use (require 'packer_cfg.nvim_lspinstall')
 
         --use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}, config=function() require 'navigator'.setup() end}
@@ -154,6 +154,9 @@ packer.startup(function()
 
     -- Tables and lists
         use (require 'packer_cfg.bullets')
+        use (require 'packer_cfg.vim_table_mode')
+        use (require 'packer_cfg.vim_easy_align')
+        use (require 'packer_cfg.vim_transpose')
         use {'inkarkat/vim-AdvancedSorters', opt=true, cmd='SortVisible'}
 
     -- Local plugins

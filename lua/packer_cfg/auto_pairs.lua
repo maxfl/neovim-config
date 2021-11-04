@@ -8,7 +8,7 @@ return {
         --vim.g.AutoPairs={'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`'}
     end,
     config = function()
-        target=vim.g.AutoPairs
+        local target=vim.g.AutoPairs
         target['“']='”'
         target['‘' ]= '’'
         target['„']='“'

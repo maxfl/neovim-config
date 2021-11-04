@@ -125,25 +125,6 @@ call dein#add('t9md/vim-textmanip', {
 " depends: vim-submode
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tables
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('dhruvasagar/vim-table-mode', {
-            \ 'normalized_name': 'table-mode',
-            \ 'hook_add': "
-            \ let g:table_mode_corner_corner='|'\n
-            \ let g:table_mode_corner='|'\n
-            \ "})
-call dein#add('junegunn/vim-easy-align', {
-            \ 'normalized_name': 'easy-align',
-            \ 'hook_add': function("plugin_cfg#easy_align#add")
-            \ })
-call dein#add('salsifis/vim-transpose', {
-            \ 'normalized_name': 'transpose',
-            \ 'hook_add': "vmap <silent> <leader>et :TransposeInteractive<CR>"
-            \ })
-"call dein#add('mipmip/vim-scimark') "sc-im
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff tools
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('AndrewRadev/linediff.vim', { 'hook_add': "

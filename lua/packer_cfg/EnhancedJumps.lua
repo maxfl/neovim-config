@@ -2,10 +2,11 @@ return function()
     vim.g.EnhancedJumps_CaptureJumpMessages=0
 
     local map = vim.api.nvim_set_keymap
-    map('n', '<Leader><C-O>', '<Plug>EnhancedJumpsOlder', {})
-    map('n', '<Leader><C-I>', '<Plug>EnhancedJumpsNewer', {})
-    map('n', '<C-O>',         '<Plug>EnhancedJumpsLocalOlder', {})
-    map('n', '<C-I>',         '<Plug>EnhancedJumpsLocalNewer', {})
-    map('n', '<M-p>',         '<Plug>EnhancedJumpsRemoteOlder', {})
-    map('n', '<M-S-p>',       '<Plug>EnhancedJumpsRemoteNewer', {})
+    local opts = {}
+    map('n', '<Leader><C-O>', '<Plug>EnhancedJumpsOlder', opts)
+    map('n', '<Leader><C-I>', '<Plug>EnhancedJumpsNewer', opts)
+    map('n', '<C-O>',         '<Plug>EnhancedJumpsLocalOlder', opts)
+    map('n', '<C-I>',         '<Plug>EnhancedJumpsLocalNewer', opts)
+    map('n', '<M-p>',         '<Plug>EnhancedJumpsRemoteOlder', opts)
+    map('n', '<M-S-p>',       '<Plug>EnhancedJumpsRemoteNewer', opts)
 end
