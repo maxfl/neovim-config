@@ -55,10 +55,16 @@ nnoremap <M-/> :noh<CR>
 "inoremap <C-L> <C-K>
 vnoremap > >gv
 vnoremap < <gv
+
 noremap j gj
 noremap k gk
+noremap 0 g0
+noremap ^ g^
 noremap gj j
 noremap gk k
+noremap g0 0
+noremap g^ ^
+
 noremap <M-j> j
 noremap <M-k> k
 " Disable ex mode

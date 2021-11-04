@@ -19,7 +19,18 @@ vim.cmd[[
         else
             hi LineNr guibg=black
         endif
+        if $imcmdline
+            hi MsgArea guibg=#004000
+        else
+            hi MsgArea guibg=black
+        endif
+
+        redraw
     endfunction
+
+    augroup KeymapHL
+        au OptionSet iminsert,imsearch,imcmdline call KeymapLinenr()
+    augroup END
 ]]
 
 -- Spelling

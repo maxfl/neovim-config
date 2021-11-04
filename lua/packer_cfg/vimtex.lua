@@ -22,5 +22,7 @@ return {
             'Empty bibliography',
             'inputenc package ignored with utf8 based engines'
         }
+
+        vim.g.vimtex_imaps_leader='|'
     end
 }
