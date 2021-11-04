@@ -30,9 +30,6 @@ packer.startup(function()
         use (require 'packer_cfg.telescope')
         --use {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
 
-    -- Interface
-        use (require 'packer_cfg.shade')
-
     -- Editing
         use (require 'packer_cfg.comment')
 
@@ -45,6 +42,8 @@ packer.startup(function()
 
     -- Colocschemes
         use {'jonathanfilip/vim-lucius', config=function() vim.cmd[[colorscheme lucius | LuciusBlack]]; update_colocscheme() end}
+        use (require 'packer_cfg.shade')
+
 
     -- Clipboard
         use 'machakann/vim-highlightedyank'

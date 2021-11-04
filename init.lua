@@ -75,23 +75,7 @@ vim.cmd[[
         set.mouse='a'
         set.mousefocus=true
 
-    -- keymap and lang
-        set.spelllang={'en', 'ru_yo'}
-        vim.cmd[[
-            augroup forcespellcheck
-                au FileType svn setlocal spell
-                au FileType gitcommit setlocal spell
-                au FileType vcscommit setlocal spell
-            augroup END
-        ]]
-
-        set.keymap='russian-jcukenwin'
-        set.iminsert=0
-        set.imsearch=-1
-        map('i', '<F3>', '<C-^>', {noremap=true})
-        map('c', '<F3>', '<C-^>', {noremap=true})
-        map('i', '<C-Space>', '<C-^><Space>', {noremap=true})
-        map('c', '<C-Space>', '<C-^><Space>', {noremap=true})
+        require 'maxfl.keymaps'
 
     -- some mappings
         set.pastetoggle='<F4>'
