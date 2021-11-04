@@ -13,23 +13,32 @@ map('c', '<F3>', '<C-^><CMD>call KeymapLinenr()<CR>', noremap)
 map('i', '<C-Space>', '<C-^><Space><CMD>call KeymapLinenr()<CR>', noremap)
 map('c', '<C-Space>', '<C-^><Space><CMD>call KeymapLinenr()<CR>', noremap)
 vim.cmd[[
-    function KeymapLinenr()
+    function KeyMapHLinsert()
         if &iminsert>0
             hi LineNr guibg=#004000
         else
             hi LineNr guibg=black
         endif
+        redraw
+    endfunction
+    function KeymapHLcmd()
         if $imcmdline
             hi MsgArea guibg=#004000
         else
             hi MsgArea guibg=black
         endif
-
         redraw
     endfunction
-
+    function KeymapHLTex()
+        imap <buffer> \ \<CMD>set iminsert=0<CR>
+        imap <buffer> \ \<CMD>set iminsert=0<CR>
+    endfunction
     augroup KeymapHL
-        au OptionSet iminsert,imsearch,imcmdline call KeymapLinenr()
+        au OptionSet iminsert,imsearch call KeyMapHLinsert()
+        au OptionSet imcmdline         call KeyMapHLcmd()
+
+        au BufRead,BufEnter *.tex <CMD>call KeymapHLTex()<CR>
+        au FileType tex,plaintex  <CMD>call KeymapHLTex()<CR>
     augroup END
 ]]
 
