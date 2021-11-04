@@ -22,7 +22,6 @@ vim.cmd[[
     endfunction
 ]]
 
-
 -- Spelling
 vim.cmd[[
     augroup forcespellcheck
