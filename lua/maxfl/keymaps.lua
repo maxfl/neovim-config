@@ -8,10 +8,10 @@ set.imsearch=-1
 -- Switch keymaps
 local map = vim.api.nvim_set_keymap
 local noremap={noremap=true}
-map('i', '<F3>', '<C-^><CMD>call KeymapLinenr()<CR>', noremap)
-map('c', '<F3>', '<C-^><CMD>call KeymapLinenr()<CR>', noremap)
-map('i', '<C-Space>', '<C-^><Space><CMD>call KeymapLinenr()<CR>', noremap)
-map('c', '<C-Space>', '<C-^><Space><CMD>call KeymapLinenr()<CR>', noremap)
+map('i', '<F3>', '<C-^><CMD>call KeyMapHLinsert()<CR>', noremap)
+map('c', '<F3>', '<C-^><CMD>call KeyMapHLcmd()<CR>', noremap)
+map('i', '<C-Space>', '<C-^><Space><CMD>call KeyMapHLinsert()<CR>', noremap)
+map('c', '<C-Space>', '<C-^><Space><CMD>call KeyMapHLcmd()<CR>', noremap)
 vim.cmd[[
     function KeyMapHLinsert()
         if &iminsert>0
@@ -34,6 +34,7 @@ vim.cmd[[
         imap <buffer> \ \<CMD>set iminsert=0<CR>
     endfunction
     augroup KeymapHL
+        au!
         au OptionSet iminsert,imsearch call KeyMapHLinsert()
         au OptionSet imcmdline         call KeyMapHLcmd()
 
@@ -45,6 +46,7 @@ vim.cmd[[
 -- Spelling
 vim.cmd[[
     augroup forcespellcheck
+        au!
         au FileType svn setlocal spell
         au FileType gitcommit setlocal spell
         au FileType vcscommit setlocal spell

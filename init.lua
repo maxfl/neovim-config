@@ -86,6 +86,7 @@ vim.cmd[[
         vim.g.tex_conceal='abdmg'
         vim.cmd [[
             augroup filetypeextra
+                au!
                 au BufNewFile,BufRead *.wiki set shiftwidth=2
                 au BufNewFile,BufRead *.bbx,*.cbx,*.lbx setf tex
             augroup END
