@@ -3,9 +3,9 @@ return {
     config=function()
         local map = vim.api.nvim_set_keymap
         local opts = {}
-        map('n', '<M-->', ':tabprev<CR>', opts)
-        map('n', '<M-=>', ':tabnext<CR>', opts)
-        map('n', '<M-+>', ':tabnew<CR>', opts)
+        map('n', '<M-->', '<CMD>tabprev<CR>', opts)
+        map('n', '<M-=>', '<CMD>tabnext<CR>', opts)
+        map('n', '<M-+>', '<CMD>tabnew<CR>', opts)
     end,
     setup=function()
         vim.g.suckless_tabline=false

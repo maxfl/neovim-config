@@ -1,5 +1,6 @@
 return {
     'hrsh7th/nvim-cmp',
+    disable=false,
     requires={
         'hrsh7th/cmp-nvim-lsp',                                   -- [✔]
         'hrsh7th/cmp-buffer',                                     -- [ ]
@@ -40,9 +41,11 @@ return {
                     { name = 'nvim_lua' },
                     --{ name = 'latex_symbols' },
                 }, {
-                    { name = 'buffer' },
+                    -- { name = 'buffer' },
             }),
-            completion = {keyword_length=3}
+            completion = {
+                keyword_length=4
+            }
         })
 
         -- Use buffer source for `/`.

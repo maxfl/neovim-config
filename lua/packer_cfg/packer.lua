@@ -121,6 +121,9 @@ packer.startup(function()
         use {'georgewitteman/vim-fish', opt=true, fg='fish'}
         use {'vim-scripts/ebnf.vim', opt=true, ft='ebnf'} -- grammar
 
+    -- Terminal
+        use (require 'packer_cfg.neoterm')
+
     -- Snippets
         use (require 'packer_cfg.ultisnips')
         use (require 'packer_cfg.auto_pairs')
@@ -135,6 +138,10 @@ packer.startup(function()
         use {'https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', opt=true, cmd='OpenOrCreateFile'}
         use 'duggiefresh/vim-easydir'
 
+        use (require 'packer_cfg.vim_fswitch')
+        use (require 'packer_cfg.rnvimr')
+        use (require 'packer_cfg.vim_external')
+
     -- VCS
         use {'inkarkat/vim-ConflictDetection', requires='inkarkat/vim-ingo-library'}
         use {'inkarkat/vim-ConflictMotions', config=function() vim.g.ConflictMotions_TakeMappingPrefix="<Leader>=" end, requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}, 'tpope/vim-repeat', 'inkarkat/vim-visualrepeat'}}
@@ -148,7 +155,7 @@ packer.startup(function()
         use {'inkarkat/vim-AdvancedSorters', opt=true, cmd='SortVisible'}
 
     -- Local plugins
-        use {"~/.config/nvim/bundle_local/SwapText-1.02", requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
+        use {"~/.config/nvim/bundle_local/SwapText-1.02", opt=true, keys={{'', '<Leader>x'},{'', '<Leader>x'}}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
         use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', opt=true, ft='txt'}
         use {'~/.config/nvim/bundle_local/txtfmt_v3.1', opt=true, ft='txt'}
     end

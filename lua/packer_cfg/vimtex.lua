@@ -14,7 +14,7 @@ return {
             vim.g.vimtex_compiler_progname='nvr'
         end
         map('', '<localleader>lL', '<plug>(vimtex-compile-ss)', noremap)
-        map('', '<localleader>l0', ':let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>', noremap)
+        map('', '<localleader>l0', '<CMD>let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>', noremap)
 
         vim.g.vimtex_quickfix_ignore_filters = {
             '^Overfull \\.box',
@@ -23,6 +23,6 @@ return {
             'inputenc package ignored with utf8 based engines'
         }
 
-        vim.g.vimtex_imaps_leader='|'
+        -- vim.g.vimtex_imaps_leader='|'
     end
 }

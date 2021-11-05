@@ -198,56 +198,7 @@ call dein#add('majutsushi/tagbar', {
             \ })
 "call dein#add('wfxr/minimap.vim') " since neovim 0.5
 "call dein#add('severin-lemaignan/vim-minimap')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Files and Folders
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-call dein#add('itchyny/vim-external', { 'normalized_name': 'external', 'hook_add': "
-            \ map <Leader>oe <Plug>(external-editor)\n
-            \ map <Leader>oo <Plug>(external-explorer)\n
-            \ map <Leader>ob <Plug>(external-browser)\n
-            \ "})
-
-call dein#add('kevinhwang91/rnvimr', {
-            \ 'hook_post_update': "call system('make install')",
-            \ 'rev': 'main',
-            \ 'hook_post_source': "
-            \   map <F11> :RnvimrToggle<CR>\n
-            \   map! <F11> <Esc>:RnvimrToggle<CR>\n
-            \   tnoremap <silent> <F11> <C-\\><C-n>:RnvimrToggle<CR>\n
-            \ "
-            \ }) "ranger
-call dein#add('derekwyatt/vim-fswitch', {
-            \ 'normalized_name': 'fswitch',
-            \ 'hook_add' : "
-            \ au! BufEnter *.cpp,*.c,*.C,*.cxx,*.cc,*.CC let b:fswitchdst = 'hpp,h,H,hh,HH,hxx' | let b:fswitchlocs = '../inc,../include'\n
-            \ au! BufEnter *.hpp,*.h,*.H,*.hh,*.HH,*.hxx let b:fswitchdst = 'cpp,c,C,cc,CC,cxx' | let b:fswitchlocs = '../src'\n
-            \ let g:fsnonewfiles=1\n
-            \ nmap <silent> <Leader>aa :FSHere<CR>\n
-            \ nmap <silent> <Leader>ar :tab FSRight<CR>\n
-            \ nmap <silent> <Leader>al :tab FSLeft<CR>\n
-            \ nmap <silent> <Leader>aR :tab FSSplitRight<CR>\n
-            \ nmap <silent> <Leader>aL :tab FSSplitLeft<CR>\n
-            \ " })
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Terminal, repl, embedding
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('kassio/neoterm', { 'hook_add' : "
-            \ let g:neoterm_shell = '/usr/bin/fish'\n
-            \ let g:neoterm_automap_keys = '<Leader>qm'\n
-            \ let g:neoterm_repl_python = ''\n
-            \ nmap <M-t> :Tnew<CR>\n
-            \ nmap <M-T> :Tnew<CR>i\n
-            \ nmap <Leader>s :TReplSendLine<CR>\n
-            \ vmap <Leader>s :TReplSendSelection<CR>\n
-            \ ",
-            \ 'lazy': 1,
-            \ 'on_cmd': ['Tnew', 'TReplSendLine', 'TReplSendSelection'],
-            \ 'on_if': '&diff==0',
-            \ })
-
+"
 call dein#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -3,7 +3,7 @@ return {
     opt=true,
     fn='quickui#menu#open',
     setup=function()
-        vim.api.nvim_set_keymap('', '<F9>', ':call quickui#menu#open()<CR>', {})
+        vim.api.nvim_set_keymap('', '<F9>', '<CMD>call quickui#menu#open()<CR>', {})
         vim.g.quickui_border_style = 2
         vim.g.quickui_show_tip = 1
     end,

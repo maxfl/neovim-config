@@ -37,8 +37,8 @@ vim.cmd[[
         au OptionSet iminsert,imsearch call KeyMapHLinsert()
         au OptionSet imcmdline         call KeyMapHLcmd()
 
-        au BufRead,BufEnter *.tex <CMD>call KeymapHLTex()<CR>
-        au FileType tex,plaintex  <CMD>call KeymapHLTex()<CR>
+        au BufRead,BufEnter *.tex call KeymapHLTex()
+        au FileType tex,plaintex  call KeymapHLTex()
     augroup END
 ]]
 

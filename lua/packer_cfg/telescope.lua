@@ -5,6 +5,6 @@ return {
     cmd='Telescope',
     setup=function()
         local map = vim.api.nvim_set_keymap
-        map('', '<C-p>', ':Telescope oldfiles<CR>', {})
+        map('', '<C-p>', '<CMD>Telescope oldfiles<CR>', {})
     end
 }
