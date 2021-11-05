@@ -36,6 +36,8 @@ packer.startup(function()
 
     -- Clipboard
         use 'machakann/vim-highlightedyank'
+        -- use (require 'packer_cfg.neoclip')
+        use (require 'packer_cfg.nvim_miniyank')
 
     -- VCS
         use {'lewis6991/gitsigns.nvim', config=function() require('gitsigns').setup() end, requires='nvim-lua/plenary.nvim'}
@@ -46,6 +48,7 @@ packer.startup(function()
     -- Filetype
         -- lua
         use {'rafcamlet/nvim-luapad', opt=true, cmd='Luapad'}
+        use (require 'packer_cfg.lua_dev')
 
         -- terminal
         use {'norcalli/nvim-terminal.lua', config=function() require 'terminal'.setup() end, opt=true, ft='terminal'}
@@ -104,6 +107,7 @@ packer.startup(function()
     -- Menus
         use (require 'packer_cfg.quickui')
         use (require 'packer_cfg.ctrlspace')
+        use (require 'packer_cfg.wilder')
 
     -- Search and replace
         use {'tpope/vim-abolish', opt=true, cmd='S'} -- :%S////
@@ -114,7 +118,7 @@ packer.startup(function()
 
     -- Filetype
         -- tex
-        use {'KeitaNakamura/tex-conceal.vim', opt=true, ft={'tex', 'plaintex'}}
+        use 'KeitaNakamura/tex-conceal.vim' -- , opt=true, ft={'tex', 'plaintex'}
         use (require 'packer_cfg.vimtex')
 
         -- julia
@@ -123,7 +127,7 @@ packer.startup(function()
 
         -- others
         use {'georgewitteman/vim-fish', opt=true, fg='fish'}
-        use {'vim-scripts/ebnf.vim', opt=true, ft='ebnf'} -- grammar
+        use 'vim-scripts/ebnf.vim' -- , opt=true, ft='ebnf' -- grammar
 
     -- Terminal
         use (require 'packer_cfg.neoterm')
@@ -160,8 +164,8 @@ packer.startup(function()
 
     -- Local plugins
         use {"~/.config/nvim/bundle_local/SwapText-1.02", opt=true, keys={{'', '<Leader>x'},{'', '<Leader>x'}}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
-        use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', opt=true, ft='txt'}
-        use {'~/.config/nvim/bundle_local/txtfmt_v3.1', opt=true, ft='txt'}
+        use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2'} -- , opt=true, ft='txt'
+        use {'~/.config/nvim/bundle_local/txtfmt_v3.1'} -- , opt=true, ft='txt'
     end
 end)
 
@@ -206,9 +210,4 @@ end)
                     \ })
 
         Complete : menu
-        call dein#add('gelguy/wilder.nvim', { 'hook_post_source': "
-                    \ call wilder#setup({'modes': [':']})\n
-                    \ call wilder#set_option('renderer', wilder#popupmenu_renderer({'highlighter': wilder#basic_highlighter()}))\n
-                    \ " })
-                    " call wilder#setup({'modes': [':', '/', '?']})\n
         --]]

@@ -1,7 +1,7 @@
 return {
     'lervag/vimtex',
-    opt=true,
-    ft={'tex', 'plaintex'},
+    -- opt=true,
+    -- ft={'tex', 'plaintex'},
     config=function()
         local map = vim.api.nvim_set_keymap
         local noremap={noremap=true}

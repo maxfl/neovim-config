@@ -11,17 +11,6 @@ let g:dein#types#git#clone_depth = 1
 let g:dein#enable_name_conversion = 1
 
 call dein#add('Shougo/dein.vim')
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Clipboard
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('bfredl/nvim-miniyank', {'hook_add': "
-            \ map p <Plug>(miniyank-autoput)\n
-            \ map P <Plug>(miniyank-autoPut)\n
-            \ map <Leader>n <Plug>(miniyank-cycle)\n
-            \ map <Leader>yc <Plug>(miniyank-tochar)\n
-            \ map <Leader>yl <Plug>(miniyank-toline)\n
-            \ map <Leader>yb <Plug>(miniyank-toblock)\n
-            \ "})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
