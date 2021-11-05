@@ -26,15 +26,6 @@ call dein#add('bfredl/nvim-miniyank', {'hook_add': "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Utilites
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"call dein#add('kana/vim-submode', { 'normalized_name': 'submode', 'hook_post_source': "
-            "\ call submode#enter_with('textmanip', 'x', '', '<Leader>Mm')\n
-            "\ call submode#leave_with('textmanip', 'xn', '', '<Esc>')\n
-            "\ call submode#map(       'textmanip', 'x', '', '>', '>>')\n
-            "\ call submode#map(       'textmanip', 'x', '', '<', '<<')\n
-            "\ ",
-            "\ }) " does not work
-" TODO: call dein#add('Iron-E/nvim-libmodal')
-
 call dein#add('ciaranm/detectindent', {
             \   'hook_post_source': "au FileType cpp,python :DetectIndent"
             \ })
@@ -74,7 +65,6 @@ call dein#add('rhysd/vim-grammarous', {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjects
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('andymass/vim-matchup', { 'normalized_name': 'matchup' })
 call dein#add('machakann/vim-sandwich', {
             \ 'normalized_name': 'sandwich',
             \ 'hook_post_source': function('plugin_cfg#sandwich#post_source')
@@ -170,40 +160,6 @@ call dein#add('qxxxb/vim-searchhi', {
             \ 'hook_add': function("plugin_cfg#searchhi#add")
             \ })
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Menus
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('vim-ctrlspace/vim-ctrlspace', {
-            \ 'normalized_name': 'ctrlspace',
-            \ 'hook_add': function("plugin_cfg#ctrlspace#add"),
-            \ 'hook_post_source': function("plugin_cfg#ctrlspace#post_source")
-            \ })
-
-call dein#add('gelguy/wilder.nvim', { 'hook_post_source': "
-            \ call wilder#setup({'modes': [':']})\n
-            \ call wilder#set_option('renderer', wilder#popupmenu_renderer({'highlighter': wilder#basic_highlighter()}))\n
-            \ " })
-            " call wilder#setup({'modes': [':', '/', '?']})\n
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tags and outline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('jsfaint/gen_tags.vim', { 'hook_add': "
-            \ let g:loaded_gentags#gtags=1
-            \ " })
-call dein#add('vim-voom/voom', { 'hook_add': function("plugin_cfg#voom#add") })
-call dein#add('majutsushi/tagbar', {
-            \   'hook_add': function("plugin_cfg#tagbar#add"),
-            \   'hook_post_source': function("plugin_cfg#tagbar#post_source")
-            \ })
-"call dein#add('wfxr/minimap.vim') " since neovim 0.5
-"call dein#add('severin-lemaignan/vim-minimap')
-"
 call dein#end()
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Configuration
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Matchit (included in default scripts)
-au FileType text,txt let b:match_words="“:”,‘:’,«:»,„:“"
 

@@ -18,7 +18,7 @@ packer.startup(function()
     -- Libraries
         use 'nvim-lua/plenary.nvim'
         use (require 'packer_cfg.telescope')
-        --use {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
+        use {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
 
     -- Editing
         use (require 'packer_cfg.comment')
@@ -93,6 +93,9 @@ packer.startup(function()
         use (require 'packer_cfg.cleverf')
         use (require 'packer_cfg.camelcase')
 
+	-- Text objects
+		use (require 'packer_cfg.matchup')
+
     -- Clipboard
         use {'inkarkat/vim-UnconditionalPaste', requires={'inkarkat/vim-ingo-library', 'tpope/vim-repeat'} }
         use {'inkarkat/vim-ReplaceWithRegister', requires={'tpope/vim-repeat', 'inkarkat/vim-visualrepeat'} }
@@ -100,6 +103,7 @@ packer.startup(function()
 
     -- Menus
         use (require 'packer_cfg.quickui')
+        use (require 'packer_cfg.ctrlspace')
 
     -- Search and replace
         use {'tpope/vim-abolish', opt=true, cmd='S'} -- :%S////
@@ -192,4 +196,19 @@ end)
                     \ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
                     \ let g:floaterm_shell='fish'\n
                     \ "})
+
+        call dein#add('jsfaint/gen_tags.vim', { 'hook_add': "
+                    \ let g:loaded_gentags#gtags=1
+                    \ " })
+        call dein#add('majutsushi/tagbar', {
+                    \   'hook_add': function("plugin_cfg#tagbar#add"),
+                    \   'hook_post_source': function("plugin_cfg#tagbar#post_source")
+                    \ })
+
+        Complete : menu
+        call dein#add('gelguy/wilder.nvim', { 'hook_post_source': "
+                    \ call wilder#setup({'modes': [':']})\n
+                    \ call wilder#set_option('renderer', wilder#popupmenu_renderer({'highlighter': wilder#basic_highlighter()}))\n
+                    \ " })
+                    " call wilder#setup({'modes': [':', '/', '?']})\n
         --]]
