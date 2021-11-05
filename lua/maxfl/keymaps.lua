@@ -29,9 +29,14 @@ vim.cmd[[
         endif
         redraw
     endfunction
+    function KeymapDisable()
+        if &iminsert
+            call feedkeys("\<C-^>")
+            set iminsert=0
+        endif
+    endfunction
     function KeymapHLTex()
-        imap <buffer> \ \<CMD>set iminsert=0<CR>
-        imap <buffer> \ \<CMD>set iminsert=0<CR>
+        imap <buffer> \ \<CMD>call KeymapDisable()<CR>
     endfunction
     augroup KeymapHL
         au!

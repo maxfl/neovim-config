@@ -9,7 +9,7 @@ return {
         'quangnguyen30192/cmp-nvim-ultisnips',                    -- [✔]
         --{'petertriho/cmp-git', requires='nvim-lua/plenary.nvim'}, -- [ ]
         'hrsh7th/cmp-nvim-lua',                                   -- [✔]
-        'f3fora/cmp-spell',                                       -- [✔]
+        -- 'f3fora/cmp-spell',                                       -- [✔]
         'kdheepak/cmp-latex-symbols',                             -- [✔]
         --'hrsh7th/cmp-omni'                                        -- [ ]
     },
@@ -35,13 +35,13 @@ return {
                 --['<CR>'] = cmp.mapping.confirm({ select = true }),
             --},
             sources = cmp.config.sources({
-                    { name = 'spell' },
+                    -- { name = 'spell' },
                     { name = 'nvim_lsp' },
                     { name = 'ultisnips' },
                     { name = 'nvim_lua' },
                     --{ name = 'latex_symbols' },
                 }, {
-                    -- { name = 'buffer' },
+                    { name = 'buffer' },
             }),
             completion = {
                 keyword_length=4
