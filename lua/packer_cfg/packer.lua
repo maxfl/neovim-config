@@ -119,7 +119,7 @@ packer.startup(function()
 
     -- Filetype
         -- tex
-        use 'KeitaNakamura/tex-conceal.vim' -- , opt=true, ft={'tex', 'plaintex'}
+        use {'KeitaNakamura/tex-conceal.vim', opt=true, ft={'tex', 'plaintex'}}
         use (require 'packer_cfg.vimtex')
 
         -- julia
@@ -128,7 +128,7 @@ packer.startup(function()
 
         -- others
         use {'georgewitteman/vim-fish', opt=true, fg='fish'}
-        use 'vim-scripts/ebnf.vim' -- , opt=true, ft='ebnf' -- grammar
+        use {'vim-scripts/ebnf.vim', opt=true, ft='ebnf'} -- grammar
 
     -- Terminal
         use (require 'packer_cfg.neoterm')
@@ -165,8 +165,8 @@ packer.startup(function()
 
     -- Local plugins
         use {"~/.config/nvim/bundle_local/SwapText-1.02", opt=true, keys={{'', '<Leader>x'},{'', '<Leader>x'}}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
-        use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2'} -- , opt=true, ft='txt'
-        use {'~/.config/nvim/bundle_local/txtfmt_v3.1'} -- , opt=true, ft='txt'
+        use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', opt=true, ft='txt'}
+        use {'~/.config/nvim/bundle_local/txtfmt_v3.1', opt=true, ft='txt'}
     end
 end)
 

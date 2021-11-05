@@ -1,7 +1,7 @@
 return {
     'folke/lua-dev.nvim',
-    -- opt=true,
-    -- ft='lua',
+    opt=true,
+    ft='lua',
     config=function()
         local luadev = require("lua-dev").setup{
             vimruntime=true,
