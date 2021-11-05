@@ -29,6 +29,7 @@ packer.startup(function()
 
     -- Highlight
         -- use 'yamatsum/nvim-cursorline'
+        use (require 'packer_cfg.beacon')
 
     -- Colocschemes
         use (require 'packer_cfg.vim_lucius')
@@ -107,7 +108,7 @@ packer.startup(function()
     -- Menus
         use (require 'packer_cfg.quickui')
         use (require 'packer_cfg.ctrlspace')
-        use (require 'packer_cfg.wilder')
+        -- use (require 'packer_cfg.wilder')
 
     -- Search and replace
         use {'tpope/vim-abolish', opt=true, cmd='S'} -- :%S////
