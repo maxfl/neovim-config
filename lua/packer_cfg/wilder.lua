@@ -1,6 +1,6 @@
 return {
     'gelguy/wilder.nvim',
-    disable=false,
+    disable=true,
     config=function()
         vim.cmd [[
             call wilder#setup({'modes': [':']})

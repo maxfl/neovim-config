@@ -49,20 +49,20 @@ return {
         })
 
         -- Use buffer source for `/`.
-        -- cmp.setup.cmdline('/', {
-        --     sources = {
-        --         { name = 'buffer' }
-        --     }
-        -- })
+        cmp.setup.cmdline('/', {
+            sources = {
+                { name = 'buffer' }
+            }
+        })
 
         -- Use cmdline & path source for ':'.
-        -- cmp.setup.cmdline(':', {
-        --     sources = cmp.config.sources({
-        --         { name = 'path' }
-        --     }, {
-        --             { name = 'cmdline' }
-        --         })
-        -- })
+        cmp.setup.cmdline(':', {
+            sources = cmp.config.sources({
+                { name = 'path' }
+            }, {
+                    { name = 'cmdline' }
+                })
+        })
 
         --vim.cmd[[
             --autocmd FileType lua lua sources=require'cmp'.setup.buffer.sources
