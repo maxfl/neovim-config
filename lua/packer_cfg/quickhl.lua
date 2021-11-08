@@ -7,7 +7,7 @@ return {
         {'n', '<Leader>hM'}, {'x', '<Leader>hM'},
         {'n', '<Leader>hN'}, {'x', '<Leader>hN'},
     },
-    cmd={'QuickhlManualAdd', 'QuickhlManualDelete'},
+    cmd='QuickhlManual*',
     config=function()
         local map=vim.api.nvim_set_keymap
         local opts={}

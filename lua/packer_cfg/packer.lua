@@ -73,7 +73,7 @@ packer.startup(function()
         use {'thiagoalessio/rainbow_levels.vim', opt=true, cmd='RainbowLevelsToggle'}
         use {'kien/rainbow_parentheses.vim',     opt=true, cmd='RainbowParenthesesToggle'}
         use (require 'packer_cfg.indentline')
-        use {'nathanaelkane/vim-indent-guides',  opt=true, cmd={'IndentGuidesEnable', 'IndentGuidesToggle'}}
+        use {'nathanaelkane/vim-indent-guides',  opt=true, cmd='IndentGuides*'}
 
     -- Editing
         use (require 'packer_cfg.vim_trailing_whitespace')
@@ -125,7 +125,7 @@ packer.startup(function()
         use (require 'packer_cfg.linediff')
         use {'rickhowe/diffchar.vim', cond='vim.o.diff'}
         use {'rickhowe/spotdiff.vim', cond='vim.o.diff'} --, opt=true, cmd={'Diffthis', 'Diffoff', 'Diffupdate'}}
-        use {'sindrets/diffview.nvim', opt=true, cmd={'DiffviewOpen', 'DiffviewClose'}}
+        use {'sindrets/diffview.nvim', opt=true, cmd='Diffview*'}
         use {'gangleri/vim-diffsaved', opt=true, cmd='ToggleDiffSaved'}
         use {'chrisbra/vim-diff-enhanced', opt=true, cmd='EnhancedDiff'}
 
