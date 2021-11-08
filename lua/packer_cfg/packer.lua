@@ -26,9 +26,10 @@ packer.startup(function()
     -- Windows and floats
         --use (require 'packer_cfg.winshift')
         use (require 'packer_cfg.FTerm')
+        use {'luukvbaal/stabilize.nvim', config = function() require("stabilize").setup() end}
 
     -- Motion
-        -- use 'phaazon/hop.nvim'
+        use (require 'packer_cfg.hop')
 
     -- Highlight
         -- use 'yamatsum/nvim-cursorline'
@@ -96,7 +97,7 @@ packer.startup(function()
         use {'inkarkat/vim-JumpToVerticalOccurrence', requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}}
         use {'inkarkat/vim-EnhancedJumps', config=require 'packer_cfg.EnhancedJumps', requires='inkarkat/vim-ingo-library'}
         use 'tmhedberg/indent-motion'
-        use (require 'packer_cfg.easymotion')
+        -- use (require 'packer_cfg.easymotion')
         use (require 'packer_cfg.cleverf')
         use (require 'packer_cfg.camelcase')
 
