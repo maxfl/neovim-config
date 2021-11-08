@@ -88,10 +88,7 @@ call dein#add('t9md/vim-textmanip', {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff tools
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('rickhowe/spotdiff.vim')
-call dein#add('rickhowe/diffchar.vim')
 call dein#add('chrisbra/vim-diff-enhanced', { 'normalized_name': 'diff-enhanced' })
-call dein#add('sindrets/diffview.nvim')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype

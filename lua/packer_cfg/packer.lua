@@ -120,6 +120,9 @@ packer.startup(function()
     -- Diff tools
         use (require 'packer_cfg.dirdiff')
         use (require 'packer_cfg.linediff')
+        use {'rickhowe/diffchar.vim', cond='vim.o.diff'}
+        use {'rickhowe/spotdiff.vim', cond='vim.o.diff'} --, opt=true, cmd={'Diffthis', 'Diffoff', 'Diffupdate'}}
+        use {'sindrets/diffview.nvim', opt=true, cmd={'DiffviewOpen', 'DiffviewClose'}}
 
     -- Filetype
         -- tex
