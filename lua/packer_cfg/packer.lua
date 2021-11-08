@@ -123,6 +123,7 @@ packer.startup(function()
         use {'rickhowe/diffchar.vim', cond='vim.o.diff'}
         use {'rickhowe/spotdiff.vim', cond='vim.o.diff'} --, opt=true, cmd={'Diffthis', 'Diffoff', 'Diffupdate'}}
         use {'sindrets/diffview.nvim', opt=true, cmd={'DiffviewOpen', 'DiffviewClose'}}
+        use {'gangleri/vim-diffsaved', opt=true, cmd='ToggleDiffSaved'}
 
     -- Filetype
         -- tex
