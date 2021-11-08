@@ -21,7 +21,7 @@ vim.cmd[[
         endif
         redraw
     endfunction
-    function KeymapHLcmd()
+    function KeyMapHLcmd()
         if $imcmdline
             hi MsgArea guibg=#004000
         else

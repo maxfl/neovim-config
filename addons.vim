@@ -78,12 +78,6 @@ call dein#add('bootleq/vim-cycle', {
             \ 'hook_add': function('plugin_cfg#cycle#add'),
             \ 'hook_post_source': function('plugin_cfg#cycle#post_source'),
             \ })
-call dein#add('t9md/vim-textmanip', {
-            \ 'normalized_name': 'textmanip',
-            \ 'hook_add': function('plugin_cfg#textmanip#add'),
-            \ 'hook_post_source': function('plugin_cfg#textmanip#post_source'),
-            \ })
-" depends: vim-submode
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

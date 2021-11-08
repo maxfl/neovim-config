@@ -26,7 +26,7 @@ packer.startup(function()
     -- Windows and floats
         --use (require 'packer_cfg.winshift')
         use (require 'packer_cfg.FTerm')
-        use {'luukvbaal/stabilize.nvim', config = function() require("stabilize").setup() end}
+        use {'luukvbaal/stabilize.nvim', config = function() require("stabilize").setup() end, disable=true}
 
     -- Motion
         use (require 'packer_cfg.hop')
@@ -80,6 +80,7 @@ packer.startup(function()
         use 'mg979/vim-visual-multi'
         use 'kopischke/vim-fetch' -- jump to file:line:number
         use (require 'packer_cfg.mundo')
+        use (require 'packer_cfg.textmanip')
 
     -- Characters and unicode
         use 'chrisbra/unicode.vim'
