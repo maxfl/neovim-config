@@ -27,6 +27,9 @@ packer.startup(function()
         --use (require 'packer_cfg.winshift')
         use (require 'packer_cfg.FTerm')
 
+    -- Motion
+        -- use 'phaazon/hop.nvim'
+
     -- Highlight
         -- use 'yamatsum/nvim-cursorline'
         use (require 'packer_cfg.beacon')
@@ -116,6 +119,7 @@ packer.startup(function()
 
     -- Diff tools
         use (require 'packer_cfg.dirdiff')
+        use (require 'packer_cfg.linediff')
 
     -- Filetype
         -- tex
@@ -163,6 +167,9 @@ packer.startup(function()
         use (require 'packer_cfg.vim_transpose')
         use {'inkarkat/vim-AdvancedSorters', opt=true, cmd='SortVisible'}
 
+    -- Documentation
+        use (require 'packer_cfg.zeavim')
+        use (require 'packer_cfg.devdocs')
     -- Local plugins
         use {"~/.config/nvim/bundle_local/SwapText-1.02", opt=true, keys={{'', '<Leader>x'},{'', '<Leader>x'}}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
         use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', opt=true, ft='txt'}

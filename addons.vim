@@ -22,24 +22,6 @@ call dein#add('ciaranm/detectindent', {
 "
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Documentation
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('kabbamine/zeavim.vim', {
-            \ 'lazy': 1,
-            \ 'on_cmd': ['Zeavim', 'ZeavimV', 'Docset'],
-            \ 'on_map': ['<Leader>z', '<Leader><Leader>z'],
-            \ 'hook_add': '
-            \ au filetype python :Docset python,matplotlib,scipy,numpy
-            \ '
-            \ }) "call zeal
-call dein#add('rhysd/devdocs.vim', {
-            \ 'on_cmd': ['DevDocs', 'DevDocsAll'],
-            "\ 'on_map': ['<Leader>Z'],
-            \ 'hook_post_source': '
-            \ nmap <Leader>Z <Plug>(devdocs-under-cursor)
-            \ '
-            \ }) "call zeal
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spelling and grammar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call dein#add('ron89/thesaurus_query.vim', {
@@ -106,11 +88,6 @@ call dein#add('t9md/vim-textmanip', {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff tools
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('AndrewRadev/linediff.vim', { 'hook_add': "
-            \ vmap <Leader>dl :Linediff<CR>\n
-            \ nmap <Leader>dl :Linediff<CR>\n
-            \ nmap <Leader>dr :LinediffReset<CR>\n
-            \ " })
 call dein#add('rickhowe/spotdiff.vim')
 call dein#add('rickhowe/diffchar.vim')
 call dein#add('chrisbra/vim-diff-enhanced', { 'normalized_name': 'diff-enhanced' })
