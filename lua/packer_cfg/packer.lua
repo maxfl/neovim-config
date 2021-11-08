@@ -116,6 +116,7 @@ packer.startup(function()
     -- Search and replace
         use {'tpope/vim-abolish', opt=true, cmd='S'} -- :%S////
         use {'vim-scripts/ExplainPattern', opt=true, cmd='ExplainPattern'}
+        use (require 'packer_cfg.quickhl')
 
     -- Diff tools
         use (require 'packer_cfg.dirdiff')
@@ -124,6 +125,7 @@ packer.startup(function()
         use {'rickhowe/spotdiff.vim', cond='vim.o.diff'} --, opt=true, cmd={'Diffthis', 'Diffoff', 'Diffupdate'}}
         use {'sindrets/diffview.nvim', opt=true, cmd={'DiffviewOpen', 'DiffviewClose'}}
         use {'gangleri/vim-diffsaved', opt=true, cmd='ToggleDiffSaved'}
+        use {'chrisbra/vim-diff-enhanced', opt=true, cmd='EnhancedDiff'}
 
     -- Filetype
         -- tex
@@ -137,6 +139,7 @@ packer.startup(function()
         -- others
         use {'georgewitteman/vim-fish', opt=true, fg='fish'}
         use {'vim-scripts/ebnf.vim', opt=true, ft='ebnf'} -- grammar
+        use {'plasticboy/vim-markdown', opt=true, ft='markdown'}
 
     -- Terminal
         use (require 'packer_cfg.neoterm')

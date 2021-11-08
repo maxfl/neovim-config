@@ -85,10 +85,6 @@ call dein#add('t9md/vim-textmanip', {
             \ })
 " depends: vim-submode
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Diff tools
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call dein#add('chrisbra/vim-diff-enhanced', { 'normalized_name': 'diff-enhanced' })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype
@@ -100,12 +96,6 @@ call dein#add('kalekundert/vim-coiled-snake', {
             \ })
 call dein#add('joom/latex-unicoder.vim', { 'hook_add': "let g:unicoder_no_map=1" })
 call dein#add('bfrg/vim-cpp-modern', { 'normalized_name': 'cpp-modern' })
-"call dein#add('direnv/direnv.vim')
-
-call dein#add('plasticboy/vim-markdown', {
-            \ 'normalized_name': 'markdown',
-            \ 'hook_add': "au BufRead,BufEnter /tmp/qutebrowser-editor-* setl ft=markdown spell"
-            \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search and replace
@@ -114,10 +104,6 @@ call dein#add('eugen0329/vim-esearch', {
             \ 'normalized_name': 'esearch',
             \ 'hook_post_source': 'let g:esearch={"root_markers": []}'
             \ }) " \ff
-call dein#add('t9md/vim-quickhl', {
-            \ 'normalized_name': 'quickhl',
-            \ 'hook_add': function("plugin_cfg#quickhl#add")
-            \ })
 call dein#add('qxxxb/vim-searchhi', {
             \ 'normalized_name': 'searchhi',
             \ 'hook_add': function("plugin_cfg#searchhi#add")
