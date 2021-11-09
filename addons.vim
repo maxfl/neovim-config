@@ -27,12 +27,6 @@ call dein#add('ciaranm/detectindent', {
 call dein#add('ron89/thesaurus_query.vim', {
             \ 'hook_add': 'let g:tq_map_keys = 0'
             \ })
-call dein#add('rhysd/vim-grammarous', {
-            \ 'normalized_name': 'grammarous',
-            \ 'hook_add': "
-            \ let g:grammarous#languagetool_cmd = 'languagetool'
-            \ "
-            \ })
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Textobjects
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -53,13 +47,13 @@ call dein#add('kana/vim-textobj-user', { 'normalized_name': 'textobj-user',  'ho
 "call dein#add('haya14busa/vim-operator-flashy', { 'normalized_name': 'operator-flashy' })
 call dein#add('kana/vim-textobj-line', { 'normalized_name': 'textobj-line'})
 call dein#add('rhysd/vim-textobj-continuous-line', { 'normalized_name': 'textobj-continuous-line' })
-call dein#add('glts/vim-textobj-comment', { 'normalized_name': 'textobj-comment' })
+" call dein#add('glts/vim-textobj-comment', { 'normalized_name': 'textobj-comment' })
 call dein#add('kana/vim-textobj-entire', { 'normalized_name': 'textobj-entire', 'hook_add': function('plugin_cfg#textobj#entire_add') })
 call dein#add('kana/vim-textobj-indent', { 'normalized_name': 'textobj-indent' })
-call dein#add('sgur/vim-textobj-parameter', { 'normalized_name': 'textobj-parameter', 'hook_add': function('plugin_cfg#textobj#parameter_add') })
-call dein#add('machakann/vim-textobj-functioncall', { 'normalized_name': 'textobj-functioncall', 'hook_add': function('plugin_cfg#textobj#functioncall_add') })
-call dein#add('kana/vim-textobj-function', { 'normalized_name': 'textobj-function' })
-call dein#add('bps/vim-textobj-python', { 'normalized_name': 'textobj-python', 'hook_add': function('plugin_cfg#textobj#python_add')})
+" call dein#add('sgur/vim-textobj-parameter', { 'normalized_name': 'textobj-parameter', 'hook_add': function('plugin_cfg#textobj#parameter_add') })
+" call dein#add('machakann/vim-textobj-functioncall', { 'normalized_name': 'textobj-functioncall', 'hook_add': function('plugin_cfg#textobj#functioncall_add') })
+" call dein#add('kana/vim-textobj-function', { 'normalized_name': 'textobj-function' })
+" call dein#add('bps/vim-textobj-python', { 'normalized_name': 'textobj-python', 'hook_add': function('plugin_cfg#textobj#python_add')})
 call dein#add('jceb/vim-textobj-uri', { 'normalized_name': 'textobj-uri' })
 call dein#add('glts/vim-textobj-indblock', { 'normalized_name': 'textobj-indblock' })
 call dein#add('kana/vim-textobj-datetime', { 'normalized_name': 'textobj-datetime' })

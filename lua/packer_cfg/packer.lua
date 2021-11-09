@@ -23,6 +23,9 @@ packer.startup(function()
     -- Editing
         use (require 'packer_cfg.comment')
 
+    -- Text objects
+        use (require 'packer_cfg.nvim_treesitter_textobjects')
+
     -- Windows and floats
         --use (require 'packer_cfg.winshift')
         use (require 'packer_cfg.FTerm')
@@ -142,6 +145,9 @@ packer.startup(function()
         use {'georgewitteman/vim-fish', opt=true, fg='fish'}
         use {'vim-scripts/ebnf.vim', opt=true, ft='ebnf'} -- grammar
         use {'plasticboy/vim-markdown', opt=true, ft='markdown'}
+
+    -- Spelling and grammar
+        use {'rhysd/vim-grammarous', opt=true, cmd='Grammarous*', config=function() vim.g['grammarous#languagetool_cmd']='languagetool' end}
 
     -- Terminal
         use (require 'packer_cfg.neoterm')

@@ -11,20 +11,18 @@ Text Objects
         B - {} block
         t - tag block
 
+    Tree sitter:
+        c - comment
+        . - parameter
+        f - function
+        c - class
+        @ - function call
+
 Textobj-user motions
     l - line
     v - continuous line (FIXME: use)
-    c - comment
-    C - comment
     E - entire
     i - indent, I - indent
-    , - parameter (disabled)
-    . - parameter
-    f - function, ]pf, [pf
-    c - class, ]pc, [pc
-    F - python function
-    P - python class
-    @ - function call (FIXME: use)
     u - url
     o - indblock, O - indblock (FIXME: use)
     da, dd, df, dt, dz - datetime: auto, date, full, time, tz (FIXME: use)
