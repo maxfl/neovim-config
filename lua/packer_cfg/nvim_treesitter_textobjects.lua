@@ -15,6 +15,8 @@ return {
                         -- You can use the capture groups defined in textobjects.scm
                         ["ab"] = "@block.outer",
                         ["ib"] = "@block.inner",
+                        ["aF"] = "@frame.outer",
+                        ["iF"] = "@frame.inner",
                         ["ac"] = "@comment.outer",
                         ["ic"] = "@comment.outer",
                         ["a@"] = "@call.outer",

@@ -1,16 +1,17 @@
 return {
     'folke/lua-dev.nvim',
+    requires='anott03/nvim-lspinstall',
     opt=true,
     ft='lua',
     config=function()
         local luadev = require("lua-dev").setup{
             vimruntime=true,
             types=true,
-            plugins=true
+            plugins=true,
             -- add any options here, or leave empty to use the default settings
-            -- lspconfig = {
-                --   cmd = {"lua-language-server"}
-                -- },
+            lspconfig = {
+                  cmd = {"lua-language-server"}
+                },
             }
 
             local lspconfig = require('lspconfig')
