@@ -114,13 +114,13 @@ vim.cmd[[
         map('n', 'gm', 'm',  noremap)
 
 -- Plugins
-require 'packer_cfg.packer'
-
 vim.cmd [[
     source ~/.config/nvim/addons.vim
     syntax on
     filetype on
 ]]
+
+require 'packer_cfg.packer'
 
 -- plugins
 -- git clone --depth 1 https://github.com/wbthomason/packer.nvim\
