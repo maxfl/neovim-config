@@ -12,11 +12,12 @@ packer.startup(function()
     -- Tree sitter
         use (require 'packer_cfg.nvim_treesitter')
         use {'romgrk/nvim-treesitter-context', requires='nvim-treesitter/nvim-treesitter'}
+        use (require 'packer_cfg.nvim_treesitter_textobjects')
 
     -- LSP
         use 'neovim/nvim-lspconfig'
         use (require 'packer_cfg.nvim_lspinstall')
-        use (require 'packer_cfg.trouble')
+        --use (require 'packer_cfg.trouble')
 
         --use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}, config=function() require 'navigator'.setup() end}
 
@@ -28,9 +29,6 @@ packer.startup(function()
 
     -- Editing
         use (require 'packer_cfg.comment')
-
-    -- Text objects
-        use (require 'packer_cfg.nvim_treesitter_textobjects')
 
     -- Windows and floats
         --use (require 'packer_cfg.winshift')
