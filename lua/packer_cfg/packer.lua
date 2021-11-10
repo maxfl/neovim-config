@@ -170,6 +170,7 @@ packer.startup(function()
         use (require 'packer_cfg.vim_fswitch')
         use (require 'packer_cfg.rnvimr')
         use (require 'packer_cfg.vim_external')
+        use (require 'packer_cfg.direnv')
 
     -- VCS
         use {'inkarkat/vim-ConflictDetection', requires='inkarkat/vim-ingo-library'}
