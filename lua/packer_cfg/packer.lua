@@ -3,6 +3,7 @@ local packer=require 'packer'
 
 packer.init{opt_default=false}
 packer.startup(function()
+    local use=use
 -- Lua
     do
     -- Tree sitter
@@ -18,8 +19,9 @@ packer.startup(function()
 
     -- Libraries
         use 'nvim-lua/plenary.nvim'
-        use (require 'packer_cfg.telescope')
         use {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
+        use (require 'packer_cfg.telescope')
+        -- use {'nvim-telescope/telescope-hop.nvim', requires='nvim-telescope/telescope.nvim', config=function() local telescope = require('telescope').load_extension('hop') end}
 
     -- Editing
         use (require 'packer_cfg.comment')
@@ -76,8 +78,7 @@ packer.startup(function()
     -- Indentation
         use {'thiagoalessio/rainbow_levels.vim', opt=true, cmd='RainbowLevelsToggle'}
         use {'kien/rainbow_parentheses.vim',     opt=true, cmd='RainbowParenthesesToggle'}
-        use (require 'packer_cfg.indentline')
-        use {'nathanaelkane/vim-indent-guides',  opt=true, cmd='IndentGuides*'}
+        use (require 'packer_cfg.indent_blankline')
 
     -- Editing
         use (require 'packer_cfg.vim_trailing_whitespace')
@@ -115,7 +116,6 @@ packer.startup(function()
         use {'inkarkat/vim-RepeatableYank', requires={'inkarkat/vim-ingo-library', 'tpope/vim-repeat', 'inkarkat/vim-visualrepeat'} }
 
     -- Menus
-        use (require 'packer_cfg.quickui')
         use (require 'packer_cfg.ctrlspace')
         -- use (require 'packer_cfg.wilder')
 

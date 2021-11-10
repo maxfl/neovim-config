@@ -17,6 +17,8 @@ vim.cmd[[
 ]]
 
 -- Options
+    -- GUI
+        set.guifont='MesloLGSDZ Nerd Font Mono:h12,Monospace:h12,Mono:h12'
     -- Behaviour
         set.autowrite=true
         set.autoread=true
@@ -26,7 +28,6 @@ vim.cmd[[
         if vim.o.history<1000 then
             set.history=1000
         end
-
 
     -- Interface
         set.background='dark'

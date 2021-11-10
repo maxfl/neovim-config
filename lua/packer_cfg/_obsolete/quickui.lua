@@ -30,14 +30,6 @@ return {
         \   [ 'AnyJump&LastResults	\al', 'normal \al'],
         \ ])
 
-        call quickui#menu#install('&Highlight', [
-        \   [ '&Indent lines',        'IndentLinesToggle',        'Toggle indent lines' ],
-        \   [ 'Indent &guides',       'IndentGuidesToggle',       'Toggle indent guides' ],
-        \   [ '--', '--' ],
-        \   [ 'Rainbow &levels',      'RainbowLevelsToggle',      'Toggle rainbow levels' ],
-        \   [ 'Rainbow &parentheses', 'RainbowParenthesesToggle', 'Toggle rainbow parentheses' ],
-        \ ])
-
         call quickui#menu#install('&Windows', [
         \   [ '&Choosewin	\-…', "call feedkeys('\\-')"],
         \   [ '&Winteract	\w…', "call feedkeys('\\w')"],
