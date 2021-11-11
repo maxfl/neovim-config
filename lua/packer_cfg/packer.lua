@@ -13,6 +13,7 @@ packer.startup(function()
         use (require 'packer_cfg.nvim_treesitter')
         use {'romgrk/nvim-treesitter-context', requires='nvim-treesitter/nvim-treesitter'}
         use (require 'packer_cfg.nvim_treesitter_textobjects')
+        -- use (require 'packer_cfg.nvim_treesitter_textsubjects')
 
     -- LSP
         use 'neovim/nvim-lspconfig'

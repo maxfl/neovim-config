@@ -15,8 +15,7 @@ return {
         end
     },
     {'kana/vim-textobj-line',             requires='kana/vim-textobj-user'}, -- l
-    {'rhysd/vim-textobj-continuous-line', requires='kana/vim-textobj-user'}, -- v
-    {'kana/vim-textobj-indent',           requires='kana/vim-textobj-user'}, -- i,  I
+    {'rhysd/vim-textobj-continuous-line', requires='kana/vim-textobj-user'}, -- v {'kana/vim-textobj-indent',           requires='kana/vim-textobj-user'}, -- i,  I
     {'jceb/vim-textobj-uri',              requires='kana/vim-textobj-user'}, -- u
     {'glts/vim-textobj-indblock',         requires='kana/vim-textobj-user'}, -- o
     {'kana/vim-textobj-datetime',         requires='kana/vim-textobj-user'}, -- da, df, dt, dz
@@ -34,6 +33,13 @@ return {
             map('o', 'aE', '<Plug>(textobj-entire-a)', opts)
         end
     },
+    {                                                                        -- .
+        'sgur/vim-textobj-parameter',
+        requires='kana/vim-textobj-user',
+        setup=function()
+            vim.g.vim_textobj_parameter_mapping = '.'
+        end,
+    },
     {                                                                        -- _
         'thinca/vim-textobj-between',
         requires='kana/vim-textobj-user',
@@ -48,4 +54,13 @@ return {
             map('o', 'a_', '<Plug>(textobj-between-a)', opts)
         end
     },
+    -- {
+    --     'AckslD/nvim-revJ.lua',
+    --     requires={'kana/vim-textobj-user', 'sgur/vim-textobj-parameter'},
+    --     config=function()
+    --         require'revj'.setup{
+    --             enable_default_keymaps=true
+    --         }
+    --     end
+    -- }
 }
