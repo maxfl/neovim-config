@@ -35,45 +35,6 @@ call dein#add('machakann/vim-sandwich', {
             \ 'hook_post_source': function('plugin_cfg#sandwich#post_source')
             \ })
 
-call dein#add('kana/vim-textobj-user', { 'normalized_name': 'textobj-user',  'hook_post_source': "
-            \ call textobj#user#plugin('mylatex', {
-            \                 'latex-amp': {
-            \                   'pattern': [ '\\(&\\|^\\)\\s*', '\\s*\\(&\\|\\\\\\\\\\)' ],
-            \                   'select-a': 'a&',
-            \                   'select-i': 'i&'
-            \                 },
-            \               })
-            \ " })
-"call dein#add('haya14busa/vim-operator-flashy', { 'normalized_name': 'operator-flashy' })
-call dein#add('kana/vim-textobj-line', { 'normalized_name': 'textobj-line'})
-call dein#add('rhysd/vim-textobj-continuous-line', { 'normalized_name': 'textobj-continuous-line' })
-" call dein#add('glts/vim-textobj-comment', { 'normalized_name': 'textobj-comment' })
-call dein#add('kana/vim-textobj-entire', { 'normalized_name': 'textobj-entire', 'hook_add': function('plugin_cfg#textobj#entire_add') })
-call dein#add('kana/vim-textobj-indent', { 'normalized_name': 'textobj-indent' })
-" call dein#add('sgur/vim-textobj-parameter', { 'normalized_name': 'textobj-parameter', 'hook_add': function('plugin_cfg#textobj#parameter_add') })
-" call dein#add('machakann/vim-textobj-functioncall', { 'normalized_name': 'textobj-functioncall', 'hook_add': function('plugin_cfg#textobj#functioncall_add') })
-" call dein#add('kana/vim-textobj-function', { 'normalized_name': 'textobj-function' })
-" call dein#add('bps/vim-textobj-python', { 'normalized_name': 'textobj-python', 'hook_add': function('plugin_cfg#textobj#python_add')})
-call dein#add('jceb/vim-textobj-uri', { 'normalized_name': 'textobj-uri' })
-call dein#add('glts/vim-textobj-indblock', { 'normalized_name': 'textobj-indblock' })
-call dein#add('kana/vim-textobj-datetime', { 'normalized_name': 'textobj-datetime' })
-"call dein#add('rbonvall/vim-textobj-latex', { 'normalized_name': 'textobj-latex' })
-call dein#add('thinca/vim-textobj-between', { 'normalized_name': 'textobj-between',  'hook_add': function('plugin_cfg#textobj#between_add')})
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Text manipulation
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"call dein#add('AndrewRadev/switch.vim', {
-            "\ 'normalized_name': 'switch',
-            "\ 'hook_add': function('plugin_cfg#switch#add'),
-            "\ 'hook_post_source': function('plugin_cfg#switch#post_source')
-            "\ })
-call dein#add('bootleq/vim-cycle', {
-            \ 'hook_add': function('plugin_cfg#cycle#add'),
-            \ 'hook_post_source': function('plugin_cfg#cycle#post_source'),
-            \ })
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

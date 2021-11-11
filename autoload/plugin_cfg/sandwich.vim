@@ -52,6 +52,7 @@ function plugin_cfg#sandwich#post_source()
                 \   {'buns': ['[(', ')]'],               'nesting': 1, 'input': [ '2[' ],  'filetype': ['python'] },
                 \   {'buns': ['([', '])'],               'nesting': 1, 'input': [ '2(' ],  'filetype': ['python'] },
                 \   {'buns': ['[[', ']]'],               'nesting': 1, 'input': [ '2[' ],  'filetype': ['lua'] },
+                \   {'buns': ['[=[', ']=]'],             'nesting': 1, 'input': [ '2=' ],  'filetype': ['lua'] },
                 \ ]
     let g:sandwich#recipes += [
                 \   {'buns': ["`", "'"],                 'nesting': 1, 'input': [ "l'", "l`" ], 'filetype': ['tex', 'plaintex', 'rst'] },

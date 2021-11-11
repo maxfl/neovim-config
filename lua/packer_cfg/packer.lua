@@ -104,6 +104,12 @@ packer.startup(function()
         use (require 'packer_cfg.cleverf')
         use (require 'packer_cfg.camelcase')
 
+    -- Text objects
+        for _, cfg in ipairs(require 'packer_cfg.vim_textobj') do
+            use (cfg)
+        end
+        use (require 'packer_cfg.vim_cycle')
+
 	-- Text objects
 		use (require 'packer_cfg.matchup')
 
