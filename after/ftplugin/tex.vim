@@ -20,11 +20,6 @@ let b:endwise_pattern = '\\begin{\zs[a-zA-Z0-9*]*\ze}'
 let b:endwise_addition = '\\end{&}'
 let b:endwise_syngroups = 'XXXX'
 
-if exists('g:AutoPairs')
-    let b:AutoPairs=copy(g:AutoPairs)
-    call extend( b:AutoPairs, { "`" : "'", '$' : '$' } )
-endif
-
 if exists('g:neocomplete#force_omni_input_patterns')
     let g:neocomplete#force_omni_input_patterns.tex =
           \ '\v\\\a*(ref|cite)\a*([^]]*\])?\{(|[^}]*,)'

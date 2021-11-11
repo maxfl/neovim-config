@@ -42,6 +42,9 @@ packer.startup(function()
     -- Motion
         use (require 'packer_cfg.hop')
 
+    -- Snippets
+        use (require 'packer_cfg.nvim_autopairs')
+
     -- Highlight
         -- use 'yamatsum/nvim-cursorline'
         use (require 'packer_cfg.beacon')
@@ -162,7 +165,7 @@ packer.startup(function()
 
     -- Snippets
         use (require 'packer_cfg.ultisnips')
-        use (require 'packer_cfg.auto_pairs')
+        -- use (require 'packer_cfg.auto_pairs')
         use {'tpope/vim-endwise', disable=true} -- not working with TreeSitter
 
     -- Files and folders
