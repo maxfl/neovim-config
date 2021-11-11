@@ -37,9 +37,10 @@ return {
             {{ 'and', 'or' },     'match_word', 1 }
         }
 
-        vim.fn['cycle#add_groups']{{{ '[  ]', '[ ]', '[✔]', '[✘]', '[✔✘]', '[?]' }}}
         vim.fn['cycle#add_groups']{{{ '{:}', '(:)' }, 'sub_pairs'}}
         vim.fn['cycle#add_groups']{{{'“:”', '‘:’', '„:“', '‚:‘', '«:»'}, 'sub_pairs'}}
+
+        vim.g.cycle_default_groups_for_markdown = {{{ '[  ]', '[ ]', '[✔]', '[✘]', '[✔✘]', '[?]' }}}
 
         vim.g.cycle_default_groups_for_gitrebase = {{{'pick', 'reword', 'edit', 'squash', 'fixup', 'exec'}}}
 
@@ -67,5 +68,7 @@ return {
             {{[[\begin{enumerate}:\end{enumerate}]], [[\begin{itemize}:\end{itemize}]]}, 'sub_pairs', 'hard_case', 'match_case'},
             {{[[\begin{align}:\end{align}]], [[\begin{multline}:\end{multline}]]}, 'sub_pairs', 'hard_case', 'match_case'},
         }
+
+        vim.g.cycle_default_groups_for_lua = {{{ '[[:]]', '[=[:]=]',  '[==[:]==]'}, 'sub_pairs'}}
     end
 }

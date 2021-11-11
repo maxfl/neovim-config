@@ -4,8 +4,6 @@ return {
         vim.g.AutoPairsFlyMode=1
         vim.g.AutoPairsShortcutToggle=''
         vim.g.AutoPairsShortcutJump=''
-
-        --vim.g.AutoPairs={'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`'}
     end,
     config = function()
         local target=vim.g.AutoPairs
