@@ -6,6 +6,9 @@ packer.startup(function()
     local use=use
 -- Lua
     do
+    -- Packer itself
+        use 'wbthomason/packer.nvim'
+
     -- Colocschemes
         use (require 'packer_cfg.colorscheme')
 
