@@ -2,3 +2,4 @@ bundle/
 *~
 .netrwhist
 plugin/packer_compiled.lua
+.vimcache

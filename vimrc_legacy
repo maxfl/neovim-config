@@ -15,7 +15,6 @@ if &listchars ==# 'eol:$'
 endif
 set breakindentopt=shift:-1,min:50
 
-set makeprg=make\ -j4
 set path=,.,../include,../inc,/usr/include
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/CVS/*
 
@@ -76,27 +75,6 @@ inoremap <T-F12> <nop>
 "select just inserted text
 nnoremap <expr> viy '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-fun! VimSetCache( dir )
-    let l:dir = expand( a:dir )
-    let &backupdir=l:dir.'/backup/,'.&backupdir
-    let &directory=l:dir.'/swap/,'.&directory
-    if exists('+undodir')
-        let &undodir=l:dir.'/undo/,'.&undodir
-    endif
-    let g:neomru#file_mru_path      = a:dir.'/neomru/file'
-    let g:neomru#directory_mru_path = a:dir.'/neomru/directory'
-endf
-
-if isdirectory(expand('~/.cache/vim'))
-    call VimSetCache(expand('~/.cache/vim'))
-endif
-if isdirectory('.vimcache')
-    call VimSetCache('.vimcache')
-end
-if exists('+undofile')
-  set undofile
-endif
-
 if $LANG =~ '.\+\.UTF-8'
     set langmap=ёйцукенгшщзхъфывапролдэячсмитьюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЯЧСМИТЬБЮ№жЭб;`qwertyuiop[]asdfghjkl'zxcvbnm.~QWERTYUIOP{}ASDFGHJKL:ZXCVBNM<>#\\;\\"\\,
     "ёйцукенгшщзхъфывапролдж  эячсмитьюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭ  ЯЧСМИТЬБЮб
@@ -116,23 +94,6 @@ endif
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
-
-if has('path_extra')
-  setglobal tags-=./tags tags-=./tags; tags^=./tags;
-endif
-
-if &shell =~# 'fish$' && (v:version < 704 || v:version == 704 && !has('patch276'))
-  set shell=/usr/bin/env\ bash
-endif
-
-if &tabpagemax < 50
-  set tabpagemax=50
-endif
-if !empty(&viminfo)
-  set viminfo^=!
-endif
-set sessionoptions-=options
-set viewoptions-=options
 
 if empty(mapcheck('<C-U>', 'i'))
   inoremap <C-U> <C-G>u<C-U>
