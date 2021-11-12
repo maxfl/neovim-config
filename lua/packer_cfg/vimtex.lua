@@ -7,8 +7,8 @@ return {
         local noremap={noremap=true}
 
         vim.g.vimtex_view_method='zathura'
-        --vim.g.vimtex_imaps_enabled=0
-        vim.g.vimtex_view_use_temp_files=1
+        --vim.g.vimtex_imaps_enabled=false
+        vim.g.vimtex_view_use_temp_files=true
 
         if vim.fn.exepath('nvr')~='' then
             vim.g.vimtex_compiler_progname='nvr'

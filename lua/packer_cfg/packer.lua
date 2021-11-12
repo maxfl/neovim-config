@@ -96,7 +96,7 @@ packer.startup(function()
 
     -- Characters and unicode
         use 'chrisbra/unicode.vim'
-        use {'Konfekt/vim-unicode-homoglyphs', setup=function() vim.g.is_homoglyph_on=0 end} -- search for hidden unicode characters
+        use {'Konfekt/vim-unicode-homoglyphs', setup=function() vim.g.is_homoglyph_on=false end} -- search for hidden unicode characters
         use (require 'packer_cfg.isotope')
 
     -- Windows
@@ -187,7 +187,7 @@ packer.startup(function()
 
     -- VCS
         use {'inkarkat/vim-ConflictDetection', requires='inkarkat/vim-ingo-library'}
-        use {'inkarkat/vim-ConflictMotions', config=function() vim.g.ConflictMotions_TakeMappingPrefix="<Leader>=" end, requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}, 'tpope/vim-repeat', 'inkarkat/vim-visualrepeat'}}
+        use (require 'packer_cfg.conflictmotions')
         use (require 'packer_cfg.fugitive')
 
     -- Tables and lists

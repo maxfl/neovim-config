@@ -84,7 +84,7 @@ vim.cmd[[
         set.pastetoggle='<F4>'
 
     -- filetype
-        vim.g.load_doxygen_syntax=1
+        vim.g.load_doxygen_syntax=true
         vim.g.tex_flavor='latex'
         vim.g.tex_conceal='abdmg'
         vim.cmd [[

@@ -5,7 +5,7 @@ return {
     setup=function()
         vim.api.nvim_set_keymap('', '<F9>', '<CMD>call quickui#menu#open()<CR>', {})
         vim.g.quickui_border_style = 2
-        vim.g.quickui_show_tip = 1
+        vim.g.quickui_show_tip=true
     end,
     config=function()
         vim.cmd[[

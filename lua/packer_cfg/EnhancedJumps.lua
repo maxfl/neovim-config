@@ -1,5 +1,5 @@
 return function()
-    vim.g.EnhancedJumps_CaptureJumpMessages=0
+    vim.g.EnhancedJumps_CaptureJumpMessages=false
 
     local map = vim.api.nvim_set_keymap
     local opts = {}

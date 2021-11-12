@@ -2,8 +2,8 @@ return {
     'vim-ctrlspace/vim-ctrlspace',
     setup=function()
         vim.o.hidden=true
-        vim.g.CtrlSpaceSetDefaultMapping=1
-        vim.g.CtrlSpaceUseTabline=1
+        vim.g.CtrlSpaceSetDefaultMapping=true
+        vim.g.CtrlSpaceUseTabline=true
         vim.g.CtrlSpaceDefaultMappingKey='<C-Space> '
         vim.g.CtrlSpaceProjectRootMarkers = { ".git", ".hg", ".svn", ".bzr", ".envrc", "_darcs", "CVS" }
     end,

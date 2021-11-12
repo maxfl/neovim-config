@@ -1,8 +1,8 @@
 return {
     't9md/vim-textmanip',
     setup=function()
-        vim.g.textmanip_enable_mappings=0
-        vim.g.textmanip_move_ignore_shiftwidth=1
+        vim.g.textmanip_enable_mappings=false
+        vim.g.textmanip_move_ignore_shiftwidth=true
     end,
     config=function()
         local map, opts=vim.api.nvim_set_keymap, {}

@@ -3,7 +3,7 @@ return {
     opt=true,
     cmd='IndentLines*',
     config=function()
-        vim.g.indentLine_enabled=0
+        vim.g.indentLine_enabled=false
         vim.cmd[[au FileType cpp,python :IndentLinesEnable]]
     end
 }
