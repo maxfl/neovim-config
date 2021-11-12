@@ -10,7 +10,7 @@ return {
         map('n', '#', '<Plug>(searchhi-#)', opts)
         map('n', 'g*', '<Plug>(searchhi-g*)', opts)
         map('n', 'g#', '<Plug>(searchhi-g#)', opts)
-        map('n', '<C-L>', '<Plug>(searchhi-clear-all', {silent=true})
+        map('n', '<C-L>', '<Plug>(searchhi-clear-all)', {silent=true})
 
         map('v', '/', '<Plug>(searchhi-v-/)', opts)
         map('v', '?', '<Plug>(searchhi-v-?)', opts)

@@ -3,7 +3,7 @@ local packer=require 'packer'
 
 packer.init{opt_default=false}
 packer.startup(function()
-    local use=use
+    local use=packer.use
 -- Lua
     do
     -- Packer itself
@@ -29,7 +29,6 @@ packer.startup(function()
         use 'nvim-lua/plenary.nvim'
         use {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
         use (require 'packer_cfg.telescope')
-        -- use {'nvim-telescope/telescope-hop.nvim', requires='nvim-telescope/telescope.nvim', config=function() local telescope = require('telescope').load_extension('hop') end}
 
     -- Editing
         use (require 'packer_cfg.comment')
