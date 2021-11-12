@@ -49,7 +49,8 @@ packer.startup(function()
     -- Highlight
         -- use 'yamatsum/nvim-cursorline'
         -- use (require 'packer_cfg.beacon')
-        use (require 'packer_cfg.specs')
+        use (require 'packer_cfg.specs') -- hightlight cursor jump
+        use (require 'packer_cfg.shade')
 
     -- Clipboard
         use 'machakann/vim-highlightedyank'
@@ -201,12 +202,9 @@ packer.startup(function()
         use (require 'packer_cfg.devdocs')
 
     -- Local plugins
-        use {"~/.config/nvim/bundle_local/SwapText-1.02", opt=true, keys={{'', '<Leader>x'},{'', '<Leader>x'}}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
+        use {"~/.config/nvim/bundle_local/SwapText-1.02", opt=true, keys={'', '<Leader>x'}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
         use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', opt=true, ft='txt'}
         use {'~/.config/nvim/bundle_local/txtfmt_v3.1', opt=true, ft='txt'}
-
-    -- Load after others
-        use (require 'packer_cfg.shade')
     end
 end)
 

@@ -1,10 +1,7 @@
 return {
     'numtostr/FTerm.nvim',
     opt=true,
-    keys={
-        {'n', '<F12>'},
-        {'t', '<F12>'},
-    },
+    keys={'nt', '<F12>'},
     config=function()
         require'FTerm'.setup{
             border = 'double',
