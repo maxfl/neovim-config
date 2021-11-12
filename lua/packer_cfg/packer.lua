@@ -33,6 +33,7 @@ packer.startup(function()
 
     -- Editing
         use (require 'packer_cfg.comment')
+        use (require 'packer_cfg.indent_blankline')
 
     -- Windows and floats
         --use (require 'packer_cfg.winshift')
@@ -47,7 +48,8 @@ packer.startup(function()
 
     -- Highlight
         -- use 'yamatsum/nvim-cursorline'
-        use (require 'packer_cfg.beacon')
+        -- use (require 'packer_cfg.beacon')
+        use (require 'packer_cfg.specs')
 
     -- Clipboard
         use 'machakann/vim-highlightedyank'
@@ -82,7 +84,7 @@ packer.startup(function()
     -- Indentation
         use {'thiagoalessio/rainbow_levels.vim', opt=true, cmd='RainbowLevelsToggle'}
         use {'kien/rainbow_parentheses.vim',     opt=true, cmd='RainbowParenthesesToggle'}
-        use (require 'packer_cfg.indent_blankline')
+        use {'ciaranm/detectindent', opt=true, ft='python', config=function() vim.cmd[[au FileType cpp,python :DetectIndent]] end}
 
     -- Editing
         use (require 'packer_cfg.vim_trailing_whitespace')
@@ -112,10 +114,9 @@ packer.startup(function()
         use (require 'packer_cfg.camelcase')
 
     -- Text objects
-        for _, cfg in ipairs(require 'packer_cfg.vim_textobj') do
-            use (cfg)
-        end
+        use (require 'packer_cfg.vim_textobj')
         use (require 'packer_cfg.vim_cycle')
+        use (require 'packer_cfg.vim_sandwich')
 
 	-- Text objects
 		use (require 'packer_cfg.matchup')
@@ -133,6 +134,8 @@ packer.startup(function()
         use {'tpope/vim-abolish', opt=true, cmd='S'} -- :%S////
         use {'vim-scripts/ExplainPattern', opt=true, cmd='ExplainPattern'}
         use (require 'packer_cfg.quickhl')
+        use (require 'packer_cfg.searchhi')
+        use (require 'packer_cfg.vim_esearch') -- \ff
 
     -- Diff tools
         use (require 'packer_cfg.dirdiff')
@@ -156,6 +159,7 @@ packer.startup(function()
         use {'georgewitteman/vim-fish', opt=true, fg='fish'}
         use {'vim-scripts/ebnf.vim', opt=true, ft='ebnf'} -- grammar
         use {'plasticboy/vim-markdown', opt=true, ft='markdown'}
+        use {'kalekundert/vim-coiled-snake', opt=true, ft='python', setup=function() vim.g.coiled_snake_set_foldexpr=false end}
 
     -- Spelling and grammar
         use {'rhysd/vim-grammarous', opt=true, cmd='Grammarous*', config=function() vim.g['grammarous#languagetool_cmd']='languagetool' end}
@@ -197,6 +201,7 @@ packer.startup(function()
     -- Documentation
         use (require 'packer_cfg.zeavim')
         use (require 'packer_cfg.devdocs')
+
     -- Local plugins
         use {"~/.config/nvim/bundle_local/SwapText-1.02", opt=true, keys={{'', '<Leader>x'},{'', '<Leader>x'}}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
         use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', opt=true, ft='txt'}
@@ -207,7 +212,7 @@ packer.startup(function()
     end
 end)
 
-        --[[
+--[[
         -- Outdated
         -- Colorschemes
         use {'mhartington/oceanic-next', config=function() vim.cmd"colorscheme OceanicNext" end}
@@ -247,5 +252,10 @@ end)
                     \   'hook_post_source': function("plugin_cfg#tagbar#post_source")
                     \ })
 
-        Complete : menu
-        --]]
+        'bfrg/vim-cpp-modern'
+
+        call dein#add('joom/latex-unicoder.vim', { 'hook_add': "let g:unicoder_no_map=1" })
+        call dein#add('ron89/thesaurus_query.vim', {
+                    \ 'hook_add': 'let g:tq_map_keys = 0'
+                    \ })
+--]]

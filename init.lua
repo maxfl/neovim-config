@@ -49,6 +49,8 @@ vim.cmd[[
         set.linebreak=true
         set.colorcolumn='+1'
 
+        set.formatoptions:append'ro'
+
     -- indentation
         set.shiftwidth=4
         set.expandtab=true
@@ -114,12 +116,6 @@ vim.cmd[[
         map('n', 'gm', 'm',  noremap)
 
 -- Plugins
-vim.cmd [[
-    source ~/.config/nvim/addons.vim
-    syntax on
-    filetype on
-]]
-
 require 'packer_cfg.packer'
 
 -- plugins
