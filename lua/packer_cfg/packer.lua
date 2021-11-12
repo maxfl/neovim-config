@@ -224,7 +224,7 @@ end)
         -- Other
         'Shougo/neossh.vim'
         "use('pechorin/any-jump.vim', { 'normalized_name': 'any-jump' }) " Warning: not used
-        use('lervag/wiki.vim', { 'hook_add': "let g:wiki_mappings_use_defaults=0" })
+        use('lervag/wiki.vim', { 'hook_add': "let g:wiki_mappings_use_defaults=v:false" })
         use('lervag/wiki-ft.vim', { 'depends': 'wiki'})
         "use('brooth/far.vim')        " :Far
         use('vim-scripts/RangeMacro') " karkat
@@ -241,7 +241,7 @@ end)
                     \ "})
 
         call dein#add('jsfaint/gen_tags.vim', { 'hook_add': "
-                    \ let g:loaded_gentags#gtags=1
+                    \ let g:loaded_gentags#gtags=v:true
                     \ " })
         call dein#add('majutsushi/tagbar', {
                     \   'hook_add': function("plugin_cfg#tagbar#add"),
@@ -250,8 +250,8 @@ end)
 
         'bfrg/vim-cpp-modern'
 
-        call dein#add('joom/latex-unicoder.vim', { 'hook_add': "let g:unicoder_no_map=1" })
+        call dein#add('joom/latex-unicoder.vim', { 'hook_add': "let g:unicoder_no_map=v:true" })
         call dein#add('ron89/thesaurus_query.vim', {
-                    \ 'hook_add': 'let g:tq_map_keys = 0'
+                    \ 'hook_add': 'let g:tq_map_keys = v:false'
                     \ })
 --]]

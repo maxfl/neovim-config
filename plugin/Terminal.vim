@@ -1,6 +1,6 @@
 tnoremap <C-O> <C-\><C-n>
 
-let g:TerminalAutoStartInsert=0
+let g:TerminalAutoStartInsert=v:false
 
 command -nargs=1 SetAutostartInsert let b:TerminalAutoStartInsert=<args>
 
