@@ -169,8 +169,6 @@ packer.startup(function()
 
     -- Snippets
         use (require 'packer_cfg.ultisnips')
-        -- use (require 'packer_cfg.auto_pairs')
-        use {'tpope/vim-endwise', disable=true} -- not working with TreeSitter
 
     -- Files and folders
         use (require 'packer_cfg.mirror')
