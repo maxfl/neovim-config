@@ -37,11 +37,14 @@ vim.cmd[[
 
         set.termguicolors=true
 
+        set.switchbuf={'useopen', 'usetab', 'newtab'}
+
     -- Splitting and field of view
         set.splitbelow=true
         set.splitright=true
         set.scrolloff=3
         set.sidescrolloff=5
+        set.sidescroll=5
 
     -- breaks and wraps
         set.wrap=false
@@ -58,8 +61,15 @@ vim.cmd[[
         set.softtabstop=2
         set.cino:append{'g0','i0','(0'}
         set.cinkeys:remove'0#'
-        set.breakindent=true
         set.autoindent=true
+        set.breakindent=true
+        set.breakindentopt:append{'shift:-1', 'min:50'}
+
+    -- editing
+        -- set.joinspaces=false
+
+    -- folds
+        set.foldopen:append'jump'
 
     -- pairs, brackets, etc
         set.showmatch=true
@@ -71,8 +81,13 @@ vim.cmd[[
         set.ignorecase=true
         set.smartcase=true
 
+    -- paths
+        -- set path={'.', '../include', '../inc', '/usr/include'}
+
     -- commandline
+        -- set.wildmode={'longest', 'full'}
         set.wildignorecase=true
+        set.wildignore:append{'*/.git/*', '*/.hg/*', '*/.svn/*', '*/CVS/*'}
 
     -- mouse
         set.mouse='a'
