@@ -6,6 +6,8 @@
 -- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 local map = vim.api.nvim_set_keymap
 local set = vim.opt
+local noremap={noremap=true}
+local emptyopts={}
 
 vim.g['&packpath'] = vim.g['&runtimepath']
 
@@ -111,24 +113,40 @@ vim.cmd[[
         ]]
 
     -- Diff selection
-        map('n', 'Dp', ':.diffput<CR>', {})
-        map('v', 'Dp', ':diffput<CR>', {})
-        map('n', 'Do', ':.diffget<CR>', {})
-        map('v', 'Do', ':diffget<CR>', {})
+        map('n', 'Dp', ':.diffput<CR>', emptyopts)
+        map('v', 'Dp', ':diffput<CR>', emptyopts)
+        map('n', 'Do', ':.diffget<CR>', emptyopts)
+        map('v', 'Do', ':diffget<CR>', emptyopts)
 
     -- Clipboard mappings
-        noremap={noremap=true}
         -- Make x, d and dd delete with no register
         map('',  'x',  '"_x',  noremap)
         map('v', 'x',  '"_x',  noremap)
         map('',  'd',  '"_d',  noremap)
         map('v', 'd',  '"_d',  noremap)
         map('n', 'dd', '"_dd', noremap)
+
         -- use m (move) for deleting with register
         map('',  'm',  'd',  noremap)
         map('v', 'm',  'd',  noremap)
         map('n', 'mm', 'dd', noremap)
         map('n', 'gm', 'm',  noremap)
+
+        -- yank mouse selection
+        map('v', '<LeftRelease>', '"*ygv', emptyopts)
+
+        -- select just pasted text
+        local opts={noremap=true, expr=true}
+        map('n', 'viy', [['`['.strpart(getregtype(), 0, 1).'`]']], opts)
+
+        -- motions
+        map('v', '>', '>gv', noremap)
+        map('v', '<', '<gv', noremap)
+
+        map('', 'j', 'gj', noremap)
+        map('', 'k', 'gk', noremap)
+        map('', 'gj', 'j', noremap)
+        map('', 'gk', 'k', noremap)
 
 -- Plugins
 require 'packer_cfg.packer'

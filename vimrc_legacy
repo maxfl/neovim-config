@@ -28,40 +28,16 @@ set commentstring=#%s
 set cpoptions+=d
 
 " Scroll lock
-"inoremap <BS> <Del><BS>
-"inoremap <t_%9> <Esc>
 nnoremap <F2> :w<CR>
 nnoremap <S-F2> :w!<CR>
 inoremap <F2> <ESC>:w<CR>gi
 inoremap <S-F2> <ESC>:w!<CR>gi
-inoremap <F3> <C-^>
-cnoremap <F3> <C-^>
-inoremap <F21> <C-^>
-cnoremap <F21> <C-^>
-nnoremap <M-/> :noh<CR>
-"inoremap <C-L> <C-K>
-vnoremap > >gv
-vnoremap < <gv
 
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
-" noremap 0 g0
-" noremap ^ g^
-" noremap g0 0
-" noremap g^ ^
-
-noremap <M-j> j
-noremap <M-k> k
 " Disable ex mode
 nnoremap Q <nop>
 inoremap <T-F12> <nop>
 " Switchable hlsearch
 " nnoremap <silent> <Leader>/ :nohlsearch<CR>
-
-"select just inserted text
-nnoremap <expr> viy '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''

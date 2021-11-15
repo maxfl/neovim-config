@@ -38,6 +38,7 @@ packer.startup(function()
         --use (require 'packer_cfg.winshift')
         use (require 'packer_cfg.FTerm')
         use {'luukvbaal/stabilize.nvim', config = function() require("stabilize").setup() end, disable=true}
+        use (require 'packer_cfg.bufdelete')
 
     -- Motion
         use (require 'packer_cfg.hop')
@@ -69,6 +70,9 @@ packer.startup(function()
 
         -- terminal
         use {'norcalli/nvim-terminal.lua', config=function() require 'terminal'.setup() end, opt=true, ft='terminal'}
+
+    -- Files and folders
+        use {'jghauser/mkdir.nvim', config = function() require('mkdir') end}
 
     -- Completion
         use (require 'packer_cfg.nvim_cmp')
@@ -102,7 +106,6 @@ packer.startup(function()
         use (require 'packer_cfg.choosewin')
         use (require 'packer_cfg.winteract')
         use (require 'packer_cfg.suckless')
-        use (require 'packer_cfg.bbye')
 
     -- Motion
         use {'inkarkat/vim-JumpToVerticalBlock', requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}}
@@ -177,7 +180,6 @@ packer.startup(function()
         use 'ervandew/archive'
 
         use {'https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', opt=true, cmd='OpenOrCreateFile'}
-        use 'duggiefresh/vim-easydir'
 
         use (require 'packer_cfg.vim_fswitch')
         use (require 'packer_cfg.rnvimr')
