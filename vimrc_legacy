@@ -1,7 +1,6 @@
 " interface
 "set ttimeoutlen=50
 set fillchars=vert:\│,fold:\—,stlnc:\_
-set viminfo^=:1000
 if &listchars ==# 'eol:$'
   set listchars+=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
   if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
@@ -11,37 +10,6 @@ endif
 
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-endif
-
-"completion
-set complete+=k
-set completeopt-=preview
-set completeopt+=longest
-set complete-=i
-au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')
-
-"search
-set grepprg=grep\ -nH\ $*
-
-"language specific
-set commentstring=#%s
-set cpoptions+=d
-
-" Scroll lock
-nnoremap <F2> :w<CR>
-nnoremap <S-F2> :w!<CR>
-inoremap <F2> <ESC>:w<CR>gi
-inoremap <S-F2> <ESC>:w!<CR>gi
-
-" Disable ex mode
-nnoremap Q <nop>
-inoremap <T-F12> <nop>
-" Switchable hlsearch
-" nnoremap <silent> <Leader>/ :nohlsearch<CR>
-
-" Use <C-L> to clear the highlighting of :set hlsearch.
-if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
 if empty(mapcheck('<C-U>', 'i'))
