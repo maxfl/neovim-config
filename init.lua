@@ -37,10 +37,11 @@ vim.cmd[[
         set.hidden=true
         set.number=true
         set.relativenumber=true
-
         set.termguicolors=true
-
         set.switchbuf={'useopen', 'usetab', 'newtab'}
+
+        -- set.listchars:append{ [[tab:>-]], 'trail:-', 'extends:>', 'precedes:<', 'nbsp:+' }
+        vim.cmd[[let &listchars .= ",tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"]]
 
     -- Splitting and field of view
         set.splitbelow=true
