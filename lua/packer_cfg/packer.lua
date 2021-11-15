@@ -120,8 +120,6 @@ packer.startup(function()
         use (require 'packer_cfg.vim_textobj')
         use (require 'packer_cfg.vim_cycle')
         use (require 'packer_cfg.vim_sandwich')
-
-	-- Text objects
 		use (require 'packer_cfg.matchup')
 
     -- Clipboard
@@ -197,6 +195,7 @@ packer.startup(function()
         use (require 'packer_cfg.vim_easy_align')
         use (require 'packer_cfg.vim_transpose')
         use {'inkarkat/vim-AdvancedSorters', opt=true, cmd='SortVisible'}
+        use (require 'packer_cfg.vim_argwrap')
 
     -- Documentation
         use (require 'packer_cfg.zeavim')
