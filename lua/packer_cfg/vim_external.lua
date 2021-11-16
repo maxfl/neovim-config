@@ -1,7 +1,7 @@
 return {
     'itchyny/vim-external',
     opt=true,
-    keys={'n', '<Leader>o'},
+    keys={{'n', '<Leader>o'}},
     config=function()
         local map=vim.api.nvim_set_keymap
         local opts={}

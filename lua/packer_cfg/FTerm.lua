@@ -1,7 +1,10 @@
 return {
     'numtostr/FTerm.nvim',
     opt=true,
-    keys={'nt', '<F12>'},
+    keys={
+        {'n', '<F12>'},
+        {'t', '<F12>'}
+    },
     config=function()
         require'FTerm'.setup{
             border = 'double',
@@ -16,6 +19,5 @@ return {
 
         map('n', '<F12>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
         map('t', '<F12>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
-
     end
 }

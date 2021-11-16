@@ -129,7 +129,7 @@ packer.startup(function()
 
     -- Menus
         use (require 'packer_cfg.ctrlspace')
-        -- use (require 'packer_cfg.wilder')
+        use (require 'packer_cfg.wilder')
 
     -- Search and replace
         use {'tpope/vim-abolish', opt=true, cmd='S'} -- :%S////
@@ -202,7 +202,7 @@ packer.startup(function()
         use (require 'packer_cfg.devdocs')
 
     -- Local plugins
-        use {"~/.config/nvim/bundle_local/SwapText-1.02", opt=true, keys={'n', '<Leader>x'}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
+        use {"~/.config/nvim/bundle_local/SwapText-1.02", opt=true, keys={{'n', '<Leader>x'}}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
         use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', opt=true, ft='txt'}
         use {'~/.config/nvim/bundle_local/txtfmt_v3.1', opt=true, ft='txt'}
     end

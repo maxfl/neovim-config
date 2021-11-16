@@ -5,7 +5,7 @@ return {
         'hrsh7th/cmp-nvim-lsp',                                   -- [✔]
         'hrsh7th/cmp-buffer',                                     -- [ ]
         'hrsh7th/cmp-path',                                       -- [✔]
-        'hrsh7th/cmp-cmdline',                                    -- [✔]
+        -- 'hrsh7th/cmp-cmdline',                                    -- [✔]
         'quangnguyen30192/cmp-nvim-ultisnips',                    -- [✔]
         --{'petertriho/cmp-git', requires='nvim-lua/plenary.nvim'}, -- [ ]
         'hrsh7th/cmp-nvim-lua',                                   -- [✔]
@@ -49,20 +49,20 @@ return {
         })
 
         -- Use buffer source for `/`.
-        cmp.setup.cmdline('/', {
-            sources = {
-                { name = 'buffer' }
-            }
-        })
-
-        -- Use cmdline & path source for ':'.
-        cmp.setup.cmdline(':', {
-            sources = cmp.config.sources({
-                { name = 'path' }
-            }, {
-                    { name = 'cmdline' }
-                })
-        })
+        -- cmp.setup.cmdline('/', {
+        --     sources = {
+        --         { name = 'buffer' }
+        --     }
+        -- })
+        --
+        -- -- Use cmdline & path source for ':'.
+        -- cmp.setup.cmdline(':', {
+        --     sources = cmp.config.sources({
+        --         { name = 'path' }
+        --     }, {
+        --             { name = 'cmdline' }
+        --         })
+        -- })
 
         --vim.cmd[[
             --autocmd FileType lua lua sources=require'cmp'.setup.buffer.sources

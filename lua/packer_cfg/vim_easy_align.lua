@@ -1,7 +1,10 @@
 return {
     'junegunn/vim-easy-align',
     opt=true,
-    keys={'vn', '<Leader>e'},
+    keys={
+        {'v', '<Leader>e'},
+        {'n', '<Leader>e'}
+    },
     config=function()
         local map = vim.api.nvim_set_keymap
         local silent={silent=true}

@@ -2,7 +2,7 @@ return {
     'derekwyatt/vim-fswitch',
     opt=true,
     ft='cpp',
-    keys={'n', '<Leader>a'},
+    keys={{ 'n', '<Leader>a' }},
     setup=function()
         vim.cmd[[
             au! BufEnter *.cpp,*.c,*.C,*.cxx,*.cc,*.CC let b:fswitchdst = 'hpp,h,H,hh,HH,hxx' | let b:fswitchlocs = '../inc,../include'

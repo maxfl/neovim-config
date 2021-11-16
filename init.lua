@@ -1,7 +1,10 @@
 -- TODO:
---   - Move definitions from vimrc_legacy
---   - Move addons from dein to packer
---   - check what is packpath and why it is set
+--   * check what is packpath and why it is set
+--   * plugins
+--      * nvim-cmp commandline completion is broken
+--      * which-key
+--   * configuration
+--      * listchars
 --
 -- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 local map = vim.api.nvim_set_keymap
@@ -14,8 +17,6 @@ vim.g['&packpath'] = vim.g['&runtimepath']
 vim.cmd[[
     syntax on
     filetype on
-
-    source ~/.config/nvim/vimrc_legacy
 ]]
 
 -- Options
@@ -40,8 +41,10 @@ vim.cmd[[
         set.termguicolors=true
         set.switchbuf={'useopen', 'usetab', 'newtab'}
 
-        -- set.listchars:append{ [[tab:>-]], 'trail:-', 'extends:>', 'precedes:<', 'nbsp:+' }
-        vim.cmd[[let &listchars .= ",tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"]]
+        -- set.fillchars:append {vert='│', fold='—', stlnc='_'}
+        set.fillchars:append {vert='┊'}
+        -- set.listchars:append{tab='>-', trail='-', extends='>', precedes='<', nbsp='+'}
+        -- vim.cmd[[let &listchars = "tab:\u21e5.,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"]]
 
     -- Splitting and field of view
         set.splitbelow=true
@@ -52,9 +55,10 @@ vim.cmd[[
 
     -- breaks and wraps
         set.wrap=false
-        set.showbreak='↪'
         set.linebreak=true
         set.colorcolumn='+1'
+        set.showbreak='↪'
+        set.cpoptions:append 'n' -- show break on a numberline
 
         set.formatoptions:append'ro'
 
@@ -75,7 +79,7 @@ vim.cmd[[
 
     -- completion
         set.complete:append 'k'
-        -- set.completeopt:remove 'preview'
+        set.completeopt:remove 'preview'
         -- set.completeopt:append 'longest'
         vim.cmd[[au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')]]
 
@@ -122,7 +126,7 @@ vim.cmd[[
         ]]
 
         set.commentstring='#%s'
-        set.cpoptions:append 'd'
+        set.cpoptions:append 'd' -- ./ in tags means current directory
 
     -- Diff selection
         map('n', 'Dp', ':.diffput<CR>', emptyopts)
@@ -183,6 +187,13 @@ require 'packer_cfg.packer'
 -- git clone --depth 1 https://github.com/wbthomason/packer.nvim \
 --  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 --  or rua install
+
+-- if empty(mapcheck('<C-U>', 'i'))
+--   inoremap <C-U> <C-G>u<C-U>
+-- endif
+-- if empty(mapcheck('<C-W>', 'i'))
+--   inoremap <C-W> <C-G>u<C-W>
+-- endif
 
 --" add <N> empty lines after current from normal mode
 --nnoremap                                        <Leader><CR> o<Esc>`[
