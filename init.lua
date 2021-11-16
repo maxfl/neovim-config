@@ -3,15 +3,13 @@
 --   * plugins
 --      * nvim-cmp commandline completion is broken
 --      * which-key
---   * configuration
---      * listchars
+--      * endwise
 --
 -- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 local map = vim.api.nvim_set_keymap
 local set = vim.opt
 local noremap={noremap=true}
 local emptyopts={}
-
 vim.g['&packpath'] = vim.g['&runtimepath']
 
 vim.cmd[[

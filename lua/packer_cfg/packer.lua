@@ -40,11 +40,14 @@ packer.startup(function()
         use {'luukvbaal/stabilize.nvim', config = function() require("stabilize").setup() end, disable=true}
         use (require 'packer_cfg.bufdelete')
 
+    -- Keys
+        -- use (require 'packer_cfg.whichkey_setup')
+
     -- Motion
         use (require 'packer_cfg.hop')
 
     -- Snippets
-        use (require 'packer_cfg.nvim_autopairs')
+        use (require 'packer_cfg.pears')
 
     -- Highlight
         -- use 'yamatsum/nvim-cursorline'
