@@ -65,6 +65,7 @@ packer.startup(function()
 
     -- Statusline
         use {'windwp/windline.nvim', config=function() require('wlsample.airline') end, requires='lewis6991/gitsigns.nvim' }
+        -- use (require 'packer_cfg.lualine')
 
     -- Filetype
         -- lua
@@ -76,6 +77,8 @@ packer.startup(function()
 
     -- Files and folders
         use {'jghauser/mkdir.nvim', config = function() require('mkdir') end}
+        -- use {'ms-jpq/chadtree', branch='chad', run='python3 -m chadtree deps'}
+        use (require 'packer_cfg.nvim_tree')
 
     -- Completion
         use (require 'packer_cfg.nvim_cmp')

@@ -1,5 +1,6 @@
 return {
     'anott03/nvim-lspinstall',
+    requires='neovim/nvim-lspconfig',
     config=function()
         local nvim_lsp = require('lspconfig')
         local servers = { 'clangd', 'cmake', 'pyright', 'texlab' }
