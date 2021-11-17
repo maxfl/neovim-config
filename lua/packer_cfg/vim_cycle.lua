@@ -40,7 +40,11 @@ return {
         vim.fn['cycle#add_groups']{{{ '{:}', '(:)' }, 'sub_pairs'}}
         vim.fn['cycle#add_groups']{{{'“:”', '‘:’', '„:“', '‚:‘', '«:»'}, 'sub_pairs'}}
 
-        vim.g.cycle_default_groups_for_markdown = {{{ '[  ]', '[ ]', '[✔]', '[✘]', '[✔✘]', '[?]' }}}
+        local checkmarks = {{{'[ ]', '[✔]', '[✘]', '[✔✘]', '[?]' }}}
+        vim.g.cycle_default_groups_for_markdown = checkmarks
+        vim.g.cycle_default_groups_for_python = checkmarks
+        vim.g.cycle_default_groups_for_fish = checkmarks
+        vim.g.cycle_default_groups_for_fish = checkmarks
 
         vim.g.cycle_default_groups_for_gitrebase = {{{'pick', 'reword', 'edit', 'squash', 'fixup', 'exec'}}}
 

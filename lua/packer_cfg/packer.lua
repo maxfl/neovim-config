@@ -34,7 +34,7 @@ packer.startup(function()
         use (require 'packer_cfg.comment')
         use (require 'packer_cfg.indent_blankline')
 
-    -- Windows and floats
+    -- Windows and floats, interface
         --use (require 'packer_cfg.winshift')
         use (require 'packer_cfg.FTerm')
         use {'luukvbaal/stabilize.nvim', config = function() require("stabilize").setup() end, disable=true}
@@ -132,7 +132,7 @@ packer.startup(function()
 
     -- Menus
         use (require 'packer_cfg.ctrlspace')
-        use (require 'packer_cfg.wilder')
+        -- use (require 'packer_cfg.wilder') -- breaks highlighting
 
     -- Search and replace
         use {'tpope/vim-abolish', opt=true, cmd='S'} -- :%S////
