@@ -1,7 +1,12 @@
 vim.cmd [[packadd packer.nvim]]
 local packer=require 'packer'
 
-packer.init{opt_default=false}
+packer.init{
+    opt_default=false,
+    git={
+        clone_timeout=180
+    }
+}
 packer.startup(function()
     local use=packer.use
 -- Lua
@@ -48,6 +53,7 @@ packer.startup(function()
 
     -- Snippets
         use (require 'packer_cfg.pears')
+        use (require 'packer_cfg.tabout')
 
     -- Highlight
         -- use 'yamatsum/nvim-cursorline'
