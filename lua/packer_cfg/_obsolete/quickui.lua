@@ -1,6 +1,5 @@
 return {
     'skywind3000/vim-quickui',
-    opt=true,
     fn='quickui#menu#open',
     setup=function()
         vim.api.nvim_set_keymap('', '<F9>', '<CMD>call quickui#menu#open()<CR>', {})

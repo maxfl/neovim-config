@@ -1,7 +1,6 @@
 return {
   'folke/trouble.nvim',
   requires='kyazdani42/nvim-web-devicons',
-  opt=true,
   cmd='Trouble*',
   config = function()
     require("trouble").setup {

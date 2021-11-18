@@ -1,6 +1,5 @@
 return {
     't9md/vim-choosewin',
-    opt=true,
     keys={{'n', '<leader>-'}},
     config=function()
         vim.g.choosewin_overlay_enable=true

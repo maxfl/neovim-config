@@ -1,6 +1,5 @@
 return {
     'AndrewRadev/linediff.vim',
-    opt=true,
     cmd='Linediff*',
     setup=function()
         local map=vim.api.nvim_set_keymap

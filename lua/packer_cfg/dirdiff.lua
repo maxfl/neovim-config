@@ -1,6 +1,5 @@
 return {
     'will133/vim-dirdiff',
-    opt=true,
     cmd='DirDiff',
     config=function()
         local map = vim.api.nvim_set_keymap

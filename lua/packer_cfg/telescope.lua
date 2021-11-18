@@ -2,7 +2,6 @@ return {
     -- {
         'nvim-telescope/telescope.nvim',
         requires={'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'},
-        opt=true,
         cmd='Telescope',
         setup=function()
             local map, opts = vim.api.nvim_set_keymap, {}

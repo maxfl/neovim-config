@@ -1,6 +1,5 @@
 return {
     't9md/vim-quickhl',
-    opt=true,
     keys={
         {'n', '<Leader>hm'}, {'x', '<Leader>hm'},
         {'n', '<Leader>hn'}, {'x', '<Leader>hn'},

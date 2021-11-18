@@ -1,6 +1,5 @@
 return {
     'junegunn/vim-easy-align',
-    opt=true,
     keys={
         {'v', '<Leader>e'},
         {'n', '<Leader>e'}

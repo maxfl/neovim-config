@@ -1,6 +1,5 @@
 return {
     'numToStr/Comment.nvim',
-    opt=true,
     keys={
         {'', '<Leader>c'},
         {'', '<Leader>b'}

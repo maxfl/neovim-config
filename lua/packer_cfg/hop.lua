@@ -1,7 +1,6 @@
 return {
     'phaazon/hop.nvim',
     branch = 'v1', -- optional but strongly recommended
-    opt=true,
     cmd='Hop*',
     setup = function()
         local map, opts=vim.api.nvim_set_keymap, {}

@@ -1,6 +1,5 @@
 return {
     'segeljakt/vim-isotope',
-    opt=true,
     cmd='IsotopeToggle',
     setup=function()
         vim.g.isotope_use_default_mappings=false

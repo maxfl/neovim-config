@@ -1,6 +1,5 @@
 return {
     'lukas-reineke/indent-blankline.nvim',
-    opt=true,
     ft={'python', 'lua', 'fish'},
     cmd={'IndentBlanklineToggle', 'IndentBlankline*'},
     requires='nvim-treesitter/nvim-treesitter', -- needed for show_current_context

@@ -1,7 +1,6 @@
 return {
     'folke/lua-dev.nvim',
     requires='anott03/nvim-lspinstall',
-    opt=true,
     ft='lua',
     config=function()
         local luadev = require("lua-dev").setup{

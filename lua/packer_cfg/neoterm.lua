@@ -1,6 +1,5 @@
 return {
     'kassio/neoterm',
-    opt=true,
     cond='not vim.o.diff',
     cmd={'Tnew', 'TRepl*'},
     setup=function()

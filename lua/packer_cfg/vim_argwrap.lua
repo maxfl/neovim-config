@@ -1,6 +1,5 @@
 return {
     'foosoft/vim-argwrap',
-    opt=true,
     cmd='ArgWrap',
     setup=function()
         local map=vim.api.nvim_set_keymap

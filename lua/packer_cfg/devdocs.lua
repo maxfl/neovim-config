@@ -1,6 +1,5 @@
 return {
     'rhysd/devdocs.vim',
-    opt=true,
     cmd={'DevDocs', 'DevDocs*'},
     keys={{'n', '<Leader>Z'}},
     config=function()

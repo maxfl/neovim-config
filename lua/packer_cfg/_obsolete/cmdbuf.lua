@@ -1,6 +1,5 @@
 return {
     'notomo/cmdbuf.nvim',
-    opt=true,
     keys={
         {'n', 'q:'},
         {'n', 'ql'},

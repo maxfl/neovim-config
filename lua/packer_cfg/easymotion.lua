@@ -1,6 +1,5 @@
 return {
     'Lokaltog/vim-easymotion',
-    opt=true,
     keys={{'n', '<Leader>m'}},
     config=function()
         local map=vim.api.nvim_set_keymap

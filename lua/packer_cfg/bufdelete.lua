@@ -1,6 +1,5 @@
 return {
     'famiu/bufdelete.nvim',
-    opt=true,
     cmd={'Bdelete', 'Bwipeout'},
     setup=function()
         local map = vim.api.nvim_set_keymap

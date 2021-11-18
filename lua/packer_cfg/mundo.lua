@@ -1,6 +1,5 @@
 return {
     'simnalamburt/vim-mundo',
-    opt=true,
     cmd='MundoToggle',
     setup=function()
         local map = vim.api.nvim_set_keymap

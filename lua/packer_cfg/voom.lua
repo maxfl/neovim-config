@@ -1,6 +1,5 @@
 return {
     'vim-voom/voom',
-    opt=true,
     cmd='VoomToggle'
     setup=function()
         vim.g.voom_ft_modes = {

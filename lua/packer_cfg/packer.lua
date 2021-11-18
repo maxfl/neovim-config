@@ -29,6 +29,8 @@ packer.startup(function()
         --use (require 'packer_cfg.trouble')
 
         --use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}, config=function() require 'navigator'.setup() end}
+        use (require 'packer_cfg.codeactions')
+        use (require 'packer_cfg.symbols_outline')
 
     -- Libraries
         use 'nvim-lua/plenary.nvim'
@@ -75,11 +77,11 @@ packer.startup(function()
 
     -- Filetype
         -- lua
-        use {'rafcamlet/nvim-luapad', opt=true, cmd='Luapad'}
+        use {'rafcamlet/nvim-luapad', cmd='Luapad'}
         use (require 'packer_cfg.lua_dev')
 
         -- terminal
-        use {'norcalli/nvim-terminal.lua', config=function() require 'terminal'.setup() end, opt=true, ft='terminal'}
+        use {'norcalli/nvim-terminal.lua', config=function() require 'terminal'.setup() end, ft='terminal'}
 
     -- Files and folders
         use {'jghauser/mkdir.nvim', config = function() require('mkdir') end}
@@ -98,9 +100,9 @@ packer.startup(function()
         use 'vim-scripts/RelativeNumberCurrentWindow'
 
     -- Indentation
-        use {'thiagoalessio/rainbow_levels.vim', opt=true, cmd='RainbowLevelsToggle'}
-        use {'kien/rainbow_parentheses.vim',     opt=true, cmd='RainbowParenthesesToggle'}
-        use {'ciaranm/detectindent', opt=true, ft='python', config=function() vim.cmd[[au FileType cpp,python :DetectIndent]] end}
+        use {'thiagoalessio/rainbow_levels.vim', cmd='RainbowLevelsToggle'}
+        use {'kien/rainbow_parentheses.vim', cmd='RainbowParenthesesToggle'}
+        use {'ciaranm/detectindent', ft='python', config=function() vim.cmd[[au FileType cpp,python :DetectIndent]] end}
 
     -- Editing
         use (require 'packer_cfg.vim_trailing_whitespace')
@@ -144,8 +146,8 @@ packer.startup(function()
         -- use (require 'packer_cfg.wilder') -- breaks highlighting
 
     -- Search and replace
-        use {'tpope/vim-abolish', opt=true, cmd='S'} -- :%S////
-        use {'vim-scripts/ExplainPattern', opt=true, cmd='ExplainPattern'}
+        use {'tpope/vim-abolish', cmd='S'} -- :%S////
+        use {'vim-scripts/ExplainPattern', cmd='ExplainPattern'}
         use (require 'packer_cfg.quickhl')
         use (require 'packer_cfg.searchhi')
         use (require 'packer_cfg.vim_esearch') -- \ff
@@ -154,28 +156,28 @@ packer.startup(function()
         use (require 'packer_cfg.dirdiff')
         use (require 'packer_cfg.linediff')
         use {'rickhowe/diffchar.vim', cond='vim.o.diff'}
-        use {'rickhowe/spotdiff.vim', cond='vim.o.diff'} --, opt=true, cmd={'Diffthis', 'Diffoff', 'Diffupdate'}}
-        use {'sindrets/diffview.nvim', opt=true, cmd='Diffview*'}
-        use {'gangleri/vim-diffsaved', opt=true, cmd='ToggleDiffSaved'}
-        use {'chrisbra/vim-diff-enhanced', opt=true, cmd='EnhancedDiff'}
+        use {'rickhowe/spotdiff.vim', cond='vim.o.diff'} -- , cmd={'Diffthis', 'Diffoff', 'Diffupdate'}}
+        use {'sindrets/diffview.nvim', cmd='Diffview*'}
+        use {'gangleri/vim-diffsaved', cmd='ToggleDiffSaved'}
+        use {'chrisbra/vim-diff-enhanced', cmd='EnhancedDiff'}
 
     -- Filetype
         -- tex
-        use {'KeitaNakamura/tex-conceal.vim', opt=true, ft={'tex', 'plaintex'}}
+        use {'KeitaNakamura/tex-conceal.vim', ft={'tex', 'plaintex'}}
         use (require 'packer_cfg.vimtex')
 
         -- julia
         use 'JuliaEditorSupport/julia-vim'
-        use {'thinca/vim-prettyprint', opt=true, cmd={'PrettyPrint', 'PP'}}
+        use {'thinca/vim-prettyprint', cmd={'PrettyPrint', 'PP'}}
 
         -- others
-        use {'georgewitteman/vim-fish', opt=true, fg='fish'}
-        use {'vim-scripts/ebnf.vim', opt=true, ft='ebnf'} -- grammar
-        use {'plasticboy/vim-markdown', opt=true, ft='markdown'}
-        use {'kalekundert/vim-coiled-snake', opt=true, ft='python', setup=function() vim.g.coiled_snake_set_foldexpr=false end}
+        use {'georgewitteman/vim-fish', ft='fish'}
+        use {'vim-scripts/ebnf.vim', ft='ebnf'} -- grammar
+        use {'plasticboy/vim-markdown', ft='markdown'}
+        use {'kalekundert/vim-coiled-snake', ft='python', setup=function() vim.g.coiled_snake_set_foldexpr=false end}
 
     -- Spelling and grammar
-        use {'rhysd/vim-grammarous', opt=true, cmd='Grammarous*', config=function() vim.g['grammarous#languagetool_cmd']='languagetool' end}
+        use {'rhysd/vim-grammarous', cmd='Grammarous*', config=function() vim.g['grammarous#languagetool_cmd']='languagetool' end}
 
     -- Terminal
         use (require 'packer_cfg.neoterm')
@@ -185,11 +187,11 @@ packer.startup(function()
 
     -- Files and folders
         use (require 'packer_cfg.mirror')
-        use {'vim-scripts/Rename', opt=true, cmd='Rename'}
+        use {'vim-scripts/Rename', cmd='Rename'}
         use (require 'packer_cfg.sudoedit')
         use 'ervandew/archive'
 
-        use {'https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', opt=true, cmd='OpenOrCreateFile'}
+        use {'https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', cmd='OpenOrCreateFile'}
 
         use (require 'packer_cfg.vim_fswitch')
         use (require 'packer_cfg.rnvimr')
@@ -206,7 +208,7 @@ packer.startup(function()
         use (require 'packer_cfg.vim_table_mode')
         use (require 'packer_cfg.vim_easy_align')
         use (require 'packer_cfg.vim_transpose')
-        use {'inkarkat/vim-AdvancedSorters', opt=true, cmd='SortVisible'}
+        use {'inkarkat/vim-AdvancedSorters', cmd='SortVisible'}
         use (require 'packer_cfg.vim_argwrap')
 
     -- Documentation
@@ -214,9 +216,9 @@ packer.startup(function()
         use (require 'packer_cfg.devdocs')
 
     -- Local plugins
-        use {"~/.config/nvim/bundle_local/SwapText-1.02", opt=true, keys={{'n', '<Leader>x'}}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
-        use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', opt=true, ft='txt'}
-        use {'~/.config/nvim/bundle_local/txtfmt_v3.1', opt=true, ft='txt'}
+        use {"~/.config/nvim/bundle_local/SwapText-1.02", keys={{'n', '<Leader>x'}}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
+        use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', ft='txt'}
+        use {'~/.config/nvim/bundle_local/txtfmt_v3.1', ft='txt'}
     end
 end)
 

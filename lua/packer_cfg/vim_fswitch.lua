@@ -1,6 +1,5 @@
 return {
     'derekwyatt/vim-fswitch',
-    opt=true,
     ft='cpp',
     keys={{ 'n', '<Leader>a' }},
     setup=function()

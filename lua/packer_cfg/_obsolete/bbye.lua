@@ -1,6 +1,5 @@
 return {
     'moll/vim-bbye',
-    opt=true,
     cmd='Bdelete',
     setup=function()
         local map = vim.api.nvim_set_keymap

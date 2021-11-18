@@ -1,6 +1,5 @@
 return {
     'numtostr/FTerm.nvim',
-    opt=true,
     keys={
         {'n', '<F12>'},
         {'t', '<F12>'}
