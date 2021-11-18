@@ -2,7 +2,7 @@ return {
     -- {
         'nvim-telescope/telescope.nvim',
         requires={'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'},
-        cmd='Telescope',
+        cmd = 'Telescope',
         setup=function()
             local map, opts = vim.api.nvim_set_keymap, {}
             map('', '<C-p>', '<CMD>Telescope oldfiles<CR>', opts)

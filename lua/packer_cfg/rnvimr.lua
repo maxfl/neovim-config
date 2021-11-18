@@ -1,6 +1,6 @@
 return {
     'kevinhwang91/rnvimr', branch='main',
-    cmd='RnvimrToggle',
+    cmd = 'RnvimrToggle',
     setup=function()
         local map = vim.api.nvim_set_keymap
         local opts={}

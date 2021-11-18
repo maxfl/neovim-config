@@ -1,6 +1,6 @@
 return {
     'simnalamburt/vim-mundo',
-    cmd='MundoToggle',
+    cmd = 'MundoToggle',
     setup=function()
         local map = vim.api.nvim_set_keymap
         map('n', '<Leader>wu', '<CMD>MundoToggle<CR>', {})

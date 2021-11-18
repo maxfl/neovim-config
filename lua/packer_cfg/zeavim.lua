@@ -1,6 +1,6 @@
 return {
     'kabbamine/zeavim.vim',
-    cmd={'Zeavim', 'Docset', 'Zeavim*'},
+    cmd = {'Zeavim', 'Docset', 'Zeavim*'},
     keys={
         {'n', '<Leader>z'},
         {'n', '<Leader><Leader>z'}

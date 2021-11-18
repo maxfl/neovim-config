@@ -1,6 +1,6 @@
 return {
     'tpope/vim-fugitive',
-    cmd='Git',
+    cmd = 'Git',
     setup = function()
         local map = vim.api.nvim_set_keymap
         local silent={silent=true}

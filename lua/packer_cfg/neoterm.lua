@@ -1,14 +1,14 @@
 return {
     'kassio/neoterm',
     cond='not vim.o.diff',
-    cmd={'Tnew', 'TRepl*'},
+    cmd = {'Tnew', 'TRepl*'},
     setup=function()
         local map=vim.api.nvim_set_keymap
         local opts={}
         map('n', '<M-t>',     '<CMD>Tnew<CR>', opts)
         map('n', '<M-T>',     '<CMD>Tnew<CR>i', opts)
-        map('n', '<Leader>s', '<CMD>TReplSendLine<CR>', opts)
-        map('v', '<Leader>s', '<CMD>TReplSendSelection<CR>', opts)
+        -- map('n', '<Leader>s', '<CMD>TReplSendLine<CR>', opts)
+        -- map('v', '<Leader>s', '<CMD>TReplSendSelection<CR>', opts)
     end,
     config=function()
         vim.g.neoterm_shell = '/usr/bin/fish'

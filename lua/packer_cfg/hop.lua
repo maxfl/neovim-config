@@ -1,7 +1,7 @@
 return {
     'phaazon/hop.nvim',
     branch = 'v1', -- optional but strongly recommended
-    cmd='Hop*',
+    cmd = 'Hop*',
     setup = function()
         local map, opts=vim.api.nvim_set_keymap, {}
         -- map('n', '<Leader>mf', "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", opts)

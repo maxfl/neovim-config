@@ -49,6 +49,7 @@ packer.startup(function()
 
     -- Keys
         -- use (require 'packer_cfg.whichkey_setup')
+        use (require 'packer_cfg.whichkey')
 
     -- Motion
         use (require 'packer_cfg.hop')
@@ -62,6 +63,9 @@ packer.startup(function()
         -- use (require 'packer_cfg.beacon')
         use (require 'packer_cfg.specs') -- hightlight cursor jump
         use (require 'packer_cfg.shade')
+
+    -- Search and replace
+        use (require 'packer_cfg.nvim_spectre')
 
     -- Clipboard
         use 'machakann/vim-highlightedyank'
@@ -77,7 +81,7 @@ packer.startup(function()
 
     -- Filetype
         -- lua
-        use {'rafcamlet/nvim-luapad', cmd='Luapad'}
+        use {'rafcamlet/nvim-luapad', cmd = 'Luapad'}
         use (require 'packer_cfg.lua_dev')
 
         -- terminal
@@ -100,8 +104,8 @@ packer.startup(function()
         use 'vim-scripts/RelativeNumberCurrentWindow'
 
     -- Indentation
-        use {'thiagoalessio/rainbow_levels.vim', cmd='RainbowLevelsToggle'}
-        use {'kien/rainbow_parentheses.vim', cmd='RainbowParenthesesToggle'}
+        use {'thiagoalessio/rainbow_levels.vim', cmd = 'RainbowLevelsToggle'}
+        use {'kien/rainbow_parentheses.vim', cmd = 'RainbowParenthesesToggle'}
         use {'ciaranm/detectindent', ft='python', config=function() vim.cmd[[au FileType cpp,python :DetectIndent]] end}
 
     -- Editing
@@ -146,8 +150,8 @@ packer.startup(function()
         -- use (require 'packer_cfg.wilder') -- breaks highlighting
 
     -- Search and replace
-        use {'tpope/vim-abolish', cmd='S'} -- :%S////
-        use {'vim-scripts/ExplainPattern', cmd='ExplainPattern'}
+        use {'tpope/vim-abolish', cmd = 'S'} -- :%S////
+        use {'vim-scripts/ExplainPattern', cmd = 'ExplainPattern'}
         use (require 'packer_cfg.quickhl')
         use (require 'packer_cfg.searchhi')
         use (require 'packer_cfg.vim_esearch') -- \ff
@@ -156,10 +160,10 @@ packer.startup(function()
         use (require 'packer_cfg.dirdiff')
         use (require 'packer_cfg.linediff')
         use {'rickhowe/diffchar.vim', cond='vim.o.diff'}
-        use {'rickhowe/spotdiff.vim', cond='vim.o.diff'} -- , cmd={'Diffthis', 'Diffoff', 'Diffupdate'}}
-        use {'sindrets/diffview.nvim', cmd='Diffview*'}
-        use {'gangleri/vim-diffsaved', cmd='ToggleDiffSaved'}
-        use {'chrisbra/vim-diff-enhanced', cmd='EnhancedDiff'}
+        use {'rickhowe/spotdiff.vim', cond='vim.o.diff'} -- , cmd = {'Diffthis', 'Diffoff', 'Diffupdate'}}
+        use {'sindrets/diffview.nvim', cmd = 'Diffview*'}
+        use {'gangleri/vim-diffsaved', cmd = 'ToggleDiffSaved'}
+        use {'chrisbra/vim-diff-enhanced', cmd = 'EnhancedDiff'}
 
     -- Filetype
         -- tex
@@ -168,7 +172,7 @@ packer.startup(function()
 
         -- julia
         use 'JuliaEditorSupport/julia-vim'
-        use {'thinca/vim-prettyprint', cmd={'PrettyPrint', 'PP'}}
+        use {'thinca/vim-prettyprint', cmd = {'PrettyPrint', 'PP'}}
 
         -- others
         use {'georgewitteman/vim-fish', ft='fish'}
@@ -177,7 +181,7 @@ packer.startup(function()
         use {'kalekundert/vim-coiled-snake', ft='python', setup=function() vim.g.coiled_snake_set_foldexpr=false end}
 
     -- Spelling and grammar
-        use {'rhysd/vim-grammarous', cmd='Grammarous*', config=function() vim.g['grammarous#languagetool_cmd']='languagetool' end}
+        use {'rhysd/vim-grammarous', cmd = 'Grammarous*', config=function() vim.g['grammarous#languagetool_cmd']='languagetool' end}
 
     -- Terminal
         use (require 'packer_cfg.neoterm')
@@ -187,11 +191,11 @@ packer.startup(function()
 
     -- Files and folders
         use (require 'packer_cfg.mirror')
-        use {'vim-scripts/Rename', cmd='Rename'}
+        use {'vim-scripts/Rename', cmd = 'Rename'}
         use (require 'packer_cfg.sudoedit')
         use 'ervandew/archive'
 
-        use {'https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', cmd='OpenOrCreateFile'}
+        use {'https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', cmd = 'OpenOrCreateFile'}
 
         use (require 'packer_cfg.vim_fswitch')
         use (require 'packer_cfg.rnvimr')
@@ -208,7 +212,7 @@ packer.startup(function()
         use (require 'packer_cfg.vim_table_mode')
         use (require 'packer_cfg.vim_easy_align')
         use (require 'packer_cfg.vim_transpose')
-        use {'inkarkat/vim-AdvancedSorters', cmd='SortVisible'}
+        use {'inkarkat/vim-AdvancedSorters', cmd = 'SortVisible'}
         use (require 'packer_cfg.vim_argwrap')
 
     -- Documentation

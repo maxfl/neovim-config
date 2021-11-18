@@ -6,7 +6,7 @@ return {
         {'n', '<Leader>hM'}, {'x', '<Leader>hM'},
         {'n', '<Leader>hN'}, {'x', '<Leader>hN'},
     },
-    cmd='QuickhlManual*',
+    cmd = 'QuickhlManual*',
     config=function()
         local map=vim.api.nvim_set_keymap
         local opts={}

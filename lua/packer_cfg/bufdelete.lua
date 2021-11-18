@@ -1,6 +1,6 @@
 return {
     'famiu/bufdelete.nvim',
-    cmd={'Bdelete', 'Bwipeout'},
+    cmd = {'Bdelete', 'Bwipeout'},
     setup=function()
         local map = vim.api.nvim_set_keymap
         local noremap={noremap=true}
