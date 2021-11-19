@@ -112,7 +112,7 @@ packer.startup(function()
 
     -- Editing
         use (require 'packer_cfg.vim_trailing_whitespace')
-        use 'mg979/vim-visual-multi'
+        use (require 'packer_cfg.vim_visual_multi')
         use 'kopischke/vim-fetch' -- jump to file:line:number
         use (require 'packer_cfg.mundo')
         use (require 'packer_cfg.textmanip')
