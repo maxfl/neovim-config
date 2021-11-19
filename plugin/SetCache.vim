@@ -35,7 +35,8 @@ if exists('+undofile')
   set undofile
 endif
 
-" call VimSetCacheAuto()
+call VimSetCacheAuto()
+
 " augroup SetCache
 "     au!
 "     au DirChanged * call VimSetCacheAuto()
