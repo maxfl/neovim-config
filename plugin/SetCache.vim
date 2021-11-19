@@ -21,15 +21,22 @@ fun! VimSetCache(dir, setshada)
     endif
 endf
 
-if isdirectory(expand('~/.cache/vim'))
-    call VimSetCache(expand('~/.cache/vim'), v:false)
-endif
+" if isdirectory(expand('~/.cache/vim'))
+"     call VimSetCache(expand('~/.cache/vim'), v:false)
+" endif
 
-if isdirectory('.vimcache')
-    call VimSetCache('.vimcache', v:true)
-end
+fun! VimSetCacheAuto()
+    if isdirectory('.vimcache')
+        call VimSetCache('.vimcache', v:true)
+    end
+endfunction
 
 if exists('+undofile')
   set undofile
 endif
 
+call VimSetCacheAuto()
+augroup SetCache
+    au!
+    au DirChanged * call VimSetCacheAuto()
+augroup END

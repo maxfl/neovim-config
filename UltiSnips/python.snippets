@@ -93,15 +93,15 @@ try:
 	$0${VISUAL}
 except:
 	import IPython
-	IPython.embed(header='Embed on exception')
+	IPython.embed(header='Embed on exception', colors='neutral')
 endsnippet
 
 snippet embed "Embed IPython here"
-import IPython; IPython.embed()
+import IPython; IPython.embed(colors='neutral')
 endsnippet
 
 snippet Embed "Embed IPython here"
-import IPython; IPython.embed(header='$0')
+import IPython; IPython.embed(header='$0', colors='neutral')
 endsnippet
 
 snippet pdb "Start PDB debugger"
