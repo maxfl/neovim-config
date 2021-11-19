@@ -72,8 +72,9 @@ packer.startup(function()
         -- use (require 'packer_cfg.neoclip')
         use (require 'packer_cfg.nvim_miniyank')
 
-    -- VCS
+    -- VCS and Project
         use {'lewis6991/gitsigns.nvim', config=function() require('gitsigns').setup() end, requires='nvim-lua/plenary.nvim'}
+        use (require 'packer_cfg.project')
 
     -- Statusline
         use {'windwp/windline.nvim', config=function() require('wlsample.airline') end, requires='lewis6991/gitsigns.nvim' }
@@ -82,7 +83,8 @@ packer.startup(function()
     -- Filetype
         -- lua
         use {'rafcamlet/nvim-luapad', cmd = 'Luapad'}
-        use (require 'packer_cfg.lua_dev')
+        -- use (require 'packer_cfg.lua_dev')
+        use (require 'packer_cfg.nlua')
 
         -- terminal
         use {'norcalli/nvim-terminal.lua', config=function() require 'terminal'.setup() end, ft='terminal'}

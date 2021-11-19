@@ -11,6 +11,7 @@ return {
             map('', '<Leader>]k', '<CMD>Telescope keymaps<CR>', opts)
             map('', '<Leader>]c', '<CMD>Telescope commands<CR>', opts)
             map('', '<Leader>]b', '<CMD>Telescope buffers<CR>', opts)
+            map('', '<Leader>]p', '<CMD>Telescope projects<CR>', opts)
         end
     }
     -- ,
