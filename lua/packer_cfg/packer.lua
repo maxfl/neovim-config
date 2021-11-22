@@ -94,6 +94,7 @@ packer.startup(function()
         use {'jghauser/mkdir.nvim', config = function() require('mkdir') end}
         -- use {'ms-jpq/chadtree', branch='chad', run='python3 -m chadtree deps'}
         use (require 'packer_cfg.nvim_tree')
+        use (require 'packer_cfg.firenvim')
 
     -- Completion
         use (require 'packer_cfg.nvim_cmp')
