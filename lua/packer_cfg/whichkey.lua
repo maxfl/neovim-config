@@ -15,6 +15,8 @@ return {
                 c = "commands" ,
                 b = "buffers" ,
                 p = "projects" ,
+                r = "readme" ,
+                d = "docs" ,
             },
         },
     })

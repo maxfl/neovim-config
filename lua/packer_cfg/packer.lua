@@ -36,6 +36,7 @@ packer.startup(function()
         use 'nvim-lua/plenary.nvim'
         use {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
         use (require 'packer_cfg.telescope')
+        use (require 'packer_cfg.telescope_rtp')
 
     -- Editing
         use (require 'packer_cfg.comment')
