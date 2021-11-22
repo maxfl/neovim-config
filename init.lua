@@ -178,6 +178,10 @@ vim.cmd[[
         map('i', '<F2>',   '<CMD>w<CR>gi',  noremap)
         map('i', '<S-F2>', '<CMD>w!<CR>gi', noremap)
 
+    -- Edit new file based on a word under cursor
+        map('n', '<Leader>gf', '<CMD>e <cfile><CR>', noremap)
+        map('n', '<Leader>gF', '<CMD>tabe <cfile><CR>', noremap)
+
 -- Plugins
 require 'packer_cfg.packer'
 
@@ -207,10 +211,6 @@ require 'packer_cfg.packer'
 
 --" SourceRange
 --noremap                                         <Leader>S :SourceRange<CR>
-
---" Edit new file based on a word under cursor
---noremap                                         <Leader>gf :e <cfile><CR>
---noremap                                         <Leader>gF :tabe <cfile><CR>
 
 --" Complete from the normal mode
 --nmap                                            <Leader><C-x> ea<C-x>
