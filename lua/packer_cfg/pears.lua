@@ -11,16 +11,20 @@ return {
             --
             -- Tex
             --
+            -- conf.pair('\\(', '\\)')
+            -- conf.pair('\\[', '\\]')
             conf.pair('$', '$')
             conf.pair(',,', '``')
             conf.pair('`', "'")
             conf.pair('<<', ">>")
 
-            local tex={filetypes={'tex'}}
+            local tex={filetypes='tex'}
             conf.pair('$', tex)
             conf.pair(',,', tex)
             conf.pair('`', tex)
             conf.pair('<<', tex)
+            -- conf.pair('\\(', tex)
+            -- conf.pair('\\[', tex)
 
             --
             -- Lua

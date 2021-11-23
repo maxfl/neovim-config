@@ -6,7 +6,6 @@ return {
         local noremap={noremap=true}
 
         vim.g.vimtex_view_method='zathura'
-        --vim.g.vimtex_imaps_enabled=false
         vim.g.vimtex_view_use_temp_files=true
 
         if vim.fn.exepath('nvr')~='' then
@@ -22,6 +21,15 @@ return {
             'inputenc package ignored with utf8 based engines'
         }
 
+        --vim.g.vimtex_imaps_enabled=false
         vim.g.vimtex_imaps_leader='/'
+
+        vim.cmd[=[
+            augroup VimtexFix
+                au!
+                au BufEnter,BufRead *.tex silent! iunmap <buffer> ]]
+                au FileType tex silent! iunmap <buffer> ]]
+            augroup END
+        ]=]
     end
 }
