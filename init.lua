@@ -182,6 +182,9 @@ vim.cmd[[
         map('n', '<Leader>gf', '<CMD>e <cfile><CR>', noremap)
         map('n', '<Leader>gF', '<CMD>tabe <cfile><CR>', noremap)
 
+    -- Shell
+        vim.env.SHLVL=tostring(vim.env.SHLVL-1) -- Reduce SHLVL
+
 -- Plugins
 require 'packer_cfg.packer'
 
