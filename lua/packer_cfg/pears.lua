@@ -9,6 +9,13 @@ return {
             conf.pair('«', '»')
 
             --
+            -- Lua
+            --
+            conf.pair('[=[',  {close=']=]',  filetypes={'lua'}})
+            conf.pair('[==[', {close=']==]', filetypes={'lua'}})
+            -- conf.pair('function()', 'end')
+
+            --
             -- Tex
             --
             conf.pair('$',  {close='$',  filetypes={'tex'}})
@@ -16,13 +23,6 @@ return {
             conf.pair('`',  {close="'",  filetypes={'tex'}})
             conf.pair('<<', {close='>>', filetypes={'tex'}})
             conf.pair('\\(', {close='\\)', filetypes={'tex'}})
-
-            --
-            -- Lua
-            --
-            conf.pair('[=[',  {close=']=]',  filetypes={'lua'}})
-            conf.pair('[==[', {close=']==]', filetypes={'lua'}})
-            -- conf.pair('function()', 'end')
         end)
     end
 }

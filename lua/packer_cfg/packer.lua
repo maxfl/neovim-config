@@ -17,7 +17,7 @@ packer.startup(function()
     -- Colocschemes
         use (require 'packer_cfg.colorscheme')
 
-    -- Tree sitter
+    -- -- Tree sitter
         use (require 'packer_cfg.nvim_treesitter')
         use {'romgrk/nvim-treesitter-context', requires='nvim-treesitter/nvim-treesitter'}
         use (require 'packer_cfg.nvim_treesitter_textobjects')
