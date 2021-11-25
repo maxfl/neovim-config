@@ -11,32 +11,18 @@ return {
             --
             -- Tex
             --
-            -- conf.pair('\\(', '\\)')
-            -- conf.pair('\\[', '\\]')
-            conf.pair('$', '$')
-            conf.pair(',,', '``')
-            conf.pair('`', "'")
-            conf.pair('<<', ">>")
-
-            local tex={filetypes='tex'}
-            conf.pair('$', tex)
-            conf.pair(',,', tex)
-            conf.pair('`', tex)
-            conf.pair('<<', tex)
-            -- conf.pair('\\(', tex)
-            -- conf.pair('\\[', tex)
+            conf.pair('$',  {close='$',  filetypes={'tex'}})
+            conf.pair(',,', {close='``', filetypes={'tex'}})
+            conf.pair('`',  {close="'",  filetypes={'tex'}})
+            conf.pair('<<', {close='>>', filetypes={'tex'}})
+            conf.pair('\\(', {close='\\)', filetypes={'tex'}})
 
             --
             -- Lua
             --
-            local lua={filetypes='lua'}
-            conf.pair('[=[', ']=]')
-            conf.pair('[==[', ']==]')
+            conf.pair('[=[',  {close=']=]',  filetypes={'lua'}})
+            conf.pair('[==[', {close=']==]', filetypes={'lua'}})
             -- conf.pair('function()', 'end')
-
-            conf.pair('[=[', lua)
-            conf.pair('[==[', lua)
-            -- conf.pair('function()', lua)
         end)
     end
 }
