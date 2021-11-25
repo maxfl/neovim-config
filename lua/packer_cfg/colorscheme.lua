@@ -1,30 +1,20 @@
-vim.cmd[[
-    function! UpdateColorscheme()
-        hi LineNr ctermbg=darkgray guibg=black
-        "hi FoldColumn ctermbg=darkgray guibg=black
-        "hi SignColumn ctermbg=darkgray guibg=black
-        hi Pmenu guibg=#808080
-        hi VertSplit guifg=#808080
-    endfunction
-]]
-
 return {
     'marko-cerovac/material.nvim',
-    setup=function()
-        vim.g.material_style='oceanic'
-    end,
     config=function()
+        vim.g.material_style='oceanic'
         require 'material'.setup{
             borders=true, -- does not work
             popup_menu='colorful',
             italics = {
                 keywords = true
+            },
+            custom_highlights = {
+                LineNr = {bg='black'},
+                Pmenu = {bg='#808080'},
+                VertSplit = {bg='#808080'}
             }
         }
-        vim.cmd[[
-            colorscheme material
-            call UpdateColorscheme()
-        ]];
+        vim.cmd[[colorscheme material]];
     end
 }
 
@@ -34,7 +24,6 @@ return {
 --         vim.cmd[[
 --                 colorscheme lucius
 --                 LuciusBlack
---                 call UpdateColorscheme()
 --             ]];
 --     end
 -- }
