@@ -16,7 +16,10 @@ return {
     config=function()
         require 'material'.setup{
             borders=true, -- does not work
-            popup_menu='colorful'
+            popup_menu='colorful',
+            italics = {
+                keywords = true
+            }
         }
         vim.cmd[[
             colorscheme material
