@@ -57,7 +57,7 @@ packer.startup(function()
 
     -- Snippets
         use (require 'packer_cfg.pears')
-        use (require 'packer_cfg.tabout')
+        -- use (require 'packer_cfg.tabout')
 
     -- Highlight
         -- use 'yamatsum/nvim-cursorline'
