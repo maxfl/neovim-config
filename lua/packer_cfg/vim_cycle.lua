@@ -12,22 +12,22 @@ return {
         map('v', '+', '<Plug>CyclePrev', silent)
 
         vim.fn['cycle#add_groups']{
-            { '₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉' },
-            { '⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹' }
+            {'₉', '₈', '₇', '₆', '₅', '₄', '₃', '₂', '₁', '₀'},
+            {'⁹', '⁸', '⁷', '⁶', '⁵', '⁴', '³', '²', '¹', '⁰'}
         }
 
         vim.fn['cycle#add_groups']{
-            { 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' },
-            { 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' },
-            { 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' },
-            { 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' },
-            { 'black', 'white', 'grey', 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow' },
-            { 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine' },
+            {'Sunday', 'Saturday', 'Friday', 'Thursday', 'Wednesday', 'Tuesday', 'Monday'},
+            {'Sun', 'Sat', 'Fri', 'Thu', 'Wed', 'Tue', 'Mon'},
+            {'December', 'November', 'October', 'September', 'August', 'July', 'June', 'May', 'April', 'March', 'February', 'January'},
+            {'Dec', 'Nov', 'Oct', 'Sep', 'Aug', 'Jul', 'Jun', 'May', 'Apr', 'Mar', 'Feb', 'Jan'},
+            {'yellow', 'magenta', 'cyan', 'blue', 'green', 'red', 'grey', 'white', 'black'},
+            {'nine', 'eight', 'seven', 'six', 'five', 'four', 'three', 'two', 'one', 'zero'},
         }
 
         vim.fn['cycle#add_groups']{
-            {{ 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье' }, 'match_case', 'hard_case'},
-            {{ 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье' }, 'match_case', 'hard_case'}
+            {{'Воскресенье', 'Суббота', 'Пятница', 'Четверг', 'Среда', 'Вторник', 'Понедельник'}, 'match_case', 'hard_case'},
+            {{'воскресенье', 'суббота', 'пятница', 'четверг', 'среда', 'вторник', 'понедельник'}, 'match_case', 'hard_case'}
         }
 
         vim.fn['cycle#add_groups']{
@@ -73,6 +73,6 @@ return {
             {{[[\begin{align}:\end{align}]], [[\begin{multline}:\end{multline}]]}, 'sub_pairs', 'hard_case', 'match_case'},
         }
 
-        vim.g.cycle_default_groups_for_lua = {{{ '[[:]]', '[=[:]=]',  '[==[:]==]'}, 'sub_pairs'}}
+        vim.g.cycle_default_groups_for_lua = {{{ '[[:]]', '[=[:]=]', '[==[:]==]', '[===[:]===]'}, 'sub_pairs'}}
     end
 }
