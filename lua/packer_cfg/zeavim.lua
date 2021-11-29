@@ -4,7 +4,7 @@ return {
     keys={
         {'n', '<Leader>z'},
         {'v', '<Leader>z'},
-        {'n', '<Leader><Leader>z'}
+        -- {'n', '<Leader><Leader>z'}
     },
     setup=function()
         vim.cmd[[

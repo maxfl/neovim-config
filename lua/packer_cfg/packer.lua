@@ -47,6 +47,7 @@ packer.startup(function()
         use (require 'packer_cfg.FTerm')
         use {'luukvbaal/stabilize.nvim', config = function() require("stabilize").setup() end, disable=true}
         use (require 'packer_cfg.bufdelete')
+        use (require 'packer_cfg.focus')
 
     -- Keys
         -- use (require 'packer_cfg.whichkey_setup')
@@ -86,6 +87,7 @@ packer.startup(function()
         use {'rafcamlet/nvim-luapad', cmd = 'Luapad'}
         -- use (require 'packer_cfg.lua_dev')
         use (require 'packer_cfg.nlua')
+        use {'ellisonleao/glow.nvim', ft='markdown'}
 
         -- terminal
         use {'norcalli/nvim-terminal.lua', config=function() require 'terminal'.setup() end, ft='terminal'}
