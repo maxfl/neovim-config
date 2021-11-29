@@ -43,11 +43,11 @@ packer.startup(function()
         use (require 'packer_cfg.indent_blankline')
 
     -- Windows and floats, interface
-        --use (require 'packer_cfg.winshift')
         use (require 'packer_cfg.FTerm')
         use {'luukvbaal/stabilize.nvim', config = function() require("stabilize").setup() end, disable=true}
         use (require 'packer_cfg.bufdelete')
         use (require 'packer_cfg.focus')
+        use (require 'packer_cfg.winshift')
 
     -- Keys
         -- use (require 'packer_cfg.whichkey_setup')

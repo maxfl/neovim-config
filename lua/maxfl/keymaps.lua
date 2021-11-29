@@ -10,11 +10,15 @@ local map = vim.api.nvim_set_keymap
 local noremap={noremap=true}
 map('i', '<F3>', '<C-^><CMD>call KeyMapHLinsert()<CR>', noremap)
 map('c', '<F3>', '<C-^><CMD>call KeyMapHLcmd()<CR>', noremap)
+map('i', '<M-Space>', '<C-^><CMD>call KeyMapHLinsert()<CR>', noremap)
+map('c', '<M-Space>', '<C-^><CMD>call KeyMapHLcmd()<CR>', noremap)
+map('i', '<S-Space>', '<C-^><Space><CMD>call KeyMapHLinsert()<CR>', noremap)
+map('c', '<S-Space>', '<C-^><Space><CMD>call KeyMapHLcmd()<CR>', noremap)
 map('i', '<C-Space>', '<C-^><Space><CMD>call KeyMapHLinsert()<CR>', noremap)
 map('c', '<C-Space>', '<C-^><Space><CMD>call KeyMapHLcmd()<CR>', noremap)
 
 vim.cmd[[
-    function KeyMapHLinsert()
+    function! KeyMapHLinsert()
         if &iminsert>0
             hi LineNr guibg=#004000
         else
@@ -22,7 +26,7 @@ vim.cmd[[
         endif
         redraw
     endfunction
-    function KeyMapHLcmd()
+    function! KeyMapHLcmd()
         if $imcmdline
             hi MsgArea guibg=#004000
         else
@@ -30,13 +34,13 @@ vim.cmd[[
         endif
         redraw
     endfunction
-    function KeymapDisable()
+    function! KeymapDisable()
         if &iminsert
             call feedkeys("\<C-^>")
             set iminsert=0
         endif
     endfunction
-    function KeymapHLTex()
+    function! KeymapHLTex()
         imap <buffer> \ \<CMD>call KeymapDisable()<CR>
     endfunction
     augroup KeymapHL

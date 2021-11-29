@@ -46,7 +46,10 @@ return {
                 i = 'winteract',
                 t = 'toggle focus',
                 ['='] = 'equalise (focus)',
-                ['c'] = 'choosewin'
+                c = 'choosewin',
+                m = 'move (winshift)',
+                M = 'swap (winshift)',
+                s = 'symbols',
             },
             g = '+git',
         },

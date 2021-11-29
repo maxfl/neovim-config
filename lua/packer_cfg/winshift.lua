@@ -11,7 +11,25 @@ return {
                 cursorline = false,
                 cursorcolumn = false,
                 colorcolumn = "",
-            }
+            },
+            window_picker_ignore = {
+                -- This table allows you to indicate to the window picker that a window
+                -- should be ignored if its buffer matches any of the following criteria.
+                filetype = {  -- List of ignored file types
+                    "NvimTree",
+                },
+                buftype = {   -- List of ignored buftypes
+                    "terminal",
+                    "quickfix",
+                },
+                bufname = {   -- List of regex patterns matching ignored buffer names
+                    [[.*foo/bar/baz\.qux]]
+                },
+            },
         }
+
+        local map, noremap=vim.api.nvim_set_keymap, {noremap=true}
+        map('n', '<Leader>wm', '<CMD>WinShift<CR>', noremap)
+        map('n', '<Leader>wM', '<CMD>WinShift swap<CR>', noremap)
     end
 }
