@@ -12,7 +12,10 @@ return {
         map('n', '<M-w>', '<CMD>close<CR>', silent)
         map('n', '<M-S-w>', '<CMD>Bdelete<CR>', silent)
 
+        map('n', '<M-m>', '<CMD>FocusMaximise<CR>', silent)
+
         map('n', '<Leader>wt', '<CMD>FocusToggle<CR>', silent)
         map('n', '<Leader>w=', '<CMD>FocusEqualise<CR>', silent)
+        map('n', '<Leader>wf', '<CMD>FocusMaximise<CR>', silent)
     end
 }
