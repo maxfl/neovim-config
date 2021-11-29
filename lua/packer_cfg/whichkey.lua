@@ -41,6 +41,13 @@ return {
                 l = 'linediff',
                 r = 'reset linediff',
             },
+            w = {
+                name = '+window',
+                i = 'winteract',
+                t = 'toggle focus',
+                ['='] = 'equalise (focus)',
+                ['c'] = 'choosewin'
+            },
             g = '+git',
         },
     })

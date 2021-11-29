@@ -10,5 +10,9 @@ return {
         map('n', '<M-l>', '<CMD>FocusSplitRight<CR>', silent)
 
         map('n', '<M-w>', '<CMD>close<CR>', silent)
+        map('n', '<M-S-w>', '<CMD>Bdelete<CR>', silent)
+
+        map('n', '<Leader>wt', '<CMD>FocusToggle<CR>', silent)
+        map('n', '<Leader>w=', '<CMD>FocusEqualise<CR>', silent)
     end
 }

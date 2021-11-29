@@ -128,7 +128,6 @@ packer.startup(function()
     -- Windows
         use (require 'packer_cfg.choosewin')
         use (require 'packer_cfg.winteract')
-        use (require 'packer_cfg.suckless')
 
     -- Motion
         use {'inkarkat/vim-JumpToVerticalBlock', requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}}
