@@ -21,8 +21,8 @@ return {
             'inputenc package ignored with utf8 based engines'
         }
 
-        --vim.g.vimtex_imaps_enabled=false
-        vim.g.vimtex_imaps_leader='/'
+        vim.g.vimtex_imaps_enabled=false
+        -- vim.g.vimtex_imaps_leader='/'
 
         vim.cmd[=[
             augroup VimtexFix
