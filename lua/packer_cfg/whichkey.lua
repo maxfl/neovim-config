@@ -5,18 +5,23 @@ return {
     wk.setup{}
 
     wk.register({
-        ["<leader>"] = {
+        ['<leader>'] = {
             ['-'] = 'choosewin',
             [']'] = {
-                name = "+telescope",
-                o = "old files" ,
-                f = "find files" ,
-                k = "keymaps" ,
-                c = "commands" ,
-                b = "buffers" ,
-                p = "projects" ,
-                r = "readme" ,
-                d = "docs" ,
+                name = '+telescope',
+                ['/'] = 'fuzzy find (buffer)',
+                P = 'plugins',
+                b = 'buffers',
+                c = 'commands',
+                d = 'docs',
+                f = 'find files',
+                h = 'heading',
+                k = 'keymaps',
+                o = 'old files',
+                p = 'projects',
+                -- r = 'readme',
+                s = 'symbols',
+                t = 'telescope',
             },
             ['='] = {
                 name = '+conflicts',

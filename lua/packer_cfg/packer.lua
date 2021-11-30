@@ -150,7 +150,7 @@ packer.startup(function()
         use {'inkarkat/vim-RepeatableYank', requires={'inkarkat/vim-ingo-library', 'tpope/vim-repeat', 'inkarkat/vim-visualrepeat'} }
 
     -- Menus
-        use (require 'packer_cfg.ctrlspace')
+        -- use (require 'packer_cfg.ctrlspace')
         -- use (require 'packer_cfg.wilder') -- breaks highlighting
 
     -- Search and replace
