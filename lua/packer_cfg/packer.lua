@@ -50,7 +50,6 @@ packer.startup(function()
         use (require 'packer_cfg.winshift')
 
     -- Keys
-        -- use (require 'packer_cfg.whichkey_setup')
         use (require 'packer_cfg.whichkey')
 
     -- Motion
@@ -91,6 +90,9 @@ packer.startup(function()
 
         -- terminal
         use {'norcalli/nvim-terminal.lua', config=function() require 'terminal'.setup() end, ft='terminal'}
+
+        -- tex
+        -- use (require 'packer_cfg.nabla')
 
     -- Files and folders
         use {'jghauser/mkdir.nvim', config = function() require('mkdir') end}

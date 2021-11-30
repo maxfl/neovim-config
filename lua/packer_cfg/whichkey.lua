@@ -13,7 +13,7 @@ return {
                 P = 'plugins',
                 b = 'buffers',
                 c = 'commands',
-                d = 'docs',
+                -- d = 'docs',
                 f = 'find files',
                 h = 'heading',
                 k = 'keymaps',
@@ -47,6 +47,11 @@ return {
                 r = 'reset linediff',
             },
             g = '+git',
+            l={
+                name='+latex',
+                p='->ascii',
+                P='->ascii preview'
+            },
             w = {
                 name = '+window',
                 i = 'winteract',
