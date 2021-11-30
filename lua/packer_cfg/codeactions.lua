@@ -3,6 +3,6 @@ return {
     cmd = 'CodeActionMenu',
     setup=function()
         local map = vim.api.nvim_set_keymap
-        map('n', '<Leader>wa', '<CMD>CodeActionMenu<CR>', {})
+        map('n', '<Leader>ua', '<CMD>CodeActionMenu<CR>', {})
     end
 }

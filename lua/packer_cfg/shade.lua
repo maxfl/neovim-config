@@ -8,7 +8,7 @@ return {
             keys = {
                 brightness_up    = '<C-Up>',
                 brightness_down  = '<C-Down>',
-                toggle           = '<Leader>wS',
+                toggle           = '<Leader>us',
             }
         }
     end

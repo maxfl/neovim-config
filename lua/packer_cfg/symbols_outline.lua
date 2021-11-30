@@ -3,6 +3,6 @@ return {
     cmd = {'SymbolsOutline', 'SymbolsOutline*'},
     setup=function()
         local map = vim.api.nvim_set_keymap
-        map('n', '<Leader>ws', '<CMD>SymbolsOutline<CR>', {})
+        map('n', '<Leader>os', '<CMD>SymbolsOutline<CR>', {})
     end
 }
