@@ -48,7 +48,6 @@ packer.startup(function()
         use (require 'packer_cfg.bufdelete')
         use (require 'packer_cfg.focus')
         use (require 'packer_cfg.winshift')
-        use (require 'packer_cfg.bufferline')
 
     -- Keys
         -- use (require 'packer_cfg.whichkey_setup')
