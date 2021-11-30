@@ -61,10 +61,10 @@ return {
             p = {
                 name = '+packer',
                 C = { '<CMD>PackerClean<CR>', 'Clean'},
-                S = { '<CMD>PackerSync<CR>', 'Sync'},
                 c = { '<CMD>PackerCompile<CR>', 'compile'},
                 i = { '<CMD>PackerInstall<CR>', 'install'},
-                s = { '<CMD>PackerStatus<CR>', 'status'},
+                p = { '<CMD>PackerStatus<CR>', 'status'},
+                s = { '<CMD>PackerSync<CR>', 'Sync'},
                 u = { '<CMD>PackerUpdate<CR>', 'update'},
             },
             u = {
