@@ -26,14 +26,14 @@ vim.cmd[[
         endif
         redraw
     endfunction
-    function! KeyMapHLcmd()
-        if $imcmdline
-            hi MsgArea guibg=#004000
-        else
-            hi MsgArea guibg=black
-        endif
-        redraw
-    endfunction
+    "function! KeyMapHLcmd()
+    "    if $imcmdline
+    "        hi MsgArea guibg=#004000
+    "    else
+    "        hi MsgArea guibg=black
+    "    endif
+    "    redraw
+    "endfunction
     function! KeymapDisable()
         if &iminsert
             call feedkeys("\<C-^>")
@@ -46,7 +46,8 @@ vim.cmd[[
     augroup KeymapHL
         au!
         au OptionSet iminsert,imsearch call KeyMapHLinsert()
-        au OptionSet imcmdline         call KeyMapHLcmd()
+        au OptionSet imcmdline         call KeyMapHLinsert()
+        " au OptionSet imcmdline         call KeyMapHLcmd()
 
         au BufRead,BufEnter *.tex call KeymapHLTex()
         au FileType tex,plaintex  call KeymapHLTex()
