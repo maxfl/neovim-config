@@ -19,7 +19,12 @@ vim.cmd[[
 
 -- Options
     -- GUI
-        set.guifont='MesloLGSDZ Nerd Font Mono:h12,Monospace:h12,Mono:h12'
+        set.guifont={
+            'MesloLGS NF:h12',
+            'MesloLGSDZ Nerd Font Mono:h12',
+            'Monospace:h12',
+            'Mono:h12'
+        }
 
     -- Behaviour
         set.autowrite=true

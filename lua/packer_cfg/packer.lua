@@ -1,7 +1,7 @@
 vim.cmd [[packadd packer.nvim]]
 local packer=require 'packer'
 
-packer.init{
+ packer.init{
     opt_default=false,
     git={
         clone_timeout=180
@@ -48,6 +48,7 @@ packer.startup(function()
         use (require 'packer_cfg.bufdelete')
         use (require 'packer_cfg.focus')
         use (require 'packer_cfg.winshift')
+        use (require 'packer_cfg.nvim_tabline')
 
     -- Keys
         use (require 'packer_cfg.whichkey')

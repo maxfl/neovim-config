@@ -2,8 +2,11 @@ return {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-        require'nvim-tree'.setup {
-            auto_close = true
+        require 'nvim-tree'.setup {
+            auto_close = true,
+            update_focused_file = {
+                enable = true
+            }
         }
 
         local map, opts = vim.api.nvim_set_keymap, {}

@@ -46,7 +46,15 @@ return {
                 l = 'linediff',
                 r = 'reset linediff',
             },
-            g = '+git',
+            g = {
+                name = '+git',
+                C = 'commit all',
+                a = 'add',
+                c = 'commit',
+                t = 'push',
+                h = 'pull',
+                s = 'status',
+            },
             l={
                 name='+latex',
                 p='->ascii',
@@ -77,6 +85,7 @@ return {
                 a = 'code actions',
                 o = 'symbols outline',
                 s = 'toggle shade',
+                p = 'project root',
                 u = 'undo tree',
             }
         },

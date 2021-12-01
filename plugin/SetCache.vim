@@ -1,4 +1,7 @@
-fun! VimSetCache(dir, setshada)
+fun! VimSetCache(dir)
+    if &shadafile!=''
+        return
+    endif
     let l:dir = expand( a:dir )
 
     let l:backupdir=l:dir.'/backup/'
@@ -16,18 +19,18 @@ fun! VimSetCache(dir, setshada)
     if exists('+undodir')
         let &undodir=l:undodir.','.&undodir
     endif
-    if a:setshada
-        let &shadafile=l:dir.'/main.shada'
-    endif
-endf
 
-" if isdirectory(expand('~/.cache/vim'))
-"     call VimSetCache(expand('~/.cache/vim'), v:false)
-" endif
+    let &shadafile=l:dir.'/main.shada'
+    echo 'Set shadafile='.&shadafile
+
+    augroup SetCache
+        au!
+    augroup END
+endf
 
 fun! VimSetCacheAuto()
     if isdirectory('.vimcache')
-        call VimSetCache('.vimcache', v:true)
+        call VimSetCache('.vimcache')
     end
 endfunction
 
@@ -35,9 +38,10 @@ if exists('+undofile')
   set undofile
 endif
 
+augroup SetCache
+    au!
+    au DirChanged * call VimSetCacheAuto()
+augroup END
+
 call VimSetCacheAuto()
 
-" augroup SetCache
-"     au!
-"     au DirChanged * call VimSetCacheAuto()
-" augroup END
