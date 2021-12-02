@@ -35,8 +35,6 @@ packer.startup(function()
     -- Libraries
         use 'nvim-lua/plenary.nvim'
         use {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
-        use (require 'packer_cfg.telescope')
-        use (require 'packer_cfg.telescope_rtp')
 
     -- Editing
         use (require 'packer_cfg.comment')
@@ -49,6 +47,11 @@ packer.startup(function()
         use (require 'packer_cfg.focus')
         use (require 'packer_cfg.winshift')
         use (require 'packer_cfg.nvim_tabline')
+
+    -- Menus
+        use (require 'packer_cfg.telescope')
+        -- use (require 'packer_cfg.telescope_rtp')
+        use (require 'packer_cfg.jabs')
 
     -- Keys
         use (require 'packer_cfg.whichkey')

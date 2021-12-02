@@ -18,7 +18,7 @@ return {
 
             map('', '<C-Space>',  '<CMD>Telescope buffers<CR>', opts)
             map('', '<S-Space>',  '<CMD>Telescope<CR>', opts)
-            map('', '<M-Space>',  '<CMD>Telescope<CR>', opts)
+            -- map('', '<M-Space>',  '<CMD>Telescope<CR>', opts)
         end
     },
     {

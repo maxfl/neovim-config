@@ -83,6 +83,7 @@ return {
             u = {
                 name = '+utils',
                 a = 'code actions',
+                b = 'buffers',
                 o = 'symbols outline',
                 s = 'toggle shade',
                 p = 'project root',
