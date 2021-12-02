@@ -88,6 +88,7 @@ return {
                 s = 'toggle shade',
                 p = 'project root',
                 u = 'undo tree',
+                z = 'zen mode',
             }
         },
     })

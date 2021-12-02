@@ -47,6 +47,7 @@ packer.startup(function()
         use (require 'packer_cfg.focus')
         use (require 'packer_cfg.winshift')
         use (require 'packer_cfg.nvim_tabline')
+        use (require 'packer_cfg.zen_mode')
 
     -- Menus
         use (require 'packer_cfg.telescope')

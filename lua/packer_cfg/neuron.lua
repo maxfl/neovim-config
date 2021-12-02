@@ -1,6 +1,9 @@
 return {
     'oberblastmeister/neuron.nvim',
     requires='nvim-lua/popup.nvim',
+    keys = {
+        {'n', 'gz'}
+    },
     config=function()
         require'neuron'.setup {
             virtual_titles = true,
