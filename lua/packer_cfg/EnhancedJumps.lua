@@ -9,4 +9,7 @@ return function()
     map('n', '<C-I>',         '<Plug>EnhancedJumpsLocalNewer', opts)
     map('n', '<M-p>',         '<Plug>EnhancedJumpsRemoteOlder', opts)
     map('n', '<M-S-p>',       '<Plug>EnhancedJumpsRemoteNewer', opts)
+
+    map('n', '<M-n>', '<CMD>bnext<CR>', opts)
+    map('n', '<M-S-n>', '<CMD>bprev<CR>', opts)
 end
