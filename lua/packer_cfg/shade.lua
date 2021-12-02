@@ -3,11 +3,11 @@ return {
     cond='not vim.o.diff',
     config=function()
         require'shade'.setup{
-            overlay_opacity = 65,
+            overlay_opacity = 55,
             opacity_step = 5,
             keys = {
-                brightness_up    = '<C-Up>',
-                brightness_down  = '<C-Down>',
+                -- brightness_up    = '<C-M-Up>',
+                -- brightness_down  = '<C-M-Down>',
                 toggle           = '<Leader>us',
             }
         }

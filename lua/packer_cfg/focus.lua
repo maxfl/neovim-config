@@ -2,9 +2,11 @@ return {
     'beauwilliams/focus.nvim',
     config=function()
         require 'focus'.setup{
-            cursorline=false,
-            relativenumber=true,
-            absolutenumber_unfocussed=true,
+            bufnew = true,
+            cursorline = false,
+            relativenumber = true,
+            number = true,
+            absolutenumber_unfocussed = true,
         }
 
         local map, silent=vim.api.nvim_set_keymap, {silent = true}
