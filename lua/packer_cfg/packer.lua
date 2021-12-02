@@ -115,9 +115,6 @@ packer.startup(function()
         use 'tpope/vim-repeat'
         use 'inkarkat/vim-visualrepeat'
 
-    -- Interface
-        use 'vim-scripts/RelativeNumberCurrentWindow'
-
     -- Indentation
         use {'thiagoalessio/rainbow_levels.vim', cmd = 'RainbowLevelsToggle'}
         use {'kien/rainbow_parentheses.vim', cmd = 'RainbowParenthesesToggle'}

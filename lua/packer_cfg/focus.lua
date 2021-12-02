@@ -1,7 +1,11 @@
 return {
     'beauwilliams/focus.nvim',
     config=function()
-        require("focus").setup()
+        require 'focus'.setup{
+            cursorline=false,
+            relativenumber=true,
+            absolutenumber_unfocussed=true,
+        }
 
         local map, silent=vim.api.nvim_set_keymap, {silent = true}
         map('n', '<M-h>', '<CMD>FocusSplitLeft<CR>', silent)

@@ -1,5 +1,11 @@
 return {
     'sindrets/winshift.nvim',
+    cmd='WinShift',
+    setup=function()
+        local map, noremap=vim.api.nvim_set_keymap, {noremap=true}
+        map('n', '<Leader>wm', '<CMD>WinShift<CR>', noremap)
+        map('n', '<Leader>wM', '<CMD>WinShift swap<CR>', noremap)
+    end,
     config=function()
         require("winshift").setup{
             highlight_moving_win = true,  -- Highlight the window being moved
@@ -27,9 +33,5 @@ return {
                 },
             },
         }
-
-        local map, noremap=vim.api.nvim_set_keymap, {noremap=true}
-        map('n', '<Leader>wm', '<CMD>WinShift<CR>', noremap)
-        map('n', '<Leader>wM', '<CMD>WinShift swap<CR>', noremap)
     end
 }
