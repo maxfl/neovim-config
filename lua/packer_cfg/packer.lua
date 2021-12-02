@@ -103,6 +103,9 @@ packer.startup(function()
         use (require 'packer_cfg.nvim_tree')
         use (require 'packer_cfg.firenvim')
 
+    -- Tools
+        use (require 'packer_cfg.neuron')
+
     -- Completion
         use (require 'packer_cfg.nvim_cmp')
 
