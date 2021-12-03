@@ -1,13 +1,11 @@
 return {
     't9md/vim-quickhl',
     keys={
-        {'n', '<Leader>hm'}, {'x', '<Leader>hm'},
-        {'n', '<Leader>hn'}, {'x', '<Leader>hn'},
-        {'n', '<Leader>hM'}, {'x', '<Leader>hM'},
-        {'n', '<Leader>hN'}, {'x', '<Leader>hN'},
+        {'n', '<Plug>(quickhl-manual-this)'}, {'x', '<Plug>(quickhl-manual-this)'},
+        {'n', '<Plug>(quickhl-manual-reset)'}, {'x', '<Plug>(quickhl-manual-reset)'},
     },
     cmd = 'QuickhlManual*',
-    config=function()
+    setup=function()
         local map=vim.api.nvim_set_keymap
         local opts={}
         map('n', '<leader>hm', '<Plug>(quickhl-manual-this)', opts)

@@ -1,7 +1,7 @@
 return {
     'kassio/neoterm',
     cond='not vim.o.diff',
-    cmd = {'Tnew', 'TRepl*'},
+    -- cmd = {'Tnew', 'TRepl*'},
     setup=function()
         local map=vim.api.nvim_set_keymap
         local opts={}

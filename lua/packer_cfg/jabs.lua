@@ -1,5 +1,10 @@
 return {
     'matbme/JABS.nvim',
+    cmd = 'JABSOpen',
+    setup = function()
+        -- vim.api.nvim_set_keymap('', '<C-Space>', '<CMD>JABSOpen<CR>', {})
+        vim.api.nvim_set_keymap('', '<Leader>ub', '<CMD>JABSOpen<CR>', {})
+    end,
     config=function()
         -- local ui = vim.api.nvim_list_uis()[1]
 
@@ -21,8 +26,5 @@ return {
             -- col = ui.width,  -- Window appears on the right
             -- row = ui.height/2, -- Window appears in the vertical middle
         }
-
-        -- vim.api.nvim_set_keymap('', '<C-Space>', '<CMD>JABSOpen<CR>', {})
-        vim.api.nvim_set_keymap('', '<Leader>ub', '<CMD>JABSOpen<CR>', {})
     end
 }

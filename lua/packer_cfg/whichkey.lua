@@ -84,10 +84,11 @@ return {
                 name = '+utils',
                 a = 'code actions',
                 b = 'buffers',
-                o = 'symbols outline',
+                o = 'outline (symbols)',
                 s = 'toggle shade',
                 p = 'project root',
                 u = 'undo tree',
+                v = 'outline (voom)',
                 z = 'zen mode',
             }
         },

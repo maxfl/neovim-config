@@ -9,7 +9,7 @@ return {
         vim.g.voom_tab_key = "<C-Tab>"
 
         local map=vim.api.nvim_set_keymap
-        map('n', '<Leader>wo', '<CMD>VoomToggle<CR>', {silent=true})
+        map('n', '<Leader>uv', '<CMD>VoomToggle<CR>', {silent=true})
     end
     config=function()
         vim.g.voom_tree_width = 60

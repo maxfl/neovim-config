@@ -1,6 +1,7 @@
 return {
     'oberblastmeister/neuron.nvim',
-    requires='nvim-lua/popup.nvim',
+    requires = 'nvim-lua/popup.nvim',
+    branch = 'unstable',
     keys = {
         {'n', 'gz'}
     },

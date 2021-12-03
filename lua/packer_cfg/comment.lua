@@ -1,9 +1,9 @@
 return {
     'numToStr/Comment.nvim',
-    keys={
-        {'', '<Leader>c'},
-        {'', '<Leader>b'}
-    },
+    -- keys={
+    --     {'', '<Leader>c'},
+    --     {'', '<Leader>b'}
+    -- },
     config=function()
         require('Comment').setup{
             mappings = {

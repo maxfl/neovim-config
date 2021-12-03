@@ -1,10 +1,11 @@
 return {
     'junegunn/vim-easy-align',
     keys={
-        {'v', '<Leader>e'},
-        {'n', '<Leader>e'}
+        {'v', '<Plug>(LiveEasyAlign)'},
+        {'v', '<Plug>(EasyAlign)'},
     },
-    config=function()
+    cmd = 'EasyAlign',
+    setup=function()
         local map = vim.api.nvim_set_keymap
         local silent={silent=true}
         map('v', '<leader>ea',  '<Plug>(LiveEasyAlign)', silent)

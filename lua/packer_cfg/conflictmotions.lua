@@ -5,6 +5,9 @@ return {
         'tpope/vim-repeat',
         'inkarkat/vim-visualrepeat'
     },
+    keys = {
+        {'n', '<Leader>='}
+    },
     config=function()
         vim.g.ConflictMotions_TakeMappingPrefix='<Leader>='
     end,
