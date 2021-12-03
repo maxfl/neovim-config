@@ -231,7 +231,7 @@ packer.startup(function()
         use (require 'packer_cfg.devdocs')
 
     -- Local plugins
-        use {"~/.config/nvim/bundle_local/SwapText-1.02", keys={{'n', '<Leader>x'}}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
+        use {"~/.config/nvim/bundle_local/SwapText-1.02", keys={{'n', '<Leader>x'}, {'v', '<Leader>x'}}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
         use {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', ft='txt'}
         use {'~/.config/nvim/bundle_local/txtfmt_v3.1', ft='txt'}
     end

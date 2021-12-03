@@ -10,8 +10,8 @@ return {
 
         require 'jabs'.setup {
             position = 'center', -- center, corner
-            -- width = 50,
-            -- height = 10,
+            width = 100,
+            height = 20,
             -- border = 'shadow', -- none, single, double, rounded, solid, shadow, (or an array or chars)
             --
             -- -- Options for preview window
