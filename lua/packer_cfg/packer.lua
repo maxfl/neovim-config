@@ -91,7 +91,7 @@ packer.startup(function()
         use {'rafcamlet/nvim-luapad', cmd = 'Luapad'}
         -- use (require 'packer_cfg.lua_dev')
         use (require 'packer_cfg.nlua')
-        use {'ellisonleao/glow.nvim', ft='markdown'}
+        use (require 'packer_cfg.glow')
 
         -- terminal
         use {'norcalli/nvim-terminal.lua', config=function() require 'terminal'.setup() end, ft='terminal'}
