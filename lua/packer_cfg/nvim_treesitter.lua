@@ -20,6 +20,7 @@ return {
                 disable = {
                     'c',
                     'rust',
+                    'latex'
                 },  -- list of language that will be disabled
                 -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
                 -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
