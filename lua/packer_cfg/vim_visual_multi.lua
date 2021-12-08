@@ -7,6 +7,9 @@ return {
     },
     {
         'mg979/vim-visual-multi',
-        requires='tpope/vim-surround'
+        requires='tpope/vim-surround',
+        setup=function()
+            vim.g.VM_theme = 'neon'
+        end
     }
 }

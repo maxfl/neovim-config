@@ -1,7 +1,7 @@
 vim.cmd [[packadd packer.nvim]]
 local packer=require 'packer'
 
- packer.init{
+packer.init{
     opt_default=false,
     git={
         clone_timeout=180
@@ -17,7 +17,7 @@ packer.startup(function()
     -- Colocschemes
         use (require 'packer_cfg.colorscheme')
 
-    -- -- Tree sitter
+    -- Tree sitter
         use (require 'packer_cfg.nvim_treesitter')
         use {'romgrk/nvim-treesitter-context', requires='nvim-treesitter/nvim-treesitter'}
         use (require 'packer_cfg.nvim_treesitter_textobjects')
@@ -65,10 +65,11 @@ packer.startup(function()
         -- use (require 'packer_cfg.tabout')
 
     -- Highlight
-        -- use 'yamatsum/nvim-cursorline'
+        use 'yamatsum/nvim-cursorline'
         -- use (require 'packer_cfg.beacon')
         use (require 'packer_cfg.specs') -- hightlight cursor jump
         use (require 'packer_cfg.shade')
+        -- use (require 'packer_cfg.illuminate') -- vim
 
     -- Search and replace
         use (require 'packer_cfg.nvim_spectre')

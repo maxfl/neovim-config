@@ -7,6 +7,7 @@ return {
             relativenumber = true,
             number = true,
             absolutenumber_unfocussed = true,
+            -- excluded_buftypes = {'terminal'},
         }
 
         local map, silent=vim.api.nvim_set_keymap, {silent = true}

@@ -21,6 +21,7 @@ return {
             conf.pair('$',  {close='$',  filetypes={'tex'}})
             conf.pair(',,', {close='``', filetypes={'tex'}})
             conf.pair('`',  {close="'",  filetypes={'tex'}})
+            conf.pair('``',  {close="''",  filetypes={'tex'}})
             conf.pair('<<', {close='>>', filetypes={'tex'}})
             conf.pair('\\(', {close='\\)', filetypes={'tex'}})
         end)
