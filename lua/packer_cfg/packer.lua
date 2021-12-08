@@ -65,7 +65,8 @@ packer.startup(function()
         -- use (require 'packer_cfg.tabout')
 
     -- Highlight
-        use 'yamatsum/nvim-cursorline'
+        -- use 'yamatsum/nvim-cursorline'
+        use 'xiyaowong/nvim-cursorword'
         -- use (require 'packer_cfg.beacon')
         use (require 'packer_cfg.specs') -- hightlight cursor jump
         use (require 'packer_cfg.shade')
@@ -218,6 +219,7 @@ packer.startup(function()
         use {'inkarkat/vim-ConflictDetection', requires='inkarkat/vim-ingo-library'}
         use (require 'packer_cfg.conflictmotions')
         use (require 'packer_cfg.fugitive')
+        -- use (require 'packer_cfg.vim_gista')
 
     -- Tables and lists
         use (require 'packer_cfg.bullets')
