@@ -6,6 +6,12 @@ return {
             auto_close = true,
             update_focused_file = {
                 enable = true
+            },
+            view = {
+                width = 60
+            },
+            filters = {
+                dotfiles = true
             }
         }
 
