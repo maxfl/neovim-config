@@ -194,7 +194,7 @@ packer.startup(function()
         use {'kalekundert/vim-coiled-snake', ft='python', setup=function() vim.g.coiled_snake_set_foldexpr=false end}
 
     -- Spelling and grammar
-        use {'rhysd/vim-grammarous', cmd = 'Grammarous*', config=function() vim.g['grammarous#languagetool_cmd']='languagetool' end}
+        use {'rhysd/vim-grammarous', cmd = {'GrammarousCheck', 'Grammarous*'}, config=function() vim.g['grammarous#languagetool_cmd']='languagetool' end}
 
     -- Terminal
         use (require 'packer_cfg.neoterm')
