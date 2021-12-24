@@ -6,11 +6,9 @@ return {
         local noremap={noremap=true}
 
         vim.g.vimtex_view_method='zathura'
-        vim.g.vimtex_view_use_temp_files=true
+        -- vim.g.vimtex_view_use_temp_files=1
+        vim.g.vimtex_view_use_temp_files=0 -- broken
 
-        if vim.fn.exepath('nvr')~='' then
-            vim.g.vimtex_compiler_progname='nvr'
-        end
         map('', '<localleader>lL', '<plug>(vimtex-compile-ss)', noremap)
         map('', '<localleader>l0', '<CMD>let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>', noremap)
 
