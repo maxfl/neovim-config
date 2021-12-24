@@ -106,7 +106,7 @@ vim.cmd[[
         -- set path={'.', '../include', '../inc', '/usr/include'}
 
     -- commandline
-        -- set.wildmode={'longest', 'full'}
+        set.wildmode={'longest', 'full'}
         set.wildignorecase=true
         set.wildignore:append{'*/.git/*', '*/.hg/*', '*/.svn/*', '*/CVS/*'}
 
