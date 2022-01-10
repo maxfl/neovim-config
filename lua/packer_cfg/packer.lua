@@ -85,8 +85,8 @@ packer.startup(function()
         use (require 'packer_cfg.project')
 
     -- Statusline
-        use {'windwp/windline.nvim', config=function() require('wlsample.airline') end, requires='lewis6991/gitsigns.nvim' }
-        -- use (require 'packer_cfg.lualine')
+        -- use (require 'packer_cfg.windline')
+        use (require 'packer_cfg.lualine')
 
     -- Filetype
         -- lua

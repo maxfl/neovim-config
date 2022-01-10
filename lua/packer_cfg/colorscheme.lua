@@ -3,8 +3,7 @@ return {
     config=function()
         vim.g.material_style='oceanic'
         require 'material'.setup{
-            borders=true, -- does not work
-            popup_menu='colorful',
+            -- popup_menu='colorful',
             italics = {
                 keywords = true
             },
@@ -12,18 +11,11 @@ return {
                 LineNr = {bg='black'},
                 Pmenu = {bg='#808080'},
                 VertSplit = {bg='#808080'}
+            },
+            disable = {
+                borders = false
             }
         }
         vim.cmd[[colorscheme material]];
     end
 }
-
--- return {
---     'jonathanfilip/vim-lucius',
---     config=function()
---         vim.cmd[[
---                 colorscheme lucius
---                 LuciusBlack
---             ]];
---     end
--- }
