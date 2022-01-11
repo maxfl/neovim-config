@@ -1,12 +1,12 @@
 return {
     'kabbamine/zeavim.vim',
-    cmd = {'Zeavim', 'Docset', 'Zeavim*'},
-    ft = 'python',
-    keys={
-        {'n', '<Leader>z'},
-        {'v', '<Leader>z'},
-        -- {'n', '<Leader><Leader>z'}
-    },
+    -- cmd = {'Zeavim', 'Docset', 'Zeavim*'},
+    -- ft = 'python',
+    -- keys={
+    --     {'n', '<Leader>z'},
+    --     {'v', '<Leader>z'},
+    --     -- {'n', '<Leader><Leader>z'}
+    -- },
     setup=function()
         vim.cmd[[
             au filetype python :Docset python,matplotlib,scipy,numpy,pandas

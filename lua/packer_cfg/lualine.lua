@@ -18,8 +18,7 @@ return {
                     keymap,
                     {
                         paste,
-                        separator = nil,
-                        color = { bg='red' }
+                        color = { fg='red', gui='bold' },
                     },
                 },
                 lualine_c = {
@@ -33,6 +32,15 @@ return {
                     { 'encoding', cond = function() return vim.o.encoding~='utf-8' end },
                     { 'fileformat', cond = function() return vim.o.fileformat~='unix' end },
                     'filetype'
+                },
+            },
+            inactive_sections = {
+                lualine_c = {
+                    {
+                        'filename',
+                        path = 1,
+                        -- shorting_target = 0
+                    }
                 },
             }
         }
