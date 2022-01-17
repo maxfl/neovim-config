@@ -15,7 +15,7 @@ return {
 
             local vt_local = vim.b.vimtex_local
             if vt_local then
-                table.insert(status, vt_local.active and 'l' or 'm')
+                table.insert(status, vt_local.active==0 and 'm' or 'l')
             end
 
             local vimtex = vim.b.vimtex
@@ -27,7 +27,7 @@ return {
 
                 local compiler = vimtex.compiler
                 if compiler and compiler.is_running~=vim.NIL then
-                    table.insert(status, compiler.continuous and '∞' or '1')
+                    table.insert(status, compiler.continuous==0 and '1' or '∞')
                 end
             end
 
@@ -60,7 +60,7 @@ return {
                 },
                 lualine_x = {
                     { vimtex, cond = function() return vim.o.filetype=='tex' end },
-                    { 'encoding', cond = function() return vim.o.encoding~='utf-8' end },
+                    { 'encoding', cond = function() return vim.o.fileencoding~='utf-8' end },
                     { 'fileformat', cond = function() return vim.o.fileformat~='unix' end },
                     'filetype'
                 },

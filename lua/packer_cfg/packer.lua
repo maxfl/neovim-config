@@ -161,6 +161,7 @@ packer.startup(function()
     -- Menus
         -- use (require 'packer_cfg.ctrlspace')
         -- use (require 'packer_cfg.wilder') -- breaks highlighting
+        -- use (require 'packer_cfg.wheel')
 
     -- Search and replace
         use {'tpope/vim-abolish', cmd = 'S'} -- :%S////
