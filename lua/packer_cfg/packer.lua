@@ -38,7 +38,7 @@ packer.startup(function()
 
     -- Editing
         use (require 'packer_cfg.comment')
-        use (require 'packer_cfg.indent_blankline')
+        use (require 'packer_cfg.gomove')
 
     -- Windows and floats, interface
         use (require 'packer_cfg.FTerm')
@@ -48,6 +48,8 @@ packer.startup(function()
         use (require 'packer_cfg.winshift')
         use (require 'packer_cfg.nvim_tabline')
         use (require 'packer_cfg.zen_mode')
+
+        use (require 'packer_cfg.indent_blankline')
 
     -- Menus
         use (require 'packer_cfg.telescope')
@@ -127,7 +129,6 @@ packer.startup(function()
         use (require 'packer_cfg.vim_visual_multi')
         use 'kopischke/vim-fetch' -- jump to file:line:number
         use (require 'packer_cfg.mundo')
-        use (require 'packer_cfg.textmanip')
 
     -- Characters and unicode
         use 'chrisbra/unicode.vim'
