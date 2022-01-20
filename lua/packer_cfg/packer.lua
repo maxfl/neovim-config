@@ -38,7 +38,7 @@ packer.startup(function()
 
     -- Editing
         use (require 'packer_cfg.comment')
-        use (require 'packer_cfg.gomove')
+        -- use (require 'packer_cfg.gomove')
 
     -- Windows and floats, interface
         use (require 'packer_cfg.FTerm')
@@ -129,6 +129,7 @@ packer.startup(function()
         use (require 'packer_cfg.vim_visual_multi')
         use 'kopischke/vim-fetch' -- jump to file:line:number
         use (require 'packer_cfg.mundo')
+        use (require 'packer_cfg.textmanip')
 
     -- Characters and unicode
         use 'chrisbra/unicode.vim'
