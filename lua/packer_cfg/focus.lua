@@ -7,6 +7,8 @@ return {
             relativenumber = true,
             number = true,
             absolutenumber_unfocussed = true,
+            autoresize = false,
+            excluded_filetypes = { 'fterm', 'term', 'toggleterm', 'neoterm' }
         }
 
         local map, silent=vim.api.nvim_set_keymap, {silent = true}

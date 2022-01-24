@@ -41,7 +41,6 @@ packer.startup(function()
         -- use (require 'packer_cfg.gomove')
 
     -- Windows and floats, interface
-        use (require 'packer_cfg.FTerm')
         use {'luukvbaal/stabilize.nvim', config = function() require("stabilize").setup() end, disable=true}
         use (require 'packer_cfg.bufdelete')
         use (require 'packer_cfg.focus')
@@ -50,6 +49,9 @@ packer.startup(function()
         use (require 'packer_cfg.zen_mode')
 
         use (require 'packer_cfg.indent_blankline')
+
+        -- use (require 'packer_cfg.FTerm')
+        use (require 'packer_cfg.toggleterm')
 
     -- Menus
         use (require 'packer_cfg.telescope')
