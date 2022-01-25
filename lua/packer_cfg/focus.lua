@@ -4,11 +4,10 @@ return {
         require 'focus'.setup{
             bufnew = true,
             cursorline = false,
-            relativenumber = true,
-            number = true,
+            relativenumber = false,
+            number = false,
             absolutenumber_unfocussed = true,
             autoresize = false,
-            excluded_filetypes = { 'fterm', 'term', 'toggleterm', 'neoterm' }
         }
 
         local map, silent=vim.api.nvim_set_keymap, {silent = true}
