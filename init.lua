@@ -179,9 +179,12 @@ vim.cmd[[
 
         -- Save
         map('n', '<F2>',   '<CMD>w<CR>',    noremap)
-        map('n', '<S-F2>', '<CMD>w!<CR>',   noremap)
-        map('i', '<F2>',   '<CMD>w<CR>gi',  noremap)
-        map('i', '<S-F2>', '<CMD>w!<CR>gi', noremap)
+        -- map('n', '<S-F2>', '<CMD>w!<CR>',   noremap)
+        -- map('n', '<F14>', '<CMD>w!<CR>',    noremap)
+        map('n', '<Leader><F2>', '<CMD>w!<CR>',   noremap)
+        -- map('n', 'Q', '<CMD>w!<CR>',   noremap)
+        -- map('i', '<F2>',   '<CMD>w<CR>gi',  noremap)
+        -- map('i', '<S-F2>', '<CMD>w!<CR>gi', noremap)
 
     -- Edit new file based on a word under cursor
         map('n', '<Leader>gf', '<CMD>e <cfile><CR>', noremap)
