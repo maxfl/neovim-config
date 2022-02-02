@@ -138,9 +138,10 @@ packer.startup(function()
         use {'Konfekt/vim-unicode-homoglyphs', setup=function() vim.g.is_homoglyph_on=false end} -- search for hidden unicode characters
         use (require 'packer_cfg.isotope')
 
-    -- Windows
+    -- Windows and buffers
         use (require 'packer_cfg.choosewin')
         use (require 'packer_cfg.winteract')
+        use (require 'packer_cfg.bufmru')
 
     -- Motion
         use {'inkarkat/vim-JumpToVerticalBlock', requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}}
