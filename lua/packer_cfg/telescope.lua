@@ -3,6 +3,20 @@ return {
         'nvim-telescope/telescope.nvim',
         requires={'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'},
         config=function()
+            local actions = require 'telescope.actions'
+            require 'telescope'.setup{
+                defaults = {
+                    mappings = {
+                        n = {
+                            ['d'] = actions.delete_buffer,
+                            ['<c-d>'] = actions.delete_buffer
+                        },
+                        i = {
+                            ['<c-d>'] = actions.delete_buffer
+                        }
+                    }
+                }
+            }
             local map, opts = vim.api.nvim_set_keymap, {}
             map('', '<C-p>', '<CMD>Telescope oldfiles<CR>', opts)
 
