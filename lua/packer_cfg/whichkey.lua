@@ -65,6 +65,8 @@ return {
             },
             d = {
                 name = '+diff',
+                D = 'diagnostics (all)',
+                d = 'diagnostics (buffer)',
                 l = 'linediff',
                 r = 'reset linediff',
             },

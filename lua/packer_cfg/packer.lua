@@ -26,11 +26,12 @@ packer.startup(function()
     -- LSP
         use 'neovim/nvim-lspconfig'
         use (require 'packer_cfg.nvim_lspinstall')
-        --use (require 'packer_cfg.trouble')
 
         --use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}, config=function() require 'navigator'.setup() end}
         use (require 'packer_cfg.codeactions')
         use (require 'packer_cfg.symbols_outline')
+        use (require 'packer_cfg.diaglist')
+        -- use (require 'packer_cfg.trouble')
 
     -- Libraries
         use 'nvim-lua/plenary.nvim'
