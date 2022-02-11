@@ -2,13 +2,19 @@ return {
     'tpope/vim-fugitive',
     cmd = 'Git',
     setup = function()
-        local map = vim.api.nvim_set_keymap
-        local silent={silent=true}
-        map('n', '<Leader>ga', '<CMD>!git add %<CR>', silent)
-        map('n', '<Leader>gc', '<CMD>Git commit<CR>', silent)
-        map('n', '<Leader>gC', '<CMD>Git commit -a<CR>', silent)
-        map('n', '<Leader>gt', '<CMD>Git push<CR>', silent)
-        map('n', '<Leader>gs', '<CMD>Git status<CR>', silent)
-        map('n', '<Leader>gh', '<CMD>Git pull<CR>', silent)
+        local status, whichkey=pcall(function() return require 'which-key' end)
+        if not status then return end
+
+        whichkey.register({
+            ['<leader>g'] = {
+                name = '+git',
+                C = {'<CMD>Git commit -a<CR>', 'commit all'},
+                a = {'<CMD>!git add %<CR>',    'add'},
+                c = {'<CMD>Git commit<CR>',    'commit'},
+                t = {'<CMD>Git push<CR>',      'push'},
+                h = {'<CMD>Git pull<CR>',      'pull'},
+                s = {'<CMD>Git status<CR>',    'status'},
+            },
+        }, {silent=true})
     end
 }

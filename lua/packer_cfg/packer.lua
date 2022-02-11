@@ -44,11 +44,13 @@ packer.startup(function()
 
     -- Windows and floats, interface
         use {'luukvbaal/stabilize.nvim', config = function() require("stabilize").setup() end, disable=true}
-        use (require 'packer_cfg.bufdelete')
         use (require 'packer_cfg.focus')
         use (require 'packer_cfg.winshift')
         use (require 'packer_cfg.nvim_tabline')
         use (require 'packer_cfg.zen_mode')
+
+        use (require 'packer_cfg.bufdelete')
+        use (require 'packer_cfg.close_buffers')
 
         use (require 'packer_cfg.indent_blankline')
 
