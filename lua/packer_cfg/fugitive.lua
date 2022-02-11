@@ -1,5 +1,6 @@
 return {
     'tpope/vim-fugitive',
+    requires = 'folke/which-key.nvim',
     cmd = 'Git',
     setup = function()
         local status, whichkey=pcall(function() return require 'which-key' end)

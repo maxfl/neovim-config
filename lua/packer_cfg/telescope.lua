@@ -1,7 +1,7 @@
 return {
     {
         'nvim-telescope/telescope.nvim',
-        requires={'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'},
+        requires={'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons', 'folke/which-key.nvim'},
         config=function()
             local actions = require 'telescope.actions'
             require 'telescope'.setup{
@@ -17,22 +17,32 @@ return {
                     }
                 }
             }
+
             local map, opts = vim.api.nvim_set_keymap, {}
             map('', '<C-p>', '<CMD>Telescope oldfiles<CR>', opts)
-
-            map('', '<Leader>]/', '<CMD>Telescope current_buffer_fuzzy_find<CR>', opts)
-            map('', '<Leader>]b', '<CMD>Telescope buffers<CR>', opts)
-            map('', '<Leader>]c', '<CMD>Telescope commands<CR>', opts)
-            map('', '<Leader>]f', '<CMD>Telescope find_files<CR>', opts)
-            map('', '<Leader>]h', '<CMD>Telescope heading<CR>', opts)
-            map('', '<Leader>]k', '<CMD>Telescope keymaps<CR>', opts)
-            map('', '<Leader>]o', '<CMD>Telescope oldfiles<CR>', opts)
-            map('', '<Leader>]p', '<CMD>Telescope projects<CR>', opts)
-            map('', '<Leader>]t', '<CMD>Telescope<CR>', opts)
-
             map('', '<C-Space>',  '<CMD>Telescope buffers<CR>', opts)
             map('', '<S-Space>',  '<CMD>Telescope<CR>', opts)
             map('', '<M-Space>',  '<CMD>Telescope<CR>', opts)
+
+            local status, whichkey=pcall(function() return require 'which-key' end)
+            if not status then return end
+
+            whichkey.register{
+                ['<Leader>]'] = {
+                    name  = '+telescope',
+                    ['/'] = {'<CMD>Telescope current_buffer_fuzzy_find<CR>', 'fuzzy find (buffer)'},
+                    b     = {'<CMD>Telescope buffers<CR>', 'buffers'},
+                    c     = {'<CMD>Telescope commands<CR>', 'commands'},
+                    f     = {'<CMD>Telescope find_files<CR>', 'find files'},
+                    h     = {'<CMD>Telescope heading<CR>', 'heading'},
+                    k     = {'<CMD>Telescope keymaps<CR>', 'keymaps'},
+                    o     = {'<CMD>Telescope oldfiles<CR>', 'old files'},
+                    p     = {'<CMD>Telescope projects<CR>', 'projects'},
+                    t     = {'<CMD>Telescope<CR>', 'telescope'},
+                    -- 'nvim-telescope/telescope-symbols.nvim'
+                    s     = {'<CMD>lua require "telescope.builtin".symbols{ sources = {"math", "latex"} }<CR>', 'symbols'},
+                }
+            }
         end
     },
     {
@@ -55,10 +65,6 @@ return {
     {
         'nvim-telescope/telescope-symbols.nvim',
         requires='nvim-telescope/telescope.nvim',
-        config=function()
-            local map, opts = vim.api.nvim_set_keymap, {}
-            map('', '<Leader>]s', '<CMD>lua require "telescope.builtin".symbols{ sources = {"math", "latex"} }<CR>', opts)
-        end
     },
 }
     --
