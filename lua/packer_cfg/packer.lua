@@ -217,6 +217,7 @@ packer.startup(function()
         use {'vim-scripts/Rename', cmd = 'Rename'}
         use (require 'packer_cfg.sudoedit')
         use 'ervandew/archive'
+        use (require 'packer_cfg.pushd')
 
         use {'https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', cmd = 'OpenOrCreateFile'}
 

@@ -54,15 +54,6 @@ return {
                 l = 'linediff',
                 r = 'reset linediff',
             },
-            g = {
-                name = '+git',
-                C = 'commit all',
-                a = 'add',
-                c = 'commit',
-                t = 'push',
-                h = 'pull',
-                s = 'status',
-            },
             l={
                 name='+latex',
                 p='->ascii',

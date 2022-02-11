@@ -7,7 +7,7 @@ return {
         if not status then return end
 
         whichkey.register({
-            ['<leader>g'] = {
+            ['<leader>G'] = {
                 name = '+git',
                 C = {'<CMD>Git commit -a<CR>', 'commit all'},
                 a = {'<CMD>!git add %<CR>',    'add'},
