@@ -10,7 +10,8 @@ return {
             ['<leader>g'] = {
                 name = '+goto',
                 ['<BS>'] = {'<CMD>Popd<CR>', 'back'},
-                c        = {'<CMD>Pushd<CR>', 'current file'},
+                B        = {'<CMD>Popd<CR>', 'back'},
+                b        = {'<CMD>Pushd %:h<CR>', 'current buffer'},
                 d        = {'<CMD>Dirs<CR>', 'list dirs'},
             },
         }

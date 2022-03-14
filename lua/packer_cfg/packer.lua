@@ -184,7 +184,7 @@ packer.startup(function()
         use (require 'packer_cfg.linediff')
         use {'rickhowe/diffchar.vim', cond='vim.o.diff'}
         use {'rickhowe/spotdiff.vim', cond='vim.o.diff'} -- , cmd = {'Diffthis', 'Diffoff', 'Diffupdate'}}
-        use {'sindrets/diffview.nvim', cmd = 'Diffview*'}
+        -- use {'sindrets/diffview.nvim', cmd = 'Diffview*'}
         use {'gangleri/vim-diffsaved', cmd = 'ToggleDiffSaved'}
         use {'chrisbra/vim-diff-enhanced', cmd = 'EnhancedDiff'}
 

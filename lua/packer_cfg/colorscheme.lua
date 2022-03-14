@@ -8,9 +8,10 @@ return {
                 keywords = true
             },
             custom_highlights = {
-                LineNr = {bg='black'},
-                Pmenu = {bg='#808080'},
-                VertSplit = {bg='#808080'}
+                LineNr    = {bg='black'},
+                Pmenu     = {bg='#808080'},
+                VertSplit = {bg='#808080'},
+                DiffChange= {bg='#13191C'}
             },
             disable = {
                 borders = false

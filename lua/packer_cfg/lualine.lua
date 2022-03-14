@@ -14,9 +14,7 @@ return {
             local status={}
 
             local vt_local = vim.b.vimtex_local
-            if vt_local then
-                table.insert(status, vt_local.active==0 and 'm' or 'l')
-            end
+            table.insert(status, vt_local and vt_local.active==1 and 'l' or 'm')
 
             local vimtex = vim.b.vimtex
             if vimtex then

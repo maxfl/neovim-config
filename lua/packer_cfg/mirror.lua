@@ -1,6 +1,6 @@
 return {
     'zenbro/mirror.vim',
-    cmd = {'MirrorPush', 'MirrorPull', 'Mirror*'},
+    cmd = {'MirrorPush', 'MirrorPull', 'MirrorConfig', 'Mirror*'},
     setup=function()
         local map = vim.api.nvim_set_keymap
         map('n', '<Leader>rc', '<CMD>MirrorPush<CR>', {})

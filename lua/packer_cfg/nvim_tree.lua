@@ -3,6 +3,7 @@ return {
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
         require 'nvim-tree'.setup {
+            disable_netrw = false,
             auto_close = true,
             update_focused_file = {
                 enable = true
