@@ -74,7 +74,7 @@ packer.startup(function()
 
     -- Highlight
         -- use 'yamatsum/nvim-cursorline'
-        use 'xiyaowong/nvim-cursorword'
+        use (require 'packer_cfg.cursorword')
         -- use (require 'packer_cfg.beacon')
         use (require 'packer_cfg.specs') -- hightlight cursor jump
         use (require 'packer_cfg.shade')
