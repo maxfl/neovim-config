@@ -32,7 +32,7 @@ packer.startup(function()
         use (require 'packer_cfg.codeactions')
         use (require 'packer_cfg.symbols_outline')
         use (require 'packer_cfg.diaglist')
-        -- use (require 'packer_cfg.trouble')
+        use (require 'packer_cfg.trouble')
 
     -- Libraries
         use 'nvim-lua/plenary.nvim'
