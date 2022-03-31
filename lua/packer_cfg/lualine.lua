@@ -26,9 +26,10 @@ return {
                 local compiler = vimtex.compiler
                 if compiler then
                     vim.cmd'let b:vimtex.compiler.is_running_state = b:vimtex.compiler.is_running()'
-                    if compiler.is_running_state then
-                        table.insert(status, compiler.continuous==0 and '1' or '∞')
-                    end
+                    table.insert(status, compiler.is_running_state and 'C' or 'c')
+                    table.insert(status, compiler.continuous==0 and '₁' or '₊')
+
+
                 end
             end
 

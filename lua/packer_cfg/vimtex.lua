@@ -6,8 +6,8 @@ return {
         local noremap={noremap=true}
 
         vim.g.vimtex_view_method='zathura'
-        -- vim.g.vimtex_view_use_temp_files=1
-        vim.g.vimtex_view_use_temp_files=0 -- broken
+        vim.g.vimtex_view_use_temp_files=1
+        -- vim.g.vimtex_view_use_temp_files=0 -- broken
 
         map('', '<localleader>lL', '<plug>(vimtex-compile-ss)', noremap)
         map('', '<localleader>l0', '<CMD>let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>', noremap)
@@ -18,6 +18,8 @@ return {
             'Empty bibliography',
             'inputenc package ignored with utf8 based engines'
         }
+
+        vim.g.vimtex_compiler_latexmk = {build_dir= './.vimtexbuild'}
 
         vim.g.vimtex_imaps_enabled=false
         -- vim.g.vimtex_imaps_leader='/'
