@@ -19,7 +19,7 @@ return {
             'inputenc package ignored with utf8 based engines'
         }
 
-        vim.g.vimtex_compiler_latexmk = {build_dir= './.vimtexbuild'}
+        vim.g.vimtex_compiler_latexmk = {build_dir= './vimtex.out'}
 
         vim.g.vimtex_imaps_enabled=false
         -- vim.g.vimtex_imaps_leader='/'
