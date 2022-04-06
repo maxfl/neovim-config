@@ -1,19 +1,24 @@
 return {
     'phaazon/hop.nvim',
+    requires = 'folke/which-key.nvim',
     branch = 'v1', -- optional but strongly recommended
     cmd = 'Hop*',
     setup = function()
-        local map, opts=vim.api.nvim_set_keymap, {}
-        -- map('n', '<Leader>mf', "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", opts)
-        -- map('n', '<Leader>mF', "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", opts)
-        map('n', '<Leader>mf', "<CMD>HopChar1<CR>", opts)
-        map('n', '<Leader>mF', "<CMD>HopChar1BC<CR>", opts)
-        map('n', '<Leader>mw', "<CMD>HopWord<CR>", opts)
-        map('n', '<Leader>mW', "<CMD>HopWordBC<CR>", opts)
-        map('n', '<Leader>m/', "<CMD>HopPattern<CR>", opts)
-        map('n', '<Leader>m?', "<CMD>HopPatternBC<CR>", opts)
-        map('n', '<Leader>mk', "<CMD>HopLine<CR>", opts)
-        map('n', '<Leader>mj', "<CMD>HopLineBC<CR>", opts)
+        local status, whichkey=pcall(function() return require 'which-key' end)
+        if not status then return end
+        whichkey.register{
+            ['<leader>m'] = {
+                name = '+hop',
+                ['/'] = {"<CMD>HopPattern<CR>",   "pattern"},
+                ['?'] = {"<CMD>HopPatternBC<CR>", "patter (back)"},
+                f     = {"<CMD>HopChar1<CR>",     "char"},
+                F     = {"<CMD>HopChar1BC<CR>",   "char (back)"},
+                j     = {"<CMD>HopLineBC<CR>",    "line"},
+                k     = {"<CMD>HopLine<CR>",      "line (back)"},
+                w     = {"<CMD>HopWord<CR>",      "word"},
+                W     = {"<CMD>HopWordBC<CR>",    "word (back)"}
+            },
+        }
     end,
     config = function()
         -- you can configure Hop the way you like here; see :h hop-config
