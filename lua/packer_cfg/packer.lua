@@ -125,10 +125,11 @@ packer.startup(function()
         use 'tpope/vim-repeat'
         use 'inkarkat/vim-visualrepeat'
 
-    -- Indentation
+    -- Indentation, encoding, settings
         use {'thiagoalessio/rainbow_levels.vim', cmd = 'RainbowLevelsToggle'}
         use {'kien/rainbow_parentheses.vim', cmd = 'RainbowParenthesesToggle'}
         use {'ciaranm/detectindent', ft='python', config=function() vim.cmd[[au FileType cpp,python :DetectIndent]] end}
+        use (require 'packer_cfg.autofenc')
 
     -- Editing
         use (require 'packer_cfg.vim_trailing_whitespace')
