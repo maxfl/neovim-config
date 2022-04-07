@@ -50,9 +50,9 @@ return {
         requires='nvim-telescope/telescope.nvim',
         config=function()
             local map, opts = vim.api.nvim_set_keymap, {}
-            map('', '<Leader>]P', '<CMD>lua require "telescope".extensions.packer.plugins()<CR>', opts)
+            map('', '<Leader>]P', '<CMD>lua require "telescope".extensions.packer.packer()<CR>', opts)
 
-            -- require 'telescope'.load_extension 'packer'
+            require 'telescope'.load_extension 'packer'
         end
     },
     {
