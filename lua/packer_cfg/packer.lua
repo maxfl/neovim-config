@@ -118,7 +118,8 @@ packer.startup(function()
         use (require 'packer_cfg.neuron')
 
     -- Completion
-        use (require 'packer_cfg.nvim_cmp')
+        -- use (require 'packer_cfg.nvim_cmp')
+        use (require 'packer_cfg.coq_nvim')
 
 -- Vimscript
     -- Libraries
