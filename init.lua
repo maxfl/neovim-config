@@ -83,6 +83,7 @@ vim.cmd[[
     -- completion
         set.complete:append 'k'
         set.completeopt:remove 'preview'
+        set.completeopt:append 'noinsert'
         -- set.completeopt:append 'longest'
         vim.cmd[[au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')]]
 
