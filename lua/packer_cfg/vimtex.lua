@@ -1,5 +1,6 @@
 return {
     'lervag/vimtex',
+    require = 'ms-jpq/coq.thirdparty',
     ft={'tex', 'plaintex'},
     config=function()
         local map = vim.api.nvim_set_keymap
@@ -31,5 +32,9 @@ return {
                 au FileType tex silent! iunmap <buffer> ]]
             augroup END
         ]=]
+
+            require 'coq_3p' {
+                { src = "vimtex", short_name = "vTEX" },
+            }
     end
 }
