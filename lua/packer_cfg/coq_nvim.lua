@@ -17,7 +17,7 @@ return {
             map('i', '<Esc>',   'pumvisible() ? "\\<C-e><Esc>" : "\\<Esc>"', opts)
             map('i', '<C-c>',   'pumvisible() ? "\\<C-e><C-c>" : "\\<C-c>"', opts)
             map('i', '<BS>',    'pumvisible() ? "\\<C-e><BS>"  : "\\<BS>"', opts)
-            -- map('i', '<M-CR>',  'pumvisible() ? (complete_info().selected == -1 ? "\\<C-e><CR>" : "\\<C-y>") : "\\<CR>"', opts)
+            map('i', '<M-CR>',  'pumvisible() ? (complete_info().selected == -1 ? "\\<C-e><CR>" : "\\<C-y>") : "\\<CR>"', opts)
             map('i', '<Tab>',   'pumvisible() ? "\\<C-n>" : "\\<Tab>"', opts)
             map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<BS>"', opts)
         end
