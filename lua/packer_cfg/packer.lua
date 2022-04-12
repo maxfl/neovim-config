@@ -134,6 +134,7 @@ packer.startup(function()
     -- VCS and Project
         useauto {'lewis6991/gitsigns.nvim', config=function() require('gitsigns').setup() end, requires='nvim-lua/plenary.nvim'}
         useauto 'packer_cfg.project'
+        useauto 'packer_cfg.nvim_config_local'
 
     -- Statusline
         -- useauto 'packer_cfg.windline'
@@ -255,7 +256,7 @@ packer.startup(function()
         useauto 'packer_cfg.neoterm'
 
     -- Snippets
-        useauto 'packer_cfg.ultisnips'
+        useauto {'packer_cfg.ultisnips', disable=true}
 
     -- Files and folders
         useauto 'packer_cfg.mirror'
