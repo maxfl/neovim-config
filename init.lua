@@ -29,8 +29,6 @@ vim.cmd[[
     -- Behaviour
         set.autowrite=true
         set.autoread=true
-        set.exrc=true
-        set.secure=false
 
         if vim.o.history<1000 then
             set.history=1000
