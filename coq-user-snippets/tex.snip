@@ -1,0 +1,15 @@
+snippet figure
+abbr figure with includegraphics
+  \\begin{figure}
+    \\centering
+    \\includegraphics[width=${1}\\linewidth]{${2:filename}}
+    \\caption{${4:caption}}
+    \\label{fig:${3:label}}
+  \\end{figure}
+
+snippet Environment
+abbr environment
+alias begin
+  \\begin{${1:environment}}[${2:options}]
+    ${3:body}
+  \\end{${1:environment}}
