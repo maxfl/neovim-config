@@ -46,7 +46,7 @@ return {
         vim.g.cycle_default_groups_for_fish = checkmarks
         vim.g.cycle_default_groups_for_fish = checkmarks
 
-        vim.g.cycle_default_groups_for_gitrebase = {{{'pick', 'reword', 'edit', 'squash', 'fixup', 'exec'}}}
+        vim.g.cycle_default_groups_for_gitrebase = {{{'pick', 'reword', 'edit', 'squash', 'fixup', 'exec', 'break', 'drop'}}}
 
         vim.g.cycle_default_groups_for_tex = {
             {{'Huge' , 'huge' , 'LARGE' , 'Large' , 'large' , 'normalsize' , 'small' , 'scriptsize' , 'tiny' , 'footnotesize' }, 'hard_case', 'match_case'},
