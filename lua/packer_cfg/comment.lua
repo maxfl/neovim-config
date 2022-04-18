@@ -1,5 +1,6 @@
 return {
     'numToStr/Comment.nvim',
+    commit = '0aaea32',
     -- keys={
     --     {'', '<Leader>c'},
     --     {'', '<Leader>b'}
