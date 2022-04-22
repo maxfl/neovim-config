@@ -8,7 +8,7 @@ return {
                 auto_start = 'shut-up',
                 ['keymap.recommended'] = false,
                 ['keymap.pre_select']  = false,
-                ['keymap.manual_complete'] = '<c-x><c-a>',
+                ['keymap.manual_complete'] = '<M-x>',
             }
             require 'coq' ()
 

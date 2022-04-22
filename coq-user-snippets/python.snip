@@ -1,2 +1,6 @@
 snippet embed
-    import IPython; IPython.embed()
+  import IPython; IPython.embed()
+
+snippet figure
+  plt.figure(${1:opts})
+  ax = plt.subplot(111, xlabel='${2:xlabel}', ylabel='${3:ylabel}', title=f'${4:title}')
