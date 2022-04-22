@@ -19,6 +19,9 @@ return {
                   exe 'imap <buffer> <silent> <CR> <Cmd>lua require("pears").handle_return('.bn.')<CR>'
                 endfunction
             ]]
+
+            local map = vim.api.nvim_set_keymap
+            map('v', 'I', '<Plug>(VM-Visual-Cursors)', {})
         end
     }
 }
