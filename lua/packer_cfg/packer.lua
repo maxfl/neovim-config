@@ -114,6 +114,7 @@ packer.startup(function()
     -- Snippets
         useauto 'packer_cfg.pears'
         -- useauto 'packer_cfg.tabout'
+        -- useauto 'packer_cfg.luasnip'
 
     -- Highlight
         -- useauto 'yamatsum/nvim-cursorline'
