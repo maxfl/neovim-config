@@ -62,7 +62,7 @@ packer.startup(function()
 
     -- Tree sitter
         useauto 'packer_cfg.nvim_treesitter'
-        useauto {'romgrk/nvim-treesitter-context', requires='nvim-treesitter/nvim-treesitter'}
+        useauto 'packer_cfg.nvim_treesitter_context'
         useauto 'packer_cfg.nvim_treesitter_textobjects'
         -- useauto 'packer_cfg.nvim_treesitter_textsubjects'
         useauto 'packer_cfg.nvim_treesitter_endwise'
