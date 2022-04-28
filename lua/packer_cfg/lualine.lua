@@ -44,6 +44,9 @@ return {
         end
 
         require 'lualine'.setup{
+            -- options = {
+            --     globalstatus = false
+            -- },
             sections = {
                 lualine_a = {
                     'mode',
