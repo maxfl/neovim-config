@@ -15,7 +15,8 @@ return {
         end
     },
     {'kana/vim-textobj-line',             requires='kana/vim-textobj-user'}, -- l
-    {'rhysd/vim-textobj-continuous-line', requires='kana/vim-textobj-user'}, -- v {'kana/vim-textobj-indent',           requires='kana/vim-textobj-user'}, -- i,  I
+    {'rhysd/vim-textobj-continuous-line', requires='kana/vim-textobj-user'}, -- v
+    {'kana/vim-textobj-indent',           requires='kana/vim-textobj-user'}, -- i,  I
     {'jceb/vim-textobj-uri',              requires='kana/vim-textobj-user'}, -- u
     {'glts/vim-textobj-indblock',         requires='kana/vim-textobj-user'}, -- o
     {'kana/vim-textobj-datetime',         requires='kana/vim-textobj-user'}, -- da, df, dt, dz
