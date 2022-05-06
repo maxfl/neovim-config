@@ -7,7 +7,7 @@ return {
         if not status then return end
 
         whichkey.register{
-            ['<leader>g'] = {
+            ['<leader>G'] = {
                 name = '+goto',
                 ['<BS>'] = {'<CMD>Popd<CR>', 'back'},
                 B        = {'<CMD>Popd<CR>', 'back'},

@@ -136,6 +136,7 @@ packer.startup(function()
         useauto {'lewis6991/gitsigns.nvim', config=function() require('gitsigns').setup() end, requires='nvim-lua/plenary.nvim'}
         useauto 'packer_cfg.project'
         useauto 'packer_cfg.nvim_config_local'
+        useauto 'packer_cfg.lazygit'
 
     -- Statusline
         -- useauto 'packer_cfg.windline'
