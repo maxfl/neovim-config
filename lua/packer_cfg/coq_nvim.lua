@@ -3,6 +3,7 @@ return {
         'ms-jpq/coq_nvim',
         branch = 'coq',
         requires = { 'ms-jpq/coq.artifacts', 'ms-jpq/coq.thirdparty' },
+        run = ':COQdeps',
         config = function()
             vim.g.coq_settings = {
                 auto_start = 'shut-up',
