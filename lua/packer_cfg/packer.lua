@@ -257,7 +257,7 @@ packer.startup(function()
         useauto 'packer_cfg.neoterm'
 
     -- Snippets
-        useauto {'packer_cfg.ultisnips', disable=true}
+        useauto 'packer_cfg.ultisnips'
 
     -- Files and folders
         useauto 'packer_cfg.mirror'
