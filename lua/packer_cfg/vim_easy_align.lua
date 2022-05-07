@@ -10,7 +10,7 @@ return {
         local silent={silent=true}
         map('v', '<leader>ea',  '<Plug>(LiveEasyAlign)', silent)
         map('v', '<leader>eA',  '<Plug>(EasyAlign)', silent)
-        map('n', '<leader>et',  '<CMD>let p=getpos(".")<CR>vie:EasyAlign * &<CR><CMD>call setpos(".", p)<CR>', silent)
+        map('n', '<leader>et',  '<CMD>let p=getpos(".")<CR>vie:EasyAlign * & { "ignore_groups": [] } <CR><CMD>call setpos(".", p)<CR>', silent)
         map('n', '<leader>es',  '<CMD>let p=getpos(".")<CR>vaE:EasyAlign *\\ <CR><CMD>call setpos(".", p)<CR>', silent)
         map('n', '<leader>e--', '<CMD>let p=getpos(".")<CR>vaE:EasyAlign */ -- /<CR><CMD>call setpos(".", p)<CR>', silent)
         map('v', '<leader>et',  ':EasyAlign * &<CR>', silent)
