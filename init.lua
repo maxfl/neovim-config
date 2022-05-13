@@ -34,6 +34,8 @@ vim.cmd[[
             set.history=1000
         end
 
+        vim.o.shada = vim.o.shada:gsub("'%d+", "'1000")
+
     -- Interface
         set.background='dark'
         set.hidden=true
