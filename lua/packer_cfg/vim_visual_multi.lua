@@ -21,7 +21,8 @@ return {
             ]]
 
             local map = vim.api.nvim_set_keymap
-            map('v', 'I', '<Plug>(VM-Visual-Cursors)', {})
+            map('v', 'I',  '<Plug>(VM-Visual-Cursors)', {})
+            map('v', '<Leader>I', 'I', {noremap=true})
         end
     }
 }
