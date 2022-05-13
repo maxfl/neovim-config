@@ -161,7 +161,7 @@ packer.startup(function()
         useauto 'packer_cfg.firenvim'
 
     -- Tools
-        useauto 'packer_cfg.neuron'
+        useauto 'packer_cfg.zk'
 
     -- Completion
         -- useauto 'packer_cfg.nvim_cmp'
