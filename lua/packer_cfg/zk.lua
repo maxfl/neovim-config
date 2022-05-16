@@ -1,13 +1,9 @@
 return {
     'mickael-menu/zk-nvim',
     requires = 'folke/which-key.nvim',
+    cmd = {'ZkNew', 'ZkLinks', 'ZkNotes', 'ZkTags', 'Zk*'},
     setup = function()
         vim.env['ZK_NOTEBOOK_DIR'] = '/home/gonchar/zettels'
-    end,
-    config = function()
-        require 'zk'.setup{
-            picker = 'telescope'
-        }
 
         local status, whichkey=pcall(function() return require 'which-key' end)
         if not status then return end
@@ -25,5 +21,10 @@ return {
                 z = {'<CMD>ZkLinks<CR>', 'zettelkasten'},
             },
         }, {silent=true})
+    end,
+    config = function()
+        require 'zk'.setup{
+            picker = 'telescope'
+        }
     end
 }

@@ -1,6 +1,6 @@
 return {
     'lervag/vimtex',
-    require = 'ms-jpq/coq.thirdparty',
+    require = {'ms-jpq/coq.thirdparty', 'folke/which-key.nvim'},
     ft={'tex', 'plaintex'},
     config=function()
         --
@@ -65,5 +65,19 @@ return {
         require 'coq_3p' {
             { src = "vimtex", short_name = "vTEX" },
         }
+
+        --
+        -- Hotkeys
+        --
+        local status, whichkey=pcall(function() return require 'which-key' end)
+        if not status then return end
+
+        whichkey.register({
+            ['<leader>l'] = {
+                name = '+latex',
+                -- p='->ascii',
+                -- P='->ascii preview'
+            },
+        }, {silent=true})
     end
 }

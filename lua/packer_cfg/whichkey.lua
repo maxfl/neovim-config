@@ -54,11 +54,6 @@ return {
                 l = 'linediff',
                 r = 'reset linediff',
             },
-            l={
-                name='+latex',
-                p='->ascii',
-                P='->ascii preview'
-            },
             w = {
                 name = '+window',
                 ['='] = 'equalize (focus)',
