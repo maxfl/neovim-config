@@ -7,9 +7,13 @@ return {
         config = function()
             vim.g.coq_settings = {
                 auto_start = 'shut-up',
-                ['keymap.recommended'] = false,
-                ['keymap.pre_select']  = false,
-                ['keymap.manual_complete'] = '<M-x>',
+                keymap = {
+                    recommended = false,
+                    pre_select  = false,
+                    manual_complete = '<M-x>',
+                    bigger_preview = vim.v.null,
+                    jump_to_mark = vim.v.null
+                }
             }
             require 'coq' ()
 

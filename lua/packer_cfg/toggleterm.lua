@@ -1,5 +1,6 @@
 return {
     'akinsho/nvim-toggleterm.lua',
+    tag = 'v1.*',
     config = function()
         require "toggleterm".setup{
             shade_terminals = false,
