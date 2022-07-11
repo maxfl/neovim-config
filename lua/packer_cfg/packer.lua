@@ -217,7 +217,7 @@ packer.startup(function()
 
     -- Menus
         -- useauto 'packer_cfg.ctrlspace'
-        -- useauto 'packer_cfg.wilder' -- breaks highlighting
+        useauto 'packer_cfg.wilder' -- breaks highlighting
         -- useauto 'packer_cfg.wheel'
 
     -- Search and replace

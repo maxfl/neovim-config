@@ -19,8 +19,9 @@ return {
         map('', '<localleader>l0', '<CMD>let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>', noremap)
 
         vim.g.vimtex_quickfix_ignore_filters = {
-            '^Overfull \\.box',
-            '^Underfull \\.box',
+            'Overfull \\\\.box',
+            'Underfull \\\\.box',
+            'Package relsize Warning',
             'Empty bibliography',
             'inputenc package ignored with utf8 based engines'
         }
