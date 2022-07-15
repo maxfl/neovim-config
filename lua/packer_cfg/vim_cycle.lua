@@ -60,6 +60,8 @@ return {
             {{'onecolumn', 'twocolumn'}},
             {{'draft', 'final'}},
             --
+            {{[[\lazyrun]], [[\lazyrun*]]}, 'hard_case', 'match_case'},
+            --
             {{'(:)', '[:]', [[\{:\}]], [[\lvert :\rvert]], [[\lVert :\rVert]], [[\lfloor :\rfloor]], [[\lceil :\rceil]], [[\langle :\rangle]]}, 'sub_pairs', 'hard_case', 'match_case'},
             {{"``:''", ',,:``', "`:'", "<<:>>"}, 'sub_pairs'},
             --

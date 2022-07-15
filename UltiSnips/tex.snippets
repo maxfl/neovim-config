@@ -1,6 +1,6 @@
 snippet onimage "annotate image"
 \begin{tikzpicture}[$1]%
-  \node [inner sep=0] (pic) \{${3:${VISUAL:\includegraphics[width=\linewidth]\{}}}};
+  \node [inner sep=0] (pic) \{${3:${VISUAL:\includegraphics[width=\linewidth]\{}}};
   \draw (pic.${4:north}) node [$5] \{$0};
 \end{tikzpicture}%
 endsnippet
