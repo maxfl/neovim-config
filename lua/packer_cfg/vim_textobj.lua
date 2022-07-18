@@ -34,6 +34,20 @@ return {
             map('o', 'aE', '<Plug>(textobj-entire-a)', opts)
         end
     },
+    {                                                                        -- E
+        'glts/vim-textobj-comment',
+        requires='kana/vim-textobj-user',
+        setup=function()
+            vim.g.textobj_comment_no_default_key_mappings=true
+        end,
+        config=function()
+            local map, opts=vim.api.nvim_set_keymap, {}
+            map('x', 'iC', '<Plug>(textobj-comment-i)', opts)
+            map('o', 'iC', '<Plug>(textobj-comment-i)', opts)
+            map('x', 'aC', '<Plug>(textobj-comment-a)', opts)
+            map('o', 'aC', '<Plug>(textobj-comment-a)', opts)
+        end
+    },
     {                                                                        -- .
         'sgur/vim-textobj-parameter',
         requires='kana/vim-textobj-user',
