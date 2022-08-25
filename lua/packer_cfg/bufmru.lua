@@ -1,5 +1,6 @@
 return {
     'mildred/vim-bufmru',
+    disable = true,
     config = function()
         local map, opts = vim.api.nvim_set_keymap, {}
         map('n', '<M-p>',   '<CMD>BufMRUNext<CR>', opts)
