@@ -16,7 +16,8 @@ return {
         map('n', '<M-k>', '<CMD>FocusSplitUp<CR>', silent)
         map('n', '<M-l>', '<CMD>FocusSplitRight<CR>', silent)
 
-        map('n', '<M-w>', '<CMD>close<CR>', silent)
+        -- map('n', '<M-w>', '<CMD>close<CR>', silent)
+        map('n', '<M-w><M-w>', '<CMD>close<CR>', silent)
         map('n', '<M-S-w>', '<CMD>Bdelete<CR>', silent)
 
         map('n', '<M-m>', '<CMD>FocusMaximise<CR>', silent)
