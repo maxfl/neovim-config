@@ -194,11 +194,12 @@ packer.startup(function()
         useauto 'packer_cfg.choosewin'
         useauto 'packer_cfg.winteract'
         useauto 'packer_cfg.bufmru'
+        useauto 'packer_cfg.wheel'
 
     -- Motion
         useauto {'inkarkat/vim-JumpToVerticalBlock', requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}}
         useauto {'inkarkat/vim-JumpToVerticalOccurrence', requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}}
-        useauto {'inkarkat/vim-EnhancedJumps', config=require 'packer_cfg.EnhancedJumps', requires='inkarkat/vim-ingo-library'}
+        useauto 'packer_cfg.EnhancedJumps'
         useauto 'tmhedberg/indent-motion'
         -- useauto 'packer_cfg.easymotion'
         useauto 'packer_cfg.cleverf'
@@ -218,7 +219,6 @@ packer.startup(function()
     -- Menus
         -- useauto 'packer_cfg.ctrlspace'
         useauto 'packer_cfg.wilder' -- breaks highlighting
-        -- useauto 'packer_cfg.wheel'
 
     -- Search and replace
         useauto {'tpope/vim-abolish', cmd = 'S'} -- :%S////
@@ -250,6 +250,7 @@ packer.startup(function()
         useauto {'vim-scripts/ebnf.vim', ft='ebnf'} -- grammar
         useauto {'plasticboy/vim-markdown', ft='markdown'}
         useauto {'kalekundert/vim-coiled-snake', ft='python', setup=function() vim.g.coiled_snake_set_foldexpr=false end}
+        useauto {'raivivek/vim-snakemake'}
 
     -- Spelling and grammar
         useauto {'rhysd/vim-grammarous', cmd = {'GrammarousCheck', 'Grammarous*'}, config=function() vim.g['grammarous#languagetool_cmd']='languagetool' end}
