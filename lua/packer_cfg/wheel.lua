@@ -28,5 +28,7 @@ return {
         map('n', '<M-n>', '<Plug>(wheel-history-older-in-circle)', opts)
         map('n', '<M-S-p>', '<Plug>(wheel-previous-circle)', opts)
         map('n', '<M-S-n>', '<Plug>(wheel-next-circle)', opts)
+
+        map('n', '<M-w>d', '<Plug>(wheel-prompt-delete-location)', opts)
     end
 }

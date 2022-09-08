@@ -267,6 +267,7 @@ packer.startup(function()
         useauto 'packer_cfg.sudoedit'
         useauto 'ervandew/archive'
         useauto 'packer_cfg.pushd'
+        -- useauto 'packer_cfg.distant'
 
         useauto {'https://gitlab.com/neonunux/vim-open-or-create-path-and-file.git', cmd = 'OpenOrCreateFile'}
 
