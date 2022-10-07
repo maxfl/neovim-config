@@ -264,7 +264,7 @@ packer.startup(function()
     -- Files and folders
         useauto 'packer_cfg.mirror'
         useauto {'vim-scripts/Rename', cmd = 'Rename'}
-        useauto 'packer_cfg.sudoedit'
+        useauto 'packer_cfg.suda'
         useauto 'ervandew/archive'
         useauto 'packer_cfg.pushd'
         -- useauto 'packer_cfg.distant'

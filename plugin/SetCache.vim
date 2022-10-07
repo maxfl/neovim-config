@@ -29,9 +29,12 @@ fun! VimSetCache(dir)
 endf
 
 fun! VimSetCacheAuto()
+    if &autochdir
+        return
+    endif
     if isdirectory('.vimcache')
         call VimSetCache('.vimcache')
-    end
+    endif
 endfunction
 
 if exists('+undofile')
