@@ -1,11 +1,17 @@
 return {
     'marko-cerovac/material.nvim',
+    -- commit = 'd0aa4533',
     config=function()
         vim.g.material_style='oceanic'
         require 'material'.setup{
             -- popup_menu='colorful',
-            italics = {
-                keywords = true
+            -- italics = {
+            --     keywords = true
+            -- },
+            styles = {
+                keywords = {
+                    italic = true
+                },
             },
             custom_highlights = {
                 LineNr    = {bg='black'},

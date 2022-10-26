@@ -1,6 +1,5 @@
 return {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    branch='0.5-compat',
     requires='nvim-treesitter/nvim-treesitter',
     config=function()
         require'nvim-treesitter.configs'.setup{

@@ -146,7 +146,7 @@ packer.startup(function()
         -- lua
         useauto {'rafcamlet/nvim-luapad', cmd = 'Luapad'}
         -- useauto 'packer_cfg.lua_dev'
-        useauto 'packer_cfg.nlua'
+        -- useauto 'packer_cfg.nlua'
         useauto 'packer_cfg.glow'
 
         -- terminal
@@ -179,7 +179,8 @@ packer.startup(function()
         useauto 'packer_cfg.autofenc'
 
     -- Editing
-        useauto 'packer_cfg.vim_trailing_whitespace'
+        -- useauto 'packer_cfg.vim_trailing_whitespace'
+        useauto 'packer_cfg.vim_better_whitespace'
         useauto 'packer_cfg.vim_visual_multi'
         useauto 'kopischke/vim-fetch' -- jump to file:line:number
         useauto 'packer_cfg.mundo'
