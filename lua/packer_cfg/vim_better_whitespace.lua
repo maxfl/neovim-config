@@ -1,8 +1,9 @@
 return {
     'ntpeters/vim-better-whitespace',
     setup = function()
-        vim.g.better_whitespace_enabled=false
+        vim.g.better_whitespace_enabled=true
         vim.g.strip_whitespace_on_save=false
+        vim.g.strip_whitespace_confirm=false
     end,
     config = function()
         local map = vim.api.nvim_set_keymap

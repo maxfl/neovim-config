@@ -18,7 +18,7 @@ return {
         local map, opts = vim.api.nvim_set_keymap, {}
         map('n' , '<F10>', '<CMD>NvimTreeToggle<CR>', opts)
         map('!', '<F10>', '<CMD>NvimTreeToggle<CR>', opts)
-        map('t', '<F10>', [[<C-\><C-n><CMD>NvimTreeToggle<CR>]], {silent=true, noremap=true})
+        -- map('t', '<F10>', [[<C-\><C-n><CMD>NvimTreeToggle<CR>]], {silent=true, noremap=true})
     end
 }
 
