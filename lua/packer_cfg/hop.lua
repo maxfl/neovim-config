@@ -13,8 +13,8 @@ return {
                 ['?'] = {"<CMD>HopPatternBC<CR>", "patter (back)"},
                 f     = {"<CMD>HopChar1<CR>",     "char"},
                 F     = {"<CMD>HopChar1BC<CR>",   "char (back)"},
-                j     = {"<CMD>HopLineBC<CR>",    "line"},
-                k     = {"<CMD>HopLine<CR>",      "line (back)"},
+                k     = {"<CMD>HopLineBC<CR>",    "line (back)"},
+                j     = {"<CMD>HopLineAC<CR>",    "line"},
                 w     = {"<CMD>HopWord<CR>",      "word"},
                 W     = {"<CMD>HopWordBC<CR>",    "word (back)"}
             },
