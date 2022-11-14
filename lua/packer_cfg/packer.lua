@@ -90,7 +90,7 @@ packer.startup(function()
         useauto 'packer_cfg.focus'
         useauto 'packer_cfg.winshift'
         useauto 'packer_cfg.nvim_tabline'
-        useauto 'packer_cfg.zen_mode'
+        useauto 'packer_cfg.interface.colorful_winsep'
 
         useauto 'packer_cfg.bufdelete'
         useauto 'packer_cfg.close_buffers'
