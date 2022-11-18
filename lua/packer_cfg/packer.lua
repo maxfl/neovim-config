@@ -121,7 +121,7 @@ packer.startup(function()
         useauto 'packer_cfg.cursorword'
         -- useauto 'packer_cfg.beacon'
         useauto 'packer_cfg.specs' -- hightlight cursor jump
-        useauto 'packer_cfg.shade'
+        -- useauto 'packer_cfg.shade'
         -- useauto 'packer_cfg.illuminate' -- vim
 
     -- Search and replace
@@ -158,7 +158,7 @@ packer.startup(function()
     -- Files and folders
         useauto {'jghauser/mkdir.nvim', config = function() require('mkdir') end}
         useauto 'packer_cfg.nvim_tree'
-        useauto 'packer_cfg.firenvim'
+        -- useauto 'packer_cfg.firenvim'
 
     -- Tools
         useauto 'packer_cfg.zk'

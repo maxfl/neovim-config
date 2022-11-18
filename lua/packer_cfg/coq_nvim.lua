@@ -7,6 +7,9 @@ return {
         config = function()
             vim.g.coq_settings = {
                 auto_start = 'shut-up',
+                completion = {
+                    always = false,
+                },
                 keymap = {
                     recommended = false,
                     pre_select  = false,
