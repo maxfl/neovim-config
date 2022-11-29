@@ -189,7 +189,6 @@ packer.startup(function()
     -- Characters and unicode
         useauto 'chrisbra/unicode.vim'
         useauto {'Konfekt/vim-unicode-homoglyphs', setup=function() vim.g.is_homoglyph_on=false end} -- search for hidden unicode characters
-        useauto 'packer_cfg.isotope'
 
     -- Windows and buffers
         useauto 'packer_cfg.choosewin'
@@ -240,7 +239,7 @@ packer.startup(function()
     -- Filetype
         -- tex
         useauto {'KeitaNakamura/tex-conceal.vim', ft={'tex', 'plaintex'}}
-        useauto 'packer_cfg.vimtex'
+        useauto 'packer_cfg.filetype.vimtex'
 
         -- julia
         useauto 'JuliaEditorSupport/julia-vim'

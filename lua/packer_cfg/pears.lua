@@ -3,10 +3,10 @@ return {
     config=function()
         local pears=require 'pears'
         pears.setup(function(conf)
-            conf.pair('“', '”')
-            conf.pair('‘', '’')
-            conf.pair('„', '“')
-            conf.pair('«', '»')
+            -- conf.pair('“', '”')
+            -- conf.pair('‘', '’')
+            -- conf.pair('„', '“')
+            -- conf.pair('«', '»')
 
             --
             -- Lua

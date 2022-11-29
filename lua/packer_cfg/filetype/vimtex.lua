@@ -1,7 +1,6 @@
 return {
     'lervag/vimtex',
     require = {'ms-jpq/coq.thirdparty', 'folke/which-key.nvim'},
-    ft={'tex', 'plaintex'},
     config=function()
         --
         -- View
