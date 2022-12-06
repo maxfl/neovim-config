@@ -213,6 +213,20 @@ snippet frame "Beamer frame" b
 \end{frame}
 endsnippet
 
+snippet sframe "Beamer section+frame" b
+\section{${1:Section}}
+\begin{frame}[label=${3:current}]{${2:$1}}
+  $0
+\end{frame}
+endsnippet
+
+snippet ssframe "Beamer subsection+frame" b
+\subsection{${1:Subsection}}
+\begin{frame}[label=${3:current}]{${2:$1}}
+  $0
+\end{frame}
+endsnippet
+
 snippet columns "Beamer columns"
 \begin{columns}
   \begin{column}{${1:${2:0.50}\linewidth}}

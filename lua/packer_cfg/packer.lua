@@ -215,6 +215,7 @@ packer.startup(function()
         useauto {'inkarkat/vim-UnconditionalPaste', requires={'inkarkat/vim-ingo-library', 'tpope/vim-repeat'} }
         useauto {'inkarkat/vim-ReplaceWithRegister', requires={'tpope/vim-repeat', 'inkarkat/vim-visualrepeat'} }
         useauto {'inkarkat/vim-RepeatableYank', requires={'inkarkat/vim-ingo-library', 'tpope/vim-repeat', 'inkarkat/vim-visualrepeat'} }
+        useauto {'inkarkat/vim-SwapText', requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'} }
 
     -- Menus
         -- useauto 'packer_cfg.ctrlspace'
@@ -295,56 +296,7 @@ packer.startup(function()
         useauto 'packer_cfg.devdocs'
 
     -- Local plugins
-        useauto {"~/.config/nvim/bundle_local/SwapText-1.02", keys={{'n', '<Leader>x'}, {'v', '<Leader>x'}}, requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}
         useauto {'~/.config/nvim/bundle_local/txt-vim-syntax-1.2', ft='txt'}
         useauto {'~/.config/nvim/bundle_local/txtfmt_v3.1', ft='txt'}
     end
 end)
-
---[[
-        -- Outdated
-        -- Colorschemes
-        useauto {'mhartington/oceanic-next', config=function() vim.cmd"colorscheme OceanicNext" end}
-
-        -- Menus
-        use('sudormrfbin/cheatsheet.nvim.git', { 'depends': 'telescope' })
-
-        -- Filetype
-        -- Markdown
-        use('previm/previm', { 'hook_add': "
-        \ let g:previm_open_cmd = \"bash -c 'qutebrowser --target window $* &' -- \"\n
-        \ "})
-        -- Other
-        'Shougo/neossh.vim'
-        "use('pechorin/any-jump.vim', { 'normalized_name': 'any-jump' }) " Warning: not used
-        use('lervag/wiki.vim', { 'hook_add': "let g:wiki_mappings_use_defaults=v:false" })
-        use('lervag/wiki-ft.vim', { 'depends': 'wiki'})
-        "use('brooth/far.vim')        " :Far
-        use('vim-scripts/RangeMacro') " karkat
-        use('inkarkat/vim-ExtractMatches', { 'normalized_name': 'ExtractMatches',  'depends': 'ingo-library' })
-        use('rbong/vim-buffest')      " edit register
-
-        call dein#add('powerman/vim-plugin-AnsiEsc', { 'normalized_name': 'plugin-AnsiEsc', 'lazy': 1, 'on_cmd': 'AnsiEsc'})
-
-        call dein#add('voldikss/vim-floaterm', { 'normalized_name': 'floaterm',  'on_cmd': 'FloatermToggle', 'hook_add': "
-                    \ noremap  <silent> <F12> :FloatermToggle<CR>\n
-                    \ noremap! <silent> <F12> <Esc>:FloatermToggle<CR>\n
-                    \ tnoremap <silent> <F12> <C-\\><C-n>:FloatermToggle<CR>\n
-                    \ let g:floaterm_shell='fish'\n
-                    \ "})
-
-        call dein#add('jsfaint/gen_tags.vim', { 'hook_add': "
-                    \ let g:loaded_gentags#gtags=v:true
-                    \ " })
-        call dein#add('majutsushi/tagbar', {
-                    \   'hook_add': function("plugin_cfg#tagbar#add"),
-                    \   'hook_post_source': function("plugin_cfg#tagbar#post_source")
-                    \ })
-
-        'bfrg/vim-cpp-modern'
-
-        call dein#add('joom/latex-unicoder.vim', { 'hook_add': "let g:unicoder_no_map=v:true" })
-        call dein#add('ron89/thesaurus_query.vim', {
-                    \ 'hook_add': 'let g:tq_map_keys = v:false'
-                    \ })
---]]
