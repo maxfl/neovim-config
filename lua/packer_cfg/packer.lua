@@ -179,6 +179,7 @@ packer.startup(function()
         useauto {'kien/rainbow_parentheses.vim', cmd = 'RainbowParenthesesToggle'}
         useauto {'ciaranm/detectindent', ft='python', config=function() vim.cmd[[au FileType cpp,python :DetectIndent]] end}
         useauto 'packer_cfg.autofenc'
+        useauto 'packer_cfg.xkbswitch'
 
     -- Editing
         -- useauto 'packer_cfg.vim_trailing_whitespace'
