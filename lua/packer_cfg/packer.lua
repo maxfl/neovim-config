@@ -61,11 +61,13 @@ packer.startup(function()
         useauto 'packer_cfg.colorscheme'
 
     -- Tree sitter
-        useauto 'packer_cfg.nvim_treesitter'
-        useauto 'packer_cfg.nvim_treesitter_context'
-        useauto 'packer_cfg.nvim_treesitter_textobjects'
-        -- useauto 'packer_cfg.nvim_treesitter_textsubjects'
-        useauto 'packer_cfg.nvim_treesitter_endwise'
+        useauto 'packer_cfg.treesitter.treesitter'
+        useauto 'packer_cfg.treesitter.treesitter_context'
+        useauto 'packer_cfg.treesitter.treesitter_textobjects'
+        -- useauto 'packer_cfg.treesitter.treesitter_textsubjects'
+        useauto 'packer_cfg.treesitter.treesitter_endwise'
+        -- useauto 'packer_cfg.treesitter.treesj'
+        -- useauto 'packer_cfg.treesitter.sibling_swap'
 
     -- LSP
         useauto 'neovim/nvim-lspconfig'
@@ -289,7 +291,7 @@ packer.startup(function()
         useauto 'packer_cfg.vim_easy_align'
         useauto 'packer_cfg.vim_transpose'
         useauto {'inkarkat/vim-AdvancedSorters', cmd = 'SortVisible'}
-        useauto 'packer_cfg.vim_argwrap'
+        useauto 'packer_cfg.code.vim_argwrap'
 
     -- Documentation
         useauto 'packer_cfg.zeavim'

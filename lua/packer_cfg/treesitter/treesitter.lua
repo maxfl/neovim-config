@@ -10,11 +10,15 @@ return {
                 'bash', 'fish',
                 'cmake',
                 'cpp', 'julia',
-                -- 'latex', -- conflicts with pears
+                'diff', 'dot',
+                'gitcommit', 'gitattributes', 'gitignore',
+                'latex', -- conflicts with pears
+                'make',
+                'mermaid',
                 'rst',
-                'yaml'
+                'toml', 'yaml'
             },
-            ignore_install = { 'latex' }, -- List of parsers to ignore installing
+            -- ignore_install = { 'latex' }, -- List of parsers to ignore installing
             highlight = {
                 enable = true,              -- false will disable the whole extension
                 disable = {
