@@ -91,7 +91,6 @@ packer.startup(function()
         useauto {'luukvbaal/stabilize.nvim', config = function() require("stabilize").setup() end, disable=true}
         useauto 'packer_cfg.focus'
         useauto 'packer_cfg.winshift'
-        -- useauto 'packer_cfg.nvim_tabline'
         useauto 'packer_cfg.interface.colorful_winsep'
 
         useauto 'packer_cfg.bufdelete'
