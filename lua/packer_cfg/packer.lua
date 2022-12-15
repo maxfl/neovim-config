@@ -105,7 +105,6 @@ packer.startup(function()
     -- Menus
         useauto 'packer_cfg.telescope'
         -- useauto 'packer_cfg.telescope_rtp'
-        useauto 'packer_cfg.jabs'
 
     -- Keys
         useauto 'packer_cfg.whichkey'
@@ -197,7 +196,7 @@ packer.startup(function()
         useauto 'packer_cfg.choosewin'
         useauto 'packer_cfg.winteract'
         useauto 'packer_cfg.bufmru'
-        useauto 'packer_cfg.wheel'
+        useauto 'packer_cfg.org.ctrlspace'
 
     -- Motion
         useauto {'inkarkat/vim-JumpToVerticalBlock', requires={{'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'}}}
