@@ -36,6 +36,7 @@ return {
         --
         -- Spelling
         --
+        vim.g.vimtex_syntax_nospell_comments=true
         vim.g.vimtex_syntax_custom_cmds = {
             -- References
             { name='cref', argspell=false },

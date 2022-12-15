@@ -40,8 +40,13 @@ return {
                     o     = {'<CMD>Telescope oldfiles<CR>', 'old files'},
                     p     = {'<CMD>Telescope projects<CR>', 'projects'},
                     t     = {'<CMD>Telescope<CR>', 'telescope'},
+                    [']'] = {'<CMD>Telescope<CR>', 'telescope'},
                     -- 'nvim-telescope/telescope-symbols.nvim'
                     s     = {'<CMD>lua require "telescope.builtin".symbols{ sources = {"math", "latex"} }<CR>', 'symbols'},
+                },
+                z = {
+                    name = '+spell/fold',
+                    ['='] = {'<CMD>Telescope spell_suggest<CR>', 'Spelling suggestions'}
                 }
             }
         end

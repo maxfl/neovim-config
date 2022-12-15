@@ -8,14 +8,14 @@ set.imsearch=-1
 -- Switch keymaps
 local map = vim.api.nvim_set_keymap
 local noremap={noremap=true}
-map('i', '<F3>', '<C-^><CMD>call KeyMapHLinsert()<CR>', noremap)
-map('i', '<M-Space>', '<C-^><CMD>call KeyMapHLinsert()<CR>', noremap)
-map('i', '<S-Space>', '<C-^><Space><CMD>call KeyMapHLinsert()<CR>', noremap)
-map('i', '<C-Space>', '<C-^><Space><CMD>call KeyMapHLinsert()<CR>', noremap)
-map('c', '<F3>', '<C-^><CMD>call KeyMapHLinsert()<CR>', noremap)
-map('c', '<M-Space>', '<C-^><CMD>call KeyMapHLinsert()<CR>', noremap)
-map('c', '<S-Space>', '<C-^><Space><CMD>call KeyMapHLinsert()<CR>', noremap)
-map('c', '<C-Space>', '<C-^><Space><CMD>call KeyMapHLinsert()<CR>', noremap)
+-- map('i', '<F3>', '<C-^><CMD>call KeyMapHLinsert()<CR>', noremap)
+-- map('i', '<M-Space>', '<C-^><CMD>call KeyMapHLinsert()<CR>', noremap)
+-- map('i', '<S-Space>', '<C-^><Space><CMD>call KeyMapHLinsert()<CR>', noremap)
+-- map('i', '<C-Space>', '<C-^><Space><CMD>call KeyMapHLinsert()<CR>', noremap)
+-- map('c', '<F3>', '<C-^><CMD>call KeyMapHLinsert()<CR>', noremap)
+-- map('c', '<M-Space>', '<C-^><CMD>call KeyMapHLinsert()<CR>', noremap)
+-- map('c', '<S-Space>', '<C-^><Space><CMD>call KeyMapHLinsert()<CR>', noremap)
+-- map('c', '<C-Space>', '<C-^><Space><CMD>call KeyMapHLinsert()<CR>', noremap)
 
 vim.cmd[[
     function! KeyMapHLinsert()

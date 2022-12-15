@@ -44,7 +44,7 @@ return {
         vim.g.cycle_default_groups_for_markdown = checkmarks
         vim.g.cycle_default_groups_for_python = checkmarks
         vim.g.cycle_default_groups_for_fish = checkmarks
-        vim.g.cycle_default_groups_for_fish = checkmarks
+        vim.g.cycle_default_groups_for_txt  = checkmarks
 
         vim.g.cycle_default_groups_for_gitrebase = {{{'pick', 'reword', 'edit', 'squash', 'fixup', 'exec', 'break', 'drop'}}}
 

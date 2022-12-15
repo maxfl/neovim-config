@@ -8,7 +8,7 @@ return {
             vim.g.coq_settings = {
                 auto_start = 'shut-up',
                 completion = {
-                    always = false,
+                    always = true,
                 },
                 keymap = {
                     recommended = false,
