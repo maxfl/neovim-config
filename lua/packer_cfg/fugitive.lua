@@ -11,6 +11,7 @@ return {
                 name = '+git',
                 C = {'<CMD>Git commit -a<CR>', 'commit all'},
                 a = {'<CMD>!git add %<CR>',    'add'},
+                b = {'<CMD>git blame<CR>',     'blame'},
                 c = {'<CMD>Git commit<CR>',    'commit'},
                 t = {'<CMD>Git push<CR>',      'push'},
                 h = {'<CMD>Git pull<CR>',      'pull'},

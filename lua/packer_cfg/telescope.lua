@@ -21,9 +21,7 @@ return {
 
             local map, opts = vim.api.nvim_set_keymap, {}
             map('', '<C-p>', '<CMD>Telescope oldfiles<CR>', opts)
-            -- map('', '<C-Space>',  '<CMD>Telescope buffers<CR>', opts)
-            -- map('', '<S-Space>',  '<CMD>Telescope<CR>', opts)
-            -- map('', '<M-Space>',  '<CMD>Telescope<CR>', opts)
+            map('', '<C-Space>',  '<CMD>Telescope buffers<CR>', opts)
 
             local status, whichkey=pcall(function() return require 'which-key' end)
             if not status then return end

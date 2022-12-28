@@ -47,6 +47,10 @@ return {
             -- options = {
             --     globalstatus = false
             -- },
+            options = {
+                disabled_filetypes = { ctrlspace = {} },
+                disabled_buftypes = { 'nofile' }
+            },
             sections = {
                 lualine_a = {
                     'mode',

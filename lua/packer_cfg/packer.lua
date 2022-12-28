@@ -142,12 +142,13 @@ packer.startup(function()
         -- useauto 'packer_cfg.windline'
         useauto 'packer_cfg.lualine'
 
-    -- Filetype
+    -- Filetype and code
         -- lua
         useauto {'rafcamlet/nvim-luapad', cmd = 'Luapad'}
         -- useauto 'packer_cfg.lua_dev'
         -- useauto 'packer_cfg.nlua'
         useauto 'packer_cfg.glow'
+        useauto 'packer_cfg.code.coverage'
 
         -- terminal
         useauto {'norcalli/nvim-terminal.lua', config=function() require 'terminal'.setup() end, ft='terminal'}
