@@ -148,7 +148,7 @@ packer.startup(function()
         -- useauto 'packer_cfg.lua_dev'
         -- useauto 'packer_cfg.nlua'
         useauto 'packer_cfg.glow'
-        useauto 'packer_cfg.code.coverage'
+        -- useauto 'packer_cfg.code.coverage'
 
         -- terminal
         useauto {'norcalli/nvim-terminal.lua', config=function() require 'terminal'.setup() end, ft='terminal'}
@@ -239,7 +239,7 @@ packer.startup(function()
         useauto {'gangleri/vim-diffsaved', cmd = 'ToggleDiffSaved'}
         useauto {'chrisbra/vim-diff-enhanced', cmd = 'EnhancedDiff'}
 
-    -- Filetype
+    -- Filetype and code
         -- tex
         useauto {'KeitaNakamura/tex-conceal.vim', ft={'tex', 'plaintex'}}
         useauto 'packer_cfg.filetype.vimtex'
@@ -248,11 +248,15 @@ packer.startup(function()
         useauto 'JuliaEditorSupport/julia-vim'
         useauto {'thinca/vim-prettyprint', cmd = {'PrettyPrint', 'PP'}}
 
+        -- python
+        useauto {'kalekundert/vim-coiled-snake', setup=function() vim.g.coiled_snake_set_foldexpr=false end}
+        useauto 'alfredodeza/coveragepy.vim'
+
         -- others
-        useauto {'georgewitteman/vim-fish', ft='fish'}
-        useauto {'vim-scripts/ebnf.vim', ft='ebnf'} -- grammar
-        useauto {'plasticboy/vim-markdown', ft='markdown'}
-        useauto {'kalekundert/vim-coiled-snake', ft='python', setup=function() vim.g.coiled_snake_set_foldexpr=false end}
+        -- useauto {'georgewitteman/vim-fish'}
+        useauto {'ferreum/vim-fish'}
+        useauto {'vim-scripts/ebnf.vim'} -- grammar
+        useauto {'plasticboy/vim-markdown'}
         useauto {'raivivek/vim-snakemake'}
 
     -- Spelling and grammar
