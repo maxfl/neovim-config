@@ -84,8 +84,9 @@ packer.startup(function()
         useauto {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
 
     -- Editing
-        useauto 'packer_cfg.comment'
+        useauto 'packer_cfg.edit.comment'
         -- useauto 'packer_cfg.gomove'
+        useauto 'packer_cfg.edit.part_edit'
 
     -- Windows and floats, interface
         useauto {'luukvbaal/stabilize.nvim', config = function() require("stabilize").setup() end, disable=true}

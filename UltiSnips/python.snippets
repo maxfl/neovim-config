@@ -137,6 +137,21 @@ ${1:ax} = plt.subplot(${2:111}, xlabel='${3}', ylabel='${4}', title='${5}')
 $0
 endsnippet
 
+snippet pltstyle "matplotlib style"
+plt.style.use({
+    # 'axes.formatter.limits':       (-2, 4),
+    'axes.formatter.use_mathtext': True,
+    'axes.grid':           True,
+    'xtick.minor.visible': True,
+    'ytick.minor.visible': True,
+    'xtick.top':           True,
+    'ytick.right':         True,
+    'errorbar.capsize': 2,
+    'lines.markerfacecolor': 'none',
+    'savefig.dpi': 300,
+	})
+endsnippet
+
 #
 # Properties
 #
