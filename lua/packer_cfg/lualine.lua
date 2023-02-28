@@ -48,7 +48,7 @@ return {
             --     globalstatus = false
             -- },
             options = {
-                disabled_filetypes = { ctrlspace = {} },
+                disabled_filetypes = { 'ctrlspace' },
                 disabled_buftypes = { 'nofile' }
             },
             sections = {

@@ -156,8 +156,8 @@ vim.cmd[[
         map('v', '<LeftRelease>', '"*ygv', emptyopts)
 
         -- select just pasted text
-        local opts={noremap=true, expr=true}
-        map('n', 'viy', [['`['.strpart(getregtype(), 0, 1).'`]']], opts)
+        local expr={noremap=true, expr=true}
+        map('n', 'viy', [['`['.strpart(getregtype(), 0, 1).'`]']], expr)
 
     -- Motions
         map('v', '>', '>gv', noremap)
@@ -191,6 +191,9 @@ vim.cmd[[
     -- Edit new file based on a word under cursor
         map('n', '<Leader>gf', '<CMD>e <cfile><CR>', noremap)
         map('n', '<Leader>gF', '<CMD>tabe <cfile><CR>', noremap)
+
+    -- :commands
+        map('n', '<Leader>:e', [[':edit '.expand("%:h")]], expr)
 
     -- Shell
         vim.env.SHLVL=tostring(vim.env.SHLVL-1) -- Reduce SHLVL

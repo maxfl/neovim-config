@@ -196,7 +196,7 @@ packer.startup(function()
     -- Windows and buffers
         useauto 'packer_cfg.choosewin'
         useauto 'packer_cfg.winteract'
-        useauto 'packer_cfg.bufmru'
+        -- useauto 'packer_cfg.bufmru'
         useauto 'packer_cfg.org.ctrlspace'
 
     -- Motion
@@ -221,7 +221,6 @@ packer.startup(function()
         useauto {'inkarkat/vim-SwapText', requires={'inkarkat/vim-CountJump', requires='inkarkat/vim-ingo-library'} }
 
     -- Menus
-        -- useauto 'packer_cfg.ctrlspace'
         useauto 'packer_cfg.wilder' -- breaks highlighting
 
     -- Search and replace
@@ -271,7 +270,7 @@ packer.startup(function()
 
     -- Files and folders
         useauto 'packer_cfg.mirror'
-        useauto {'vim-scripts/Rename', cmd = 'Rename'}
+        useauto 'packer_cfg.commands.rename'
         useauto 'packer_cfg.suda'
         useauto 'ervandew/archive'
         useauto 'packer_cfg.pushd'
