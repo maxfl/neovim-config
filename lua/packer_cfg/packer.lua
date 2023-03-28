@@ -100,7 +100,8 @@ packer.startup(function()
         useauto 'packer_cfg.indent_blankline'
 
         -- useauto 'packer_cfg.FTerm'
-        useauto 'packer_cfg.toggleterm'
+        useauto 'packer_cfg.terminal.toggleterm'
+        -- useauto 'packer_cfg.terminal.flatten'
 
     -- Menus
         useauto 'packer_cfg.telescope'
@@ -263,7 +264,7 @@ packer.startup(function()
         useauto {'rhysd/vim-grammarous', cmd = {'GrammarousCheck', 'Grammarous*'}, config=function() vim.g['grammarous#languagetool_cmd']='languagetool' end}
 
     -- Terminal
-        useauto 'packer_cfg.neoterm'
+        useauto 'packer_cfg.terminal.neoterm'
 
     -- Snippets
         useauto 'packer_cfg.ultisnips'

@@ -1,6 +1,5 @@
 return {
-    -- 'vim-ctrlspace/vim-ctrlspace',
-    'git@github.com:maxfl/vim-ctrlspace.git',
+    'vim-ctrlspace/vim-ctrlspace',
     setup = function()
         vim.g.CtrlSpaceSetDefaultMapping=true
         vim.g.CtrlSpaceUseTabline=true

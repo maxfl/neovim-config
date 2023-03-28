@@ -196,7 +196,7 @@ vim.cmd[[
         map('n', '<Leader>:e', [[':edit '.expand("%:h")]], expr)
 
     -- Shell
-        vim.env.SHLVL=tostring(vim.env.SHLVL-1) -- Reduce SHLVL
+        vim.env.SHLVL=tostring(vim.env.SHLVL and vim.env.SHLVL-1 or 0) -- Reduce SHLVL
 
 -- Plugins
 require 'packer_cfg.packer'

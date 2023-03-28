@@ -23,8 +23,15 @@ return {
         map('n', '<M-m>', '<CMD>FocusMaximise<CR>', silent)
         map('n', '<M-=>', '<CMD>FocusEqualise<CR>', silent)
 
-        map('n', '<Leader>wt', '<CMD>FocusToggle<CR>', silent)
+        -- map('n', '<Leader>ww', '<CMD>FocusDisableWindow<CR>', silent)
+        -- map('n', '<Leader>wW', '<CMD>FocusEnableWindow<CR>', silent)
+        map('n', '<Leader>wT', '<CMD>FocusToggle<CR>', silent)
         map('n', '<Leader>w=', '<CMD>FocusEqualise<CR>', silent)
         map('n', '<Leader>wf', '<CMD>FocusMaximise<CR>', silent)
+
+        local opts={}
+        map('n', '<M-->', '<CMD>tabprev<CR>', opts)
+        map('n', '<M-=>', '<CMD>tabnext<CR>', opts)
+        map('n', '<M-+>', '<CMD>tabnew<CR>', opts)
     end
 }
