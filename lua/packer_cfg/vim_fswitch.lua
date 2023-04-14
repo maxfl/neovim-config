@@ -4,7 +4,7 @@ return {
     cmd = 'FS*',
     setup = function()
         vim.cmd[[
-            au! BufEnter *.cpp,*.c,*.C,*.cxx,*.cc,*.CC let b:fswitchdst = 'hpp,h,H,hh,HH,hxx' | let b:fswitchlocs = '../inc,../include'
+            au! BufEnter *.cpp,*.c,*.C,*.cxx,*.cc,*.CC let b:fswitchdst = 'hpp,h,H,hh,HH,hxx' | exe "let b:fswitchlocs = '../inc,../include".",../".expand("%:h:h:t")."'"
             au! BufEnter *.hpp,*.h,*.H,*.hh,*.HH,*.hxx let b:fswitchdst = 'cpp,c,C,cc,CC,cxx' | let b:fswitchlocs = '../src'
         ]]
 
