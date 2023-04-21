@@ -78,6 +78,7 @@ packer.startup(function()
         useauto 'packer_cfg.symbols_outline'
         useauto 'packer_cfg.diaglist'
         useauto 'packer_cfg.trouble'
+        useauto 'packer_cfg.lsp.navbuddy'
 
     -- Libraries
         useauto 'nvim-lua/plenary.nvim'
@@ -94,8 +95,9 @@ packer.startup(function()
         useauto 'packer_cfg.winshift'
         useauto 'packer_cfg.interface.colorful_winsep'
 
-        useauto 'packer_cfg.bufdelete'
-        useauto 'packer_cfg.close_buffers'
+        useauto 'packer_cfg.buffers.bufdelete'
+        useauto 'packer_cfg.buffers.close_buffers'
+        useauto 'packer_cfg.buffers.early_retirement'
 
         useauto 'packer_cfg.indent_blankline'
 
