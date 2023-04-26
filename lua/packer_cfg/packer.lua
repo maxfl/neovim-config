@@ -234,8 +234,9 @@ packer.startup(function()
         useauto 'packer_cfg.vim_esearch' -- \ff
 
     -- Diff tools
-        useauto 'packer_cfg.dirdiff'
-        useauto 'packer_cfg.linediff'
+        -- useauto 'packer_cfg.diff.dirdiff'
+        useauto 'packer_cfg.diff.dirdifftree'
+        useauto 'packer_cfg.diff.linediff'
         useauto {'rickhowe/diffchar.vim', cond='vim.o.diff'}
         useauto {'rickhowe/spotdiff.vim', cond='vim.o.diff'} -- , cmd = {'Diffthis', 'Diffoff', 'Diffupdate'}}
         -- useauto {'sindrets/diffview.nvim', cmd = 'Diffview*'}
