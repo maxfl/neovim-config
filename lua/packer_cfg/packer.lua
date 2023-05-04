@@ -194,7 +194,7 @@ packer.startup(function()
         useauto 'kopischke/vim-fetch' -- jump to file:line:number
         useauto 'packer_cfg.mundo'
         useauto 'packer_cfg.textmanip'
-        useauto 'glts/vim-radical' -- convert numbers
+        useauto {'glts/vim-radical', requires='glts/vim-magnum'} -- convert numbers
 
     -- Characters and unicode
         useauto 'chrisbra/unicode.vim'
