@@ -14,6 +14,7 @@ return {
                 'gitcommit', 'gitattributes', 'gitignore',
                 'latex', -- conflicts with pears
                 'make',
+                'markdown',
                 'mermaid',
                 'rst',
                 'toml', 'yaml'

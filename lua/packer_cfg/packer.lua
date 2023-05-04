@@ -83,6 +83,7 @@ packer.startup(function()
     -- Libraries
         useauto 'nvim-lua/plenary.nvim'
         useauto {'ncm2/float-preview.nvim', config=function() vim.g['float_preview#docked']=1; vim.opt.completeopt:append 'preview' end}
+        useauto 'stevearc/dressing.nvim'
 
     -- Editing
         useauto 'packer_cfg.edit.comment'
@@ -152,6 +153,8 @@ packer.startup(function()
         -- useauto 'packer_cfg.lua_dev'
         -- useauto 'packer_cfg.nlua'
         useauto 'packer_cfg.glow'
+        useauto 'packer_cfg.filetype.edit_markdown_table'
+        useauto 'packer_cfg.filetype.nvim_hl_mdcodeblock'
         -- useauto 'packer_cfg.code.coverage'
 
         -- terminal
@@ -191,6 +194,7 @@ packer.startup(function()
         useauto 'kopischke/vim-fetch' -- jump to file:line:number
         useauto 'packer_cfg.mundo'
         useauto 'packer_cfg.textmanip'
+        useauto 'glts/vim-radical' -- convert numbers
 
     -- Characters and unicode
         useauto 'chrisbra/unicode.vim'
