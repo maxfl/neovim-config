@@ -98,7 +98,7 @@ packer.startup(function()
 
         useauto 'packer_cfg.buffers.bufdelete'
         useauto 'packer_cfg.buffers.close_buffers'
-        useauto 'packer_cfg.buffers.early_retirement'
+        -- useauto 'packer_cfg.buffers.early_retirement'
 
         useauto 'packer_cfg.indent_blankline'
 
@@ -183,7 +183,7 @@ packer.startup(function()
     -- Indentation, encoding, settings
         useauto {'thiagoalessio/rainbow_levels.vim', cmd = 'RainbowLevelsToggle'}
         useauto {'kien/rainbow_parentheses.vim', cmd = 'RainbowParenthesesToggle'}
-        useauto {'ciaranm/detectindent', ft='python', config=function() vim.cmd[[au FileType cpp,python :DetectIndent]] end}
+        useauto {'ciaranm/detectindent', ft='python', setup=function() vim.g.detectindent_preferred_expandtab=true end, config=function() vim.cmd[[au FileType cpp,python :DetectIndent]] end}
         useauto 'packer_cfg.autofenc'
         useauto 'packer_cfg.xkbswitch'
 

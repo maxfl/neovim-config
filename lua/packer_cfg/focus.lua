@@ -21,7 +21,7 @@ return {
         map('n', '<M-S-w>', '<CMD>Bdelete<CR>', silent)
 
         map('n', '<M-m>', '<CMD>FocusMaximise<CR>', silent)
-        map('n', '<M-=>', '<CMD>FocusEqualise<CR>', silent)
+        map('n', '<M-S-m>', '<CMD>FocusEqualise<CR>', silent)
 
         -- map('n', '<Leader>ww', '<CMD>FocusDisableWindow<CR>', silent)
         -- map('n', '<Leader>wW', '<CMD>FocusEnableWindow<CR>', silent)
