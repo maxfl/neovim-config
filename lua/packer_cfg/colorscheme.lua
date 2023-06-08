@@ -1,30 +1,63 @@
 return {
-    'marko-cerovac/material.nvim',
-    -- commit = 'd0aa4533',
-    config=function()
-        vim.g.material_style='oceanic'
-        require 'material'.setup{
-            -- popup_menu='colorful',
-            -- italics = {
-                --     keywords = true
-                -- },
-                styles = {
-                    keywords = {
-                        italic = true
+    {
+        'marko-cerovac/material.nvim',
+        -- commit = 'd0aa4533',
+        config=function()
+            require 'material'.setup{
+                -- popup_menu='colorful',
+                -- italics = {
+                    --     keywords = true
+                    -- },
+                    styles = {
+                        keywords = {
+                            italic = true
+                        },
                     },
-                },
-                custom_highlights = {
-                    LineNr    = {bg='black'},
-                    Pmenu     = {bg='#808080'},
-                    VertSplit = {bg='#808080'},
-                    DiffChange= {bg='#13191C'}
-                },
-                disable = {
-                    borders = false
+                    custom_highlights = {
+                        -- LineNr    = {bg='black'},
+                        -- Pmenu     = {bg='#808080'},
+                        -- VertSplit = {bg='#808080'},
+                        -- DiffChange= {bg='#13191C'}
+                    },
+                    disable = {
+                        borders = false
+                    }
                 }
-            }
-            vim.cmd[[colorscheme material]];
-        end
+                function dark()
+                    print(vim.o.background, vim.v.option_new)
+                    if vim.o.background=='dark' then
+                        vim.g.material_style='oceanic'
+                        vim.cmd.colorscheme 'material'
+                    end
+                end
+                vim.api.nvim_create_augroup('background',{clear=false})
+                vim.api.nvim_create_autocmd("OptionSet", {
+                    group = 'background',
+                    pattern = 'background',
+                    callback = dark
+                })
+                dark()
+            end
+        },
+        {
+            'sainnhe/edge',
+            config=function()
+
+                function light()
+                    print(vim.o.background, vim.v.option_new)
+                    if vim.o.background=='light' then
+                        vim.cmd.colorscheme 'edge'
+                    end
+                end
+                vim.api.nvim_create_augroup('background',{clear=false})
+                vim.api.nvim_create_autocmd("OptionSet", {
+                    group = 'background',
+                    pattern = 'background',
+                    callback = light
+                })
+                light()
+            end
+        }
     }
     --,
     -- {

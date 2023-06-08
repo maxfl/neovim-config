@@ -144,7 +144,6 @@ packer.startup(function()
         useauto 'packer_cfg.lazygit'
 
     -- Statusline
-        -- useauto 'packer_cfg.windline'
         useauto 'packer_cfg.lualine'
 
     -- Filetype and code

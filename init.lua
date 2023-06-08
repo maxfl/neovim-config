@@ -37,7 +37,7 @@ vim.cmd[[
         vim.o.shada = vim.o.shada:gsub("'%d+", "'1000")
 
     -- Interface
-        set.background='dark'
+        set.background='light'
         set.hidden=true
         set.number=true
         set.relativenumber=true
