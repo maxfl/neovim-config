@@ -24,7 +24,6 @@ return {
                     }
                 }
                 function dark()
-                    print(vim.o.background, vim.v.option_new)
                     if vim.o.background=='dark' then
                         vim.g.material_style='oceanic'
                         vim.cmd.colorscheme 'material'
@@ -42,9 +41,8 @@ return {
         {
             'sainnhe/edge',
             config=function()
-
+                vim.g.edge_transparent_background = true
                 function light()
-                    print(vim.o.background, vim.v.option_new)
                     if vim.o.background=='light' then
                         vim.cmd.colorscheme 'edge'
                     end

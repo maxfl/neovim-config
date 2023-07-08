@@ -44,10 +44,8 @@ return {
         end
 
         require 'lualine'.setup{
-            -- options = {
-            --     globalstatus = false
-            -- },
             options = {
+                theme = 'material',
                 disabled_filetypes = { 'ctrlspace' },
                 disabled_buftypes = { 'nofile' }
             },

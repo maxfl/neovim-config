@@ -1,8 +1,8 @@
 return {
-    'beauwilliams/focus.nvim',
+    'nvim-focus/focus.nvim',
     config=function()
         require 'focus'.setup{
-            bufnew = true,
+            bufnew = false,
             cursorline = false,
             relativenumber = false,
             number = false,
