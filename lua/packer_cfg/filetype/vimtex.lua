@@ -1,6 +1,9 @@
 return {
     'lervag/vimtex',
-    require = {'ms-jpq/coq.thirdparty', 'folke/which-key.nvim'},
+    require = {
+        -- 'ms-jpq/coq.thirdparty',
+        'folke/which-key.nvim'
+    },
     config=function()
         --
         -- View
@@ -63,9 +66,9 @@ return {
         --
         -- Completion
         --
-        require 'coq_3p' {
-            { src = "vimtex", short_name = "vTEX" },
-        }
+        -- require 'coq_3p' {
+        --     { src = "vimtex", short_name = "vTEX" },
+        -- }
 
         --
         -- Hotkeys

@@ -172,7 +172,7 @@ packer.startup(function()
 
     -- Completion
         -- useauto 'packer_cfg.nvim_cmp'
-        useauto ('packer_cfg.coq_nvim', {disable=false})
+        -- useauto ('packer_cfg.coq_nvim', {disable=false})
 
 -- Vimscript
     -- Libraries
