@@ -172,7 +172,7 @@ packer.startup(function()
 
     -- Completion
         -- useauto 'packer_cfg.nvim_cmp'
-        -- useauto ('packer_cfg.coq_nvim', {disable=false})
+        useauto ('packer_cfg.coq_nvim')
 
 -- Vimscript
     -- Libraries
@@ -256,7 +256,7 @@ packer.startup(function()
         useauto {'thinca/vim-prettyprint', cmd = {'PrettyPrint', 'PP'}}
 
         -- python
-        useauto {'kalekundert/vim-coiled-snake', setup=function() vim.g.coiled_snake_set_foldexpr=false end}
+        -- useauto {'kalekundert/vim-coiled-snake', setup=function() vim.g.coiled_snake_set_foldexpr=false end}
         useauto 'alfredodeza/coveragepy.vim'
 
         -- others

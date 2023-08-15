@@ -7,7 +7,9 @@ return {
             relativenumber = false,
             number = false,
             absolutenumber_unfocussed = true,
-            autoresize = false,
+            autoresize = {
+                enable = false
+            },
         }
 
         local map, silent=vim.api.nvim_set_keymap, {silent = true}

@@ -41,7 +41,7 @@ return {
         {
             'sainnhe/edge',
             config=function()
-                vim.g.edge_transparent_background = true
+                vim.g.edge_transparent_background = false
                 function light()
                     if vim.o.background=='light' then
                         vim.cmd.colorscheme 'edge'

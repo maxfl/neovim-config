@@ -19,6 +19,7 @@ return {
                 }
             }
             require 'coq' ()
+            vim.cmd 'COQnow -s'
 
             local map = vim.api.nvim_set_keymap
             local opts = {silent=true, expr=true, noremap=true}
