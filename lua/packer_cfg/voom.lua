@@ -1,10 +1,13 @@
 return {
-    'vim-voom/voom',
+    "vim-voom/voom",
     -- cmd = 'VoomToggle',
     setup=function()
         vim.g.voom_ft_modes = {
-            markdown='markdown', python='python',
-            rst='rest', tex='latex', wiki='wiki',
+            markdown='markdown',
+            python='python',
+            rst='rest',
+            tex='latex',
+            wiki='wiki'
         }
         vim.g.voom_tab_key = "<C-Tab>"
 
