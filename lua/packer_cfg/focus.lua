@@ -22,7 +22,8 @@ return {
         -- map('n', '<M-w><M-w>', '<CMD>close<CR>', silent)
         map('n', '<M-S-w>', '<CMD>Bdelete<CR>', silent)
 
-        map('n', '<M-m>', '<CMD>FocusMaximise<CR>', silent)
+        -- map('n', '<M-m>', '<CMD>FocusMaximise<CR>', silent)
+        map('n', '<M-m>', '<CMD>FocusMaxOrEqual<CR>', silent)
         map('n', '<M-S-m>', '<CMD>FocusEqualise<CR>', silent)
 
         -- map('n', '<Leader>ww', '<CMD>FocusDisableWindow<CR>', silent)

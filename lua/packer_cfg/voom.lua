@@ -1,6 +1,6 @@
 return {
     'vim-voom/voom',
-    cmd = 'VoomToggle'
+    -- cmd = 'VoomToggle',
     setup=function()
         vim.g.voom_ft_modes = {
             markdown='markdown', python='python',

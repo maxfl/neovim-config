@@ -45,7 +45,7 @@ return {
 
         require 'lualine'.setup{
             options = {
-                theme = 'material',
+                theme = 'onelight',
                 disabled_filetypes = { 'ctrlspace' },
                 disabled_buftypes = { 'nofile' }
             },

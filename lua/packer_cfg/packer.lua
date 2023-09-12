@@ -146,6 +146,9 @@ packer.startup(function()
     -- Statusline
         useauto 'packer_cfg.lualine'
 
+    -- Formatting
+        useauto 'packer_cfg.filetype.conform'
+    
     -- Filetype and code
         -- lua
         useauto {'rafcamlet/nvim-luapad', cmd = 'Luapad'}

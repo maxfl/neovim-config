@@ -35,6 +35,7 @@ return {
                     -- f     = {'<CMD>Telescope find_files<CR>', 'find files'},
                     f     = {'<CMD>:lua require "telescope.builtin".find_files{follow=true}<CR>', 'find files'},
                     h     = {'<CMD>Telescope heading<CR>', 'heading'},
+                    i     = {'<CMD>Telescope import<CR>', 'import'}, -- extension
                     k     = {'<CMD>Telescope keymaps<CR>', 'keymaps'},
                     o     = {'<CMD>Telescope oldfiles<CR>', 'old files'},
                     p     = {'<CMD>Telescope projects<CR>', 'projects'},
@@ -58,6 +59,13 @@ return {
             map('', '<Leader>]P', '<CMD>lua require "telescope".extensions.packer.packer()<CR>', opts)
 
             require 'telescope'.load_extension 'packer'
+        end
+    },
+    {
+        'piersolenski/telescope-import.nvim',
+        requires='nvim-telescope/telescope.nvim',
+        config=function()
+            require("telescope").load_extension("import")
         end
     },
     {
