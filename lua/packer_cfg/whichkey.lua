@@ -63,7 +63,7 @@ return {
                 i = 'winteract',
                 m = 'move (winshift)',
                 s = 'symbols',
-                t = 'toggle focus',
+                T = 'toggle focus',
             },
             p = {
                 name = '+packer',
