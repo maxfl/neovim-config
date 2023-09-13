@@ -148,7 +148,7 @@ packer.startup(function()
 
     -- Formatting
         useauto 'packer_cfg.filetype.conform'
-    
+
     -- Filetype and code
         -- lua
         useauto {'rafcamlet/nvim-luapad', cmd = 'Luapad'}
@@ -169,6 +169,7 @@ packer.startup(function()
         useauto {'jghauser/mkdir.nvim', config = function() require('mkdir') end}
         useauto 'packer_cfg.nvim_tree'
         -- useauto 'packer_cfg.firenvim'
+        useauto 'packer_cfg.integration.ghost'
 
     -- Tools
         useauto 'packer_cfg.zk'
