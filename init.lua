@@ -192,4 +192,5 @@ vim.cmd[[
         vim.env.SHLVL=tostring(vim.env.SHLVL and vim.env.SHLVL-1 or 0) -- Reduce SHLVL
 
 -- Plugins
-require 'packer_cfg.packer'
+-- require 'packer_cfg.packer'
+require 'lazy_cfg'
