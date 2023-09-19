@@ -59,7 +59,6 @@ return {
                 ['='] = 'equalize (focus)',
                 M = 'swap (winshift)',
                 c = 'choosewin',
-                f = 'maximize (focus)',
                 i = 'winteract',
                 m = 'move (winshift)',
                 s = 'symbols',

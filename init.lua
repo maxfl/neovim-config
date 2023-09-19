@@ -1,11 +1,3 @@
--- TODO:
---   * check what is packpath and why it is set
---   * plugins
---      * nvim-cmp commandline completion is broken
---      * which-key
---      * endwise
---
--- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 local map = vim.api.nvim_set_keymap
 local set = vim.opt
 local noremap={noremap=true}

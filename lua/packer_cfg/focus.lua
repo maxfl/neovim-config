@@ -8,7 +8,7 @@ return {
             number = false,
             absolutenumber_unfocussed = true,
             autoresize = {
-                enable = false
+                enable = true
             },
         }
 
