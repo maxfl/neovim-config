@@ -15,7 +15,7 @@ local lazy = require("lazy")
 lazy.setup(
     "lazy_plugins",
     {
-        concurrency = 4
+        concurrency = 8
     }
 )
 
