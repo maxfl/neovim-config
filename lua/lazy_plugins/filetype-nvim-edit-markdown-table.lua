@@ -9,7 +9,7 @@ return {
 				["<leader>"] = {
 					["t"] = {
 						name = "+table",
-						e = { "<CMD>EditMarkdownTable<CR>", "edit cell" },
+						e = { function() require('edit-markdown-table').edit_cell() end, "edit cell" },
 					},
 				},
 			})

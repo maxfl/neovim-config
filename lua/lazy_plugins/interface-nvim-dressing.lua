@@ -1,4 +1,4 @@
--- 
+--
 -- Pretty dialogs for everything
 --
 return {
@@ -12,7 +12,7 @@ return {
                 win_options = {
                     winblend = 0,
                     wrap = true,
-                },
+                }
             }
         })
     end
