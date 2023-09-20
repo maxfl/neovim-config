@@ -9,7 +9,7 @@ return {
 				["<leader>"] = {
 					["t"] = {
 						name = "+table",
-						M = { "<CMD>EditMarkdownTable<CR>", "edit" },
+						e = { "<CMD>EditMarkdownTable<CR>", "edit cell" },
 					},
 				},
 			})
