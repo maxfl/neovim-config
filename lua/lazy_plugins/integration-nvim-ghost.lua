@@ -9,7 +9,9 @@ return {
                 "*github.com",
                 "*git.jinr.com",
                 "*hackmd.com",
-                "*jupyter.ihep.ac.cn",
+                "jupyter.ihep.ac.cn",
+                "mattermost.ihep.ac.cn",
+                "latex.ihep.ac.cn",
             },
             command = "setf markdown",
         })
