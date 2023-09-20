@@ -20,7 +20,7 @@ return {
 			require("which-key").register({
 				["<leader>u"] = {
 					name = "+utils",
-					e = { ":PartEdit<CR>", "part edit" },
+					e = { "<CMD>PartEdit<CR>", "part edit" },
 				},
 			}, {
 				mode = "v",

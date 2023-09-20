@@ -8,11 +8,11 @@ return {
 				["<leader>C"] = {
 					name = "+close buffer",
 					h = {
-						'<CMD>lua require "close_buffers".delete{type="hidden", force=true}<CR>',
+                        function() require "close_buffers".delete{type="hidden", force=true} end,
 						"hidden",
 					},
 					n = {
-						'<CMD>lua require "close_buffers".delete{type="nameless"}<CR>',
+						function() require "close_buffers".delete{type="nameless"} end,
 						"nameless",
 					},
 				},

@@ -15,7 +15,12 @@ return {
 			require("which-key").register({
 				["<Leader>u"] = {
 					name = "+utils",
-					f = { '<CMD>lua require "conform".format()<CR>', "format buffer" },
+					f = {
+						function()
+							require("conform").format()
+						end,
+						"format buffer",
+					},
 				},
 			})
 		end)
