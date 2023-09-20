@@ -1,11 +1,10 @@
 return {
 	"f-person/git-blame.nvim",
     dependencies = "folke/which-key.nvim",
+    init = function()
+        vim.g.gitblame_enabled = 0
+    end,
 	config = function()
-		require("gitblame").setup({
-			enabled = false,
-		})
-
 		local wk = require("which-key")
 		if not wk then
 			return
