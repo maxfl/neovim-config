@@ -20,12 +20,12 @@ return {
 		wk.register({
 			["<leader>"] = {
 				["="] = {
-					name = "+conflicts",
+					name = "+git/conflicts",
 					["."] = "take this",
 					[">"] = "take theirs",
 					["|"] = "take base",
 					["<"] = "take ours",
-					["d"] = "take none",
+					d = "take none",
 				},
 			},
 		})
