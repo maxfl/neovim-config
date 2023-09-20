@@ -1,3 +1,6 @@
+--
+-- Edit browser fields with vim via GhostText
+--
 return {
     'subnut/nvim-ghost.nvim',
     config = function()
@@ -11,7 +14,6 @@ return {
                 "*hackmd.com",
                 "jupyter.ihep.ac.cn",
                 "mattermost.ihep.ac.cn",
-                "latex.ihep.ac.cn",
             },
             command = "setf markdown",
         })
