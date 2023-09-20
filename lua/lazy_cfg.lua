@@ -12,12 +12,17 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local lazy = require("lazy")
-lazy.setup("lazy_plugins")
+lazy.setup(
+    "lazy_plugins",
+    {
+        concurrency = 4
+    }
+)
 
 pcall(function()
 	require("which-key").register({
 		["<leader>"] = {
-			p = { "<CMD>EditMarkdownTable<CR>", "plugins" },
+			p = { "<CMD>Lazy<CR>", "plugins" },
 		},
 	})
 end)
