@@ -28,15 +28,6 @@ return {
 
     wk.register({
         ['<leader>'] = {
-            ['-'] = 'choosewin',
-            ['='] = {
-                name = '+conflicts',
-                ['.'] = 'take this',
-                ['>'] = 'take theirs',
-                ['|'] = 'take base',
-                ['<'] = 'take ours',
-                ['d'] = 'take none',
-            },
             [ [[\]] ] = {
                 name = '+visual multi',
                 ['/'] = 'search',
@@ -58,7 +49,6 @@ return {
                 name = '+window',
                 ['='] = 'equalize (focus)',
                 M = 'swap (winshift)',
-                c = 'choosewin',
                 f = 'maximize (focus)',
                 i = 'winteract',
                 m = 'move (winshift)',
