@@ -1,6 +1,5 @@
 return {
 	"phaazon/hop.nvim",
-	dependencies = "folke/which-key.nvim",
 	branch = "v1", -- optional but strongly recommended
 	-- cmd = 'Hop*',
 	init = function()

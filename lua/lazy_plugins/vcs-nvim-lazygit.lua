@@ -1,6 +1,5 @@
 return {
 	"kdheepak/lazygit.nvim",
-	dependencies = "folke/which-key.nvim",
 	config = function()
 		pcall(function()
 			require("which-key").register({

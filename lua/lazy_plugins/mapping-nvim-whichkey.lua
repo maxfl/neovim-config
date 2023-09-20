@@ -1,5 +1,6 @@
 return {
   'folke/which-key.nvim',
+  priority = 80,
   config = function()
     local wk=require 'which-key'
     wk.setup{

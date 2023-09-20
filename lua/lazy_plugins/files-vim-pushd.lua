@@ -1,6 +1,5 @@
 return {
 	"john-nanney/pushd.vim",
-	dependencies = "folke/which-key.nvim",
 	cmd = { "Pushd", "Popd", "Dirs" },
 	init = function()
 		pcall(function()

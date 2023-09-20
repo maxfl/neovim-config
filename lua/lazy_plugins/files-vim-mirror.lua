@@ -1,6 +1,5 @@
 return {
 	"zenbro/mirror.vim",
-	dependencies = "folke/which-key.nvim",
 	-- cmd = {'MirrorPush', 'MirrorPull', 'MirrorConfig', 'MirrorConfigReload', 'MirrorSSH', 'MirrorEdit', 'Mirror*'},
 	init = function()
 		pcall(function()

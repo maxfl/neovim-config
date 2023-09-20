@@ -1,6 +1,5 @@
 return {
 	"f-person/git-blame.nvim",
-	dependencies = "folke/which-key.nvim",
 	init = function()
 		vim.g.gitblame_enabled = 0
 	end,

@@ -3,6 +3,7 @@ return {
         'ms-jpq/coq_nvim',
         branch = 'coq',
         dependencies = { 'ms-jpq/coq.artifacts', 'ms-jpq/coq.thirdparty' },
+        priority = 60,
         build = ':COQdeps',
         config = function()
             vim.g.coq_settings = {

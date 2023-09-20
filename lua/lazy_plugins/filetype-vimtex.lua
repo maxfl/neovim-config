@@ -1,9 +1,5 @@
 return {
 	"lervag/vimtex",
-	require = {
-		-- 'ms-jpq/coq.thirdparty',
-		"folke/which-key.nvim",
-	},
 	config = function()
 		--
 		-- View
@@ -71,12 +67,11 @@ return {
 		--
 		-- Completion
 		--
-		-- coq = require 'coq_3p'
-		-- if coq then
-		--     coq{
-		--         { src = "vimtex", short_name = "vTEX" },
-		--     }
-		-- end
+		pcall(function()
+			require("coq_3p")({
+				{ src = "vimtex", short_name = "vTEX" },
+			})
+		end)
 
 		--
 		-- Hotkeys

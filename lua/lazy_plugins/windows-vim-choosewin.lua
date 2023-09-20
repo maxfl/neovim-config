@@ -1,6 +1,5 @@
 return {
     't9md/vim-choosewin',
-    dependencies = "folke/which-key.nvim",
     config = function()
         vim.g.choosewin_overlay_enable=true
 

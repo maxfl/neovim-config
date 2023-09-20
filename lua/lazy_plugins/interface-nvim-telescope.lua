@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", "folke/which-key.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons" },
 		config = function()
 			local actions = require("telescope.actions")
 			require("telescope").setup({

@@ -1,6 +1,5 @@
 return {
 	"kazhala/close-buffers.nvim",
-	dependencies = "folke/which-key.nvim",
 	-- cmd = {'BDelete', 'BWipeout'},
 	-- module = 'close_buffers',
 	init = function()

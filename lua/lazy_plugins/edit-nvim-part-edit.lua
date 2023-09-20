@@ -1,9 +1,6 @@
 return {
 	"niuiic/part-edit.nvim",
-	dependencies = {
-		"niuiic/niuiic-core.nvim",
-		"folke/which-key.nvim",
-	},
+	dependencies = "niuiic/niuiic-core.nvim",
 	config = function()
 		require("part-edit").setup({
 			open_in = "tab",

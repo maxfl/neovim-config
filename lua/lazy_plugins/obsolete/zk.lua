@@ -1,6 +1,5 @@
 return {
 	"mickael-menu/zk-nvim",
-	dependencies = "folke/which-key.nvim",
 	cmd = { "ZkNew", "ZkLinks", "ZkNotes", "ZkTags", "Zk*" },
 	init = function()
 		vim.env["ZK_NOTEBOOK_DIR"] = "/home/gonchar/zettels"

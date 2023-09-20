@@ -14,6 +14,7 @@ end
 return {
 	{
 		"marko-cerovac/material.nvim",
+        priority = 100,
 		config = function()
 			require("material").setup({
 				-- popup_menu='colorful',
@@ -46,6 +47,7 @@ return {
 	},
 	{
 		"sainnhe/edge",
+        priority = 100,
 		dependencies = "marko-cerovac/material.nvim",
 		config = function()
 			vim.g.edge_transparent_background = false

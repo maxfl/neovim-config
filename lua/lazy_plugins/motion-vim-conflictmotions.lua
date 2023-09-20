@@ -7,7 +7,6 @@ return {
 		},
 		"tpope/vim-repeat",
 		"inkarkat/vim-visualrepeat",
-		"folke/which-key.nvim",
 	},
 	init = function()
 		vim.g.ConflictMotions_TakeMappingPrefix = "<Leader>="

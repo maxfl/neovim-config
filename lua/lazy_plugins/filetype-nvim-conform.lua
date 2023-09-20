@@ -1,6 +1,5 @@
 return {
 	"stevearc/conform.nvim",
-	dependencies = "folke/which-key.nvim",
 	config = function()
 		require("conform").setup({
 			formatters_by_ft = {
