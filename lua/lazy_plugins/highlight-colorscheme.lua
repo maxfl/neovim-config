@@ -1,3 +1,16 @@
+local function user_au_on_dark()
+    if vim.o.background == "dark" then
+        vim.g.material_style = "oceanic"
+        vim.cmd.colorscheme("material")
+    end
+end
+
+local function user_au_on_light()
+    if vim.o.background == "light" then
+        vim.cmd.colorscheme("edge")
+    end
+end
+
 return {
 	{
 		"marko-cerovac/material.nvim",
@@ -22,19 +35,13 @@ return {
 					borders = false,
 				},
 			})
-			function dark()
-				if vim.o.background == "dark" then
-					vim.g.material_style = "oceanic"
-					vim.cmd.colorscheme("material")
-				end
-			end
 			vim.api.nvim_create_augroup("background", { clear = false })
 			vim.api.nvim_create_autocmd("OptionSet", {
 				group = "background",
 				pattern = "background",
-				callback = dark,
+				callback = user_au_on_dark,
 			})
-			-- dark()
+			-- user_au_on_dark()
 		end,
 	},
 	{
@@ -42,18 +49,13 @@ return {
 		dependencies = "marko-cerovac/material.nvim",
 		config = function()
 			vim.g.edge_transparent_background = false
-			function light()
-				if vim.o.background == "light" then
-					vim.cmd.colorscheme("edge")
-				end
-			end
 			vim.api.nvim_create_augroup("background", { clear = false })
 			vim.api.nvim_create_autocmd("OptionSet", {
 				group = "background",
 				pattern = "background",
-				callback = light,
+				callback = user_au_on_light,
 			})
-			light()
+			user_au_on_light()
 		end,
 	},
 }
