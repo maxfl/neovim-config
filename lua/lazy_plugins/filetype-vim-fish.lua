@@ -1,0 +1,3 @@
+return {
+    'ferreum/vim-fish'
+}
