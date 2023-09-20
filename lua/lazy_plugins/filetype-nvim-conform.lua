@@ -12,18 +12,13 @@ return {
 				-- javascript = { { "prettierd", "prettier" } },
 			},
 		})
-		local status, whichkey = pcall(function()
-			return require("which-key")
+		pcall(function()
+			require("which-key").register({
+				["<Leader>u"] = {
+					name = "+utils",
+					f = { '<CMD>lua require "conform".format()<CR>', "format buffer" },
+				},
+			})
 		end)
-		if not status then
-			return
-		end
-
-		whichkey.register({
-			["<Leader>u"] = {
-				name = "+utils",
-				f = { '<CMD>lua require "conform".format()<CR>', "format buffer" },
-			},
-		})
 	end,
 }

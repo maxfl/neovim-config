@@ -4,16 +4,14 @@ return {
     config = function()
         vim.g.choosewin_overlay_enable=true
 
-        local wk = require("which-key")
-        if not wk then
-            return
+        pcall(function()
+            require("which-key").register({
+                ['<leader>'] = {
+                    ['-'] = {'<Plug>(choosewin)', 'choosewin'},
+                    wc = {'<Plug>(choosewin)', 'choosewin'},
+                },
+            })
         end
-
-        wk.register({
-            ['<leader>'] = {
-                ['-'] = {'<Plug>(choosewin)', 'choosewin'},
-                wc = {'<Plug>(choosewin)', 'choosewin'},
-            },
-        })
+        )
     end
 }

@@ -23,14 +23,8 @@ return {
 			map("", "<C-p>", "<CMD>Telescope oldfiles<CR>", opts)
 			map("", "<C-Space>", "<CMD>Telescope buffers<CR>", opts)
 
-			local status, whichkey = pcall(function()
-				return require("which-key")
-			end)
-			if not status then
-				return
-			end
-
-			whichkey.register({
+			pcall(function()
+				require("which-key").register({
 				["<Leader>]"] = {
 					name = "+telescope",
 					["/"] = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "fuzzy find (buffer)" },
@@ -53,6 +47,7 @@ return {
 					["="] = { "<CMD>Telescope spell_suggest<CR>", "Spelling suggestions" },
 				},
 			})
+			end)
 		end,
 	},
 	{

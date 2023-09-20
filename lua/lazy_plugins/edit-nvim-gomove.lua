@@ -7,10 +7,10 @@ return {
 
         local map, opts = vim.api.nvim_set_keymap, {}
 
-        map("n", "<C-h>", "<Plug>GoNSMLeft", opts)
-        map("n", "<C-j>", "<Plug>GoNSMDown", opts)
-        map("n", "<C-k>", "<Plug>GoNSMUp", opts)
-        map("n", "<C-l>", "<Plug>GoNSMRight", opts)
+        -- map("n", "<C-h>", "<Plug>GoNSMLeft", opts)
+        -- map("n", "<C-j>", "<Plug>GoNSMDown", opts)
+        -- map("n", "<C-k>", "<Plug>GoNSMUp", opts)
+        -- map("n", "<C-l>", "<Plug>GoNSMRight", opts)
 
         map("x", "<C-h>", "<Plug>GoVSMLeft", opts)
         map("x", "<C-j>", "<Plug>GoVSMDown", opts)
