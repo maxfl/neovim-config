@@ -1,4 +1,3 @@
 return {
-    'chrisbra/vim-diff-enhanced',
-    cmd = 'EnhancedDiff'
+    'chrisbra/vim-diff-enhanced'
 }

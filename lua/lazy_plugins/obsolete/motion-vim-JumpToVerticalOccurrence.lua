@@ -1,4 +1,4 @@
 return {
-    'inkarkat/vim-JumpToVerticalBlock',
+    'inkarkat/vim-JumpToVerticalOccurrence',
     dependencies = 'inkarkat/vim-CountJump',
 }
