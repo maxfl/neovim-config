@@ -81,6 +81,7 @@ vim.cmd([[au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim
 
 -- folds
 set.foldopen:append("jump")
+set.foldenable = false
 
 -- pairs, brackets, etc
 set.showmatch = true
