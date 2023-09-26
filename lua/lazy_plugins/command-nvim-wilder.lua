@@ -1,5 +1,7 @@
 return {
-	"gelguy/wilder.nvim",
+	-- "gelguy/wilder.nvim",
+    "KentoOgata/wilder.nvim",
+    enabled = false,
 	config = function()
 		vim.cmd([[
             call wilder#setup({'modes': [':']})
