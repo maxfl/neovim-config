@@ -7,7 +7,8 @@ return {
             'clangd',
             'cmake',
             'pyright',
-            'texlab'
+            'texlab',
+            'lua_ls'
         }
         for _, lsp in ipairs(servers) do
             nvim_lsp[lsp].setup {
