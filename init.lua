@@ -12,10 +12,10 @@ vim.cmd([[
 -- Options
 -- GUI
 set.guifont = {
-	"MesloLGS NF:h12",
-	"MesloLGSDZ Nerd Font Mono:h12",
-	"Monospace:h12",
-	"Mono:h12",
+    "MesloLGS NF:h12",
+    "MesloLGSDZ Nerd Font Mono:h12",
+    "Monospace:h12",
+    "Mono:h12",
 }
 
 -- Behaviour
@@ -23,7 +23,7 @@ set.autowrite = true
 set.autoread = true
 
 if vim.o.history < 1000 then
-	set.history = 1000
+    set.history = 1000
 end
 
 vim.o.shada = vim.o.shada:gsub("'%d+", "'1000")
