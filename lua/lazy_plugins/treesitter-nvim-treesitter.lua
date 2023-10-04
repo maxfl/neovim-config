@@ -38,12 +38,12 @@ return {
                 enable = false,
             },
             incremental_selection = {
-                enable = false,
+                enable = true,
                 keymaps = {
-                    init_selection = "gnn",
-                    node_incremental = "grn",
-                    scope_incremental = "grc",
-                    node_decremental = "grm",
+                    init_selection = "<Leader>vn",
+                    node_incremental = "<Leader>vn",
+                    scope_incremental = "<Leader>vc",
+                    node_decremental = "<Leader>vm",
                 },
             },
         }
