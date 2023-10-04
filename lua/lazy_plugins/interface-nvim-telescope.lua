@@ -17,6 +17,11 @@ return {
 					},
 				},
 			},
+			pickers = {
+				find_files = {
+					follow = true,
+				},
+			},
 		})
 
 		local map, opts = vim.api.nvim_set_keymap, {}
@@ -30,10 +35,9 @@ return {
 					["/"] = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "fuzzy find (buffer)" },
 					b = { "<CMD>Telescope buffers<CR>", "buffers" },
 					c = { "<CMD>Telescope commands<CR>", "commands" },
-					-- f     = {'<CMD>Telescope find_files<CR>', 'find files'},
 					f = {
 						function()
-							require("telescope.builtin").find_files({ follow = true })
+							require("telescope.builtin").find_files()
 						end,
 						"find files",
 					},
