@@ -1,5 +1,6 @@
 return {
     'steelsojka/pears.nvim',
+    priority = 57,
     config=function()
         local pears=require 'pears'
         pears.setup(function(conf)
