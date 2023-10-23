@@ -5,7 +5,6 @@ return {
         dependencies = { 'ms-jpq/coq.artifacts', 'ms-jpq/coq.thirdparty' },
         priority = 60,
         build = ':COQdeps',
-        enabled = false,
         config = function()
             vim.g.coq_settings = {
                 auto_start = 'shut-up',

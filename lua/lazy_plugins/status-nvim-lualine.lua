@@ -46,9 +46,9 @@ return {
         require 'lualine'.setup{
             options = {
                 theme = 'onelight',
-                disabled_filetypes = { 'ctrlspace' },
                 disabled_buftypes = { 'nofile' }
             },
+            extensions = { 'ctrlspace', 'lazy', 'mundo', 'nvim-tree', 'symbols-outline', 'toggleterm', 'trouble' },
             sections = {
                 lualine_a = {
                     'mode',
