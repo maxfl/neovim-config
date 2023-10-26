@@ -1,7 +1,14 @@
 return {
-    'machakann/vim-sandwich',
-    config=function()
-        vim.cmd[===[
+	"machakann/vim-sandwich",
+	config = function()
+		pcall(function()
+			require("which-key").register({
+				["iS"] = { "is", "inner sentence" },
+				["aS"] = { "as", "outer sentence" },
+			}, { mode = "v" })
+		end)
+
+		vim.cmd([===[
             let g:TexEnvironments = [
                         \   'array', 'center', 'description', 'enumerate', 'eqnarray', 'equation',
                         \   'equation*', 'figure', 'flushleft', 'flushright', 'itemize', 'list',
@@ -291,7 +298,6 @@ return {
                         \       'input'   : ['fi'],
                         \   },
                         \ ]
-        ]===]
-    end
+        ]===])
+	end,
 }
-
