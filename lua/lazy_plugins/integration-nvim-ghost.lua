@@ -11,7 +11,7 @@ return {
                 "*stackoverflow.com",
                 "*github.com",
                 "*git.jinr.com",
-                "*hackmd.com",
+                "*hackmd.io",
                 "jupyter.ihep.ac.cn",
                 "mattermost.ihep.ac.cn",
             },
