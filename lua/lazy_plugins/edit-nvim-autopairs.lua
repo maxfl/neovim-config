@@ -12,9 +12,9 @@ return {
 		-- General rules
 		--]
 		npairs.add_rules({
-			Rule("`", "`", { "markdown", "bash" })
-				-- don't move right when repeat character
-				:with_move(cond.none()),
+			Rule("`", "`", { "markdown", "bash", "vimwiki", "rmarkdown", "pandoc" })
+				:with_move(cond.move_right())
+                :with_pair(cond.not_add_quote_inside_quote())
 		})
 
 		--[
