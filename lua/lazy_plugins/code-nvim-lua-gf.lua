@@ -1,3 +1,4 @@
 return {
-    "sam4llis/nvim-lua-gf"
+    'mrjones2014/lua-gf.nvim',
+    ft = 'lua'
 }
