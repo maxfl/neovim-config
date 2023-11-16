@@ -24,9 +24,7 @@ return {
 			Rule("$", "$", { "tex", "latex" })
 				-- don't add a pair if the next character is %
 				:with_pair(cond.not_after_regex("%%"))
-				-- don't move right when repeat character
 				:with_move(cond.none())
-				-- disable adding a newline when you press <cr>
 				:with_cr(cond.none()),
 			Rule(",,", "``", { "tex", "latex" })
 				:with_pair(cond.not_after_regex("%%"))
@@ -52,9 +50,7 @@ return {
 		npairs.add_rules({
 			Rule("*", "*", { "markdown" })
 				:with_pair(cond.before_regex("[ *]"))
-				-- don't move right when repeat character
 				:with_move(cond.none())
-				-- disable adding a newline when you press <cr>
 				:with_cr(cond.none()),
 		})
 	end,
