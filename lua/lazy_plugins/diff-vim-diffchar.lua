@@ -1,4 +1,4 @@
 return {
     'rickhowe/diffchar.vim',
-    cond='vim.o.diff'
+    cond = function() return vim.o.diff end
 }

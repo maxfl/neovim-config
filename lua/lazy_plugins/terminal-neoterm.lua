@@ -1,6 +1,6 @@
 return {
     'kassio/neoterm',
-    cond='not vim.o.diff',
+    cond = function() return not vim.o.diff end,
     -- cmd = {'Tnew', 'TRepl*'},
     init = function()
         local map=vim.api.nvim_set_keymap

@@ -1,6 +1,6 @@
 return {
     'danilamihailov/beacon.nvim',
-    cond='not vim.o.diff',
+    cond = function() return not vim.o.diff end,
     config=function()
         vim.g.beacon_timeout=800
         vim.g.beacon_size=60

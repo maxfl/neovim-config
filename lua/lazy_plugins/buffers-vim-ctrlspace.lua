@@ -1,5 +1,6 @@
 return {
     'vim-ctrlspace/vim-ctrlspace',
+    cond = function() return not vim.o.diff end,
     init = function()
         vim.g.CtrlSpaceSetDefaultMapping=true
         vim.g.CtrlSpaceUseTabline=true
