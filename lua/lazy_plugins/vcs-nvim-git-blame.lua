@@ -7,9 +7,9 @@ return {
 		pcall(function()
 			require("which-key").register({
 				["<leader>"] = {
-					["="] = {
-						name = "+git/conflicts",
-						b = { "<CMD>GitBlameToggle<CR>", "blame" },
+					["g"] = {
+						name = "+git",
+						b = { "<CMD>GitBlameToggle<CR>", "git blame" },
 					},
 				},
 			})
