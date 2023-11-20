@@ -1,0 +1,12 @@
+syntax match xmlEntity "&amp;" conceal cchar=&
+syntax match xmlEntity "&colon;" conceal cchar=:
+syntax match xmlEntity "&commat;" conceal cchar=@
+syntax match xmlEntity "&dollar;" conceal cchar=$
+syntax match xmlEntity "&excl;" conceal cchar=!
+syntax match xmlEntity "&gt;" conceal cchar=>
+syntax match xmlEntity "&lt;" conceal cchar=<
+syntax match xmlEntity "&nbsp;" conceal cchar= 
+syntax match xmlEntity "&num;" conceal cchar=#
+syntax match xmlEntity "&percent;" conceal cchar=%
+syntax match xmlEntity "&quot;" conceal cchar="
+syntax match xmlEntity "&semi;" conceal cchar=;
