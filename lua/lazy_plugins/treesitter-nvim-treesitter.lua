@@ -22,9 +22,9 @@ return {
             },
             -- ignore_install = { 'latex' }, -- List of parsers to ignore installing
             highlight = {
-                enable = true,              -- false will disable the whole extension
+                enable = false,
                 disable = {
-                    'c',
+                    'cpp',
                     'rust',
                     'latex'
                 },  -- list of language that will be disabled
