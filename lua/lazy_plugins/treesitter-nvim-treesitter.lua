@@ -22,7 +22,7 @@ return {
             },
             -- ignore_install = { 'latex' }, -- List of parsers to ignore installing
             highlight = {
-                enable = false,
+                enable = true,
                 disable = {
                     'cpp',
                     'rust',
