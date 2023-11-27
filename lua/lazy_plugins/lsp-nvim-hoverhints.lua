@@ -1,6 +1,6 @@
 return {
     'soulis-1256/hoverhints.nvim',
-    enabled = false,
+    enabled = true,
     config = function()
         require('hoverhints')
     end

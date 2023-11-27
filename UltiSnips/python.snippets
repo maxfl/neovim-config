@@ -108,6 +108,15 @@ snippet pdb "Start PDB debugger"
 import pdb; pdb.set_trace()
 endsnippet
 
+snippet ifmain "basic program"
+if __name__ == '__main__':
+    from argparse import ArgumentParser
+    parser = ArgumentParser()
+    parser.add_argument('input')
+
+    ${1:main}(parser.parse_args())
+endsnippet
+
 snippet main "basic program"
 #!/usr/bin/env python
 
