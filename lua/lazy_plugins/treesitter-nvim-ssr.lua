@@ -1,7 +1,7 @@
 return {
 	"cshuaimin/ssr.nvim",
 	module = "ssr",
-	-- Calling setup is optional.
+    enabled = true,
 	config = function()
 		require("ssr").setup()
 
@@ -16,7 +16,9 @@ return {
 						"structural search and replace",
 					},
 				},
-			}, { mode = "" })
+			},
+            { mode = "n" } -- mode = "" breaks ci
+            )
 		end)
 	end,
 }
