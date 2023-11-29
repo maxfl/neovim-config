@@ -12,10 +12,10 @@ vim.cmd([[
 -- Options
 -- GUI
 set.guifont = {
-    "MesloLGS NF:h12",
-    "MesloLGSDZ Nerd Font Mono:h12",
-    "Monospace:h12",
-    "Mono:h12",
+	"MesloLGS NF:h12",
+	"MesloLGSDZ Nerd Font Mono:h12",
+	"Monospace:h12",
+	"Mono:h12",
 }
 
 -- Behaviour
@@ -23,7 +23,7 @@ set.autowrite = true
 set.autoread = true
 
 if vim.o.history < 1000 then
-    set.history = 1000
+	set.history = 1000
 end
 
 vim.o.shada = vim.o.shada:gsub("'%d+", "'1000")
@@ -38,6 +38,8 @@ set.switchbuf = { "useopen", "usetab", "newtab" }
 
 -- set.fillchars:append {vert='│', fold='—', stlnc='_'}
 set.fillchars:append({ vert = "┊" })
+set.listchars:append({ eol = "↪", multispace = "_", leadmultispace = " " })
+set.list = true
 -- set.listchars:append{tab='>-', trail='-', extends='>', precedes='<', nbsp='+'}
 -- vim.cmd[[let &listchars = "tab:\u21e5.,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"]]
 
