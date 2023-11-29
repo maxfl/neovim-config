@@ -71,26 +71,26 @@ return {
                         \   {'buns': ["***", "***"],             'nesting': 0, 'input': [ "B" ],   'filetype': ['markdown'] },
                         \ ]
             let g:sandwich#recipes += [
-                        \   {'buns': ["`", "'"],                 'nesting': 1, 'input': [ "l'", "l`" ], 'filetype': ['tex', 'plaintex', 'rst'] },
-                        \	{'buns': ["``", "''"],               'nesting': 1, 'input': [ 'l"' ],       'filetype': ['tex', 'plaintex', 'rst'], },
-                        \	{'buns': ['"`', "\"'"],              'nesting': 1, 'input': [ 'L"' ],       'filetype': ['tex', 'plaintex', 'rst'] },
-                        \	{'buns': [",,", "``"],               'nesting': 1, 'input': [ 'l,' ],       'filetype': ['tex', 'plaintex', 'rst'], },
-                        \	{'buns': ['<<', '>>'],               'nesting': 1, 'input': [ 'l<' ],       'filetype': ['tex', 'plaintex', 'rst'] },
-                        \	{'buns': ['\{', '\}'],               'nesting': 1, 'input': [ '\{' ],       'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
-                        \	{'buns': ['\[', '\]'],               'nesting': 1, 'input': [ '\[' ],       'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
-                        \	{'buns': ['\(', '\)'],               'nesting': 1, 'input': [ '\(' ],       'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
+                        \   {'buns': ["`", "'"],                 'nesting': 1, 'input': [ "l'", "l`" ], 'filetype': ['tex', 'bib', 'plaintex', 'rst'] },
+                        \	{'buns': ["``", "''"],               'nesting': 1, 'input': [ 'l"' ],       'filetype': ['tex', 'bib', 'plaintex', 'rst'], },
+                        \	{'buns': ['"`', "\"'"],              'nesting': 1, 'input': [ 'L"' ],       'filetype': ['tex', 'bib', 'plaintex', 'rst'] },
+                        \	{'buns': [",,", "``"],               'nesting': 1, 'input': [ 'l,' ],       'filetype': ['tex', 'bib', 'plaintex', 'rst'], },
+                        \	{'buns': ['<<', '>>'],               'nesting': 1, 'input': [ 'l<' ],       'filetype': ['tex', 'bib', 'plaintex', 'rst'] },
+                        \	{'buns': ['\{', '\}'],               'nesting': 1, 'input': [ '\{' ],       'filetype': ['tex', 'bib', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
+                        \	{'buns': ['\[', '\]'],               'nesting': 1, 'input': [ '\[' ],       'filetype': ['tex', 'bib', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
+                        \	{'buns': ['\(', '\)'],               'nesting': 1, 'input': [ '\(' ],       'filetype': ['tex', 'bib', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
                         \ ]
             let g:sandwich#recipes += [
-                        \   {'buns': ['\left(',           '\right)'],           'nesting': 1, 'input': [ 'm(' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '(,)' },
-                        \	{'buns': ['\left[',           '\right]'],           'nesting': 1, 'input': [ 'm[' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '[,]' },
-                        \	{'buns': ['\left|',           '\right|'],           'nesting': 1, 'input': [ 'm|' ],    'filetype': ['tex', 'plaintex', 'rst'] },
-                        \	{'buns': ['\left\{',          '\right\}'],          'nesting': 1, 'input': [ 'm{' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
-                        \	{'buns': ['\left\langle ',    '\right\rangle '],    'nesting': 1, 'input': [ 'm<' ],    'filetype': ['tex', 'plaintex', 'rst'] },
-                        \	{'buns': ['\bigleft(',        '\bigright)'],        'nesting': 1, 'input': [ 'M(' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '(,)' },
-                        \	{'buns': ['\bigleft[',        '\bigright]'],        'nesting': 1, 'input': [ 'M[' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '[,]' },
-                        \	{'buns': ['\bigleft|',        '\bigright|'],        'nesting': 1, 'input': [ 'M|' ],    'filetype': ['tex', 'plaintex', 'rst'] },
-                        \	{'buns': ['\bigleft\{',       '\bigright\}'],       'nesting': 1, 'input': [ 'M{' ],    'filetype': ['tex', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
-                        \	{'buns': ['\bigleft\langle ', '\bigright\rangle '], 'nesting': 1, 'input': [ 'M<' ],    'filetype': ['tex', 'plaintex', 'rst'] },
+                        \   {'buns': ['\left(',           '\right)'],           'nesting': 1, 'input': [ 'm(' ],    'filetype': ['tex', 'bib', 'plaintex', 'rst'], 'indentkeys-' : '(,)' },
+                        \	{'buns': ['\left[',           '\right]'],           'nesting': 1, 'input': [ 'm[' ],    'filetype': ['tex', 'bib', 'plaintex', 'rst'], 'indentkeys-' : '[,]' },
+                        \	{'buns': ['\left|',           '\right|'],           'nesting': 1, 'input': [ 'm|' ],    'filetype': ['tex', 'bib', 'plaintex', 'rst'] },
+                        \	{'buns': ['\left\{',          '\right\}'],          'nesting': 1, 'input': [ 'm{' ],    'filetype': ['tex', 'bib', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
+                        \	{'buns': ['\left\langle ',    '\right\rangle '],    'nesting': 1, 'input': [ 'm<' ],    'filetype': ['tex', 'bib', 'plaintex', 'rst'] },
+                        \	{'buns': ['\bigleft(',        '\bigright)'],        'nesting': 1, 'input': [ 'M(' ],    'filetype': ['tex', 'bib', 'plaintex', 'rst'], 'indentkeys-' : '(,)' },
+                        \	{'buns': ['\bigleft[',        '\bigright]'],        'nesting': 1, 'input': [ 'M[' ],    'filetype': ['tex', 'bib', 'plaintex', 'rst'], 'indentkeys-' : '[,]' },
+                        \	{'buns': ['\bigleft|',        '\bigright|'],        'nesting': 1, 'input': [ 'M|' ],    'filetype': ['tex', 'bib', 'plaintex', 'rst'] },
+                        \	{'buns': ['\bigleft\{',       '\bigright\}'],       'nesting': 1, 'input': [ 'M{' ],    'filetype': ['tex', 'bib', 'plaintex', 'rst'], 'indentkeys-' : '{,},0{,0}' },
+                        \	{'buns': ['\bigleft\langle ', '\bigright\rangle '], 'nesting': 1, 'input': [ 'M<' ],    'filetype': ['tex', 'bib', 'plaintex', 'rst'] },
                         \ ]
             "if exists( 'g:sandwich#default_recipes' )
             let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)+g:sandwich#recipes
@@ -110,19 +110,19 @@ return {
                         \       'buns'    : ['\begingroup', '\endgroup'],
                         \       'nesting' : 1,
                         \       'input': [ '\gr' ],
-                        \       'filetype': ['tex', 'plaintex'],
+                        \       'filetype': ['tex', 'bib', 'plaintex'],
                         \       'linewise': 1
                         \   },
                         \   {
                         \       'buns'    : ['\toprule', '\bottomrule'],
                         \       'nesting' : 1,
                         \       'input': [ '\tr', '\br' ],
-                        \       'filetype': ['tex', 'plaintex'],
+                        \       'filetype': ['tex', 'bib', 'plaintex'],
                         \       'linewise': 1
                         \   },
                         \   {
                         \       'buns'    : ['TexCmdInput(1)', 'TexCmdInput(0)'],
-                        \       'filetype': ['tex', 'plaintex', 'rst'],
+                        \       'filetype': ['tex', 'bib', 'plaintex', 'rst'],
                         \       'kind'    : ['add', 'replace'],
                         \       'action'  : ['add'],
                         \       'expr'    : 1,
@@ -132,7 +132,7 @@ return {
                         \   },
                         \   {
                         \       'buns'    : ['TexEnvInput(1)', 'TexEnvInput(0)'],
-                        \       'filetype': ['tex', 'plaintex'],
+                        \       'filetype': ['tex', 'bib', 'plaintex'],
                         \       'kind'    : ['add', 'replace'],
                         \       'action'  : ['add'],
                         \       'expr'    : 1,
@@ -144,7 +144,7 @@ return {
                         \   },
                         \   {
                         \       'buns'    : ['\\\a\+\(\*\?\|<[^>]*>\){', '}'],
-                        \       'filetype': ['tex', 'plaintex', 'rst'],
+                        \       'filetype': ['tex', 'bib', 'plaintex', 'rst'],
                         \       'kind'    : ['delete', 'replace', 'auto', 'query'],
                         \       'regex'   : 1,
                         \       'nesting' : 1,
@@ -153,7 +153,7 @@ return {
                         \   },
                         \   {
                         \       'buns'    : ['\\begin{[^}]*}', '\\end{[^}]*}'],
-                        \       'filetype': ['tex', 'plaintex'],
+                        \       'filetype': ['tex', 'bib', 'plaintex'],
                         \       'kind'    : ['delete', 'replace', 'auto', 'query'],
                         \       'regex'   : 1,
                         \       'nesting' : 1,
@@ -164,7 +164,7 @@ return {
                         \   },
                         \   {
                         \       'buns'    : ['\\begin{[^}]*}\(\[.*\]\)\?', '\\end{[^}]*}'],
-                        \       'filetype': ['tex', 'plaintex'],
+                        \       'filetype': ['tex', 'bib', 'plaintex'],
                         \       'kind'    : ['delete', 'replace', 'auto', 'query'],
                         \       'regex'   : 1,
                         \       'nesting' : 1,
@@ -175,7 +175,7 @@ return {
                         \   },
                         \   {
                         \       'buns'    : ['\(\\left\((\|\[\||\|\\{\|\\langle\|\\lvert\)\|\\left\.\)', '\(\\right\()\|]\||\|\\}\|\\rangle\|\\rvert\)\|\\right\.\)'],
-                        \       'filetype': ['tex', 'plaintex', 'rst'],
+                        \       'filetype': ['tex', 'bib', 'plaintex', 'rst'],
                         \       'kind'    : ['delete', 'replace', 'auto', 'query'],
                         \       'regex'   : 1,
                         \       'nesting' : 1,

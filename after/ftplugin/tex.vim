@@ -1,7 +1,7 @@
 if isdirectory(expand('~/texmf/tex/latex'))
     setl path+=~/texmf/tex/latex/*/
 endif
-setl suffixesadd=.tex,.sty,.cls
+setl suffixesadd=.tex,.sty,.cls,.bib
 
 compiler tex
 "let efm_back = &efm
