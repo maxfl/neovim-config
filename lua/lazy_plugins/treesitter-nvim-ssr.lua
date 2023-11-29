@@ -1,6 +1,5 @@
 return {
 	"cshuaimin/ssr.nvim",
-	module = "ssr",
     enabled = true,
 	config = function()
 		require("ssr").setup()
