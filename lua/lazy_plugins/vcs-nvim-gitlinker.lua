@@ -27,7 +27,7 @@ return {
 						.. "{_A.FILE}"
 						.. "#L{_A.LSTART}"
 						.. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
-					["^code.ihep.ac.cn"] = "https://git.jinr.ru/"
+					["^code.ihep.ac.cn"] = "https://code.ihep.ac.cn/"
 						.. "{_A.USER}/"
 						.. "{_A.REPO}/blame/"
 						.. "{_A.REV}/"
