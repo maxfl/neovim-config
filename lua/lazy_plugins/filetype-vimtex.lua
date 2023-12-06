@@ -34,7 +34,7 @@ return {
 		--
 		-- Imaps
 		--
-		vim.g.vimtex_imaps_enabled = false
+		vim.g.vimtex_imaps_enabled = true
 		-- vim.g.vimtex_imaps_leader='/'
 
 		--
