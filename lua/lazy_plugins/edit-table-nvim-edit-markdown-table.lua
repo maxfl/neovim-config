@@ -1,6 +1,7 @@
 return {
 	"kiran94/edit-markdown-table.nvim",
 	dependencies = "nvim-treesitter/nvim-treesitter",
+    enabled = false,
 	config = function()
 		require("edit-markdown-table").setup()
 

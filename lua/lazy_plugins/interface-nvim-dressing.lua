@@ -4,6 +4,7 @@
 return {
     'stevearc/dressing.nvim',
     priority = 70,
+    enabled = false,
     config = function()
         require("dressing").setup({
             input = {
