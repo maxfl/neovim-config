@@ -1,5 +1,6 @@
 return {
 	"rickhowe/diffchar.vim",
+    enabled = true,
 	cond = function()
 		return vim.o.diff
 	end,
