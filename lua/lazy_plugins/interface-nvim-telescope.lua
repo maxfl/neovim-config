@@ -41,6 +41,7 @@ return {
 						end,
 						"find files",
 					},
+					g = { "<CMD>Telescope live_grep<CR>", "live_grep" },
 					h = { "<CMD>Telescope heading<CR>", "heading" },
 					i = { "<CMD>Telescope import<CR>", "import" }, -- extension
 					k = { "<CMD>Telescope keymaps<CR>", "keymaps" },
