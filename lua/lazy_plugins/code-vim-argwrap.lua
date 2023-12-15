@@ -1,8 +1,13 @@
 return {
-    'foosoft/vim-argwrap',
-    -- cmd = 'ArgWrap',
-    init = function()
-        local map=vim.api.nvim_set_keymap
-        map('n', '<Leader>,', '<CMD>ArgWrap<CR>', {noremap=true})
-    end
+	"foosoft/vim-argwrap",
+	config = function()
+		pcall(function()
+			require("which-key").register({
+				["<leader>,"] = {
+					"<CMD>ArgWrap<CR>",
+					"split/join arguments (argwrap)",
+				},
+			})
+		end)
+	end,
 }
