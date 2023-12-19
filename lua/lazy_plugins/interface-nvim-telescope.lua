@@ -24,12 +24,10 @@ return {
 			},
 		})
 
-		local map, opts = vim.api.nvim_set_keymap, {}
-		map("", "<C-p>", "<CMD>Telescope oldfiles<CR>", opts)
-		map("", "<C-Space>", "<CMD>Telescope buffers<CR>", opts)
-
 		pcall(function()
 			require("which-key").register({
+                ["<C-p>"]     = { "<CMD>Telescope oldfiles<CR>", "old files" },
+                ["<C-Space>"] = { "<CMD>Telescope buffers<CR>", "buffers" },
 				["<Leader>]"] = {
 					name = "+telescope",
 					["/"] = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "fuzzy find (buffer)" },
