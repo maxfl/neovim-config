@@ -96,6 +96,13 @@ set.ignorecase = true
 set.smartcase = true
 set.grepprg = "grep -nH $*"
 
+-- spelling
+set.spelllang={'en', 'ru_yo'}
+set.spellcapcheck = vim.o.spellcapcheck:sub(1,1)..vim.o.spellcapcheck:sub(3) -- remove . from matching
+set.keymap='russian-jcukenwin'
+set.iminsert=0
+set.imsearch=-1
+
 map("n", "<C-L>", "<CMD>nohlsearch<CR><CMD>diffupdate<CR><C-L>", { silent = true, noremap = true })
 
 -- paths

@@ -17,7 +17,20 @@ return {
     {'kana/vim-textobj-line',             dependencies = 'kana/vim-textobj-user'}, -- l
     {'rhysd/vim-textobj-continuous-line', dependencies = 'kana/vim-textobj-user'}, -- v
     {'kana/vim-textobj-indent',           dependencies = 'kana/vim-textobj-user'}, -- i,  I
-    {'jceb/vim-textobj-uri',              dependencies = 'kana/vim-textobj-user'}, -- u
+    {
+        'jceb/vim-textobj-uri',
+        dependencies = 'kana/vim-textobj-user'
+        -- init = function()
+        --     vim.g.textobj_uri_no_default_key_mappings=false
+        -- end,
+        -- config=function()
+        --     local map, opts=vim.api.nvim_set_keymap, {}
+        --     map('x', 'iU', '<Plug>(textobj-uri-i)', opts)
+        --     map('o', 'iU', '<Plug>(textobj-uri-i)', opts)
+        --     map('x', 'aU', '<Plug>(textobj-uri-a)', opts)
+        --     map('o', 'aU', '<Plug>(textobj-uri-a)', opts)
+        -- end
+    }, -- U
     {'glts/vim-textobj-indblock',         dependencies = 'kana/vim-textobj-user'}, -- o
     {'kana/vim-textobj-datetime',         dependencies = 'kana/vim-textobj-user'}, -- da, df, dt, dz
     {                                                                        -- E
