@@ -20,6 +20,8 @@ return {
 			pickers = {
 				find_files = {
 					follow = true,
+                    -- no_ignore = true,
+                    -- no_ignore_parent = true,
 				},
 			},
 		})

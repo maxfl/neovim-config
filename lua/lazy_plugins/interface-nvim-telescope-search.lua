@@ -11,6 +11,10 @@ return {
                 {
                     name = "Old files",
                     tele_func = require("telescope.builtin").oldfiles
+                },
+                {
+                    name = "Find all files",
+                    tele_func = function() require("telescope.builtin").find_files({no_ignore=true, no_ignore_parent=true}) end
                 }
             }
         })
