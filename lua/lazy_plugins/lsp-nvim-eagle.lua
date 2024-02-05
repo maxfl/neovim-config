@@ -1,8 +1,8 @@
 return {
-	"soulis-1256/hoverhints.nvim",
+	"soulis-1256/eagle.nvim",
 	enabled = true,
 	config = function()
-		local hh = require("hoverhints")
+		local hh = require("eagle")
         hh.setup({})
 
 		-- vim.keymap.del("n", "<MouseMove>")
