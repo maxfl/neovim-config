@@ -7,5 +7,5 @@ return {
         map('!', '<F11>', '<CMD>RnvimrToggle<CR>', opts)
         -- map('t', '<F11>', [[<C-\><C-n><CMD>RnvimrToggle<CR>]], {silent=true, noremap=true})
     end,
-    build = 'make install',
+    -- build = 'make install',
 }

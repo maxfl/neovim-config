@@ -47,10 +47,11 @@ return {
 					k = { "<CMD>Telescope keymaps<CR>", "keymaps" },
 					o = { "<CMD>Telescope oldfiles<CR>", "old files" },
 					p = { "<CMD>Telescope projects<CR>", "projects" },
+					s = { "<CMD>Telescope smart_open<CR>", "smart_open" },
 					t = { "<CMD>Telescope<CR>", "telescope" },
 					["]"] = { "<CMD>Telescope<CR>", "telescope" },
 					-- 'nvim-telescope/telescope-symbols.nvim'
-					s = {
+					S = {
 						function()
 							require("telescope.builtin").symbols({ sources = { "math", "latex" } })
 						end,
