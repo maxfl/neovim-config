@@ -116,6 +116,7 @@ set.wildignore:append({ "*/.git/*", "*/.hg/*", "*/.svn/*", "*/CVS/*" })
 -- mouse
 set.mouse = "a"
 set.mousefocus = true
+set.mousemoveevent = true
 
 require("maxfl.keymaps")
 
