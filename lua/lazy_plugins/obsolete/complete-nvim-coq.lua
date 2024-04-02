@@ -43,7 +43,7 @@ return {
         config = function()
             require 'coq_3p' {
                 { src = "nvimlua", short_name = "nLUA" },
-                { src = "ultisnip", short_name = "US" },
+                -- { src = "ultisnip", short_name = "US" },
             }
         end
     },
