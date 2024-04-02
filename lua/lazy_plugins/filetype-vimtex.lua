@@ -67,11 +67,11 @@ return {
 		--
 		-- Completion
 		--
-		pcall(function()
-			require("coq_3p")({
-				{ src = "vimtex", short_name = "vTEX" },
-			})
-		end)
+		-- pcall(function()
+		-- 	require("coq_3p")({
+		-- 		{ src = "vimtex", short_name = "vTEX" },
+		-- 	})
+		-- end)
 
 		--
 		-- Hotkeys
