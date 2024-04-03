@@ -72,9 +72,9 @@ return {
 		wk.register({
 			["<leader>"] = {
 				C = { name = "+count",
-					a = { [[:s/\%V.//gn<CR>]], "count characters" },
-					S = { [[:s/\%V\S//gn<CR>]], "count non-space characters" },
-					w = { [[:s/\%V\S\+//gn<CR>]], "count words" },
+					a = { [[:s/\%V.//gn | silent nohls<CR>]], "count characters" },
+					S = { [[:s/\%V\S//gn | silent nohls<CR>]], "count non-space characters" },
+					w = { [[:s/\%V\S\+//gn | silent nohls<CR>]], "count words" },
 				},
 			},
 		}, { mode = "v" })
