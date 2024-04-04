@@ -1,6 +1,7 @@
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = 'kyazdani42/nvim-web-devicons',
+    enabled = true,
     config=function()
         local function keymap()
             return vim.o.iminsert>0 and vim.o.keymap:sub(1, 2) or ''

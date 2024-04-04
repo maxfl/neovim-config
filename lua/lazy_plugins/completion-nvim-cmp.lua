@@ -1,15 +1,17 @@
 return {
 	"hrsh7th/nvim-cmp",
-    enable = true,
-    priority = 60,
+	enable = true,
+	priority = 60,
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
-		"quangnguyen30192/cmp-nvim-ultisnips",
+		"quangnguyen30191/cmp-nvim-ultisnips",
 		--{'petertriho/cmp-git', dependencies = 'nvim-lua/plenary.nvim'},
 		"hrsh7th/cmp-nvim-lua",
+		"dmitmel/cmp-digraphs",
+		"micangl/cmp-vimtex",
 		-- 'f3fora/cmp-spell',
 		-- "kdheepak/cmp-latex-symbols",
 		--'hrsh7th/cmp-omni'
@@ -32,13 +34,15 @@ return {
 				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 			}),
 			sources = cmp.config.sources({
-				-- { name = 'spell' },
-				{ name = "nvim_lsp" },
+				{ name = "vimtex" },
 				{ name = "ultisnips" },
+				{ name = "nvim_lsp" },
 				-- { name = 'nvim_lua' },
 				--{ name = 'latex_symbols' },
 			}, {
+				{ name = "path" },
 				{ name = "buffer" },
+				{ name = "digraphs" },
 			}),
 			completion = {
 				keyword_length = 4,
@@ -71,5 +75,6 @@ return {
 		--require('lspconfig')[%YOUR_LSP_SERVER%].setup {
 		--capabilities = capabilities
 		--}
+		vim.keymap.set("i", "<C-X><C-U>", "<Cmd>lua require('cmp').complete()<CR>")
 	end,
 }
