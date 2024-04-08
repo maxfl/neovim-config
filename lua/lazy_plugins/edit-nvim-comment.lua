@@ -2,6 +2,7 @@ return {
     'numToStr/Comment.nvim',
     config=function()
         require('Comment').setup{
+            ignore = '^$',
             mappings = {
                 ---operator-pending mapping
                 ---Includes `gcc`, `gcb`, `gc[count]{motion}` and `gb[count]{motion}`

@@ -2,11 +2,15 @@ return {
     'nvim-focus/focus.nvim',
     config=function()
         require 'focus'.setup{
-            bufnew = false,
-            cursorline = false,
-            relativenumber = false,
-            number = false,
-            absolutenumber_unfocussed = true,
+            enable = true,
+            ui = {
+                relativenumber = true,
+                hybridnumber = true,
+                absolutenumber_unfocussed = true,
+                cursorline = false,
+                signcolumn = false,
+                winhighlight = true
+            },
             autoresize = {
                 enable = false
             },

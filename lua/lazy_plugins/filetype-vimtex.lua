@@ -24,9 +24,13 @@ return {
 		vim.g.vimtex_quickfix_ignore_filters = {
 			"Overfull \\\\.box",
 			"Underfull \\\\.box",
+			"LaTeX Font Warning:.\\+not available size",
 			"Package relsize Warning",
 			"Empty bibliography",
 			"inputenc package ignored with utf8 based engines",
+			'Missing "journal" in',
+			"There were multiply-defined labels",
+			"@cref' multiply defined",
 		}
 
 		vim.g.vimtex_compiler_latexmk = { build_dir = "./vimtex.out" }
