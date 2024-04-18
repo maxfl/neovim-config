@@ -56,14 +56,14 @@ return {
 			},
 		})
 
-		-- Use cmdline & path source for ':'.
-		cmp.setup.cmdline(":", {
-			sources = cmp.config.sources({
-				{ name = "path" },
-			}, {
-				{ name = "cmdline" },
-			}),
-		})
+		-- -- Use cmdline & path source for ':'.
+		-- cmp.setup.cmdline(":", {
+		-- 	sources = cmp.config.sources({
+		-- 		{ name = "path" },
+		-- 	}, {
+		-- 		{ name = "cmdline" },
+		-- 	}),
+		-- })
 
 		--vim.cmd[[
 		--autocmd FileType lua lua sources=require'cmp'.setup.buffer.sources

@@ -24,7 +24,7 @@ return {
 			Rule("$", "$", { "tex", "latex" })
 				-- don't add a pair if the next character is %
 				:with_pair(cond.not_after_regex("%%"))
-				:with_move(cond.none())
+				-- :with_move(cond.none())
 				:with_cr(cond.none()),
 			Rule(",,", "``", { "tex", "latex" })
 				:with_pair(cond.not_after_regex("%%"))
