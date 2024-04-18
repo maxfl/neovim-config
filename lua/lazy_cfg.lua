@@ -1,28 +1,32 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 local lazy = require("lazy")
-lazy.setup(
-    "lazy_plugins",
-    {
-        concurrency = 8
-    }
-)
+lazy.setup("lazy_plugins", {
+	concurrency = 8,
+})
 
 pcall(function()
-    require("which-key").register({
-        ["<leader>"] = {
-            p = { "<CMD>Lazy<CR>", "plugins" },
-        },
-    })
+	require("which-key").register({
+		["<leader>"] = {
+			p = { "<CMD>Lazy<CR>", "plugins" },
+		},
+	})
 end)
+
+-- pcall(function()
+-- 	require("langmapper").automapping({
+--         global = true,
+--         buffer = true
+-- 	})
+-- end)

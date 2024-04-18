@@ -102,6 +102,14 @@ set.spellcapcheck = vim.o.spellcapcheck:sub(1,1)..vim.o.spellcapcheck:sub(3) -- 
 -- set.keymap='russian-jcukenwin'
 -- set.iminsert=0
 -- set.imsearch=-1
+vim.cmd[[
+    augroup forcespellcheck
+        au!
+        au FileType svn setlocal spell
+        au FileType gitcommit setlocal spell
+        au FileType vcscommit setlocal spell
+    augroup END
+]]
 
 map("n", "<C-L>", "<CMD>nohlsearch<CR><CMD>diffupdate<CR><C-L>", { silent = true, noremap = true })
 
