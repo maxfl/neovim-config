@@ -31,10 +31,11 @@ vim.o.shada = vim.o.shada:gsub("'%d+", "'1000")
 -- Interface
 set.background = "light"
 set.hidden = true
-set.number = true
-set.relativenumber = true
 set.termguicolors = true
 set.switchbuf = { "useopen", "usetab", "newtab" }
+set.number = true
+set.relativenumber = true
+set.signcolumn = "yes"
 
 -- set.fillchars:append {vert='│', fold='—', stlnc='_'}
 set.fillchars:append({ vert = "┊" })
@@ -99,9 +100,9 @@ set.grepprg = "grep -nH $*"
 -- spelling
 set.spelllang={'en', 'ru_yo'}
 set.spellcapcheck = vim.o.spellcapcheck:sub(1,1)..vim.o.spellcapcheck:sub(3) -- remove . from matching
--- set.keymap='russian-jcukenwin'
--- set.iminsert=0
--- set.imsearch=-1
+set.keymap='russian-jcukenwin'
+set.iminsert=0
+set.imsearch=-1
 vim.cmd[[
     augroup forcespellcheck
         au!
@@ -188,6 +189,7 @@ map("i", "<M-BS>", "<BS><Del>", noremap) -- remove symbol before and after
 -- Disable ex mode
 map("n", "Q", "<nop>", noremap)
 map("i", "<T-F12>", "<nop>", noremap)
+map("i", "<F12>", "<nop>", noremap)
 
 -- Save
 map("n", "<F2>", "<CMD>w<CR>", noremap)
