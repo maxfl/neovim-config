@@ -15,5 +15,15 @@ return {
             'txt',
             'gitcommit'
         }
+       vim.g.bullets_outline_levels = {
+           'ROM',
+           'ABC',
+           'num',
+           'abc',
+           'rom',
+           'std-',
+           'std*',
+           'std+'
+       }
     end
 }

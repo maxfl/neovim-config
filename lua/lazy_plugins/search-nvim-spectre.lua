@@ -1,5 +1,5 @@
 return {
-    'windwp/nvim-spectre',
+    'nvim-pack/nvim-spectre',
     -- module='spectre',
     init = function()
         local map, noremap=vim.api.nvim_set_keymap, {noremap=true}
