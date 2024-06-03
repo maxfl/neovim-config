@@ -1,5 +1,6 @@
 return {
-    'nvim-focus/focus.nvim',
+    -- 'nvim-focus/focus.nvim',
+    'willothy/focus.nvim',
     config=function()
         require 'focus'.setup{
             enable = true,

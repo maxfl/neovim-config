@@ -2,7 +2,8 @@
 -- Show where the cursor has jumped
 --
 return {
-	"edluffy/specs.nvim",
+	-- "edluffy/specs.nvim",
+    "jokajak/specs.nvim",
 	config = function()
 		local specs = require("specs")
 		specs.setup({
