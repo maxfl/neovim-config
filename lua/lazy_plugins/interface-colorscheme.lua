@@ -1,12 +1,17 @@
 local function user_au_on_dark()
     if vim.o.background == "dark" then
         vim.g.material_style = "oceanic"
+        vim.cmd.colorscheme("default")
+        vim.cmd.redraw()
         vim.cmd.colorscheme("material")
     end
 end
 
 local function user_au_on_light()
     if vim.o.background == "light" then
+        vim.g.material_style = "lighter"
+        vim.cmd.colorscheme("default")
+        vim.cmd.redraw()
         vim.cmd.colorscheme("edge")
     end
 end
@@ -57,6 +62,7 @@ return {
 				pattern = "background",
 				callback = user_au_on_light,
 			})
+            vim.g.edge_enable_italic = false
 			user_au_on_light()
 		end,
 	},
