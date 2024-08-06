@@ -81,12 +81,8 @@ return {
 		-- Hotkeys
 		--
 		pcall(function()
-			require("which-key").register({
-				["<leader>l"] = {
-					name = "+latex",
-					-- p='->ascii',
-					-- P='->ascii preview'
-				},
+			require("which-key").add({
+				{ "<leader>l", group = "latex" },
 			}, { silent = true })
 		end)
 	end,

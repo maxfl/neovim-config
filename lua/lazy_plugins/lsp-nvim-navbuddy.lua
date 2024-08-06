@@ -12,23 +12,16 @@ return {
 
 		navbuddy.setup({
 			lsp = {
-				auto_attach = false, -- If set to true, you don't need to manually use attach function
+				auto_attach = true, -- If set to true, you don't need to manually use attach function
 				preference = nil, -- list of lsp server names in order of preference
 			},
 		})
 
 		pcall(function()
-			require("which-key").register({
-				["<leader>u"] = {
-					name = "+utils",
-					n = { "<CMD>Navbuddy<CR>", "navbuddy" },
-				},
+			require("which-key").add({
+				{ "<leader>u", group = "utils" },
+				{ "<leader>un", "<CMD>Navbuddy<CR>", desc = "navbuddy" },
 			})
 		end)
-		require("lspconfig").clangd.setup {
-		    on_attach = function(client, bufnr)
-		        navbuddy.attach(client, bufnr)
-		    end
-		}
 	end,
 }

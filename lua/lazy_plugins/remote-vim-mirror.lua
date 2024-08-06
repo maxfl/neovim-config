@@ -3,17 +3,15 @@ return {
 	-- cmd = {'MirrorPush', 'MirrorPull', 'MirrorConfig', 'MirrorConfigReload', 'MirrorSSH', 'MirrorEdit', 'Mirror*'},
 	init = function()
 		pcall(function()
-			require("which-key").register({
-				["<leader>r"] = {
-					name = "+mirror",
-					t = { "<CMD>MirrorPush<CR>", "push (there)" },
-					c = { "<CMD>MirrorPush<CR>", "push" },
-					p = { "<CMD>MirrorPull<CR>", "pull" },
-					h = { "<CMD>MirrorPull<CR>", "pull (here)" },
-					s = { "<CMD>MirrorSSH<CR>", "ssh" },
-					C = { "<CMD>MirrorConfig<CR>", "config" },
-					r = { "<CMD>MirrorConfigReload<CR>", "reload config" },
-				},
+			require("which-key").add({
+				{ "<leader>r", group = "mirror" },
+				{ "<Leader>t", "<CMD>MirrorPush<CR>", desc = "push (there)" },
+				{ "<Leader>c", "<CMD>MirrorPush<CR>", desc = "push" },
+				{ "<Leader>p", "<CMD>MirrorPull<CR>", desc = "pull" },
+				{ "<Leader>h", "<CMD>MirrorPull<CR>", desc = "pull (here)" },
+				{ "<Leader>s", "<CMD>MirrorSSH<CR>", desc = "ssh" },
+				{ "<Leader>C", "<CMD>MirrorConfig<CR>", desc = "config" },
+				{ "<Leader>r", "<CMD>MirrorConfigReload<CR>", desc = "reload config" },
 			})
 		end)
 	end,

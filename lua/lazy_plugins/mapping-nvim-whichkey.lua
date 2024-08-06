@@ -19,64 +19,47 @@ return {
 			--     'z',
 			--     '"'
 			-- }
-			triggers_blacklist = {
-				-- list of mode / prefixes that should never be hooked by WhichKey
-				-- this is mostly relevant for key maps that start with a native binding
-				-- most people should not need to change this
-				n = { "d" },
+			triggers = {
+				{ "<auto>", mode = "nxsot" },
+				-- { "d", mode = { "n", "v" } },
 			},
 		})
 
-		wk.register({
-			["<leader>"] = {
-				[ [[\]] ] = {
-					name = "+visual multi",
-					["/"] = "search",
-					[ [[\]] ] = "cursor at pos",
-					["A"] = "select all",
-					["g"] = {
-						name = "+...reselect",
-						S = "reselect last",
-					},
-				},
-				d = {
-					name = "+diff",
-					D = "diagnostics (all)",
-					d = "diagnostics (buffer)",
-					l = "linediff",
-					r = "reset linediff",
-				},
-				w = {
-					name = "+window",
-					["="] = "equalize (focus)",
-					M = "swap (winshift)",
-					f = "maximize (focus)",
-					i = "winteract",
-					m = "move (winshift)",
-					s = "symbols",
-					T = "toggle focus",
-				},
-				u = {
-					name = "+utils",
-					a = "code actions",
-					b = "buffers",
-					o = "outline (symbols)",
-					p = "project root",
-					u = "undo tree",
-					v = "outline (voom)",
-					z = "zen mode",
-				},
-			},
+		wk.add({
+			{ "<Leader><Leader>", group = "visual multi" },
+			{ "<Leader><Leader>/", desc = "search" },
+			{ "<Leader><Leader><Leader>", desc = "cursor at pos" },
+			{ "<Leader><Leader>A", desc = "select all" },
+			{ "<Leader><Leader>g", group = "...reselect" },
+			{ "<Leader><Leader>gS", desc = "reselect last" },
+			{ "<Leader>d", group = "diff" },
+			{ "<Leader>dD", desc = "diagnostics (all)" },
+			{ "<Leader>dd", desc = "diagnostics (buffer)" },
+			{ "<Leader>dl", desc = "linediff" },
+			{ "<Leader>dr", desc = "reset linediff" },
+			{ "<Leader>w", group = "window" },
+			{ "<Leader>w=", desc = "equalize (focus)" },
+			{ "<Leader>wM", desc = "swap (winshift)" },
+			{ "<Leader>wf", desc = "maximize (focus)" },
+			{ "<Leader>wi", desc = "winteract" },
+			{ "<Leader>wm", desc = "move (winshift)" },
+			{ "<Leader>ws", desc = "symbols" },
+			{ "<Leader>wT", desc = "toggle focus" },
+			{ "<Leader>u", group = "utils" },
+			{ "<Leader>ua", desc = "code actions" },
+			{ "<Leader>ub", desc = "buffers" },
+			{ "<Leader>uo", desc = "outline (symbols)" },
+			{ "<Leader>up", desc = "project root" },
+			{ "<Leader>uu", desc = "undo tree" },
+			{ "<Leader>uv", desc = "outline (voom)" },
+			{ "<Leader>uz", desc = "zen mode" },
 		})
 
-		wk.register({
-			["<leader>"] = {
-				C = { name = "+count",
-					a = { [[:s/\%V.//gn | silent nohls<CR>]], "count characters" },
-					S = { [[:s/\%V\S//gn | silent nohls<CR>]], "count non-space characters" },
-					w = { [[:s/\%V\S\+//gn | silent nohls<CR>]], "count words" },
-				},
-			},
+		wk.add({
+			{ "<leader>C", group = "count" },
+			{ "<Leader>Ca", [[:s/\%V.//gn | silent nohls<CR>]], desc = "count characters" },
+			{ "<Leader>CS", [[:s/\%V\S//gn | silent nohls<CR>]], desc = "count non-space characters" },
+			{ "<Leader>Cw", [[:s/\%V\S\+//gn | silent nohls<CR>]], desc = "count words" },
 		}, { mode = "v" })
 	end,
 }

@@ -7,6 +7,7 @@ return {
             'clangd',
             'cmake',
             'pyright',
+            'fish_lsp',
             'texlab',
             'lua_ls'
         }

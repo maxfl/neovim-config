@@ -4,10 +4,15 @@ return {
 		require("outline").setup({})
 
 		pcall(function()
-			require("which-key").register({
-				["<leader>u"] = {
-					name = "+utils",
-					o = { "<CMD>Outline<CR>", "outline" },
+			require("which-key").add({
+				{
+					"<leader>u",
+					group = "utils",
+				},
+				{
+					"<leader>uo",
+					"<CMD>Outline<CR>",
+					desc = "outline",
 				},
 			})
 		end)

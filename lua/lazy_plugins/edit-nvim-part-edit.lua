@@ -17,13 +17,9 @@ return {
 			delete_buf_on_leave = true,
 		})
 		pcall(function()
-			require("which-key").register({
-				["<leader>u"] = {
-					name = "+utils",
-					e = { "<CMD>PartEdit<CR>", "part edit" },
-				},
-			}, {
-				mode = "v",
+			require("which-key").add({
+				{ "<leader>u", group = "utils" },
+				{ "<leader>ue", "<CMD>PartEdit<CR>", desc = "part edit", mode = "v" },
 			})
 		end)
 	end,

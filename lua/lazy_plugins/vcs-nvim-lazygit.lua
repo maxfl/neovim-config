@@ -2,11 +2,9 @@ return {
 	"kdheepak/lazygit.nvim",
 	config = function()
 		pcall(function()
-			require("which-key").register({
-				["<leader>g"] = {
-					name = "+git",
-					g = { "<CMD>LazyGit<CR>", "lazygit" },
-				},
+			require("which-key").add({
+				{ "<leader>g", group = "git" },
+				{ "<leader>gg", "<CMD>LazyGit<CR>", desc = "lazygit" },
 			}, {
 				silent = true,
 			})

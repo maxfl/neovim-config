@@ -4,17 +4,24 @@ return {
 	-- module = 'close_buffers',
 	init = function()
 		pcall(function()
-			require("which-key").register({
-				["<leader>C"] = {
-					name = "+close buffer",
-					h = {
-                        function() require "close_buffers".delete{type="hidden", force=true} end,
-						"hidden",
-					},
-					n = {
-						function() require "close_buffers".delete{type="nameless"} end,
-						"nameless",
-					},
+			require("which-key").add({
+				{
+					"<leader>C",
+					group = "close buffer",
+				},
+				{
+					"<Leader>Ch",
+					function()
+						require("close_buffers").delete({ type = "hidden", force = true })
+					end,
+					desc = "hidden",
+				},
+				{
+					"<Leader>Cn",
+					function()
+						require("close_buffers").delete({ type = "nameless" })
+					end,
+					desc = "nameless",
 				},
 			})
 		end)

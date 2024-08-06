@@ -12,17 +12,13 @@ return {
 		vim.g.ConflictMotions_TakeMappingPrefix = "<Leader>="
 
 		pcall(function()
-			require("which-key").register({
-				["<leader>"] = {
-					["="] = {
-						name = "+git/conflicts",
-						["."] = "take this",
-						[">"] = "take theirs",
-						["|"] = "take base",
-						["<"] = "take ours",
-						d = "take none",
-					},
-				},
+			require("which-key").add({
+				{ "<leader>=", group = "git/conflicts" },
+				{ "<leader>=.", desc = "take this" },
+				{ "<leader>=>", desc = "take theirs" },
+				{ "<leader>=|", desc = "take base" },
+				{ "<leader>=<", desc = "take ours" },
+				{ "<leader>=d", desc = "take none" },
 			})
 		end)
 	end,

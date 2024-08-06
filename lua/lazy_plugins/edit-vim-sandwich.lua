@@ -2,9 +2,9 @@ return {
 	"machakann/vim-sandwich",
 	config = function()
 		pcall(function()
-			require("which-key").register({
-				["iS"] = { "is", "inner sentence" },
-				["aS"] = { "as", "outer sentence" },
+			require("which-key").add({
+				{ "iS", "is", desc = "inner sentence" },
+				{ "aS", "as", desc = "outer sentence" },
 			}, { mode = "v" })
 		end)
 

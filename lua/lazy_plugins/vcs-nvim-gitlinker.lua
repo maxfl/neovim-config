@@ -38,11 +38,17 @@ return {
 			},
 		})
 		pcall(function()
-			require("which-key").register({
-				["<leader>g"] = {
-					name = "+git",
-					l = { "<CMD>GitLink<CR>", "copy link" },
-					L = { "<CMD>GitLink!<CR>", "open link" },
+			require("which-key").add({
+				{ "<leader>g", group = "git" },
+				{
+					"<leader>gl",
+					"<CMD>GitLink<CR>",
+					desc = "copy link",
+				},
+				{
+					"<leader>gL",
+					"<CMD>GitLink!<CR>",
+					desc = "open link",
 				},
 			}, {
 				silent = true,

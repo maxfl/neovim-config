@@ -8,12 +8,13 @@ return {
 			use_default_keymaps = false,
 		})
 		pcall(function()
-			require("which-key").register({
-				["<leader><S-,>"] = {
+			require("which-key").add({
+				{
+					"<leader><S-,>",
 					function()
 						require("treesj").toggle()
 					end,
-					"split/join arguments (treesj)",
+					desc = "split/join arguments (treesj)",
 				},
 			})
 		end)

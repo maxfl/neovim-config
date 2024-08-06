@@ -4,17 +4,17 @@ return {
 	config = function()
 		require("search").setup({
 			append_tabs = {
-                -- 4
+				-- 4
 				{
 					name = "Buffers",
 					tele_func = require("telescope.builtin").buffers,
 				},
-                -- 5
+				-- 5
 				{
 					name = "Smart",
-					tele_func = require("telescope").extensions.smart_open.smart_open
+					tele_func = require("telescope").extensions.smart_open.smart_open,
 				},
-                -- 6
+				-- 6
 				{
 					name = "Old files",
 					tele_func = function()
@@ -23,12 +23,12 @@ return {
 						})
 					end,
 				},
-                -- 7
+				-- 7
 				{
 					name = "Old files (all)",
 					tele_func = require("telescope.builtin").oldfiles,
 				},
-                -- 8
+				-- 8
 				{
 					name = "Find all files",
 					tele_func = function()
@@ -42,27 +42,28 @@ return {
 		})
 
 		pcall(function()
-			require("which-key").register({
-				["<C-p>"] = {
+			require("which-key").add({
+				{
+					"<C-p>",
 					function()
 						require("search").open({ tab_id = 5 })
 					end,
-					"old files",
+					desc = "old files",
 				},
-				["<C-Space>"] = {
+				{
+					"<C-Space>",
 					function()
 						require("search").open({ tab_id = 4 })
 					end,
-					"buffers",
+					desc = "buffers",
 				},
-				["<Leader>]"] = {
-					name = "+telescope",
-					f = {
-						function()
-							require("search").open()
-						end,
-						"files (search)",
-					},
+				{ "<Leader>", group = "telescope" },
+				{
+					"<Leader>f",
+					function()
+						require("search").open()
+					end,
+					desc = "files (search)",
 				},
 			})
 		end)

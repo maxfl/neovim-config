@@ -17,10 +17,8 @@ lazy.setup("lazy_plugins", {
 })
 
 pcall(function()
-	require("which-key").register({
-		["<leader>"] = {
-			p = { "<CMD>Lazy<CR>", "plugins" },
-		},
+	require("which-key").add({
+		{ "<leader>p", "<CMD>Lazy<CR>", desc = "plugins" },
 	})
 end)
 

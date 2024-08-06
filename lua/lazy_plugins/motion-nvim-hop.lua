@@ -1,4 +1,4 @@
--- 
+--
 -- Clever jump
 --
 return {
@@ -7,18 +7,19 @@ return {
 	-- cmd = 'Hop*',
 	init = function()
 		pcall(function()
-			require("which-key").register({
-				["<leader>m"] = {
-					name = "+hop",
-					["/"] = { "<CMD>HopPattern<CR>", "pattern" },
-					["?"] = { "<CMD>HopPatternBC<CR>", "patter (back)" },
-					f = { "<CMD>HopChar1<CR>", "char" },
-					F = { "<CMD>HopChar1BC<CR>", "char (back)" },
-					k = { "<CMD>HopLineBC<CR>", "line (back)" },
-					j = { "<CMD>HopLineAC<CR>", "line" },
-					w = { "<CMD>HopWord<CR>", "word" },
-					W = { "<CMD>HopWordBC<CR>", "word (back)" },
+			require("which-key").add({
+				{
+					"<leader>m",
+					group = "hop",
 				},
+				{ "<Leader>m?", "<CMD>HopPattern<CR>", desc = "pattern" },
+				{ "<Leader>m/", "<CMD>HopPatternBC<CR>", desc = "pattern (back)" },
+				{ "<Leader>mf", "<CMD>HopChar1<CR>", desc = "char" },
+				{ "<Leader>mF", "<CMD>HopChar1BC<CR>", desc = "char (back)" },
+				{ "<Leader>mk", "<CMD>HopLineBC<CR>", desc = "line (back)" },
+				{ "<Leader>mj", "<CMD>HopLineAC<CR>", desc = "line" },
+				{ "<Leader>mw", "<CMD>HopWord<CR>", desc = "word" },
+				{ "<Leader>mW", "<CMD>HopWordBC<CR>", desc = "word (back)" },
 			})
 		end)
 	end,

@@ -1,23 +1,24 @@
 return {
 	"cshuaimin/ssr.nvim",
-    enabled = true,
+	enabled = true,
 	config = function()
 		require("ssr").setup()
 
 		pcall(function()
-			require("which-key").register({
-				["<Leader>f"] = {
-					name = "+search",
-					t = {
-						function()
-							require("ssr").open()
-						end,
-						"structural search and replace",
-					},
+			require("which-key").add({
+				{
+					"<Leader>f",
+					group = "search",
 				},
-			},
-            { mode = "n" } -- mode = "" breaks ci
-            )
+				{
+					"<Leader>ft",
+					function()
+						require("ssr").open()
+					end,
+					desc = "structural search and replace",
+					mode = "n",
+				},
+			})
 		end)
 	end,
 }
