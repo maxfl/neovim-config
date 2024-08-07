@@ -3,9 +3,9 @@ return {
 	config = function()
 		pcall(function()
 			require("which-key").add({
-				{ "iS", "is", desc = "inner sentence" },
-				{ "aS", "as", desc = "outer sentence" },
-			}, { mode = "v" })
+				{ "iS", "is", desc = "inner sentence", mode = "v" },
+				{ "aS", "as", desc = "outer sentence", mode = "v" },
+			})
 		end)
 
 		vim.cmd([===[

@@ -1,6 +1,6 @@
 return {
-    -- 'nvim-focus/focus.nvim',
-    'willothy/focus.nvim',
+    'nvim-focus/focus.nvim',
+    -- 'willothy/focus.nvim',
     config=function()
         require 'focus'.setup{
             enable = true,
@@ -17,6 +17,30 @@ return {
             },
         }
 
+        --
+        -- Ignores
+        --
+        local ignore_buftypes = { 'nofile', 'prompt', 'popup', 'terminal' }
+
+        local augroup =
+            vim.api.nvim_create_augroup('FocusDisable', { clear = true })
+
+        vim.api.nvim_create_autocmd('WinEnter', {
+            group = augroup,
+            callback = function(_)
+                if vim.tbl_contains(ignore_buftypes, vim.bo.buftype)
+                then
+                    vim.w.focus_disable = true
+                else
+                    vim.w.focus_disable = false
+                end
+            end,
+            desc = 'Disable focus autoresize for BufType',
+        })
+
+        --
+        -- Mappings
+        --
         local map, silent=vim.api.nvim_set_keymap, {silent = true}
         map('n', '<M-h>', '<CMD>FocusSplitLeft<CR>', silent)
         map('n', '<M-j>', '<CMD>FocusSplitDown<CR>', silent)

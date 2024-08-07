@@ -30,36 +30,36 @@ return {
 			require("which-key").add({
 				{ "<C-p>", "<CMD>Telescope oldfiles<CR>", desc = "old files" },
 				{ "<C-Space>", "<CMD>Telescope buffers<CR>", desc = "buffers" },
-				{ "<Leader>", group = "telescope" },
-				{ "<Leader>/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "fuzzy find (buffer)" },
-				{ "<Leader>b", "<CMD>Telescope buffers<CR>", desc = "buffers" },
-				{ "<Leader>c", "<CMD>Telescope commands<CR>", desc = "commands" },
+				{ "<Leader>]", group = "telescope" },
+				{ "<Leader>]/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "fuzzy find (buffer)" },
+				{ "<Leader>]b", "<CMD>Telescope buffers<CR>", desc = "buffers" },
+				{ "<Leader>]c", "<CMD>Telescope commands<CR>", desc = "commands" },
 				{
-					"<Leader>f",
+					"<Leader>]f",
 					function()
 						require("telescope.builtin").find_files()
 					end,
 					desc = "find files",
 				},
-				{ "<Leader>g", "<CMD>Telescope live_grep<CR>", desc = "live_grep" },
-				{ "<Leader>h", "<CMD>Telescope heading<CR>", desc = "heading" },
-				{ "<Leader>i", "<CMD>Telescope import<CR>", desc = "import" }, -- extension
-				{ "<Leader>k", "<CMD>Telescope keymaps<CR>", desc = "keymaps" },
-				{ "<Leader>o", "<CMD>Telescope oldfiles<CR>", desc = "old files" },
-				{ "<Leader>p", "<CMD>Telescope projects<CR>", desc = "projects" },
-				{ "<Leader>s", "<CMD>Telescope smart_open<CR>", desc = "smart_open" },
-				{ "<Leader>t", "<CMD>Telescope<CR>", desc = "telescope" },
-				{ "<Leader>]", "<CMD>Telescope<CR>", desc = "telescope" },
+				{ "<Leader>]g", "<CMD>Telescope live_grep<CR>", desc = "live_grep" },
+				{ "<Leader>]h", "<CMD>Telescope heading<CR>", desc = "heading" },
+				{ "<Leader>]i", "<CMD>Telescope import<CR>", desc = "import" }, -- extension
+				{ "<Leader>]k", "<CMD>Telescope keymaps<CR>", desc = "keymaps" },
+				{ "<Leader>]o", "<CMD>Telescope oldfiles<CR>", desc = "old files" },
+				{ "<Leader>]p", "<CMD>Telescope projects<CR>", desc = "projects" },
+				{ "<Leader>]s", "<CMD>Telescope smart_open<CR>", desc = "smart_open" },
+				{ "<Leader>]t", "<CMD>Telescope<CR>", desc = "telescope" },
+				{ "<Leader>]]", "<CMD>Telescope<CR>", desc = "telescope" },
 				-- 'nvim-telescope/telescope-symbols.nvim'
 				{
-					"<Leader>S",
+					"<Leader>]S",
 					function()
 						require("telescope.builtin").symbols({ sources = { "math", "latex" } })
 					end,
 					desc = "symbols",
 				},
-				{ "z", group = "spell/fold" },
-				{ "z=", "<CMD>Telescope spell_suggest<CR>", desc = "Spelling suggestions" },
+				{ "<Leader>]z", group = "spell/fold" },
+				{ "<Leader>]z=", "<CMD>Telescope spell_suggest<CR>", desc = "Spelling suggestions" },
 			})
 		end)
 	end,

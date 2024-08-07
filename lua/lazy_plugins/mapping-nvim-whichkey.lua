@@ -56,10 +56,10 @@ return {
 		})
 
 		wk.add({
-			{ "<leader>C", group = "count" },
-			{ "<Leader>Ca", [[:s/\%V.//gn | silent nohls<CR>]], desc = "count characters" },
-			{ "<Leader>CS", [[:s/\%V\S//gn | silent nohls<CR>]], desc = "count non-space characters" },
-			{ "<Leader>Cw", [[:s/\%V\S\+//gn | silent nohls<CR>]], desc = "count words" },
-		}, { mode = "v" })
+			{ "<leader>C", group = "count", mode = "v" },
+			{ "<Leader>Ca", [[:s/\%V.//gn | silent nohls<CR>]], desc = "count characters", mode = "v" },
+			{ "<Leader>CS", [[:s/\%V\S//gn | silent nohls<CR>]], desc = "count non-space characters", mode = "v" },
+			{ "<Leader>Cw", [[:s/\%V\S\+//gn | silent nohls<CR>]], desc = "count words", mode = "v" },
+		})
 	end,
 }
