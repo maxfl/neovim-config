@@ -7,7 +7,7 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
-        "quangnguyen30191/cmp-nvim-ultisnips",
+        "quangnguyen30192/cmp-nvim-ultisnips",
         --{'petertriho/cmp-git', dependencies = 'nvim-lua/plenary.nvim'},
         "hrsh7th/cmp-nvim-lua",
         "dmitmel/cmp-digraphs",
