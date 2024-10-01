@@ -1,5 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
+    dependencies = "williamboman/mason-lspconfig.nvim",
 	config = function()
 		pcall(function()
 			require("which-key").add({
