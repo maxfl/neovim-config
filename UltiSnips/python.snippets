@@ -131,6 +131,29 @@ if __name__ == '__main__':
     main(parser.parse_args())
 endsnippet
 
+snippet pltstyle "matplotlib style"
+plt.style.use(
+    {
+        # "font.size": 12,
+        # "figure.figsize": (,),
+        # "figure.subplot.right": 0.95,
+        # "figure.subplot.top": 0.95,
+        # "figure.subplot.bottom": 0.15,
+        "axes.formatter.limits":       (-2, 4),
+        "axes.formatter.use_mathtext": True,
+        "axes.grid": True,
+        "xtick.minor.visible": True,
+        "ytick.minor.visible": True,
+        "xtick.top": True,
+        "ytick.right": True,
+        # "errorbar.capsize": 2,
+        "lines.markerfacecolor": "none",
+        "savefig.dpi": 300,
+        # "legend.framealpha": 0.8,
+    }
+)
+endsnippet
+
 snippet Figure "matplotlib figure"
 ${1:fig} = ${2:plt}.figure()
 ${3:ax} = $2.subplot(${4:111}, xlabel='${5}', ylabel='${6}', title='${7}')
@@ -144,21 +167,6 @@ snippet figure "matplotlib figure"
 plt.figure()
 ${1:ax} = plt.subplot(${2:111}, xlabel='${3}', ylabel='${4}', title='${5}')
 $0
-endsnippet
-
-snippet pltstyle "matplotlib style"
-plt.style.use({
-    # 'axes.formatter.limits':       (-2, 4),
-    'axes.formatter.use_mathtext': True,
-    'axes.grid':           True,
-    'xtick.minor.visible': True,
-    'ytick.minor.visible': True,
-    'xtick.top':           True,
-    'ytick.right':         True,
-    'errorbar.capsize': 2,
-    'lines.markerfacecolor': 'none',
-    'savefig.dpi': 300,
-	})
 endsnippet
 
 #
