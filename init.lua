@@ -153,10 +153,17 @@ set.commentstring = "#%s"
 set.cpoptions:append("d") -- ./ in tags means current directory
 
 -- Diff selection
-map("n", "Dp", ":.diffput<CR>", emptyopts)
-map("v", "Dp", ":diffput<CR>", emptyopts)
-map("n", "Do", ":.diffget<CR>", emptyopts)
-map("v", "Do", ":diffget<CR>", emptyopts)
+vim.keymap.set({"n", "v"}, "D", "<nop>", emptyopts)
+vim.keymap.set("n", "Dp", ":.diffput<CR>", emptyopts)
+vim.keymap.set("n", "Do", ":.diffget<CR>", emptyopts)
+vim.keymap.set("v", "Dp", ":diffput<CR>", emptyopts)
+vim.keymap.set("v", "Do", ":diffget<CR>", emptyopts)
+vim.keymap.set("n", "<Leader>di", "<CMD>set diffopt+=iwhite<CR>")
+vim.keymap.set("n", "<Leader>dI", "<CMD>set diffopt-=iwhite<CR>")
+vim.keymap.set("n", "<Leader>dw", "<CMD>set diffopt+=iwhiteall<CR>")
+vim.keymap.set("n", "<Leader>dW", "<CMD>set diffopt-=iwhiteall<CR>")
+vim.keymap.set('n', '<leader>dU', '<CMD>Diffupdate<CR>', {silent=true})
+vim.keymap.set('n', '<leader>du', '<CMD>diffupdate<CR>', {silent=true})
 
 -- Clipboard mappings
 -- Make x, d and dd delete with no register

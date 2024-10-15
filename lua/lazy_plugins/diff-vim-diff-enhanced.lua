@@ -1,7 +1,7 @@
 return {
     'chrisbra/vim-diff-enhanced',
     config = function()
-        local map = vim.api.nvim_set_keymap
-        map('n', '<leader>gP', '<CMD>PatienceDiff<CR>', {silent=true})
+        local map = vim.keymap.set
+        map('n', '<leader>dP', '<CMD>PatienceDiff<CR>', {silent=true})
     end
 }

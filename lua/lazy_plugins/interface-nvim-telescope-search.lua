@@ -59,7 +59,7 @@ return {
 				},
 				{ "<Leader>", group = "telescope" },
 				{
-					"<Leader>f",
+					"<Leader>]f",
 					function()
 						require("search").open()
 					end,
