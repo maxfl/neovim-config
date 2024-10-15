@@ -28,6 +28,14 @@ end
 
 vim.o.shada = vim.o.shada:gsub("'%d+", "'1000")
 
+-- Stop insert of focus lost
+vim.cmd([[
+    augroup focuscontrol
+        au!
+        au FocusLost,TabLeave * stopinsert
+    augroup END
+]])
+
 -- Interface
 set.background = "light"
 set.hidden = true
@@ -98,19 +106,19 @@ set.smartcase = true
 set.grepprg = "grep -nH $*"
 
 -- spelling
-set.spelllang={'en', 'ru_yo'}
-set.spellcapcheck = vim.o.spellcapcheck:sub(1,1)..vim.o.spellcapcheck:sub(3) -- remove . from matching
-set.keymap='russian-jcukenwin'
-set.iminsert=0
-set.imsearch=-1
-vim.cmd[[
+set.spelllang = { "en", "ru_yo" }
+set.spellcapcheck = vim.o.spellcapcheck:sub(1, 1) .. vim.o.spellcapcheck:sub(3) -- remove . from matching
+set.keymap = "russian-jcukenwin"
+set.iminsert = 0
+set.imsearch = -1
+vim.cmd([[
     augroup forcespellcheck
         au!
         au FileType svn setlocal spell
         au FileType gitcommit setlocal spell
         au FileType vcscommit setlocal spell
     augroup END
-]]
+]])
 
 map("n", "<C-L>", "<CMD>nohlsearch<CR><CMD>diffupdate<CR><C-L>", { silent = true, noremap = true })
 
