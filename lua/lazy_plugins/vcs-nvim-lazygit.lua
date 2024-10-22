@@ -1,5 +1,6 @@
 return {
 	"kdheepak/lazygit.nvim",
+	requires = "nvim-lua/plenary.nvim",
 	config = function()
 		pcall(function()
 			require("which-key").add({
