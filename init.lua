@@ -30,9 +30,15 @@ vim.o.shada = vim.o.shada:gsub("'%d+", "'1000")
 
 -- Stop insert of focus lost
 vim.cmd([[
+    function s:AutoStopInsert()
+        if &buftype!="terminal"
+            stopinsert
+        endif
+    endfunction
+
     augroup focuscontrol
         au!
-        au FocusLost,TabLeave * stopinsert
+        au FocusLost,TabLeave * call s:AutoStopInsert()
     augroup END
 ]])
 
