@@ -10,9 +10,14 @@ return {
 				-- python = { "isort", "black" },
 				python = { "isort", "black", "docformatter" },
 				snakemake = { "isort", "snakefmt" },
+				sh = { "beautysh" },
+				bash = { "beautysh" },
 				-- Use a sub-list to run only the first available formatter
 				-- javascript = { { "prettierd", "prettier" } },
 			},
+            default_format_opts = {
+                timeout_ms = 2000,
+            },
 			formatters = {
 				snakefmt = {
 					command = "snakefmt",

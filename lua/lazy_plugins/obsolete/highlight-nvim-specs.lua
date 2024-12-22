@@ -5,6 +5,7 @@ return {
 	-- "edluffy/specs.nvim",
 	-- "jokajak/specs.nvim",
 	"JuanS3/specs.nvim",
+    enabled = false,
 	config = function()
 		local specs = require("specs")
 		specs.setup({

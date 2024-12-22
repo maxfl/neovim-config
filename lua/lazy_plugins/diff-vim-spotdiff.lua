@@ -1,4 +1,6 @@
 return {
-    'rickhowe/spotdiff.vim',
-    cond = function() return vim.o.diff end
-} 
+	"rickhowe/spotdiff.vim",
+	cond = function()
+		return vim.o.diff
+	end,
+}
