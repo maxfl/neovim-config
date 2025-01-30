@@ -42,9 +42,10 @@ return {
 			return table.concat(status)
 		end
 
+        theme = "auto"
 		require("lualine").setup({
 			options = {
-				theme = "onelight",
+				theme = theme,
 				disabled_buftypes = { "nofile" },
 			},
 			extensions = { "ctrlspace", "lazy", "mundo", "nvim-tree", "symbols-outline", "toggleterm", "trouble" },
@@ -101,7 +102,7 @@ return {
 			pattern = "*",
 			callback = function()
 				pcall(function()
-					require("lualine").setup({ options = { theme = "onelight" } })
+					require("lualine").setup({ options = { theme = theme } })
 				end)
 			end,
 		})
