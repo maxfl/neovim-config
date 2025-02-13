@@ -5,6 +5,6 @@ return {
 		return vim.o.diff
 	end,
     init = function()
-        vim.g.DiffUnit = "Word"
+        -- vim.g.DiffUnit = "Word2"
     end
 }
