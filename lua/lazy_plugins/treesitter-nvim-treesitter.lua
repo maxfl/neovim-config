@@ -28,6 +28,7 @@ return {
 				"markdown",
 				"mermaid",
 				"rst",
+                "snakemake",
 				"toml",
 				"yaml",
 			},

@@ -30,7 +30,7 @@ return {
 						"$FILENAME",
 						"--quiet",
 						"--target-version",
-						"py312",
+						"py313",
 						"-",
 					},
 					cwd = util.root_file({
