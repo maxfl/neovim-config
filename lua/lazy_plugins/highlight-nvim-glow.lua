@@ -54,6 +54,15 @@ return {
 			noremap = true,
 		},
 		{
+			"<C-r>",
+			function()
+				require("undo-glow").redo()
+			end,
+			mode = "n",
+			desc = "Redo with highlight",
+			noremap = true,
+		},
+		{
 			"n",
 			function()
 				require("undo-glow").search_next({
