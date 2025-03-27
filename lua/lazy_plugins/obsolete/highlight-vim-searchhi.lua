@@ -1,5 +1,6 @@
 return {
     'qxxxb/vim-searchhi',
+    enabled = false,
     config=function()
         local map, opts=vim.api.nvim_set_keymap, {}
         map('n', '/', '<Plug>(searchhi-/)', opts)

@@ -12,6 +12,8 @@ return {
         map('x', '<leader>hm', '<Plug>(quickhl-manual-this)', opts)
         map('n', '<leader>hn', '<Plug>(quickhl-manual-reset)', opts)
         map('x', '<leader>hn', '<Plug>(quickhl-manual-reset)', opts)
+        map('n', '<leader>h,', '<Plug>(quickhl-manual-go-to-prev)', opts)
+        map('n', '<leader>h.', '<Plug>(quickhl-manual-go-to-next)', opts)
 
         map('n', '<leader>hM', [[<CMD>exe 'QuickhlManualAdd! \<'.expand('<cword>').'\>'<CR>]], opts)
         map('x', '<leader>hM', [[<CMD>exe 'QuickhlManualAdd! \<'.expand('<cword>').'\>'<CR>]], opts)

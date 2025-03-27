@@ -12,6 +12,7 @@ return {
 				snakemake = { "isort", "snakefmt" },
 				sh = { "beautysh" },
 				bash = { "beautysh" },
+                json = { "jsonnetfmt" },
 				-- Use a sub-list to run only the first available formatter
 				-- javascript = { { "prettierd", "prettier" } },
 			},
