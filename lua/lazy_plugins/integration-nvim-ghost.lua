@@ -25,5 +25,12 @@ return {
             },
             command = "setf tex",
         })
+        vim.api.nvim_create_autocmd("User", {
+            group = "nvim_ghost_user_autocommands",
+            pattern = {
+                "localhost*:8888",
+            },
+            command = "setf python",
+        })
     end
 }
