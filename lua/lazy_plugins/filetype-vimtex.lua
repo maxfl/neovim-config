@@ -24,7 +24,7 @@ return {
 		vim.g.vimtex_quickfix_ignore_filters = {
 			"Overfull \\\\.box",
 			"Underfull \\\\.box",
-			"LaTeX Font Warning:.\\+not available size",
+			"LaTeX Font Warning.*in size.*not available",
 			"Package relsize Warning",
 			"Empty bibliography",
 			"inputenc package ignored with utf8 based engines",
