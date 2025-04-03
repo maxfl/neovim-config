@@ -5,6 +5,13 @@ snippet onimage "annotate image"
 \end{tikzpicture}%
 endsnippet
 
+snippet onslide "annotate slide"
+\begin{tikzpicture}[remember picture,overlay]%
+  \draw (current page.${1:south east}) node [${2:above left},xshift=${3:-1pt},yshift=${4:8pt}$5] 
+    \{$0};
+\end{tikzpicture}%
+endsnippet
+
 snippet color "colorize"
 {\color{${1:red}}${VISUAL}$0}
 endsnippet
