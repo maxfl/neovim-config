@@ -2,11 +2,11 @@
 -- Edit browser fields with vim via GhostText
 --
 return {
-    'subnut/nvim-ghost.nvim',
-	cond = function()
+    "subnut/nvim-ghost.nvim",
+    cond = function()
         -- nvim-ghost causes nvim to exit immediately when run in a terminal in neovim
-		return vim.env.NVIM and true or false
-	end,
+        return vim.env.NVIM and true or false
+    end,
     config = function()
         vim.api.nvim_create_augroup("nvim_ghost_user_autocommands", { clear = true })
         vim.api.nvim_create_autocmd("User", {
@@ -36,5 +36,5 @@ return {
             },
             command = "setf python",
         })
-    end
+    end,
 }
