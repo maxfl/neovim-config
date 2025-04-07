@@ -3,10 +3,7 @@
 --
 return {
     "subnut/nvim-ghost.nvim",
-    cond = function()
-        -- nvim-ghost causes nvim to exit immediately when run in a terminal in neovim
-        return vim.env.NVIM and true or false
-    end,
+    enabled = false,
     config = function()
         vim.api.nvim_create_augroup("nvim_ghost_user_autocommands", { clear = true })
         vim.api.nvim_create_autocmd("User", {
