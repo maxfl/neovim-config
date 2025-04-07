@@ -1,6 +1,7 @@
 return {
 	-- 'eugen0329/vim-esearch', -- original
-	"mario-amazing/vim-esearch", -- fork
+	-- "mario-amazing/vim-esearch", -- fork
+    'maxfl/vim-esearch', -- my fork
 	config = function()
 		vim.g.esearch = {
 			root_markers = {},
