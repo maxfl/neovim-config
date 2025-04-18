@@ -4,6 +4,7 @@ return {
 		local util = require("conform.util")
 
 		require("conform").setup({
+            -- log_level = vim.log.levels.DEBUG,
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform will run multiple formatters sequentially
@@ -12,13 +13,14 @@ return {
 				snakemake = { "isort", "snakefmt" },
 				sh = { "beautysh" },
 				bash = { "beautysh" },
-                json = { "jsonnetfmt" },
+				json = { "jsonnetfmt" },
+				tex = { "latexindent" },
 				-- Use a sub-list to run only the first available formatter
 				-- javascript = { { "prettierd", "prettier" } },
 			},
-            default_format_opts = {
-                timeout_ms = 2000,
-            },
+			default_format_opts = {
+				timeout_ms = 2000,
+			},
 			formatters = {
 				snakefmt = {
 					command = "snakefmt",
@@ -38,6 +40,18 @@ return {
 						-- https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
 						"pyproject.toml",
 					}),
+				},
+				latexindent = {
+					command = "latexindent",
+					args = {
+                        "--yaml",
+                        "defaultIndent:'  '",
+                        "-"
+					},
+					range_args = function(_, ctx)
+						return { "--lines", ctx.range.start[1] .. "-" .. ctx.range["end"][1], "-" }
+					end,
+					stdin = true,
 				},
 			},
 		})
