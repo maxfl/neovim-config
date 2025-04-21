@@ -4,7 +4,7 @@ return {
 		local util = require("conform.util")
 
 		require("conform").setup({
-            -- log_level = vim.log.levels.DEBUG,
+			-- log_level = vim.log.levels.DEBUG,
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform will run multiple formatters sequentially
@@ -15,6 +15,7 @@ return {
 				bash = { "beautysh" },
 				json = { "jsonnetfmt" },
 				tex = { "latexindent" },
+				toml = { "pyproject-fmt" },
 				-- Use a sub-list to run only the first available formatter
 				-- javascript = { { "prettierd", "prettier" } },
 			},
@@ -44,9 +45,9 @@ return {
 				latexindent = {
 					command = "latexindent",
 					args = {
-                        "--yaml",
-                        "defaultIndent:'  '",
-                        "-"
+						"--yaml",
+						"defaultIndent:'  '",
+						"-",
 					},
 					range_args = function(_, ctx)
 						return { "--lines", ctx.range.start[1] .. "-" .. ctx.range["end"][1], "-" }
