@@ -96,6 +96,9 @@ set.completeopt:append("menuone")
 -- set.completeopt:append 'longest'
 vim.cmd([[au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')]])
 
+-- diagonstics
+vim.diagnostic.config({ virtual_text = true })
+
 -- folds
 set.foldopen:append("jump")
 set.foldenable = false
@@ -159,7 +162,7 @@ set.commentstring = "#%s"
 set.cpoptions:append("d") -- ./ in tags means current directory
 
 -- Diff selection
-vim.keymap.set({"n", "v"}, "D", "<nop>", emptyopts)
+vim.keymap.set({ "n", "v" }, "D", "<nop>", emptyopts)
 vim.keymap.set("n", "Dp", ":.diffput<CR>", emptyopts)
 vim.keymap.set("n", "Do", ":.diffget<CR>", emptyopts)
 vim.keymap.set("v", "Dp", ":diffput<CR>", emptyopts)
@@ -168,8 +171,8 @@ vim.keymap.set("n", "<Leader>di", "<CMD>set diffopt+=iwhite<CR>")
 vim.keymap.set("n", "<Leader>dI", "<CMD>set diffopt-=iwhite<CR>")
 vim.keymap.set("n", "<Leader>dw", "<CMD>set diffopt+=iwhiteall<CR>")
 vim.keymap.set("n", "<Leader>dW", "<CMD>set diffopt-=iwhiteall<CR>")
-vim.keymap.set('n', '<leader>dU', '<CMD>Diffupdate<CR>', {silent=true})
-vim.keymap.set('n', '<leader>du', '<CMD>diffupdate<CR>', {silent=true})
+vim.keymap.set("n", "<leader>dU", "<CMD>Diffupdate<CR>", { silent = true })
+vim.keymap.set("n", "<leader>du", "<CMD>diffupdate<CR>", { silent = true })
 
 -- Clipboard mappings
 -- Make x, d and dd delete with no register

@@ -3,7 +3,9 @@
 --
 return {
     "subnut/nvim-ghost.nvim",
-    enabled = false,
+    cond = function()
+        return vim.env.GHOST_TEXT_ENABLED
+    end,
     config = function()
         vim.api.nvim_create_augroup("nvim_ghost_user_autocommands", { clear = true })
         vim.api.nvim_create_autocmd("User", {

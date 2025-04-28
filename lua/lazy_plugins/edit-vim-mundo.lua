@@ -3,7 +3,7 @@ return {
     cmd = 'MundoToggle',
     init = function()
         local map = vim.api.nvim_set_keymap
-        map('n', '<Leader>uu', '<CMD>MundoToggle<CR>', {})
+        map('n', '<Leader>uU', '<CMD>MundoToggle<CR>', {})
     end,
     config=function()
         vim.g.mundo_preview_bottom=true
