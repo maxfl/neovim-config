@@ -1,5 +1,6 @@
 return {
 	"zenbro/mirror.vim",
+    enabled = false,
 	-- cmd = {'MirrorPush', 'MirrorPull', 'MirrorConfig', 'MirrorConfigReload', 'MirrorSSH', 'MirrorEdit', 'Mirror*'},
 	init = function()
 		pcall(function()
