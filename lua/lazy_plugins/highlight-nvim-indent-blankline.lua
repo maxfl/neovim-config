@@ -8,8 +8,12 @@ return {
 			enabled = true,
 			indent = {
 				char = "┊",
-				tab_char = "│",
+				tab_char = "┃",
+				-- tab_char = "│",
 			},
+            scope = {
+                enabled = true
+            },
 		})
 	end,
 }

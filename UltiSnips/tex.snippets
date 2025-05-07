@@ -1,3 +1,7 @@
+snippet relcoord "relative coordinate in tikz"
+({$(${1:label}.south west)!.${2:5}!($1.south east)$}|-{$($1.south west)!.${3:5}!($1.north west)$})$0
+endsnippet
+
 snippet onimage "annotate image"
 \begin{tikzpicture}[$1]%
   \node [inner sep=0] (pic) \{${3:${VISUAL:\includegraphics[width=\linewidth]\{}}};
