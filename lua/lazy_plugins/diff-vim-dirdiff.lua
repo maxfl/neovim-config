@@ -4,9 +4,9 @@ return {
         local map = vim.api.nvim_set_keymap
         local unique={unique=true}
 
-        map('', '<Leader>Dg', '<Plug>DirDiffGet', unique)
-        map('', '<Leader>Dp', '<Plug>DirDiffPut', unique)
-        map('', '<Leader>Dj', '<Plug>DirDiffNext', unique)
-        map('', '<Leader>Dk', '<Plug>DirDiffPrev', unique)
+        map('n', '<Leader>Dg', '<Plug>DirDiffGet', unique)
+        map('n', '<Leader>Dp', '<Plug>DirDiffPut', unique)
+        map('n', '<Leader>Dj', '<Plug>DirDiffNext', unique)
+        map('n', '<Leader>Dk', '<Plug>DirDiffPrev', unique)
     end
 }

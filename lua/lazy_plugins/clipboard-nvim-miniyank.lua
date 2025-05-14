@@ -3,14 +3,14 @@ return {
     config=function()
         local map=vim.api.nvim_set_keymap
         local opts={noremap=true}
-        map('', 'p', '<Plug>(miniyank-autoput)', opts)
-        map('', 'P', '<Plug>(miniyank-autoPut)', opts)
-        map('', '<Leader>n', '<Plug>(miniyank-cycle)', opts)
-        map('', '<Leader>yc', '<Plug>(miniyank-tochar)', opts)
-        map('', '<Leader>yl', '<Plug>(miniyank-toline)', opts)
-        map('', '<Leader>yb', '<Plug>(miniyank-toblock)', opts)
-        map('', '<Leader>yp', 'p', opts)
-        map('', '<Leader>yP', 'P', opts)
+        map('n', 'p', '<Plug>(miniyank-autoput)', opts)
+        map('n', 'P', '<Plug>(miniyank-autoPut)', opts)
+        map('n', '<Leader>n', '<Plug>(miniyank-cycle)', opts)
+        map('n', '<Leader>yc', '<Plug>(miniyank-tochar)', opts)
+        map('n', '<Leader>yl', '<Plug>(miniyank-toline)', opts)
+        map('n', '<Leader>yb', '<Plug>(miniyank-toblock)', opts)
+        map('n', '<Leader>yp', 'p', opts)
+        map('n', '<Leader>yP', 'P', opts)
     end
 }
 

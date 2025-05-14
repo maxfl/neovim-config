@@ -33,6 +33,6 @@ return {
     require('telescope').extensions.neoclip.default()
 
     local map = vim.api.nvim_set_keymap
-    map('', '<C-p>', '<CMD>Telescope neoclip<CR>', {})
+    map('n', '<C-p>', '<CMD>Telescope neoclip<CR>', {})
   end,
 }

@@ -13,9 +13,9 @@ return {
 		--
 		local map = vim.api.nvim_set_keymap
 		local noremap = { noremap = true }
-		map("", "<localleader>lL", "<plug>(vimtex-compile-ss)", noremap)
+		map("n", "<localleader>lL", "<plug>(vimtex-compile-ss)", noremap)
 		map(
-			"",
+			"n",
 			"<localleader>l0",
 			"<CMD>let b:vimtex.compiler.continuous=!b:vimtex.compiler.continuous<CR>:let b:vimtex.compiler.continuous<CR>",
 			noremap

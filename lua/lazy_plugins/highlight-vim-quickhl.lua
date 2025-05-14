@@ -22,6 +22,6 @@ return {
 
         -- map('n', '<Space>j', '<Plug>(quickhl-cword-toggle)', opts)
         -- map('n', '<Space>]', '<Plug>(quickhl-tag-toggle)', opts)
-        map('', '<leader>hH', '<Plug>(operator-quickhl-manual-this-motion)', opts)
+        map('n', '<leader>hH', '<Plug>(operator-quickhl-manual-this-motion)', opts)
     end
 }

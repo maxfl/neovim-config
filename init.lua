@@ -176,14 +176,14 @@ vim.keymap.set("n", "<leader>du", "<CMD>diffupdate<CR>", { silent = true })
 
 -- Clipboard mappings
 -- Make x, d and dd delete with no register
-map("", "x", '"_x', noremap)
+map("n", "x", '"_x', noremap)
 map("x", "x", '"_x', noremap)
-map("", "d", '"_d', noremap)
+map("n", "d", '"_d', noremap)
 map("x", "d", '"_d', noremap)
 map("n", "dd", '"_dd', noremap)
 
 -- use m (move) for deleting with register
-map("", "m", "d", noremap)
+map("n", "m", "d", noremap)
 map("x", "m", "d", noremap)
 map("n", "mm", "dd", noremap)
 map("n", "gm", "m", noremap)
@@ -199,10 +199,10 @@ map("x", "viy", [['`['.strpart(getregtype(), 0, 1).'`]']], expr)
 map("x", ">", ">gv", noremap)
 map("x", "<", "<gv", noremap)
 
-map("", "j", "gj", noremap)
-map("", "k", "gk", noremap)
-map("", "gj", "j", noremap)
-map("", "gk", "k", noremap)
+map("n", "j", "gj", noremap)
+map("n", "k", "gk", noremap)
+map("n", "gj", "j", noremap)
+map("n", "gk", "k", noremap)
 
 -- Pairs
 map("i", "<M-Space>", "<Space><Space><Left>", noremap) -- make space before and after

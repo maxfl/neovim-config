@@ -8,8 +8,8 @@ return {
     init = function()
         local map=vim.api.nvim_set_keymap
         local opts={}
-        map('', '<Leader>oe', '<Plug>(external-editor)',   opts)
-        map('', '<Leader>oo', '<Plug>(external-explorer)', opts)
-        map('', '<Leader>ob', '<Plug>(external-browser)',  opts)
+        map('n', '<Leader>oe', '<Plug>(external-editor)',   opts)
+        map('n', '<Leader>oo', '<Plug>(external-explorer)', opts)
+        map('n', '<Leader>ob', '<Plug>(external-browser)',  opts)
     end
 }
