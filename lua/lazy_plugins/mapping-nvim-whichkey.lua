@@ -21,7 +21,7 @@ return {
 			-- }
 			triggers = {
 				{ "<auto>", mode = "nxsot" },
-				-- { "d", mode = { "n", "v" } },
+				-- { "d", mode = { "n", "x" } },
 			},
 		})
 
@@ -56,10 +56,10 @@ return {
 		})
 
 		wk.add({
-			{ "<leader>C", group = "count", mode = "v" },
-			{ "<Leader>Ca", [[:s/\%V.//gn | silent nohls<CR>]], desc = "count characters", mode = "v" },
-			{ "<Leader>CS", [[:s/\%V\S//gn | silent nohls<CR>]], desc = "count non-space characters", mode = "v" },
-			{ "<Leader>Cw", [[:s/\%V\S\+//gn | silent nohls<CR>]], desc = "count words", mode = "v" },
+			{ "<leader>C", group = "count", mode = "x" },
+			{ "<Leader>Ca", [[:s/\%V.//gn | silent nohls<CR>]], desc = "count characters", mode = "x" },
+			{ "<Leader>CS", [[:s/\%V\S//gn | silent nohls<CR>]], desc = "count non-space characters", mode = "x" },
+			{ "<Leader>Cw", [[:s/\%V\S\+//gn | silent nohls<CR>]], desc = "count words", mode = "x" },
 		})
 	end,
 }

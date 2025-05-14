@@ -19,7 +19,7 @@ return {
 		pcall(function()
 			require("which-key").add({
 				{ "<leader>u", group = "utils" },
-				{ "<leader>ue", "<CMD>PartEdit<CR>", desc = "part edit", mode = "v" },
+				{ "<leader>ue", "<CMD>PartEdit<CR>", desc = "part edit", mode = "x" },
 			})
 		end)
 	end,

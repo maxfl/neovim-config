@@ -8,7 +8,7 @@ return {
         map('n', '<M-t>',     '<CMD>Tnew<CR>', opts)
         map('n', '<M-T>',     '<CMD>Tnew<CR>i', opts)
         -- map('n', '<Leader>s', '<CMD>TReplSendLine<CR>', opts)
-        -- map('v', '<Leader>s', '<CMD>TReplSendSelection<CR>', opts)
+        -- map('x', '<Leader>s', '<CMD>TReplSendSelection<CR>', opts)
     end,
     config=function()
         vim.g.neoterm_shell = '/usr/bin/fish'

@@ -162,11 +162,11 @@ set.commentstring = "#%s"
 set.cpoptions:append("d") -- ./ in tags means current directory
 
 -- Diff selection
-vim.keymap.set({ "n", "v" }, "D", "<nop>", emptyopts)
+vim.keymap.set({ "n", "x" }, "D", "<nop>", emptyopts)
 vim.keymap.set("n", "Dp", ":.diffput<CR>", emptyopts)
 vim.keymap.set("n", "Do", ":.diffget<CR>", emptyopts)
-vim.keymap.set("v", "Dp", ":diffput<CR>", emptyopts)
-vim.keymap.set("v", "Do", ":diffget<CR>", emptyopts)
+vim.keymap.set("x", "Dp", ":diffput<CR>", emptyopts)
+vim.keymap.set("x", "Do", ":diffget<CR>", emptyopts)
 vim.keymap.set("n", "<Leader>di", "<CMD>set diffopt+=iwhite<CR>")
 vim.keymap.set("n", "<Leader>dI", "<CMD>set diffopt-=iwhite<CR>")
 vim.keymap.set("n", "<Leader>dw", "<CMD>set diffopt+=iwhiteall<CR>")
@@ -177,14 +177,14 @@ vim.keymap.set("n", "<leader>du", "<CMD>diffupdate<CR>", { silent = true })
 -- Clipboard mappings
 -- Make x, d and dd delete with no register
 map("", "x", '"_x', noremap)
-map("v", "x", '"_x', noremap)
+map("x", "x", '"_x', noremap)
 map("", "d", '"_d', noremap)
-map("v", "d", '"_d', noremap)
+map("x", "d", '"_d', noremap)
 map("n", "dd", '"_dd', noremap)
 
 -- use m (move) for deleting with register
 map("", "m", "d", noremap)
-map("v", "m", "d", noremap)
+map("x", "m", "d", noremap)
 map("n", "mm", "dd", noremap)
 map("n", "gm", "m", noremap)
 
@@ -193,11 +193,11 @@ map("v", "<LeftRelease>", '"*ygv', emptyopts)
 
 -- select just pasted text
 local expr = { noremap = true, expr = true }
-map("n", "viy", [['`['.strpart(getregtype(), 0, 1).'`]']], expr)
+map("x", "viy", [['`['.strpart(getregtype(), 0, 1).'`]']], expr)
 
 -- Motions
-map("v", ">", ">gv", noremap)
-map("v", "<", "<gv", noremap)
+map("x", ">", ">gv", noremap)
+map("x", "<", "<gv", noremap)
 
 map("", "j", "gj", noremap)
 map("", "k", "gk", noremap)

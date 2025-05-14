@@ -7,9 +7,9 @@ return {
     config=function()
         local map, silent=vim.api.nvim_set_keymap, {silent=true}
         map('n', '-', '<Plug>CycleNext', silent)
-        map('v', '-', '<Plug>CycleNext', silent)
+        map('x', '-', '<Plug>CycleNext', silent)
         map('n', '+', '<Plug>CyclePrev', silent)
-        map('v', '+', '<Plug>CyclePrev', silent)
+        map('x', '+', '<Plug>CyclePrev', silent)
 
         vim.fn['cycle#add_groups']{
             {'₉', '₈', '₇', '₆', '₅', '₄', '₃', '₂', '₁', '₀'},
