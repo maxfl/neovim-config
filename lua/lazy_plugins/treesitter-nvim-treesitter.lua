@@ -1,5 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+    branch = "master",
+    -- branch = "main",
 	priority = 60,
 	build = function()
 		vim.cmd(":TSUpdate")
