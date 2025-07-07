@@ -1,6 +1,9 @@
 return {
 	"sphamba/smear-cursor.nvim",
 	opts = {
+        stiffness = 0.4,
+        trailing_stiffness = 0.2,
+
 		-- Smear cursor when switching buffers or windows.
 		smear_between_buffers = true,
 
