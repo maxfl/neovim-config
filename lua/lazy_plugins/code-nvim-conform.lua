@@ -16,6 +16,7 @@ return {
 				json = { "jsonnetfmt" },
 				tex = { "latexindent" },
 				toml = { "pyproject-fmt" },
+				markdown = { "mdformat" },
 				-- Use a sub-list to run only the first available formatter
 				-- javascript = { { "prettierd", "prettier" } },
 			},
