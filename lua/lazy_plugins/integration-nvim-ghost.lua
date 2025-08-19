@@ -13,7 +13,7 @@ return {
             pattern = {
                 "*stackoverflow.com",
                 "*github.com",
-                "*git.jinr.com",
+                "*git.jinr.ru",
                 "*hackmd.io",
                 "jupyter.ihep.ac.cn",
                 "mattermost.ihep.ac.cn",
