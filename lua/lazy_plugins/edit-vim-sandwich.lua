@@ -68,6 +68,8 @@ return {
             let g:sandwich#recipes += [
                         \   {'buns': ["```", "```"],             'nesting': 0, 'input': [ "3`" ],  'filetype': ['markdown'] },
                         \   {'buns': ["~~", "~~"],               'nesting': 0, 'input': [ "2~" ],  'filetype': ['markdown'] },
+                        \   {'buns': ["**", "**"],               'nesting': 0, 'input': [ "2*" ],   'filetype': ['markdown'] },
+                        \   {'buns': ["***", "***"],             'nesting': 0, 'input': [ "3*" ],   'filetype': ['markdown'] },
                         \   {'buns': ["**", "**"],               'nesting': 0, 'input': [ "b" ],   'filetype': ['markdown'] },
                         \   {'buns': ["***", "***"],             'nesting': 0, 'input': [ "B" ],   'filetype': ['markdown'] },
                         \ ]
