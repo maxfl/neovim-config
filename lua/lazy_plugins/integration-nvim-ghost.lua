@@ -18,7 +18,7 @@ return {
                 "jupyter.ihep.ac.cn",
                 "mattermost.ihep.ac.cn",
             },
-            command = "setf markdown",
+            command = "setf markdown | set tw=100",
         })
         vim.api.nvim_create_autocmd("User", {
             group = "nvim_ghost_user_autocommands",
