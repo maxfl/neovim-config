@@ -5,6 +5,7 @@ return {
     config = function()
       -- Optional: Set keybindings or options
       vim.keymap.set("n", "<leader>us", ":Pydocstring<CR>", { silent = true, desc = "Generate Python docstring" })
+      vim.g.pydocstring_enable_mapping = false
     end,
   }
   -- lsp = {

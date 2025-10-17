@@ -21,7 +21,7 @@ return {
 					function()
                         require('grug-far').open()
 					end,
-					desc = "spectre",
+					desc = "grug-far",
 					mode = "n",
 				},
 			})

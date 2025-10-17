@@ -21,7 +21,7 @@ return {
 				-- javascript = { { "prettierd", "prettier" } },
 			},
 			default_format_opts = {
-				timeout_ms = 2000,
+				timeout_ms = 4000,
 			},
 			formatters = {
 				snakefmt = {
@@ -38,6 +38,12 @@ return {
 						"py313",
 						"-",
 					},
+					cwd = util.root_file({
+						-- https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
+						"pyproject.toml",
+					}),
+				},
+				docformatter = {
 					cwd = util.root_file({
 						-- https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
 						"pyproject.toml",
