@@ -32,8 +32,8 @@ return {
 				},
 				{
 					name = "diffopt: iwhiteall",
-					enable_cmd = ":set diffopt+=iwhiteall<CR>",
-					disable_cmd = ":set diffopt-=iwhiteall<CR>",
+					enable_cmd = ":setg diffopt+=iwhiteall<CR>",
+					disable_cmd = ":setg diffopt-=iwhiteall<CR>",
 					state = false, -- Initially disabled
 				},
 				{
@@ -42,18 +42,30 @@ return {
 					disable_cmd = ":FocusDisable<CR>",
 					state = true, -- Initially enabled
 				},
-				-- {
-				-- 	name = "set number",
-				-- 	enable_cmd = ":set number<CR>",
-				-- 	disable_cmd = ":set nonumber<CR>",
-				-- 	state = true, -- Initially enabled
-				-- },
-				-- {
-				-- 	name = "set relativenumber",
-				-- 	enable_cmd = ":set relativenumber<CR>",
-				-- 	disable_cmd = ":set norelativenumber<CR>",
-				-- 	state = true, -- Initially enabled
-				-- },
+				{
+					name = "number",
+					enable_cmd = ":set number<CR>",
+					disable_cmd = ":set nonumber<CR>",
+					state = true, -- Initially enabled
+				},
+				{
+					name = "relativenumber",
+					enable_cmd = ":setg relativenumber<CR>",
+					disable_cmd = ":setg norelativenumber<CR>",
+					state = true, -- Initially enabled
+				},
+				{
+					name = "signcolumn",
+					enable_cmd = ":setg scl=yes<CR>",
+					disable_cmd = ":setg scl=no<CR>",
+					state = true, -- Initially enabled
+				},
+				{
+					name = "indent blank line",
+					enable_cmd = ":IBLEnable<CR>",
+					disable_cmd = ":IBLDisable<CR>",
+					state = true, -- Initially enabled
+				},
 				{
 					name = "commentless: hide comments",
 					enable_cmd = ":Commentless toggle<CR>",
