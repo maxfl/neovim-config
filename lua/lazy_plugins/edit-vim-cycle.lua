@@ -34,7 +34,9 @@ return {
             {{ 'yes', 'no' },     'match_word', 1 },
             {{ 'true', 'false' }, 'match_word', 1 },
             {{ 'on', 'off' },     'match_word', 1 },
-            {{ 'and', 'or' },     'match_word', 1 }
+            {{ 'and', 'or' },     'match_word', 1 },
+            {{ 'disable', 'enable' }, 'match_word', 1 },
+            {{ 'disabled', 'enabled' }, 'match_word', 1 }
         }
 
         vim.fn['cycle#add_groups']{{{ '{:}', '(:)' }, 'sub_pairs'}}
