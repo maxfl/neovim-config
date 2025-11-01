@@ -189,7 +189,7 @@ map("v", "<LeftRelease>", '"*ygv', emptyopts)
 
 -- select just pasted text
 local expr = { noremap = true, expr = true }
-map("x", "viy", [['`['.strpart(getregtype(), 0, 1).'`]']], expr)
+map("n", "viy", [['`['.strpart(getregtype(), 0, 1).'`]']], expr)
 
 -- Motions
 map("x", ">", ">gv", noremap)
