@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local lazy = require("lazy")
-lazy.setup("lazy_plugins", {
+lazy.setup("plugins", {
 	concurrency = 8,
 })
 
