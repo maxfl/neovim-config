@@ -37,6 +37,12 @@ return {
 					state = false, -- Initially disabled
 				},
 				{
+					name = "wrap",
+					enable_cmd = ":set wrap!<CR>",
+					disable_cmd = ":set wrap!<CR>",
+					state = false, -- Initially disabled
+				},
+				{
 					name = "focus",
 					enable_cmd = ":FocusEnable<CR>",
 					disable_cmd = ":FocusDisable<CR>",
