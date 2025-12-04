@@ -1,6 +1,6 @@
 return {
 	"niuiic/part-edit.nvim",
-	dependencies = "niuiic/niuiic-core.nvim",
+	dependencies = "https://github.com/niuiic/omega.nvim",
 	config = function()
 		require("part-edit").setup({
 			open_in = "tab",
@@ -19,7 +19,15 @@ return {
 		pcall(function()
 			require("which-key").add({
 				{ "<leader>u", group = "utils" },
-				{ "<leader>ue", "<CMD>PartEdit<CR>", desc = "part edit", mode = "x" },
+				{
+					"<leader>ue",
+					function()
+						require("part-edit").start()
+					end,
+					desc = "part edit",
+					silent = true,
+					mode = "x",
+				},
 			})
 		end)
 	end,
