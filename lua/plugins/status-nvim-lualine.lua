@@ -85,6 +85,7 @@ return {
 						end,
 					},
 					"filetype",
+                    "lsp_status"
 				},
 			},
 			inactive_sections = {
