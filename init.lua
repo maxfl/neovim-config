@@ -233,6 +233,12 @@ map("n", "<Leader>gF", "<CMD>tabe <cfile><CR>", noremap)
 map("n", "<Leader>:e", [[':edit '.expand("%:h")]], expr)
 map("n", "<Leader>:s", [[':saveas '.expand("%")]], expr)
 map("n", "<Leader>:S", [[':saveas '.expand("%:h")]], expr)
+map("n", "<Leader>:w", [[':write '.expand("%")]], expr)
+map("n", "<Leader>:W", [[':write '.expand("%:h")]], expr)
+map("n", "<Leader>!s", [[':saveas! '.expand("%")]], expr)
+map("n", "<Leader>!S", [[':saveas! '.expand("%:h")]], expr)
+map("n", "<Leader>!w", [[':write! '.expand("%")]], expr)
+map("n", "<Leader>!W", [[':write! '.expand("%:h")]], expr)
 
 -- Shell
 -- vim.env.SHLVL = tostring(vim.env.SHLVL and vim.env.SHLVL - 1 or 0) -- Reduce SHLVL
