@@ -7,8 +7,8 @@ return {
 					motions = {
 						new_trail_mark = "<A-N>",
 						track_back = "<A-b>",
-						peek_move_next_down = "<A-J>",
-						peek_move_previous_up = "<A-K>",
+						peek_move_next_down = "<A-K>",
+						peek_move_previous_up = "<A-J>",
 						move_to_nearest = "<A-n>",
 						toggle_trail_mark_list = "<A-m>",
 					},

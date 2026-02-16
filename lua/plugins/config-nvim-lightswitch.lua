@@ -78,6 +78,12 @@ return {
 					disable_cmd = ":Commentless toggle<CR>",
 					state = false, -- Initially disabled
 				},
+				{
+					name = "vimtex: enable mupdf",
+					enable_cmd = 'let g:vimtex_view_method="mupdf"',
+					disable_cmd = 'let g:vimtex_view_method="zathura"',
+					state = false, -- Initially disabled
+				},
 			},
 		})
 		lightswitch = require("lightswitch")

@@ -3,8 +3,12 @@
 --
 return {
     "subnut/nvim-ghost.nvim",
-    cond = function()
-        return vim.env.GHOST_TEXT_ENABLED
+    -- "stg73/ghost_text.nvim",
+    keys = {
+        { "<Leader>ug", "<cmd>GhostTextStart<cr>", desc = "GhostText"}
+    },
+    init = function()
+        vim.g.nvim_ghost_autostart = false
     end,
     config = function()
         vim.api.nvim_create_augroup("nvim_ghost_user_autocommands", { clear = true })
