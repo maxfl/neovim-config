@@ -42,7 +42,7 @@ return {
 			return table.concat(status)
 		end
 
-        theme = "auto"
+		theme = "auto"
 		require("lualine").setup({
 			options = {
 				theme = theme,
@@ -51,12 +51,30 @@ return {
 			extensions = { "ctrlspace", "lazy", "mundo", "nvim-tree", "symbols-outline", "toggleterm", "trouble" },
 			sections = {
 				lualine_a = {
-					"mode",
+					{
+						"mode",
+						fmt = function(str)
+							return str:sub(1, 1)
+						end,
+					},
 					keymap,
 					{
 						paste,
 						color = { fg = "red", gui = "bold" },
 					},
+				},
+				lualine_b = {
+					{
+						"branch",
+						fmt = function(str)
+							return (str:gsub("^[^/]+/", "←"))
+						end,
+                        cond = function(str)
+                            return str~="main"
+                        end
+					},
+					"diff",
+					"diagnostics",
 				},
 				lualine_c = {
 					{
@@ -85,7 +103,12 @@ return {
 						end,
 					},
 					"filetype",
-                    "lsp_status"
+					{
+						"lsp_status",
+						fmt = function(str)
+							return (str:gsub(" .*$", "→"))
+						end,
+					},
 				},
 			},
 			inactive_sections = {
