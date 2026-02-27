@@ -7,7 +7,7 @@ return {
 	keys = {
 		{
 			"<leader>ud",
-            "<CMD>NoeDocGenerate<CR>",
+            "<CMD>NeoDocGenerate<CR>",
 			desc = "Generage docstring",
 		},
 	},

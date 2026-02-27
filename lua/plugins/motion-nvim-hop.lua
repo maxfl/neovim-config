@@ -17,6 +17,10 @@ return {
 				{ "<Leader>mF", "<CMD>HopChar1BC<CR>", desc = "char (back)" },
 				{ "<Leader>mk", "<CMD>HopLineBC<CR>", desc = "line (back)" },
 				{ "<Leader>mj", "<CMD>HopLineAC<CR>", desc = "line" },
+				{ "<Leader>mK", "<CMD>HopLineVerticalBC<CR>", desc = "line (back)" },
+				{ "<Leader>mJ", "<CMD>HopLineVerticalAC<CR>", desc = "line" },
+				{ "<Leader>ml", "<CMD>HopLineMW<CR>", desc = "line MW" },
+				{ "<Leader>mn", "<CMD>HopNodes<CR>", desc = "nodes" },
 				{ "<Leader>mw", "<CMD>HopWord<CR>", desc = "word" },
 				{ "<Leader>mW", "<CMD>HopWordBC<CR>", desc = "word (back)" },
 			})

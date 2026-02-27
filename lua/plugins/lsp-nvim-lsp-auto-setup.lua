@@ -6,5 +6,10 @@ return {
     dependencies = {
         "neovim/nvim-lspconfig"
     },
-    config = true,
+    opts = {
+        exclude = {
+            "gitlab_duo"
+
+        }
+    }
 }
