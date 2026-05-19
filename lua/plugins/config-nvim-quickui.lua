@@ -6,14 +6,15 @@ return {
 		require("quickui").setup({
 			keymap = "<F9>", -- toggle the menubar
 			border = "single",
+			winblend = { bar = 0, menu = 0 },
 
 			menus = {
 				{
 					name = "&Editing",
 					items = {
-						{ name = "Toggle &table-mode", rtxt="\\tm", cmd = "normal \\tm" },
+						{ name = "Toggle &table-mode", rtxt = "\\tm", cmd = "normal \\tm" },
 						{ name = "--", cmd = "--" },
-						{ name = "&Remove trailing whitespace", rtxt="\\rts", cmd = "FixWhitespace" },
+						{ name = "&Remove trailing whitespace", rtxt = "\\rts", cmd = "FixWhitespace" },
 					},
 				},
 				{
@@ -24,17 +25,46 @@ return {
 							cmd = "<CMD>setl relativenumber!<CR>",
 						},
 						{
-							name = "Toggle indent blank &line",
+							name = "Disable &sign column",
+							cmd = "<CMD>setl signcolumn=no<CR>",
+						},
+						{
+							name = "Toggle &listchars",
+							cmd = "<CMD>setl listchars!<CR>",
+						},
+						{ name = "--", cmd = "--" },
+						{
+							name = "Toggle indent &blank line",
 							cmd = "<CMD>IBLToggle<CR>",
 						},
 						{
-							name = "Disable sign column",
-							cmd = "<CMD>setl signcolumn=no<CR>",
+							name = "Disable lualine",
+							cmd = function()
+                                require('lualine').hide({unhide=true})
+							end
+						},
+						{
+							name = "Enable lualine",
+							cmd = function()
+                                require('lualine').hide()
+							end
 						},
 						{ name = "--", cmd = "--" },
 						{
 							name = "&Snapshot friendly configuration",
-							cmd = "<CMD>IBLDisable | setl norelativenumber signcolumn=no listchars= <CR>",
+                            cmd = function()
+                                vim.o.relativenumber=false
+                                vim.o.signcolumn="no"
+                                vim.o.list=false
+
+                                vim.cmd[[
+                                    FocusDisable
+                                    IBLDisable
+                                    TSContext disable
+                                ]]
+                                require('lualine').hide()
+                                vim.diagnostic.enable(false)
+                            end
 						},
 					},
 				},
