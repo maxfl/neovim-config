@@ -1,3 +1,15 @@
+snippet unv "add negative vertical space"
+\vspace{-${1:2mm}}$0
+endsnippet
+
+snippet iblock "itemize within block"
+\begin{block}{$1}
+  \begin{itemize}
+    \item ${0:${VISUAL}}
+  \end{itemize}
+\end{block}
+endsnippet
+
 snippet relcoord "relative coordinate in tikz"
 ({$(${1:label}.south west)!.${2:5}!($1.south east)$}|-{$($1.south west)!.${3:5}!($1.north west)$})$0
 endsnippet
@@ -247,12 +259,14 @@ ${VISUAL}
 endsnippet
 
 snippet columns "Beamer columns"
+\def\WA{${1:0.50}\linewidth}
+\def\WB{\dimexpr\linewidth-\WA}
 \begin{columns}
-  \begin{column}{${1:${2:0.50}\linewidth}}
+  \begin{column}{\WA}
     ${VISUAL}$0
   \end{column}
 
-  \begin{column}{${3:${4:0.50}\linewidth}}
+  \begin{column}{\WB}
 
   \end{column}
 \end{columns}

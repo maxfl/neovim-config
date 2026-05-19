@@ -25,18 +25,6 @@ return {
 					state = true, -- Initially enabled
 				},
 				{
-					name = "diffopt: iwhite",
-					enable_cmd = ":set diffopt+=iwhite<CR>",
-					disable_cmd = ":set diffopt-=iwhite<CR>",
-					state = false, -- Initially disabled
-				},
-				{
-					name = "diffopt: iwhiteall",
-					enable_cmd = ":setg diffopt+=iwhiteall<CR>",
-					disable_cmd = ":setg diffopt-=iwhiteall<CR>",
-					state = false, -- Initially disabled
-				},
-				{
 					name = "wrap",
 					enable_cmd = ":set wrap!<CR>",
 					disable_cmd = ":set wrap!<CR>",

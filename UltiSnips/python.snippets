@@ -1,5 +1,16 @@
+snippet rcparams "matplotlib rcparams"
+plt.rcParams.update({
+    "figure.dpi": 300,
+    "savefig.dpi": 300,
+    # 'figure.figsize': (8, 6),
+    "axes.grid": True,
+	"xtick.minor.visible": False,
+	"ytick.minor.visible": False,
+})
+endsnippet
+
 snippet f "string interpolation" w
-f'$0'
+f"$0"
 endsnippet
 
 snippet \clearlineafter "" i
