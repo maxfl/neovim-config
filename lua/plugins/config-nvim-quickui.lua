@@ -13,8 +13,9 @@ return {
 					name = "&Editing",
 					items = {
 						{ name = "Toggle &table-mode", rtxt = "\\tm", cmd = "normal \\tm" },
+						{ name = "Enable &GhostText", rtxt = "\\ug", cmd = "<CMD>GhostTextStart<CR>" },
 						{ name = "--", cmd = "--" },
-						{ name = "&Remove trailing whitespace", rtxt = "\\rts", cmd = "FixWhitespace" },
+						{ name = "&Remove trailing whitespace", rtxt = "\\rts", cmd = "<CMD>FixWhitespace<CR>" },
 					},
 				},
 				{
@@ -40,31 +41,32 @@ return {
 						{
 							name = "Disable lualine",
 							cmd = function()
-                                require('lualine').hide({unhide=true})
-							end
+								require("lualine").hide({ unhide = true })
+							end,
 						},
 						{
 							name = "Enable lualine",
 							cmd = function()
-                                require('lualine').hide()
-							end
+								require("lualine").hide()
+							end,
 						},
 						{ name = "--", cmd = "--" },
 						{
 							name = "&Snapshot friendly configuration",
-                            cmd = function()
-                                vim.o.relativenumber=false
-                                vim.o.signcolumn="no"
-                                vim.o.list=false
+							cmd = function()
+								vim.o.relativenumber = false
+								vim.o.signcolumn = "no"
+								vim.o.list = false
+								vim.o.scrolloff = 0
 
-                                vim.cmd[[
+								vim.cmd([[
                                     FocusDisable
                                     IBLDisable
                                     TSContext disable
-                                ]]
-                                require('lualine').hide()
-                                vim.diagnostic.enable(false)
-                            end
+                                ]])
+								require("lualine").hide()
+								vim.diagnostic.enable(false)
+							end,
 						},
 					},
 				},
