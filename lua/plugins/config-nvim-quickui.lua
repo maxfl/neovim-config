@@ -2,7 +2,6 @@ return {
 	"mjmjm0101/quickui.nvim",
 	lazy = false,
 	config = function()
-		require("quickui").setup({})
 		require("quickui").setup({
 			keymap = "<F9>", -- toggle the menubar
 			border = "single",

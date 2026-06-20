@@ -2,10 +2,10 @@ snippet rcparams "matplotlib rcparams"
 plt.rcParams.update({
     "figure.dpi": 300,
     "savefig.dpi": 300,
-    # 'figure.figsize': (8, 6),
+    # "figure.figsize": (8, 6),
     "axes.grid": True,
-	"xtick.minor.visible": False,
-	"ytick.minor.visible": False,
+	"xtick.minor.visible": True,
+	"ytick.minor.visible": True,
 })
 endsnippet
 
@@ -75,28 +75,28 @@ ${1:${VISUAL}}
 endsnippet
 
 snippet 3' "triple quoted string (single quotes)" b
-'''
+"""
 ${1:${VISUAL}}
-'''
+"""
 endsnippet
 
 # Arg parser
 snippet argument "argparser argument"
-parser.add_argument( '-${1}', '--${2}'$0 )
+parser.add_argument( "-${1}", "--${2}"$0 )
 endsnippet
 
 snippet boolarg "argparser argument"
-parser.add_argument( '-${1}', '--${2}', action='store_true'$0 )
+parser.add_argument( "-${1}", "--${2}", action="store_true"$0 )
 endsnippet
 
 snippet argoutput "argparser output argument"
-parser.add_argument( '-o', '--output'$0 )
+parser.add_argument( "-o", "--output"$0 )
 endsnippet
 
 snippet parser "create parser"
 from argparse import ArgumentParser
 parser = ArgumentParser()
-parser.add_argument( '-${1}', '--${2}'$0 )
+parser.add_argument( "-${1}", "--${2}"$0 )
 endsnippet
 
 snippet tryembed "Embed IPython in case of exception"
@@ -104,15 +104,15 @@ try:
 	$0${VISUAL}
 except:
 	import IPython
-	IPython.embed(header='Embed on exception', colors='neutral')
+	IPython.embed(header="Embed on exception", colors="neutral")
 endsnippet
 
 snippet embed "Embed IPython here"
-import IPython; IPython.embed(colors='neutral') # fmt: skip
+import IPython; IPython.embed(colors="neutral") # fmt: skip
 endsnippet
 
 snippet Embed "Embed IPython here"
-import IPython; IPython.embed(header='$0', colors='neutral')  # fmt: skip
+import IPython; IPython.embed(header="$0", colors="neutral")  # fmt: skip
 endsnippet
 
 snippet pdb "Start PDB debugger"
@@ -120,10 +120,10 @@ import pdb; pdb.set_trace()
 endsnippet
 
 snippet ifmain "basic program"
-if __name__ == '__main__':
+if __name__ == "__main__":
     from argparse import ArgumentParser
     parser = ArgumentParser()
-    parser.add_argument('input')
+    parser.add_argument("input")
 
     ${1:main}(parser.parse_args())
 endsnippet
@@ -134,10 +134,10 @@ snippet main "basic program"
 def main(args):
     ${0:pass}
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     from argparse import ArgumentParser
     parser = ArgumentParser()
-    parser.add_argument('input')
+    parser.add_argument("input")
 
     main(parser.parse_args())
 endsnippet
@@ -167,7 +167,7 @@ endsnippet
 
 snippet Figure "matplotlib figure"
 ${1:fig} = ${2:plt}.figure()
-${3:ax} = $2.subplot(${4:111}, xlabel='${5}', ylabel='${6}', title='${7}')
+${3:ax} = $2.subplot(${4:111}, xlabel="${5}", ylabel="${6}", title="${7}")
 $3.minorticks_on()
 $3.grid()
 
@@ -176,7 +176,7 @@ endsnippet
 
 snippet figure "matplotlib figure"
 plt.figure()
-${1:ax} = plt.subplot(${2:111}, xlabel='${3}', ylabel='${4}', title='${5}')
+${1:ax} = plt.subplot(${2:111}, xlabel="${3}", ylabel="${4}", title="${5}")
 $0
 endsnippet
 
